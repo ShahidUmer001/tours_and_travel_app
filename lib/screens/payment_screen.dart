@@ -3,13 +3,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class PaymentScreen extends StatefulWidget {
-  final Map<String, dynamic> tourData;
+  final String bookingType;
   final Map<String, dynamic> bookingData;
+  final Map<String, dynamic>? tourData;
 
   const PaymentScreen({
     Key? key,
-    required this.tourData,
+    required this.bookingType,
     required this.bookingData,
+    this.tourData,
   }) : super(key: key);
 
   @override
@@ -34,60 +36,85 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   TextEditingController _cashInstructionsController = TextEditingController();
 
-  // Safe data access methods
-  String _getTourName() {
-    return widget.tourData['tourName'] ?? 'Tour Package';
-  }
-
-  double _getTourPrice() {
-    return (widget.tourData['price'] ?? 0).toDouble();
-  }
-
-  String _getDuration() {
-    return widget.tourData['duration'] ?? 'N/A';
-  }
-
-  String _getHotelName() {
-    return widget.bookingData['hotel']?['name'] ?? 'Hotel';
-  }
-
-  double _getHotelPrice() {
-    return (widget.bookingData['hotel']?['price'] ?? 0).toDouble();
-  }
-
-  String _getHotelCategory() {
-    return widget.bookingData['hotel']?['category'] ?? 'Standard';
-  }
-
-  String _getVehicleName() {
-    return widget.bookingData['vehicle']?['name'] ?? 'Vehicle';
-  }
-
-  String _getVehicleType() {
-    return widget.bookingData['vehicle']?['type'] ?? 'Standard';
-  }
-
-  double _getVehiclePrice() {
-    return (widget.bookingData['vehicle']?['price'] ?? 0).toDouble();
-  }
-
-  String _getPickupLocation() {
-    return widget.bookingData['pickupLocation'] ?? 'Islamabad';
-  }
-
-  String _getDropoffLocation() {
-    return widget.bookingData['dropoffLocation'] ?? 'Destination';
+  // Get booking details based on booking type
+  String _getBookingTitle() {
+    switch (widget.bookingType) {
+      case 'tour':
+        return widget.tourData?['tourName'] ?? 'Tour Package';
+      case 'car':
+        return widget.bookingData['carName'] ?? 'Car Booking';
+      case 'hotel':
+        return widget.bookingData['hotelName'] ?? 'Hotel Booking';
+      default:
+        return 'Booking';
+    }
   }
 
   double _getTotalAmount() {
-    return _getTourPrice() + _getHotelPrice() + _getVehiclePrice();
+    switch (widget.bookingType) {
+      case 'tour':
+        double tourPrice = (widget.tourData?['price'] ?? 0).toDouble();
+        double hotelPrice = (widget.bookingData['hotel']?['price'] ?? 0).toDouble();
+        double vehiclePrice = (widget.bookingData['vehicle']?['price'] ?? 0).toDouble();
+        return tourPrice + hotelPrice + vehiclePrice;
+      case 'car':
+        return (widget.bookingData['totalAmount'] ?? 0).toDouble();
+      case 'hotel':
+        return (widget.bookingData['totalAmount'] ?? 0).toDouble();
+      default:
+        return 0.0;
+    }
+  }
+
+  // Get booking summary based on type
+  List<Widget> _getBookingSummary() {
+    switch (widget.bookingType) {
+      case 'tour':
+        return [
+          _buildSummaryRow('Package:', widget.tourData?['tourName'] ?? 'Tour Package'),
+          _buildSummaryRow('Duration:', widget.tourData?['duration'] ?? 'N/A'),
+          if (widget.bookingData['hotel'] != null)
+            _buildSummaryRow('Hotel:', widget.bookingData['hotel']?['name'] ?? 'Hotel'),
+          if (widget.bookingData['vehicle'] != null)
+            _buildSummaryRow('Transport:', widget.bookingData['vehicle']?['name'] ?? 'Vehicle'),
+          _buildSummaryRow('Pickup:', widget.bookingData['pickupLocation'] ?? 'Islamabad'),
+          _buildSummaryRow('Dropoff:', widget.bookingData['dropoffLocation'] ?? 'Destination'),
+        ];
+
+      case 'car':
+        return [
+          _buildSummaryRow('Car:', widget.bookingData['carName'] ?? 'Car'),
+          _buildSummaryRow('Route:', '${widget.bookingData['pickupCity']} → ${widget.bookingData['dropoffCity']}'),
+          _buildSummaryRow('Pickup Date:', widget.bookingData['pickupDate'] ?? 'N/A'),
+          _buildSummaryRow('Pickup Time:', widget.bookingData['pickupTime'] ?? 'N/A'),
+          _buildSummaryRow('Duration:', '${widget.bookingData['totalDays'] ?? 1} days'),
+          _buildSummaryRow('Distance:', '${widget.bookingData['totalDistance'] ?? 0} km'),
+          _buildSummaryRow('Type:', widget.bookingData['carType'] ?? 'Standard'),
+          _buildSummaryRow('Transmission:', widget.bookingData['transmission'] ?? 'Automatic'),
+        ];
+
+      case 'hotel':
+        return [
+          _buildSummaryRow('Hotel:', widget.bookingData['hotelName'] ?? 'Hotel'),
+          _buildSummaryRow('Location:', widget.bookingData['location'] ?? 'N/A'),
+          _buildSummaryRow('Check-in:', widget.bookingData['checkInDate'] ?? 'N/A'),
+          _buildSummaryRow('Check-out:', widget.bookingData['checkOutDate'] ?? 'N/A'),
+          _buildSummaryRow('Guests:', widget.bookingData['guests']?.toString() ?? '1'),
+          _buildSummaryRow('Rooms:', widget.bookingData['rooms']?.toString() ?? '1'),
+          _buildSummaryRow('Total Nights:', widget.bookingData['totalNights']?.toString() ?? '1'),
+          _buildSummaryRow('Price per Night:', 'Rs. ${widget.bookingData['pricePerNight']?.toStringAsFixed(0) ?? '0'}'),
+        ];
+
+      default:
+        return [];
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Payment'),
+        title: Text('Payment - ${_getBookingTitle()}'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
@@ -97,11 +124,39 @@ class _PaymentScreenState extends State<PaymentScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Booking Summary
-            _buildBookingSummary(),
+            Card(
+              elevation: 4,
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Booking Summary',
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 10),
+                    ..._getBookingSummary(),
+                  ],
+                ),
+              ),
+            ),
             SizedBox(height: 20),
 
             // Payment Methods
-            _buildPaymentMethods(),
+            Text(
+              'Select Payment Method',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Column(
+              children: [
+                _buildPaymentMethodTile('Credit/Debit Card', 'card', Icons.credit_card),
+                _buildPaymentMethodTile('JazzCash', 'jazzcash', Icons.phone_android),
+                _buildPaymentMethodTile('EasyPaisa', 'easypaisa', Icons.phone_iphone),
+                _buildPaymentMethodTile('Cash on Delivery', 'cash', Icons.money),
+              ],
+            ),
             SizedBox(height: 20),
 
             // Payment Form based on selected method
@@ -109,38 +164,30 @@ class _PaymentScreenState extends State<PaymentScreen> {
             SizedBox(height: 20),
 
             // Total Amount
-            _buildTotalAmount(),
+            Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.blue[50],
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Total Amount:',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'PKR ${_getTotalAmount().toStringAsFixed(2)}',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blue),
+                  ),
+                ],
+              ),
+            ),
             SizedBox(height: 20),
 
             // Pay Now Button
             _buildPayButton(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBookingSummary() {
-    return Card(
-      elevation: 4,
-      child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Booking Summary',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            _buildSummaryRow('Package:', _getTourName()),
-            _buildSummaryRow('Duration:', _getDuration()),
-            _buildSummaryRow('Hotel:', _getHotelName()),
-            _buildSummaryRow('Category:', _getHotelCategory()),
-            _buildSummaryRow('Transport:', _getVehicleName()),
-            _buildSummaryRow('Type:', _getVehicleType()),
-            _buildSummaryRow('Pickup:', _getPickupLocation()),
-            _buildSummaryRow('Dropoff:', _getDropoffLocation()),
           ],
         ),
       ),
@@ -156,27 +203,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
           Expanded(flex: 3, child: Text(value)),
         ],
       ),
-    );
-  }
-
-  Widget _buildPaymentMethods() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Select Payment Method',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 10),
-        Column(
-          children: [
-            _buildPaymentMethodTile('Credit/Debit Card', 'card', Icons.credit_card),
-            _buildPaymentMethodTile('JazzCash', 'jazzcash', Icons.phone_android),
-            _buildPaymentMethodTile('EasyPaisa', 'easypaisa', Icons.phone_iphone),
-            _buildPaymentMethodTile('Cash on Delivery', 'cash', Icons.money),
-          ],
-        ),
-      ],
     );
   }
 
@@ -392,7 +418,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
             SizedBox(height: 16),
             Text(
-              'Pay in cash when you arrive at the destination.',
+              'Pay in cash when you arrive.',
               style: TextStyle(fontSize: 14),
             ),
             SizedBox(height: 12),
@@ -401,55 +427,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
               decoration: InputDecoration(
                 labelText: 'Special Instructions (Optional)',
                 border: OutlineInputBorder(),
-                hintText: 'Any special delivery instructions...',
+                hintText: 'Any special instructions...',
               ),
               maxLines: 3,
             ),
-            SizedBox(height: 8),
-            Container(
-              padding: EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.orange[50],
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.info, color: Colors.orange),
-                  SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      'Our representative will contact you for cash payment upon arrival.',
-                      style: TextStyle(fontSize: 12, color: Colors.orange[800]),
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildTotalAmount() {
-    return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.blue[50],
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            'Total Amount:',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          Text(
-            'PKR ${_getTotalAmount().toStringAsFixed(2)}',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.blue),
-          ),
-        ],
       ),
     );
   }
@@ -512,7 +495,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         return _easypaisaNumberController.text.length == 10 &&
             _easypaisaPinController.text.length == 5;
       case 'cash':
-        return true; // No validation needed for cash
+        return true;
       default:
         return false;
     }
@@ -527,9 +510,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
       // Simulate payment processing
       await Future.delayed(Duration(seconds: 2));
 
-      // Save booking to Firestore
-      await _saveBookingToFirestore();
-
       // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -541,10 +521,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
       // Navigate to success screen
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => BookingSuccessScreen(
-          paymentMethod: _selectedPaymentMethod!,
-          totalAmount: _getTotalAmount(),
-        )),
+        MaterialPageRoute(
+          builder: (context) => BookingSuccessScreen(
+            bookingType: widget.bookingType,
+            paymentMethod: _selectedPaymentMethod!,
+            totalAmount: _getTotalAmount(),
+            bookingTitle: _getBookingTitle(),
+          ),
+        ),
       );
 
     } catch (e) {
@@ -554,64 +538,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
           backgroundColor: Colors.red,
         ),
       );
-    } finally {
       setState(() {
         _isProcessing = false;
       });
-    }
-  }
-
-  Future<void> _saveBookingToFirestore() async {
-    User? user = FirebaseAuth.instance.currentUser;
-    if (user == null) throw Exception('User not logged in');
-
-    Map<String, dynamic> paymentDetails = _getPaymentDetails();
-
-    Map<String, dynamic> bookingData = {
-      'userId': user.uid,
-      'userEmail': user.email,
-      'userName': user.displayName ?? 'User',
-      'tourName': _getTourName(),
-      'tourPrice': _getTourPrice(),
-      'hotelName': _getHotelName(),
-      'hotelPrice': _getHotelPrice(),
-      'vehicleName': _getVehicleName(),
-      'vehiclePrice': _getVehiclePrice(),
-      'pickupLocation': _getPickupLocation(),
-      'dropoffLocation': _getDropoffLocation(),
-      'totalAmount': _getTotalAmount(),
-      'paymentMethod': _selectedPaymentMethod,
-      'paymentDetails': paymentDetails,
-      'paymentStatus': _selectedPaymentMethod == 'cash' ? 'pending' : 'completed',
-      'bookingStatus': 'confirmed',
-      'bookingDate': FieldValue.serverTimestamp(),
-      'travelDate': DateTime.now().add(Duration(days: 7)),
-    };
-
-    await FirebaseFirestore.instance.collection('bookings').add(bookingData);
-  }
-
-  Map<String, dynamic> _getPaymentDetails() {
-    switch (_selectedPaymentMethod) {
-      case 'card':
-        return {
-          'cardNumber': '**** ${_cardNumberController.text.substring(12)}',
-          'cardholderName': _cardNameController.text,
-        };
-      case 'jazzcash':
-        return {
-          'phoneNumber': _jazzcashNumberController.text,
-        };
-      case 'easypaisa':
-        return {
-          'phoneNumber': _easypaisaNumberController.text,
-        };
-      case 'cash':
-        return {
-          'instructions': _cashInstructionsController.text,
-        };
-      default:
-        return {};
     }
   }
 
@@ -631,13 +560,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
 }
 
 class BookingSuccessScreen extends StatelessWidget {
+  final String bookingType;
   final String paymentMethod;
   final double totalAmount;
+  final String bookingTitle;
 
   const BookingSuccessScreen({
     Key? key,
+    required this.bookingType,
     required this.paymentMethod,
     required this.totalAmount,
+    required this.bookingTitle,
   }) : super(key: key);
 
   String _getPaymentMethodText() {
@@ -652,6 +585,19 @@ class BookingSuccessScreen extends StatelessWidget {
         return 'Cash on Delivery';
       default:
         return 'Payment';
+    }
+  }
+
+  String _getSuccessMessage() {
+    switch (bookingType) {
+      case 'car':
+        return 'Your car has been successfully booked!';
+      case 'hotel':
+        return 'Your hotel has been successfully booked!';
+      case 'tour':
+        return 'Your tour has been successfully booked!';
+      default:
+        return 'Booking confirmed!';
     }
   }
 
@@ -677,8 +623,9 @@ class BookingSuccessScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'Your tour has been successfully booked',
+              _getSuccessMessage(),
               style: TextStyle(fontSize: 16, color: Colors.grey),
+              textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
             Card(
@@ -686,6 +633,8 @@ class BookingSuccessScreen extends StatelessWidget {
                 padding: EdgeInsets.all(16),
                 child: Column(
                   children: [
+                    _buildSuccessRow('Booking:', bookingTitle),
+                    _buildSuccessRow('Type:', bookingType.toUpperCase()),
                     _buildSuccessRow('Payment Method:', _getPaymentMethodText()),
                     _buildSuccessRow('Amount Paid:', 'PKR ${totalAmount.toStringAsFixed(2)}'),
                     _buildSuccessRow('Status:', 'Confirmed'),
@@ -699,7 +648,7 @@ class BookingSuccessScreen extends StatelessWidget {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {
-                      // View booking details
+                      Navigator.pop(context);
                     },
                     child: Text('View Booking'),
                   ),
@@ -711,6 +660,9 @@ class BookingSuccessScreen extends StatelessWidget {
                       Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                     },
                     child: Text('Back to Home'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                    ),
                   ),
                 ),
               ],

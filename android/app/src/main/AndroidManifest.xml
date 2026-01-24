@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tours_and_travel_app">
 
+    <!-- Internet Permission for Maps & Firebase -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Location Permissions for Maps -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <!-- Permissions for image picker -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -10,7 +17,23 @@
     <application
         android:label="Pakistan Travel App"
         android:icon="@mipmap/ic_launcher"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name="${applicationName}">
+
+        <!-- ✅ Google Maps API Key (YOUR KEY) -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBbJp8fGb9e9VXdGdjGPdh85ccOGlen4XA"/>
+
+        <!-- Firebase Services (if using Firebase) -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+        <!-- Firebase App ID (if using Firebase) -->
+        <!-- <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/notification_icon" /> -->
 
         <activity
             android:name=".MainActivity"
@@ -26,6 +49,17 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!-- Optional: For deep linking or other activities -->
+        <!-- <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> -->
 
         <meta-data
             android:name="flutterEmbedding"

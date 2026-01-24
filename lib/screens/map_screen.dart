@@ -14,7 +14,7 @@ class _MapScreenState extends State<MapScreen> {
   Set<Marker> _markers = {};
   bool _isLoading = true;
 
-  // Pakistan ke tourist spots ke locations
+  // Pakistan tourist spots locations
   final List<Map<String, dynamic>> _touristSpots = [
     {
       'id': '1',
@@ -22,7 +22,7 @@ class _MapScreenState extends State<MapScreen> {
       'lat': 36.3167,
       'lng': 74.6500,
       'type': 'valley',
-      'description': 'Gilgit-Baltistan ka khoobsurat valley',
+      'description': 'Beautiful valley in Gilgit-Baltistan',
     },
     {
       'id': '2',
@@ -30,7 +30,7 @@ class _MapScreenState extends State<MapScreen> {
       'lat': 35.2971,
       'lng': 75.6333,
       'type': 'city',
-      'description': 'Duniya ki sab se unchay peaks ka gateway',
+      'description': 'Gateway to world\'s highest peaks',
     },
     {
       'id': '3',
@@ -38,7 +38,7 @@ class _MapScreenState extends State<MapScreen> {
       'lat': 35.4214,
       'lng': 74.5969,
       'type': 'meadow',
-      'description': 'Nanga Parbat ka nazara - Jannat on Earth',
+      'description': 'Heaven on Earth with Nanga Parbat view',
     },
     {
       'id': '4',
@@ -46,7 +46,7 @@ class _MapScreenState extends State<MapScreen> {
       'lat': 35.2220,
       'lng': 72.4258,
       'type': 'valley',
-      'description': 'Pakistan ka Switzerland',
+      'description': 'Switzerland of Pakistan',
     },
     {
       'id': '5',
@@ -54,7 +54,7 @@ class _MapScreenState extends State<MapScreen> {
       'lat': 34.9100,
       'lng': 73.6500,
       'type': 'valley',
-      'description': 'KPK ka khoobsurat valley',
+      'description': 'Beautiful valley in KPK',
     },
     {
       'id': '6',
@@ -62,7 +62,7 @@ class _MapScreenState extends State<MapScreen> {
       'lat': 33.9072,
       'lng': 73.3903,
       'type': 'hill_station',
-      'description': 'Islamabad ke qareeb hill station',
+      'description': 'Hill station near Islamabad',
     },
     {
       'id': '7',
@@ -70,7 +70,7 @@ class _MapScreenState extends State<MapScreen> {
       'lat': 33.6844,
       'lng': 73.0479,
       'type': 'city',
-      'description': 'Pakistan ki capital',
+      'description': 'Capital of Pakistan',
     },
     {
       'id': '8',
@@ -78,7 +78,7 @@ class _MapScreenState extends State<MapScreen> {
       'lat': 31.5497,
       'lng': 74.3436,
       'type': 'city',
-      'description': 'Pakistan ka cultural center',
+      'description': 'Cultural center of Pakistan',
     },
     {
       'id': '9',
@@ -86,7 +86,7 @@ class _MapScreenState extends State<MapScreen> {
       'lat': 24.8607,
       'lng': 67.0011,
       'type': 'city',
-      'description': 'Pakistan ka economic hub',
+      'description': 'Economic hub of Pakistan',
     },
   ];
 
@@ -98,7 +98,7 @@ class _MapScreenState extends State<MapScreen> {
 
   void _getCurrentLocation() async {
     try {
-      // Location permission check karein
+      // Check location permission
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
         setState(() {
@@ -118,7 +118,7 @@ class _MapScreenState extends State<MapScreen> {
         }
       }
 
-      // Current location get karein
+      // Get current location
       Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
       );
@@ -146,14 +146,14 @@ class _MapScreenState extends State<MapScreen> {
           position: LatLng(_currentPosition!.latitude, _currentPosition!.longitude),
           icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
           infoWindow: InfoWindow(
-            title: 'Aapki Location',
-            snippet: 'Yahan hain aap',
+            title: 'Your Location',
+            snippet: 'You are here',
           ),
         ),
       );
     }
 
-    // Tourist spots ke markers
+    // Tourist spots markers
     for (var spot in _touristSpots) {
       markers.add(
         Marker(
@@ -226,7 +226,7 @@ class _MapScreenState extends State<MapScreen> {
                       Navigator.pop(context);
                       _goToLocation(spot['lat'], spot['lng']);
                     },
-                    child: Text('Map Par Dekhein'),
+                    child: Text('View on Map'),
                   ),
                 ),
                 SizedBox(width: 10),
@@ -235,7 +235,7 @@ class _MapScreenState extends State<MapScreen> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text('Band Karein'),
+                    child: Text('Close'),
                   ),
                 ),
               ],
@@ -271,13 +271,13 @@ class _MapScreenState extends State<MapScreen> {
             _buildLegendItem('🔴 City', 'Islamabad, Lahore, Karachi'),
             _buildLegendItem('🟠 Meadow', 'Fairy Meadows'),
             _buildLegendItem('🟣 Hill Station', 'Murree'),
-            _buildLegendItem('🔵 Aapki Location', 'Current Location'),
+            _buildLegendItem('🔵 Your Location', 'Current Location'),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Theek Hai'),
+            child: Text('OK'),
           ),
         ],
       ),
@@ -315,7 +315,7 @@ class _MapScreenState extends State<MapScreen> {
               );
             }
                 : null,
-            tooltip: 'Aapki Location Par Jaen',
+            tooltip: 'Go to Your Location',
           ),
           IconButton(
             icon: Icon(Icons.help_outline),
@@ -331,9 +331,9 @@ class _MapScreenState extends State<MapScreen> {
           children: [
             CircularProgressIndicator(),
             SizedBox(height: 20),
-            Text('Map Load Ho Raha Hai...'),
+            Text('Loading Map...'),
             SizedBox(height: 10),
-            Text('Zara Intezar Karein'),
+            Text('Please wait'),
           ],
         ),
       )
@@ -359,7 +359,7 @@ class _MapScreenState extends State<MapScreen> {
           );
         },
         child: Icon(Icons.my_location),
-        tooltip: 'Aapki Location Par Jaen',
+        tooltip: 'Go to Your Location',
       )
           : null,
     );

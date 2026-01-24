@@ -5,14 +5,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../services/auth_service.dart';
 import '../models/destination_model.dart';
 import '../models/tour_model.dart';
-import '../components/destination_card.dart'; // ✅ IMPORT ADDED
 import '../screens/destination_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/booking_history_screen.dart';
 import '../screens/map_screen.dart';
 import '../screens/multi_city_hotel_screen.dart';
-import '../screens/Car_Booking_Screen.dart';
-import '../screens/Hotel_Search_Screen.dart';
+import '../screens/car_booking_screen.dart';
+import '../screens/hotel_search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,7 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final AuthService _authService = AuthService();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   int _currentIndex = 0;
-  int _selectedCategory = 0; // 0: Single, 1: Multi-City
+  int _selectedCategory = 0;
+  final TextEditingController _searchController = TextEditingController();
 
   // Categories for tour selection
   final List<Map<String, dynamic>> tourCategories = [
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
     TourPackage(
       id: 'm1',
       name: 'Complete Northern Pakistan Tour',
-      description: 'Experience the best of Northern Areas in one amazing journey from Islamabad to all major destinations.',
+      description: 'Experience the best of Northern Areas in one amazing journey.',
       imageUrl: 'https://images.unsplash.com/photo-1599240636297-1eed2ae72cc3?w=800',
       price: 69999,
       duration: '12 Days 11 Nights',
@@ -122,14 +122,6 @@ class _HomeScreenState extends State<HomeScreen> {
         {'day': 2, 'title': 'Hunza Exploration', 'description': 'Visit Baltit Fort, Attabad Lake'},
         {'day': 3, 'title': 'Hunza to Skardu', 'description': 'Travel to Skardu via beautiful routes'},
         {'day': 4, 'title': 'Skardu Sightseeing', 'description': 'Shangrila Resort, Upper Kachura Lake'},
-        {'day': 5, 'title': 'Deosai Plains', 'description': 'Visit world\'s second highest plateau'},
-        {'day': 6, 'title': 'Skardu to Fairy Meadows', 'description': 'Travel to Fairy Meadows base camp'},
-        {'day': 7, 'title': 'Nanga Parbat View', 'description': 'Trekking and camping at Fairy Meadows'},
-        {'day': 8, 'title': 'Fairy Meadows to Naran', 'description': 'Travel to Naran Valley'},
-        {'day': 9, 'title': 'Saif-ul-Mulook Lake', 'description': 'Visit famous lake and surrounding areas'},
-        {'day': 10, 'title': 'Naran Exploration', 'description': 'Lulusar Lake, Babusar Top'},
-        {'day': 11, 'title': 'Return Journey', 'description': 'Travel back to Islamabad'},
-        {'day': 12, 'title': 'Islamabad', 'description': 'Departure or optional city tour'},
       ],
     ),
     TourPackage(
@@ -153,51 +145,25 @@ class _HomeScreenState extends State<HomeScreen> {
         {'day': 1, 'title': 'Islamabad to Hunza', 'description': 'Travel from capital to Hunza'},
         {'day': 2, 'title': 'Hunza Sightseeing', 'description': 'Baltit Fort, Altit Fort'},
         {'day': 3, 'title': 'Attabad Lake', 'description': 'Boat ride and photography'},
-        {'day': 4, 'title': 'Hunza to Skardu', 'description': 'Scenic travel between valleys'},
-        {'day': 5, 'title': 'Skardu Exploration', 'description': 'Shangrila, Upper Kachura'},
-        {'day': 6, 'title': 'Satpara Lake', 'description': 'Visit beautiful Satpara Lake'},
-        {'day': 7, 'title': 'Return Journey', 'description': 'Travel back to Islamabad'},
-        {'day': 8, 'title': 'Departure', 'description': 'End of tour'},
-      ],
-    ),
-    TourPackage(
-      id: 'm3',
-      name: 'Swat & Kaghan Valley Tour',
-      description: 'Explore the beautiful valleys of Swat and Kaghan in one amazing package.',
-      imageUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800',
-      price: 34999,
-      duration: '6 Days 5 Nights',
-      bestSeason: 'March to October',
-      rating: 4.7,
-      category: 'multi-city',
-      destinations: ['Islamabad', 'Swat', 'Naran', 'Kaghan', 'Islamabad'],
-      highlights: [
-        'Swat Valley',
-        'Kaghan Valley',
-        'Malam Jabba',
-        'Saif-ul-Mulook',
-        'All Transportation'
-      ],
-      itinerary: [
-        {'day': 1, 'title': 'Islamabad to Swat', 'description': 'Travel to beautiful Swat Valley'},
-        {'day': 2, 'title': 'Swat Exploration', 'description': 'Malam Jabba, White Palace'},
-        {'day': 3, 'title': 'Swat to Naran', 'description': 'Travel to Naran Valley'},
-        {'day': 4, 'title': 'Saif-ul-Mulook', 'description': 'Visit magical lake'},
-        {'day': 5, 'title': 'Kaghan Valley', 'description': 'Explore surrounding areas'},
-        {'day': 6, 'title': 'Return to Islamabad', 'description': 'Travel back to capital'},
       ],
     ),
   ];
 
-  // ✅ UPDATED SERVICES: Added City Car and All Hotels
+  // Services
   final List<Map<String, dynamic>> services = [
-    {'icon': Icons.hotel, 'title': 'Hotels', 'color': Colors.blue, 'gradient': [Colors.blue, Colors.lightBlue]},
-    {'icon': Icons.directions_car, 'title': 'Transport', 'color': Colors.green, 'gradient': [Colors.green, Colors.lightGreen]},
-    {'icon': Icons.map, 'title': 'Map', 'color': Colors.orange, 'gradient': [Colors.orange, Colors.amber]},
-    {'icon': Icons.directions_car, 'title': 'City Car', 'color': Colors.purple, 'gradient': [Colors.purple, Colors.pink]}, // ✅ NEW
-    {'icon': Icons.hotel, 'title': 'All Hotels', 'color': Colors.teal, 'gradient': [Colors.teal, Colors.cyan]}, // ✅ NEW
-    {'icon': Icons.camera_alt, 'title': 'Photos', 'color': Colors.red, 'gradient': [Colors.red, Colors.pink]},
+    {'icon': Icons.hotel, 'title': 'Hotels', 'color': Colors.blue, 'route': 'hotels'},
+    {'icon': Icons.directions_car, 'title': 'Transport', 'color': Colors.green, 'route': 'transport'},
+    {'icon': Icons.map, 'title': 'Map', 'color': Colors.orange, 'route': 'map'},
+    {'icon': Icons.directions_car, 'title': 'City Car', 'color': Colors.purple, 'route': 'city_car'},
+    {'icon': Icons.hotel, 'title': 'All Hotels', 'color': Colors.teal, 'route': 'all_hotels'},
+    {'icon': Icons.camera_alt, 'title': 'Photos', 'color': Colors.red, 'route': 'photos'},
   ];
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -229,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Text(
-                  'Loading your profile...',
+                  'Loading...',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey,
@@ -289,36 +255,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               }
 
-              if (snapshot.hasError) {
-                return const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Hello, Traveler! 👋',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
-                    ),
-                    Text(
-                      'Welcome to Pakistan Tours',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                );
-              }
-
               final userData = snapshot.data?.data() as Map<String, dynamic>?;
-              final displayName = userData?['fullName'] ?? 'Traveler';
+              final displayName = userData?['fullName'] ?? user.displayName ?? 'Traveler';
 
-              // Time-based greetings
               final hour = DateTime.now().hour;
-              String timeGreeting = 'Hello';
-              String timeEmoji = '👋';
+              String timeGreeting = 'Good Evening';
+              String timeEmoji = '🌙';
 
               if (hour < 12) {
                 timeGreeting = 'Good Morning';
@@ -326,19 +268,6 @@ class _HomeScreenState extends State<HomeScreen> {
               } else if (hour < 17) {
                 timeGreeting = 'Good Afternoon';
                 timeEmoji = '🌤️';
-              } else {
-                timeGreeting = 'Good Evening';
-                timeEmoji = '🌙';
-              }
-
-              // Personalized message
-              String personalizedMessage = 'Ready for your next adventure?';
-              if (displayName.length <= 4) {
-                personalizedMessage = 'Adventure calls! 🗺️';
-              } else if (displayName.length <= 6) {
-                personalizedMessage = 'Explore amazing destinations! 🌄';
-              } else {
-                personalizedMessage = 'Your journey awaits! 🎒';
               }
 
               return Column(
@@ -353,7 +282,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Text(
-                    personalizedMessage,
+                    'Ready for your next adventure?',
                     style: const TextStyle(
                       fontSize: 14,
                       color: Colors.grey,
@@ -403,23 +332,14 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Search Bar with beautiful design
           _buildSearchBar(),
           const SizedBox(height: 30),
-
-          // Services Grid
           _buildServicesGrid(),
           const SizedBox(height: 30),
-
-          // ✅ NEW: Quick Access Section
           _buildQuickAccessSection(),
           const SizedBox(height: 30),
-
-          // Tour Type Selection
           _buildTourTypeSelector(),
           const SizedBox(height: 20),
-
-          // Destinations or Tours based on selection
           _selectedCategory == 0
               ? _buildSingleDestinations()
               : _buildMultiCityTours(),
@@ -442,15 +362,25 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       child: TextField(
+        controller: _searchController,
         decoration: InputDecoration(
           hintText: 'Search destinations, hotels, tours...',
           hintStyle: const TextStyle(color: Colors.grey),
           prefixIcon: const Icon(Icons.search, color: Colors.blue),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+          suffixIcon: _searchController.text.isNotEmpty
+              ? IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              _searchController.clear();
+              FocusScope.of(context).unfocus();
+            },
+          )
+              : null,
         ),
-        onTap: () {
-          // Open search screen
+        onChanged: (value) {
+          setState(() {});
         },
       ),
     );
@@ -459,7 +389,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildServicesGrid() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
       children: [
         const Text(
           'What do you need?',
@@ -489,29 +418,31 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ✅ UPDATED: Service Card with new navigation
   Widget _buildServiceCard(Map<String, dynamic> service) {
     return GestureDetector(
       onTap: () {
-        if (service['title'] == 'Map') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MapScreen()),
-          );
-        }
-        // ✅ NEW: City to City Car Rental
-        else if (service['title'] == 'City Car') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => CityToCityCarBookingScreen()),
-          );
-        }
-        // ✅ NEW: All Pakistan Hotels Booking
-        else if (service['title'] == 'All Hotels') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AllPakistanHotelBookingScreen()),
-          );
+        switch (service['route']) {
+          case 'map':
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MapScreen()),
+            );
+            break;
+          case 'city_car':
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CarBookingScreen()),
+            );
+            break;
+          case 'all_hotels':
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HotelSearchScreen()),
+            );
+            break;
+          default:
+          // Handle other services
+            break;
         }
       },
       child: Column(
@@ -522,7 +453,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 70,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: service['gradient'],
+                colors: [service['color'], service['color'].withOpacity(0.7)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -552,7 +483,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ✅ NEW: Quick Access Section
   Widget _buildQuickAccessSection() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -568,99 +498,131 @@ class _HomeScreenState extends State<HomeScreen> {
         const SizedBox(height: 16),
 
         // City to City Car Rental Card
-        _buildQuickAccessCard(
-          icon: Icons.directions_car,
-          title: 'City to City Car Rental',
-          subtitle: 'Book cars for intercity travel across Pakistan',
-          color: Colors.blue,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => CityToCityCarBookingScreen()),
-            );
-          },
+        Card(
+          elevation: 4,
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CarBookingScreen()),
+              );
+            },
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.blue.withOpacity(0.1), Colors.blue.withOpacity(0.05)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: const BoxDecoration(
+                      color: Colors.blue,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.directions_car, color: Colors.white, size: 24),
+                  ),
+                  const SizedBox(width: 16),
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'City to City Car Rental',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue,
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Book cars for intercity travel across Pakistan',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(Icons.arrow_forward_ios, color: Colors.blue, size: 16),
+                ],
+              ),
+            ),
+          ),
         ),
+
         const SizedBox(height: 12),
 
         // All Pakistan Hotels Card
-        _buildQuickAccessCard(
-          icon: Icons.hotel,
-          title: 'Pakistan Hotels Booking',
-          subtitle: 'Find and book hotels in all major cities',
-          color: Colors.purple,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AllPakistanHotelBookingScreen()),
-            );
-          },
+        Card(
+          elevation: 4,
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HotelSearchScreen()),
+              );
+            },
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.purple.withOpacity(0.1), Colors.purple.withOpacity(0.05)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: const BoxDecoration(
+                      color: Colors.purple,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.hotel, color: Colors.white, size: 24),
+                  ),
+                  const SizedBox(width: 16),
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Pakistan Hotels Booking',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.purple,
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          'Find and book hotels in all major cities',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(Icons.arrow_forward_ios, color: Colors.purple, size: 16),
+                ],
+              ),
+            ),
+          ),
         ),
       ],
-    );
-  }
-
-  // ✅ NEW: Quick Access Card Widget
-  Widget _buildQuickAccessCard({
-    required IconData icon,
-    required String title,
-    required String subtitle,
-    required Color color,
-    required VoidCallback onTap,
-  }) {
-    return Card(
-      elevation: 4,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [color.withOpacity(0.1), color.withOpacity(0.05)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: color,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(icon, color: Colors.white, size: 24),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: color,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      subtitle,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Icon(Icons.arrow_forward_ios, color: color, size: 16),
-            ],
-          ),
-        ),
-      ),
     );
   }
 
@@ -678,84 +640,61 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         const SizedBox(height: 16),
         Row(
-          children: [
-            Expanded(
-              child: _buildTourTypeCard(
-                title: 'Single Destination',
-                icon: Icons.location_on,
-                isSelected: _selectedCategory == 0,
+          children: tourCategories.map((category) {
+            final index = tourCategories.indexOf(category);
+            final isSelected = _selectedCategory == index;
+
+            return Expanded(
+              child: GestureDetector(
                 onTap: () {
                   setState(() {
-                    _selectedCategory = 0;
+                    _selectedCategory = index;
                   });
                 },
+                child: Container(
+                  margin: EdgeInsets.only(right: index == 0 ? 8 : 0),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: isSelected ? Colors.blue[50] : Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: isSelected ? Colors.blue : Colors.grey[300]!,
+                      width: isSelected ? 2 : 1,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        category['icon'],
+                        color: isSelected ? Colors.blue : Colors.grey,
+                        size: 32,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        category['title'],
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: isSelected ? Colors.blue : Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: _buildTourTypeCard(
-                title: 'Multi-City Tour',
-                icon: Icons.airline_stops,
-                isSelected: _selectedCategory == 1,
-                onTap: () {
-                  setState(() {
-                    _selectedCategory = 1;
-                  });
-                },
-              ),
-            ),
-          ],
+            );
+          }).toList(),
         ),
       ],
-    );
-  }
-
-  Widget _buildTourTypeCard({
-    required String title,
-    required IconData icon,
-    required bool isSelected,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: isSelected ? Colors.blue[50] : Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: isSelected ? Colors.blue : Colors.grey[300]!,
-            width: isSelected ? 2 : 1,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              icon,
-              color: isSelected ? Colors.blue : Colors.grey,
-              size: 32,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: isSelected ? Colors.blue : Colors.black87,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
     );
   }
 
@@ -823,308 +762,145 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ✅ UPDATED: _buildDestinationCard using DestinationCard component
   Widget _buildDestinationCard(Destination destination) {
-    return DestinationCard(
-      destination: destination,
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DestinationScreen(destination: destination),
-          ),
-        );
-      },
-    );
-  }
-
-  // ✅ UPDATED: _buildTourPackageCard with CachedNetworkImage
-  Widget _buildTourPackageCard(TourPackage tour) {
-    return Container(
+    return Card(
       margin: const EdgeInsets.only(bottom: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
+      elevation: 4,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: () {
-              // ✅ Navigate to Multi-City Hotel Screen
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => MultiCityHotelScreen(tourPackage: tour),
-                ),
-              );
-            },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // ✅ UPDATED: Tour Image with CachedNetworkImage
-                Container(
-                  height: 160,
-                  width: double.infinity,
-                  child: CachedNetworkImage(
-                    imageUrl: tour.imageUrl,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Container(
-                      color: Colors.grey[300],
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
-                        ),
-                      ),
-                    ),
-                    errorWidget: (context, url, error) => Container(
-                      color: Colors.grey[300],
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.tour, size: 50, color: Colors.grey),
-                          SizedBox(height: 8),
-                          Text('Tour Image', style: TextStyle(color: Colors.grey)),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                // Gradient Overlay
-                Container(
-                  height: 160,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                        Colors.black.withOpacity(0.6),
-                        Colors.transparent,
-                      ],
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      // Rating Badge
-                      Positioned(
-                        top: 12,
-                        right: 12,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Row(
-                            children: [
-                              const Icon(Icons.star, color: Colors.amber, size: 14),
-                              const SizedBox(width: 4),
-                              Text(
-                                tour.rating.toString(),
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      // Price
-                      Positioned(
-                        bottom: 12,
-                        right: 12,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Text(
-                            'Rs. ${tour.price.toStringAsFixed(0)}',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                      // Multi-City Badge
-                      Positioned(
-                        top: 12,
-                        left: 12,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(Icons.airline_stops, size: 12, color: Colors.white),
-                              SizedBox(width: 4),
-                              Text(
-                                'Multi-City',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // Tour Info
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        tour.name,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        tour.duration,
-                        style: TextStyle(
-                          color: Colors.grey.shade600,
-                          fontSize: 14,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        tour.description,
-                        style: TextStyle(
-                          color: Colors.grey.shade700,
-                          fontSize: 12,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 12),
-                      // Destinations Route
-                      Wrap(
-                        spacing: 8,
-                        runSpacing: 4,
-                        children: [
-                          Chip(
-                            label: Text('Route: ${tour.destinations.join(' → ')}'),
-                            backgroundColor: Colors.blue.shade50,
-                            visualDensity: VisualDensity.compact,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      // Highlights
-                      Wrap(
-                        spacing: 6,
-                        runSpacing: 4,
-                        children: tour.highlights.take(3).map((highlight) {
-                          return Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                            decoration: BoxDecoration(
-                              color: Colors.green.shade50,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              highlight,
-                              style: TextStyle(
-                                color: Colors.green.shade800,
-                                fontSize: 10,
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DestinationScreen(destination: destination),
             ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _showTourDetails(TourPackage tour) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) => Container(
-        height: MediaQuery.of(context).size.height * 0.9,
-        padding: const EdgeInsets.all(20),
+          );
+        },
+        borderRadius: BorderRadius.circular(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Stack(
               children: [
-                Text(
-                  tour.name,
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                  child: CachedNetworkImage(
+                    imageUrl: destination.imageUrl,
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Container(
+                      height: 200,
+                      color: Colors.grey[300],
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      height: 200,
+                      color: Colors.grey[300],
+                      child: const Icon(Icons.image, size: 50, color: Colors.grey),
+                    ),
+                  ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: () => Navigator.pop(context),
+                Positioned(
+                  bottom: 12,
+                  right: 12,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      'Rs. ${destination.price.toStringAsFixed(0)}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 12,
+                  right: 12,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.star, color: Colors.amber, size: 14),
+                        const SizedBox(width: 4),
+                        Text(
+                          destination.rating.toString(),
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 16),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Tour Details
-                    _buildTourDetailRow('Duration', tour.duration),
-                    _buildTourDetailRow('Best Season', tour.bestSeason),
-                    _buildTourDetailRow('Price', 'Rs. ${tour.price.toStringAsFixed(0)}'),
-
-                    const SizedBox(height: 20),
-
-                    // Itinerary
-                    const Text(
-                      'Tour Itinerary',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    destination.name,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(height: 12),
-                    ...tour.itinerary.map((day) => _buildItineraryDay(day)).toList(),
-
-                    const SizedBox(height: 20),
-
-                    // Book Now Button
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          // Navigate to booking screen
-                        },
-                        child: const Text('Book This Tour'),
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      const Icon(Icons.location_on, size: 16, color: Colors.grey),
+                      const SizedBox(width: 4),
+                      Text(
+                        destination.location,
+                        style: const TextStyle(color: Colors.grey),
                       ),
-                    ),
-                  ],
-                ),
+                      const Spacer(),
+                      Text(
+                        destination.duration,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    destination.description,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                  const SizedBox(height: 12),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 4,
+                    children: destination.highlights.take(3).map((highlight) {
+                      return Chip(
+                        label: Text(highlight),
+                        backgroundColor: Colors.blue[50],
+                        visualDensity: VisualDensity.compact,
+                      );
+                    }).toList(),
+                  ),
+                ],
               ),
             ),
           ],
@@ -1133,62 +909,151 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildTourDetailRow(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(label, style: const TextStyle(fontWeight: FontWeight.w500)),
-          Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
-        ],
+  Widget _buildTourPackageCard(TourPackage tour) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 16),
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
       ),
-    );
-  }
-
-  Widget _buildItineraryDay(Map<String, dynamic> day) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.grey[50],
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 30,
-            height: 30,
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              shape: BoxShape.circle,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MultiCityHotelScreen(tourPackage: tour),
             ),
-            child: Center(
-              child: Text(
-                day['day'].toString(),
-                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          );
+        },
+        borderRadius: BorderRadius.circular(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
               children: [
-                Text(
-                  day['title'],
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                  child: CachedNetworkImage(
+                    imageUrl: tour.imageUrl,
+                    height: 180,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Container(
+                      height: 180,
+                      color: Colors.grey[300],
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      height: 180,
+                      color: Colors.grey[300],
+                      child: const Icon(Icons.tour, size: 50, color: Colors.grey),
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  day['description'],
-                  style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                Positioned(
+                  top: 12,
+                  left: 12,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Row(
+                      children: [
+                        Icon(Icons.airline_stops, size: 12, color: Colors.white),
+                        SizedBox(width: 4),
+                        Text(
+                          'Multi-City',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        tour.name,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          'Rs. ${tour.price.toStringAsFixed(0)}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    tour.duration,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    tour.description,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                  const SizedBox(height: 12),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: tour.destinations.map((city) {
+                        return Container(
+                          margin: const EdgeInsets.only(right: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: Colors.blue[50],
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            city,
+                            style: TextStyle(
+                              color: Colors.blue[800],
+                              fontSize: 12,
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

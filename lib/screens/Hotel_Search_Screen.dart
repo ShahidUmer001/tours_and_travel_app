@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/hotel_model.dart';
+import 'payment_screen.dart'; // ✅ Add payment screen import
 
 class AllPakistanHotelBookingScreen extends StatefulWidget {
   @override
@@ -442,6 +443,7 @@ class _AllPakistanHotelBookingScreenState extends State<AllPakistanHotelBookingS
     ];
   }
 
+  // ✅ UPDATED: _bookHotel method with navigation to Payment Screen
   void _bookHotel(Hotel hotel) {
     if (_checkInDate == null || _checkOutDate == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -454,48 +456,30 @@ class _AllPakistanHotelBookingScreenState extends State<AllPakistanHotelBookingS
     final nights = _checkOutDate!.difference(_checkInDate!).inDays;
     final totalAmount = hotel.pricePerNight * nights * _rooms;
 
-    // Show booking confirmation
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Confirm Booking'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Hotel: ${hotel.name}'),
-            Text('Location: ${hotel.location}'),
-            Text('Check-in: ${_checkInDate!.day}/${_checkInDate!.month}/${_checkInDate!.year}'),
-            Text('Check-out: ${_checkOutDate!.day}/${_checkOutDate!.month}/${_checkOutDate!.year}'),
-            Text('Guests: $_guests'),
-            Text('Rooms: $_rooms'),
-            Text('Total Nights: $nights'),
-            SizedBox(height: 10),
-            Text(
-              'Total Amount: Rs. ${totalAmount.toStringAsFixed(0)}',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green),
-            ),
-          ],
+    // Prepare booking details for payment screen
+    Map<String, dynamic> bookingDetails = {
+      'hotelName': hotel.name,
+      'location': hotel.location,
+      'checkInDate': '${_checkInDate!.day}/${_checkInDate!.month}/${_checkInDate!.year}',
+      'checkOutDate': '${_checkOutDate!.day}/${_checkOutDate!.month}/${_checkOutDate!.year}',
+      'guests': _guests,
+      'rooms': _rooms,
+      'totalNights': nights,
+      'pricePerNight': hotel.pricePerNight,
+      'totalAmount': totalAmount,
+      'hotelCategory': hotel.category,
+      'hotelRating': hotel.rating,
+      'hotelAmenities': hotel.amenities,
+    };
+
+    // Navigate to Payment Screen
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PaymentScreen(
+          bookingType: 'hotel',
+          bookingData: bookingDetails,
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Booking confirmed for ${hotel.name}')),
-              );
-            },
-            child: Text('Confirm Booking'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.purple,
-              foregroundColor: Colors.white,
-            ),
-          ),
-        ],
       ),
     );
   }

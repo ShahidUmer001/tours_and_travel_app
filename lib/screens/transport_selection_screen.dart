@@ -136,7 +136,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
       ),
       body: Column(
         children: [
-          // Header Info
           Container(
             padding: const EdgeInsets.all(16),
             color: Colors.green[50],
@@ -170,7 +169,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
             ),
           ),
 
-          // Transport Count
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             color: Colors.grey[100],
@@ -207,7 +205,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
             ),
           ),
 
-          // Continue Button
           if (_selectedTransport != null)
             Container(
               padding: const EdgeInsets.all(16),
@@ -279,20 +276,12 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
                             (t) => t['id'] == _selectedTransport,
                       );
 
-                      // Calculate total amount
-                      double totalAmount = widget.destination.price +
-                          widget.selectedHotel.pricePerNight +
-                          (selectedTransport['price'] as int).toDouble();
-
+                      // ✅ FIXED: Now using correct PaymentScreen constructor
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => PaymentScreen(
-                            tourData: {
-                              'tourName': '${widget.destination.duration} Package',
-                              'price': widget.destination.price,
-                              'duration': widget.destination.duration,
-                            },
+                            bookingType: 'tour',
                             bookingData: {
                               'hotel': {
                                 'name': widget.selectedHotel.name,
@@ -307,7 +296,11 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
                               },
                               'pickupLocation': 'Islamabad',
                               'dropoffLocation': widget.destination.location,
-                              'travelDate': DateTime.now().add(Duration(days: 7)),
+                            },
+                            tourData: {
+                              'tourName': '${widget.destination.duration} Package',
+                              'price': widget.destination.price,
+                              'duration': widget.destination.duration,
                             },
                           ),
                         ),
@@ -354,7 +347,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                // Transport Image
                 Stack(
                   children: [
                     ClipRRect(
@@ -404,7 +396,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
                         },
                       ),
                     ),
-                    // Category Badge
                     Positioned(
                       top: 8,
                       left: 8,
@@ -428,7 +419,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
                 ),
                 const SizedBox(width: 16),
 
-                // Transport Details
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -483,7 +473,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
 
                       const SizedBox(height: 8),
 
-                      // Duration
                       Row(
                         children: [
                           Icon(Icons.access_time, size: 14, color: Colors.grey[600]),
@@ -500,7 +489,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
 
                       const SizedBox(height: 8),
 
-                      // Features
                       Wrap(
                         spacing: 6,
                         runSpacing: 4,
@@ -525,7 +513,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
                   ),
                 ),
 
-                // Selection Indicator
                 Container(
                   width: 24,
                   height: 24,
@@ -549,7 +536,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
     );
   }
 
-  // Transport category colors
   Color _getTransportCategoryColor(String category) {
     switch (category) {
       case 'Premium':
@@ -567,7 +553,6 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
     }
   }
 
-  // Vehicle type icons
   String _getVehicleIcon(String vehicleType) {
     switch (vehicleType) {
       case 'Bus':

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/car_model.dart';
-import '../models/car_booking_model.dart'; // ✅ Import car booking model
+import '../models/car_booking_model.dart';
+import 'payment_screen.dart';
 
 class CityToCityCarBookingScreen extends StatefulWidget {
   @override
@@ -444,7 +445,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
     String key = '${_selectedPickupCity}-${_selectedDropoffCity}';
     String reverseKey = '${_selectedDropoffCity}-${_selectedPickupCity}';
 
-    return cityDistances[key] ?? cityDistances[reverseKey] ?? 100; // Default distance
+    return cityDistances[key] ?? cityDistances[reverseKey] ?? 100;
   }
 
   double _calculateTotalAmount() {
@@ -453,7 +454,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
     return _selectedCar!.pricePerKm * distance * _totalDays;
   }
 
-  // ✅ UPDATED: _bookCar method with CarBooking object
+  // ✅ FIXED: _bookCar method with correct PaymentScreen constructor
   void _bookCar() {
     if (_selectedCar == null || _pickupDate == null || _pickupTime == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -462,86 +463,37 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       return;
     }
 
-    // Create car booking object
-    final carBooking = CarBooking(
-      id: DateTime.now().millisecondsSinceEpoch.toString(),
-      userId: 'current_user_id', // FirebaseAuth.instance.currentUser?.uid ?? 'guest'
-      carId: _selectedCar!.id,
-      carName: _selectedCar!.name,
-      carType: _selectedCar!.type,
-      carImageUrl: _selectedCar!.imageUrl,
-      carPricePerKm: _selectedCar!.pricePerKm,
-      pickupCity: _selectedPickupCity!,
-      dropoffCity: _selectedDropoffCity!,
-      pickupDate: _pickupDate!,
-      dropoffDate: _pickupDate!.add(Duration(days: _totalDays)),
-      pickupTime: '${_pickupTime!.hour}:${_pickupTime!.minute.toString().padLeft(2, '0')}',
-      totalDays: _totalDays,
-      totalDistance: _calculateDistance(),
-      totalAmount: _calculateTotalAmount(),
-      status: 'confirmed',
-      bookingDate: DateTime.now(),
-    );
+    // Calculate total amount
+    double totalAmount = _calculateTotalAmount();
 
-    // Show booking confirmation
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Confirm Car Booking'),
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('🚗 Car: ${carBooking.carName}', style: TextStyle(fontWeight: FontWeight.bold)),
-              Text('📍 Route: ${carBooking.pickupCity} → ${carBooking.dropoffCity}'),
-              Text('📅 Date: ${_getFormattedDate(carBooking.pickupDate)}'),
-              Text('⏰ Time: ${carBooking.pickupTime}'),
-              Text('📆 Duration: ${carBooking.totalDays} days'),
-              Text('📏 Distance: ${carBooking.totalDistance.toStringAsFixed(0)} km'),
-              SizedBox(height: 10),
-              Divider(),
-              SizedBox(height: 10),
-              Text(
-                '💰 Total Amount: Rs. ${carBooking.totalAmount.toStringAsFixed(0)}',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green),
-              ),
-            ],
-          ),
+    // Prepare booking details for payment screen
+    Map<String, dynamic> bookingDetails = {
+      'carName': _selectedCar!.name,
+      'carType': _selectedCar!.type,
+      'pickupCity': _selectedPickupCity!,
+      'dropoffCity': _selectedDropoffCity!,
+      'pickupDate': '${_pickupDate!.day}/${_pickupDate!.month}/${_pickupDate!.year}',
+      'pickupTime': '${_pickupTime!.hour}:${_pickupTime!.minute.toString().padLeft(2, '0')}',
+      'totalDays': _totalDays,
+      'totalDistance': _calculateDistance().toStringAsFixed(0),
+      'transmission': _selectedCar!.transmission,
+      'fuelType': _selectedCar!.fuelType,
+      'capacity': _selectedCar!.capacity,
+      'totalAmount': totalAmount,
+    };
+
+    // Navigate to Payment Screen - WITH CORRECT CONSTRUCTOR
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PaymentScreen(
+          bookingType: 'car',
+          bookingData: bookingDetails,
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              // Save to Firebase (optional)
-              // _saveCarBookingToFirebase(carBooking);
-
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('✅ Car booking confirmed for ${carBooking.carName}'),
-                  backgroundColor: Colors.green,
-                ),
-              );
-
-              // Optional: Navigate back to home
-              // Navigator.pop(context);
-            },
-            child: Text('Confirm Booking'),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-              foregroundColor: Colors.white,
-            ),
-          ),
-        ],
       ),
     );
   }
 
-  // ✅ Helper method to format date
   String _getFormattedDate(DateTime date) {
     return '${date.day}/${date.month}/${date.year}';
   }

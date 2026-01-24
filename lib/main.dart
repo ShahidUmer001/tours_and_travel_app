@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'firebase_options.dart';
 import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    print('Firebase initialization error: $e');
+  }
+
   runApp(const MyApp());
 }
 
@@ -27,8 +36,8 @@ class MyApp extends StatelessWidget {
           elevation: 0,
           centerTitle: false,
         ),
+        scaffoldBackgroundColor: Colors.grey[50],
       ),
-      // ✅ Check if user is logged in
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
@@ -40,11 +49,11 @@ class MyApp extends StatelessWidget {
             );
           }
 
-          if (snapshot.hasData) {
-            return const HomeScreen(); // User logged in
+          if (snapshot.hasData && snapshot.data != null) {
+            return const HomeScreen();
           }
 
-          return const LoginScreen(); // User not logged in
+          return const LoginScreen();
         },
       ),
       debugShowCheckedModeBanner: false,

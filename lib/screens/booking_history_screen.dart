@@ -1,7 +1,6 @@
 // screens/booking_history_screen.dart
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:intl/intl.dart';
 import '../services/booking_service.dart';
 import '../models/booking_model.dart';
 import '../models/car_booking_model.dart';
@@ -9,7 +8,7 @@ import '../models/hotel_booking_model.dart';
 import '../services/auth_service.dart';
 
 class BookingHistoryScreen extends StatefulWidget {
-  const BookingHistoryScreen({Key? key}) : super(key: key);
+  const BookingHistoryScreen({super.key});
 
   @override
   State<BookingHistoryScreen> createState() => _BookingHistoryScreenState();
@@ -20,12 +19,25 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
   final AuthService _authService = AuthService();
   int _selectedTab = 0; // 0: All, 1: Tours, 2: Hotels, 3: Cars
 
+  // Simple date formatter function (no intl package needed)
+  String _formatDate(DateTime date) {
+    return '${date.day}/${date.month}/${date.year}';
+  }
+
+  String _formatDateWithMonth(DateTime date) {
+    final months = [
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
+    return '${date.day} ${months[date.month - 1]} ${date.year}';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        title: Text('My Bookings'),
+        title: const Text('My Bookings'),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,
@@ -59,21 +71,21 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
 
   Widget _buildTabBar() {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Row(
         children: [
           Expanded(
             child: _buildTabButton('All', 0),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Expanded(
             child: _buildTabButton('Tours', 1),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Expanded(
             child: _buildTabButton('Hotels', 2),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Expanded(
             child: _buildTabButton('Cars', 3),
           ),
@@ -93,14 +105,14 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       style: ElevatedButton.styleFrom(
         backgroundColor: isSelected ? Colors.blue : Colors.grey[200],
         foregroundColor: isSelected ? Colors.white : Colors.black87,
-        padding: EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 8),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
       ),
       child: Text(
         text,
-        style: TextStyle(fontSize: 12),
+        style: const TextStyle(fontSize: 12),
       ),
     );
   }
@@ -120,9 +132,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     }
   }
 
-  // ✅ FIXED: All Bookings - Removed destinationId error
   Widget _buildAllBookings(String userId) {
-    // For demo - in real app, you'll fetch from Firebase
     final List<dynamic> allBookings = [
       // Sample tour bookings
       Booking(
@@ -133,9 +143,9 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
         totalPrice: 25000,
         guests: 2,
         status: 'confirmed',
-        bookingDate: DateTime.now().subtract(Duration(days: 5)),
+        bookingDate: DateTime.now().subtract(const Duration(days: 5)),
       ),
-      // Sample hotel booking - REMOVED destinationId
+      // Sample hotel booking
       HotelBooking(
         id: 'h1',
         userId: userId,
@@ -143,13 +153,13 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
         hotelName: 'Serena Hotel Islamabad',
         hotelImageUrl: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&w=1000&q=80',
         location: 'Islamabad',
-        checkInDate: DateTime.now().add(Duration(days: 5)),
-        checkOutDate: DateTime.now().add(Duration(days: 8)),
+        checkInDate: DateTime.now().add(const Duration(days: 5)),
+        checkOutDate: DateTime.now().add(const Duration(days: 8)),
         guests: 2,
         rooms: 1,
         totalAmount: 15000,
         status: 'upcoming',
-        bookingDate: DateTime.now().subtract(Duration(days: 2)),
+        bookingDate: DateTime.now().subtract(const Duration(days: 2)),
       ),
       // Sample car booking
       CarBooking(
@@ -162,14 +172,14 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
         carPricePerKm: 25,
         pickupCity: 'Islamabad',
         dropoffCity: 'Lahore',
-        pickupDate: DateTime.now().subtract(Duration(days: 3)),
-        dropoffDate: DateTime.now().subtract(Duration(days: 1)),
+        pickupDate: DateTime.now().subtract(const Duration(days: 3)),
+        dropoffDate: DateTime.now().subtract(const Duration(days: 1)),
         pickupTime: '10:00',
         totalDays: 2,
         totalDistance: 380,
         totalAmount: 19000,
         status: 'completed',
-        bookingDate: DateTime.now().subtract(Duration(days: 7)),
+        bookingDate: DateTime.now().subtract(const Duration(days: 7)),
       ),
     ];
 
@@ -189,7 +199,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     });
 
     return ListView.builder(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       itemCount: allBookings.length,
       itemBuilder: (context, index) {
         final booking = allBookings[index];
@@ -204,7 +214,6 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     );
   }
 
-  // Tour Bookings
   Widget _buildTourBookings(String userId) {
     return StreamBuilder<List<Booking>>(
       stream: _bookingService.getUserBookings(userId),
@@ -224,7 +233,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
         }
 
         return ListView.builder(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           itemCount: bookings.length,
           itemBuilder: (context, index) {
             return _buildTourBookingCard(bookings[index]);
@@ -234,9 +243,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     );
   }
 
-  // ✅ FIXED: Hotel Bookings - Removed destinationId error
   Widget _buildHotelBookings(String userId) {
-    // For demo - in real app, fetch from Firebase
     final List<HotelBooking> hotelBookings = [
       HotelBooking(
         id: 'h1',
@@ -245,13 +252,13 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
         hotelName: 'Serena Hotel Islamabad',
         hotelImageUrl: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&w=1000&q=80',
         location: 'Islamabad',
-        checkInDate: DateTime.now().add(Duration(days: 5)),
-        checkOutDate: DateTime.now().add(Duration(days: 8)),
+        checkInDate: DateTime.now().add(const Duration(days: 5)),
+        checkOutDate: DateTime.now().add(const Duration(days: 8)),
         guests: 2,
         rooms: 1,
         totalAmount: 15000,
         status: 'upcoming',
-        bookingDate: DateTime.now().subtract(Duration(days: 2)),
+        bookingDate: DateTime.now().subtract(const Duration(days: 2)),
       ),
       HotelBooking(
         id: 'h2',
@@ -260,13 +267,13 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
         hotelName: 'Pearl Continental Lahore',
         hotelImageUrl: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&w=1000&q=80',
         location: 'Lahore',
-        checkInDate: DateTime.now().subtract(Duration(days: 10)),
-        checkOutDate: DateTime.now().subtract(Duration(days: 7)),
+        checkInDate: DateTime.now().subtract(const Duration(days: 10)),
+        checkOutDate: DateTime.now().subtract(const Duration(days: 7)),
         guests: 3,
         rooms: 2,
         totalAmount: 36000,
         status: 'completed',
-        bookingDate: DateTime.now().subtract(Duration(days: 15)),
+        bookingDate: DateTime.now().subtract(const Duration(days: 15)),
       ),
     ];
 
@@ -275,7 +282,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     }
 
     return ListView.builder(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       itemCount: hotelBookings.length,
       itemBuilder: (context, index) {
         return _buildHotelBookingCard(hotelBookings[index]);
@@ -283,9 +290,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     );
   }
 
-  // Car Bookings
   Widget _buildCarBookings(String userId) {
-    // For demo - in real app, fetch from Firebase
     final List<CarBooking> carBookings = [
       CarBooking(
         id: 'c1',
@@ -297,14 +302,14 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
         carPricePerKm: 25,
         pickupCity: 'Islamabad',
         dropoffCity: 'Lahore',
-        pickupDate: DateTime.now().subtract(Duration(days: 3)),
-        dropoffDate: DateTime.now().subtract(Duration(days: 1)),
+        pickupDate: DateTime.now().subtract(const Duration(days: 3)),
+        dropoffDate: DateTime.now().subtract(const Duration(days: 1)),
         pickupTime: '10:00',
         totalDays: 2,
         totalDistance: 380,
         totalAmount: 19000,
         status: 'completed',
-        bookingDate: DateTime.now().subtract(Duration(days: 7)),
+        bookingDate: DateTime.now().subtract(const Duration(days: 7)),
       ),
       CarBooking(
         id: 'c2',
@@ -316,14 +321,14 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
         carPricePerKm: 28,
         pickupCity: 'Karachi',
         dropoffCity: 'Hyderabad',
-        pickupDate: DateTime.now().add(Duration(days: 3)),
-        dropoffDate: DateTime.now().add(Duration(days: 4)),
+        pickupDate: DateTime.now().add(const Duration(days: 3)),
+        dropoffDate: DateTime.now().add(const Duration(days: 4)),
         pickupTime: '14:30',
         totalDays: 1,
         totalDistance: 160,
         totalAmount: 4480,
         status: 'upcoming',
-        bookingDate: DateTime.now().subtract(Duration(days: 1)),
+        bookingDate: DateTime.now().subtract(const Duration(days: 1)),
       ),
     ];
 
@@ -332,7 +337,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     }
 
     return ListView.builder(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       itemCount: carBookings.length,
       itemBuilder: (context, index) {
         return _buildCarBookingCard(carBookings[index]);
@@ -340,10 +345,9 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     );
   }
 
-  // Tour Booking Card
   Widget _buildTourBookingCard(Booking booking) {
     return Container(
-      margin: EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -351,7 +355,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 10,
-            offset: Offset(0, 5),
+            offset: const Offset(0, 5),
           ),
         ],
       ),
@@ -363,7 +367,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
             _showTourBookingDetails(booking);
           },
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -376,22 +380,22 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                         color: Colors.blue[100],
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Icon(Icons.airplane_ticket, color: Colors.blue),
+                      child: const Icon(Icons.airplane_ticket, color: Colors.blue),
                     ),
-                    SizedBox(width: 12),
+                    const SizedBox(width: 12),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             booking.destinationName,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 4),
-                          Text(
+                          const SizedBox(height: 4),
+                          const Text(
                             'Tour Package',
                             style: TextStyle(color: Colors.grey),
                           ),
@@ -401,21 +405,21 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                     _buildStatusBadge(booking.status),
                   ],
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'PKR ${booking.totalPrice.toStringAsFixed(0)}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.green,
                       ),
                     ),
                     Text(
-                      DateFormat('dd MMM yyyy').format(booking.bookingDate),
-                      style: TextStyle(color: Colors.grey),
+                      _formatDateWithMonth(booking.bookingDate),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),
@@ -427,10 +431,9 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     );
   }
 
-  // Hotel Booking Card
   Widget _buildHotelBookingCard(HotelBooking booking) {
     return Container(
-      margin: EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -438,7 +441,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 10,
-            offset: Offset(0, 5),
+            offset: const Offset(0, 5),
           ),
         ],
       ),
@@ -450,7 +453,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
             _showHotelBookingDetails(booking);
           },
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -467,22 +470,22 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 12),
+                    const SizedBox(width: 12),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             booking.hotelName,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 4),
+                          const SizedBox(height: 4),
                           Text(
                             booking.location,
-                            style: TextStyle(color: Colors.grey),
+                            style: const TextStyle(color: Colors.grey),
                           ),
                         ],
                       ),
@@ -490,39 +493,39 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                     _buildStatusBadge(booking.status),
                   ],
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Row(
                   children: [
-                    Icon(Icons.calendar_today, size: 16, color: Colors.grey),
-                    SizedBox(width: 4),
+                    const Icon(Icons.calendar_today, size: 16, color: Colors.grey),
+                    const SizedBox(width: 4),
                     Text(
-                      '${DateFormat('dd MMM').format(booking.checkInDate)} - ${DateFormat('dd MMM').format(booking.checkOutDate)}',
-                      style: TextStyle(color: Colors.grey),
+                      '${_formatDateWithMonth(booking.checkInDate)} - ${_formatDateWithMonth(booking.checkOutDate)}',
+                      style: const TextStyle(color: Colors.grey),
                     ),
-                    Spacer(),
-                    Icon(Icons.people, size: 16, color: Colors.grey),
-                    SizedBox(width: 4),
+                    const Spacer(),
+                    const Icon(Icons.people, size: 16, color: Colors.grey),
+                    const SizedBox(width: 4),
                     Text(
                       '${booking.guests} Guest${booking.guests > 1 ? 's' : ''}',
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'PKR ${booking.totalAmount.toStringAsFixed(0)}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.green,
                       ),
                     ),
                     Text(
-                      DateFormat('dd MMM yyyy').format(booking.bookingDate),
-                      style: TextStyle(color: Colors.grey),
+                      _formatDateWithMonth(booking.bookingDate),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),
@@ -534,10 +537,9 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     );
   }
 
-  // Car Booking Card
   Widget _buildCarBookingCard(CarBooking booking) {
     return Container(
-      margin: EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -545,7 +547,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 10,
-            offset: Offset(0, 5),
+            offset: const Offset(0, 5),
           ),
         ],
       ),
@@ -557,7 +559,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
             _showCarBookingDetails(booking);
           },
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -574,22 +576,22 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 12),
+                    const SizedBox(width: 12),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             booking.carName,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 4),
+                          const SizedBox(height: 4),
                           Text(
                             '${booking.pickupCity} → ${booking.dropoffCity}',
-                            style: TextStyle(color: Colors.grey),
+                            style: const TextStyle(color: Colors.grey),
                           ),
                         ],
                       ),
@@ -597,39 +599,39 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                     _buildStatusBadge(booking.status),
                   ],
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Row(
                   children: [
-                    Icon(Icons.calendar_today, size: 16, color: Colors.grey),
-                    SizedBox(width: 4),
+                    const Icon(Icons.calendar_today, size: 16, color: Colors.grey),
+                    const SizedBox(width: 4),
                     Text(
-                      '${DateFormat('dd MMM').format(booking.pickupDate)} • ${booking.pickupTime}',
-                      style: TextStyle(color: Colors.grey),
+                      '${_formatDateWithMonth(booking.pickupDate)} • ${booking.pickupTime}',
+                      style: const TextStyle(color: Colors.grey),
                     ),
-                    Spacer(),
-                    Icon(Icons.directions_car, size: 16, color: Colors.grey),
-                    SizedBox(width: 4),
+                    const Spacer(),
+                    const Icon(Icons.directions_car, size: 16, color: Colors.grey),
+                    const SizedBox(width: 4),
                     Text(
                       '${booking.totalDays} Day${booking.totalDays > 1 ? 's' : ''}',
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'PKR ${booking.totalAmount.toStringAsFixed(0)}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.green,
                       ),
                     ),
                     Text(
-                      DateFormat('dd MMM yyyy').format(booking.bookingDate),
-                      style: TextStyle(color: Colors.grey),
+                      _formatDateWithMonth(booking.bookingDate),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),
@@ -641,10 +643,9 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     );
   }
 
-  // Status Badge Widget
   Widget _buildStatusBadge(String status) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
         color: _getStatusColor(status).withOpacity(0.1),
         borderRadius: BorderRadius.circular(12),
@@ -661,9 +662,8 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     );
   }
 
-  // Rest of your existing methods...
   Widget _buildLoadingState() {
-    return Center(
+    return const Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -683,24 +683,24 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.beach_access, size: 80, color: Colors.grey),
-          SizedBox(height: 16),
-          Text(
+          const Icon(Icons.beach_access, size: 80, color: Colors.grey),
+          const SizedBox(height: 16),
+          const Text(
             'Please login to view your bookings',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8),
-          Text(
+          const SizedBox(height: 8),
+          const Text(
             'Login to see your tour bookings and history',
             style: TextStyle(fontSize: 14, color: Colors.grey),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           ElevatedButton(
             onPressed: () {
               // Navigate to login screen
             },
-            child: Text('Login Now'),
+            child: const Text('Login Now'),
           ),
         ],
       ),
@@ -712,16 +712,16 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.error_outline, size: 80, color: Colors.red),
-          SizedBox(height: 16),
-          Text(
+          const Icon(Icons.error_outline, size: 80, color: Colors.red),
+          const SizedBox(height: 16),
+          const Text(
             'Error loading bookings',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             error,
-            style: TextStyle(fontSize: 14, color: Colors.grey),
+            style: const TextStyle(fontSize: 14, color: Colors.grey),
             textAlign: TextAlign.center,
           ),
         ],
@@ -734,23 +734,23 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.airplane_ticket, size: 80, color: Colors.grey),
-          SizedBox(height: 16),
-          Text(
+          const Icon(Icons.airplane_ticket, size: 80, color: Colors.grey),
+          const SizedBox(height: 16),
+          const Text(
             'No Bookings Yet',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8),
-          Text(
+          const SizedBox(height: 8),
+          const Text(
             'Start your adventure by booking your first tour!',
             style: TextStyle(fontSize: 14, color: Colors.grey),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 24),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text('Explore Tours'),
+            child: const Text('Explore Tours'),
           ),
         ],
       ),
@@ -762,14 +762,14 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.airplane_ticket, size: 80, color: Colors.grey),
-          SizedBox(height: 16),
-          Text(
+          const Icon(Icons.airplane_ticket, size: 80, color: Colors.grey),
+          const SizedBox(height: 16),
+          const Text(
             'No Tour Bookings',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8),
-          Text(
+          const SizedBox(height: 8),
+          const Text(
             'You haven\'t booked any tours yet',
             style: TextStyle(fontSize: 14, color: Colors.grey),
           ),
@@ -783,14 +783,14 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.hotel, size: 80, color: Colors.grey),
-          SizedBox(height: 16),
-          Text(
+          const Icon(Icons.hotel, size: 80, color: Colors.grey),
+          const SizedBox(height: 16),
+          const Text(
             'No Hotel Bookings',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8),
-          Text(
+          const SizedBox(height: 8),
+          const Text(
             'You haven\'t booked any hotels yet',
             style: TextStyle(fontSize: 14, color: Colors.grey),
           ),
@@ -804,14 +804,14 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.directions_car, size: 80, color: Colors.grey),
-          SizedBox(height: 16),
-          Text(
+          const Icon(Icons.directions_car, size: 80, color: Colors.grey),
+          const SizedBox(height: 16),
+          const Text(
             'No Car Bookings',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 8),
-          Text(
+          const SizedBox(height: 8),
+          const Text(
             'You haven\'t booked any cars yet',
             style: TextStyle(fontSize: 14, color: Colors.grey),
           ),
@@ -854,7 +854,48 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
   }
 
   void _showTourBookingDetails(Booking booking) {
-    // Your existing tour booking details method
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => Container(
+        height: MediaQuery.of(context).size.height * 0.5,
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Tour Booking Details',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(Icons.close),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildDetailRow('Destination', booking.destinationName),
+                    _buildDetailRow('Guests', '${booking.guests} person(s)'),
+                    _buildDetailRow('Status', _getStatusText(booking.status),
+                        valueColor: _getStatusColor(booking.status)),
+                    _buildDetailRow('Total Price', 'PKR ${booking.totalPrice.toStringAsFixed(0)}'),
+                    _buildDetailRow('Booking Date', _formatDateWithMonth(booking.bookingDate)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   void _showHotelBookingDetails(HotelBooking booking) {
@@ -863,24 +904,24 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       isScrollControlled: true,
       builder: (context) => Container(
         height: MediaQuery.of(context).size.height * 0.6,
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Hotel Booking Details',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 IconButton(
                   onPressed: () => Navigator.pop(context),
-                  icon: Icon(Icons.close),
+                  icon: const Icon(Icons.close),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -888,8 +929,8 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                   children: [
                     _buildDetailRow('Hotel', booking.hotelName),
                     _buildDetailRow('Location', booking.location),
-                    _buildDetailRow('Check-in', DateFormat('dd MMM yyyy').format(booking.checkInDate)),
-                    _buildDetailRow('Check-out', DateFormat('dd MMM yyyy').format(booking.checkOutDate)),
+                    _buildDetailRow('Check-in', _formatDateWithMonth(booking.checkInDate)),
+                    _buildDetailRow('Check-out', _formatDateWithMonth(booking.checkOutDate)),
                     _buildDetailRow('Guests', '${booking.guests} person(s)'),
                     _buildDetailRow('Rooms', '${booking.rooms} room(s)'),
                     _buildDetailRow('Status', _getStatusText(booking.status),
@@ -911,24 +952,24 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
       isScrollControlled: true,
       builder: (context) => Container(
         height: MediaQuery.of(context).size.height * 0.6,
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Car Booking Details',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 IconButton(
                   onPressed: () => Navigator.pop(context),
-                  icon: Icon(Icons.close),
+                  icon: const Icon(Icons.close),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -937,7 +978,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
                     _buildDetailRow('Car', booking.carName),
                     _buildDetailRow('Type', booking.carType),
                     _buildDetailRow('Route', '${booking.pickupCity} → ${booking.dropoffCity}'),
-                    _buildDetailRow('Pickup Date', DateFormat('dd MMM yyyy').format(booking.pickupDate)),
+                    _buildDetailRow('Pickup Date', _formatDateWithMonth(booking.pickupDate)),
                     _buildDetailRow('Pickup Time', booking.pickupTime),
                     _buildDetailRow('Duration', '${booking.totalDays} day(s)'),
                     _buildDetailRow('Distance', '${booking.totalDistance.toStringAsFixed(0)} km'),
@@ -956,7 +997,7 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
 
   Widget _buildDetailRow(String label, String value, {Color? valueColor}) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

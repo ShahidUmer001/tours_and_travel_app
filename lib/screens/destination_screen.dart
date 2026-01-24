@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../models/destination_model.dart';
-import '../widgets/custom_button.dart';
 import 'hotel_selection_screen.dart';
 
 class DestinationScreen extends StatefulWidget {
@@ -17,23 +16,28 @@ class _DestinationScreenState extends State<DestinationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(
-          widget.destination.name,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          icon: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.5),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(Icons.arrow_back, color: Colors.white),
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Destination Image with Collage
-            _buildImageCollage(),
+            // Hero Image
+            _buildHeroImage(),
 
             // Destination Details
             Padding(
@@ -41,35 +45,90 @@ class _DestinationScreenState extends State<DestinationScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    widget.destination.name,
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.location_on, color: Colors.blue[700], size: 18),
-                      const SizedBox(width: 4),
-                      Text(
-                        widget.destination.location,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey[600],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.destination.name,
+                              style: const TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Row(
+                              children: [
+                                Icon(Icons.location_on, color: Colors.blue[700], size: 18),
+                                const SizedBox(width: 4),
+                                Text(
+                                  widget.destination.location,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: Colors.amber[50],
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: Colors.amber),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.star, color: Colors.amber, size: 16),
+                            const SizedBox(width: 4),
+                            Text(
+                              widget.destination.rating.toString(),
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.amber,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
+
                   const SizedBox(height: 20),
 
-                  // Duration and Best Season
+                  // Quick Info Cards
                   Row(
                     children: [
-                      _buildInfoCard('Duration', widget.destination.duration, Icons.access_time),
+                      Expanded(
+                        child: _buildInfoCard(
+                          Icons.access_time,
+                          'Duration',
+                          widget.destination.duration,
+                        ),
+                      ),
                       const SizedBox(width: 12),
-                      _buildInfoCard('Best Season', widget.destination.bestSeason, Icons.calendar_today),
+                      Expanded(
+                        child: _buildInfoCard(
+                          Icons.calendar_today,
+                          'Best Season',
+                          widget.destination.bestSeason,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: _buildInfoCard(
+                          Icons.attach_money,
+                          'Price',
+                          'Rs. ${widget.destination.price.toStringAsFixed(0)}',
+                        ),
+                      ),
                     ],
                   ),
 
@@ -95,14 +154,9 @@ class _DestinationScreenState extends State<DestinationScreen> {
 
                   const SizedBox(height: 25),
 
-                  // Photo Gallery
-                  _buildPhotoGallery(),
-
-                  const SizedBox(height: 25),
-
                   // Highlights
                   const Text(
-                    'Highlights',
+                    'Key Highlights',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -114,7 +168,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                     runSpacing: 12,
                     children: widget.destination.highlights.map((highlight) {
                       return Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                         decoration: BoxDecoration(
                           color: Colors.blue[50],
                           borderRadius: BorderRadius.circular(20),
@@ -139,22 +193,54 @@ class _DestinationScreenState extends State<DestinationScreen> {
                     }).toList(),
                   ),
 
+                  const SizedBox(height: 25),
+
+                  // Photo Gallery
+                  _buildPhotoGallery(),
+
                   const SizedBox(height: 40),
 
                   // Book Now Button
-                  CustomButton(
-                    text: 'Book Now - Rs. ${widget.destination.price.toStringAsFixed(0)}',
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HotelSelectionScreen(
-                            destination: widget.destination,
+                  SizedBox(
+                    width: double.infinity,
+                    height: 56,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HotelSelectionScreen(
+                              destination: widget.destination,
+                            ),
                           ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                      );
-                    },
+                        elevation: 5,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.book_online),
+                          const SizedBox(width: 10),
+                          Text(
+                            'Book Now - Rs. ${widget.destination.price.toStringAsFixed(0)}',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
+
+                  const SizedBox(height: 20),
                 ],
               ),
             ),
@@ -164,201 +250,69 @@ class _DestinationScreenState extends State<DestinationScreen> {
     );
   }
 
-  Widget _buildImageCollage() {
-    // ✅ FIXED WORKING PAKISTAN DESTINATION IMAGES
-    Map<String, List<String>> destinationCollageImages = {
-      'Hunza Valley': [
-        'https://images.unsplash.com/photo-1565955887216-6a6c48f8747c?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1599982890795-64e3b4c33d07?ixlib=rb-4.0.3&w=1000&q=80',
-      ],
-      'Skardu & Shangrila': [
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?ixlib=rb-4.0.3&w=1000&q=80',
-      ],
-      'Fairy Meadows': [
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?ixlib=rb-4.0.3&w=1000&q=80',
-      ],
-      'Swat Valley': [
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?ixlib=rb-4.0.3&w=1000&q=80',
-      ],
-      'Naran & Kaghan': [
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?ixlib=rb-4.0.3&w=1000&q=80',
-      ],
-    };
-
-    List<String> images = destinationCollageImages[widget.destination.name] ??
-        destinationCollageImages['Hunza Valley']!;
-
-    return Container(
-      height: 350,
-      child: Stack(
-        children: [
-          // Main Background Image
-          CachedNetworkImage(
-            imageUrl: images[0],
-            imageBuilder: (context, imageProvider) => Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: imageProvider,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    colors: [
-                      Colors.black.withOpacity(0.7),
-                      Colors.transparent,
-                    ],
-                  ),
-                ),
-              ),
-            ),
+  Widget _buildHeroImage() {
+    return Stack(
+      children: [
+        Container(
+          height: 300,
+          width: double.infinity,
+          child: CachedNetworkImage(
+            imageUrl: widget.destination.imageUrl,
+            fit: BoxFit.cover,
             placeholder: (context, url) => Container(
               color: Colors.grey[300],
-              child: Center(child: CircularProgressIndicator()),
+              child: const Center(child: CircularProgressIndicator()),
             ),
             errorWidget: (context, url, error) => Container(
               color: Colors.grey[300],
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.landscape, size: 60, color: Colors.grey[500]),
-                  SizedBox(height: 10),
-                  Text(
-                    widget.destination.name,
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+              child: const Icon(Icons.landscape, size: 100, color: Colors.grey),
             ),
           ),
-
-          // Small Collage Images
-          Positioned(
-            bottom: 20,
-            right: 20,
-            child: Column(
-              children: [
-                // Top small image
-                Container(
-                  width: 80,
-                  height: 60,
-                  margin: const EdgeInsets.only(bottom: 8),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: CachedNetworkImageProvider(images[1]),
-                      fit: BoxFit.cover,
-                    ),
-                    border: Border.all(color: Colors.white, width: 2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                ),
-                // Bottom small image
-                Container(
-                  width: 80,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: CachedNetworkImageProvider(images[2]),
-                      fit: BoxFit.cover,
-                    ),
-                    border: Border.all(color: Colors.white, width: 2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                ),
+        ),
+        Container(
+          height: 300,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+              colors: [
+                Colors.black.withOpacity(0.7),
+                Colors.transparent,
               ],
             ),
           ),
+        ),
+      ],
+    );
+  }
 
-          // Rating Badge
-          Positioned(
-            top: 20,
-            right: 20,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  const Icon(Icons.star, color: Colors.amber, size: 16),
-                  const SizedBox(width: 4),
-                  Text(
-                    widget.destination.rating.toString(),
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+  Widget _buildInfoCard(IconData icon, String title, String value) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.grey[50],
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.grey[200]!),
+      ),
+      child: Column(
+        children: [
+          Icon(icon, size: 24, color: Colors.blue[700]),
+          const SizedBox(height: 8),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey[600],
             ),
           ),
-
-          // Price
-          Positioned(
-            bottom: 20,
-            left: 20,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Text(
-                'Rs. ${widget.destination.price.toStringAsFixed(0)}',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+          const SizedBox(height: 4),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
@@ -366,37 +320,37 @@ class _DestinationScreenState extends State<DestinationScreen> {
   }
 
   Widget _buildPhotoGallery() {
-    // ✅ FIXED WORKING PAKISTAN DESTINATION IMAGES
+    // Sample photos for each destination
     Map<String, List<String>> destinationPhotos = {
       'Hunza Valley': [
-        'https://images.unsplash.com/photo-1599982890795-64e3b4c33d07?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?ixlib=rb-4.0.3&w=1000&q=80',
+        'https://images.unsplash.com/photo-1599240636297-1eed2ae72cc3?w=400',
+        'https://images.unsplash.com/photo-1599982890795-64e3b4c33d07?w=400',
+        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
+        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?w=400',
       ],
       'Skardu & Shangrila': [
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?ixlib=rb-4.0.3&w=1000&q=80',
-      ],
-      'Fairy Meadows': [
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
+        'https://images.unsplash.com/photo-1587477704623-53a0c4456e7d?w=400',
+        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?w=400',
+        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
+        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?w=400',
       ],
       'Swat Valley': [
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
+        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
+        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?w=400',
+        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?w=400',
+        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400',
       ],
       'Naran & Kaghan': [
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?ixlib=rb-4.0.3&w=1000&q=80',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&w=1000&q=80',
+        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400',
+        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?w=400',
+        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
+        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?w=400',
+      ],
+      'Fairy Meadows': [
+        'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400',
+        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
+        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?w=400',
+        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?w=400',
       ],
     };
 
@@ -423,13 +377,9 @@ class _DestinationScreenState extends State<DestinationScreen> {
               return Container(
                 width: 160,
                 height: 120,
-                margin: EdgeInsets.only(right: index == photos.length - 1 ? 0 : 12),
+                margin: EdgeInsets.only(right: 12),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  image: DecorationImage(
-                    image: CachedNetworkImageProvider(photos[index]),
-                    fit: BoxFit.cover,
-                  ),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.2),
@@ -438,45 +388,25 @@ class _DestinationScreenState extends State<DestinationScreen> {
                     ),
                   ],
                 ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: CachedNetworkImage(
+                    imageUrl: photos[index],
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Container(
+                      color: Colors.grey[300],
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      color: Colors.grey[300],
+                      child: const Icon(Icons.image, color: Colors.grey),
+                    ),
+                  ),
+                ),
               );
             },
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildInfoCard(String title, String value, IconData icon) {
-    return Expanded(
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Colors.grey[50],
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.grey[200]!),
-        ),
-        child: Column(
-          children: [
-            Icon(icon, size: 24, color: Colors.blue[700]),
-            const SizedBox(height: 8),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey[600],
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              value,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

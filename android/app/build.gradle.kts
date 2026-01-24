@@ -8,8 +8,8 @@ plugins {
 
 android {
     namespace = "com.example.tours_and_travel_app"
-    // ✅ OVERRIDE the Flutter SDK version to ensure it's 34
-    compileSdk = 34
+    // ✅ CHANGE from 34 to 36
+    compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -26,9 +26,9 @@ android {
         applicationId = "com.example.tours_and_travel_app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        // ✅ OVERRIDE minSdk and targetSdk versions
+        // ✅ CHANGE targetSdk to 36
         minSdk = flutter.minSdkVersion
-        targetSdk = 34
+        targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
@@ -46,11 +46,10 @@ flutter {
     source = "../.."
 }
 
-
 dependencies {
     // Import the Firebase BoM
-    implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
-
+    // ✅ UPDATE Firebase BoM to latest version
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
 
     // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
@@ -60,6 +59,9 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
 
+    // ✅ ADD THESE EXTRA DEPENDENCIES
+    implementation("com.google.firebase:firebase-storage")
+    implementation("com.google.firebase:firebase-auth")
 
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
