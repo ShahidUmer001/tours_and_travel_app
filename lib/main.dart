@@ -5,6 +5,8 @@ import 'firebase_options.dart';
 import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
 
+bool firebaseInitialized = false;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -12,8 +14,9 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    firebaseInitialized = true;
   } catch (e) {
-    print('Firebase initialization error: $e');
+    debugPrint('Firebase initialization error: $e');
   }
 
   runApp(const MyApp());
@@ -38,24 +41,26 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.grey[50],
       ),
-      home: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-          }
+      home: firebaseInitialized
+          ? StreamBuilder<User?>(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
 
-          if (snapshot.hasData && snapshot.data != null) {
-            return const HomeScreen();
-          }
+                if (snapshot.hasData && snapshot.data != null) {
+                  return const HomeScreen();
+                }
 
-          return const LoginScreen();
-        },
-      ),
+                return const LoginScreen();
+              },
+            )
+          : const HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

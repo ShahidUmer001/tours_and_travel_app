@@ -11,7 +11,7 @@ class AppTheme {
       canvasColor: Colors.white,
 
       // App Bar Theme
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         backgroundColor: Colors.white,
         foregroundColor: AppConstants.textColor,
         elevation: 0,
@@ -24,14 +24,14 @@ class AppTheme {
         ),
       ),
 
-      // Card Theme
-      cardTheme: CardTheme(
+      // Card Theme - FIXED: Changed to CardThemeData for Material 3
+      cardTheme: CardThemeData(
         color: Colors.white,
         elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppConstants.defaultRadius),
         ),
-        margin: const EdgeInsets.all(AppConstants.defaultPadding / 2),
+        margin: EdgeInsets.all(AppConstants.defaultPadding / 2),
       ),
 
       // Button Themes
@@ -39,15 +39,15 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppConstants.primaryColor,
           foregroundColor: Colors.white,
-          minimumSize: const Size(double.infinity, AppConstants.buttonHeight),
+          minimumSize: Size(double.infinity, AppConstants.buttonHeight),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppConstants.defaultRadius),
           ),
-          textStyle: const TextStyle(
+          textStyle: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
-          padding: const EdgeInsets.symmetric(
+          padding: EdgeInsets.symmetric(
             horizontal: AppConstants.defaultPadding,
             vertical: AppConstants.defaultPadding / 2,
           ),
@@ -58,15 +58,15 @@ class AppTheme {
         style: OutlinedButton.styleFrom(
           foregroundColor: AppConstants.primaryColor,
           side: BorderSide(color: AppConstants.primaryColor),
-          minimumSize: const Size(double.infinity, AppConstants.buttonHeight),
+          minimumSize: Size(double.infinity, AppConstants.buttonHeight),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppConstants.defaultRadius),
           ),
-          textStyle: const TextStyle(
+          textStyle: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
-          padding: const EdgeInsets.symmetric(
+          padding: EdgeInsets.symmetric(
             horizontal: AppConstants.defaultPadding,
             vertical: AppConstants.defaultPadding / 2,
           ),
@@ -76,7 +76,7 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: AppConstants.primaryColor,
-          textStyle: const TextStyle(
+          textStyle: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
@@ -110,7 +110,7 @@ class AppTheme {
           borderRadius: BorderRadius.circular(AppConstants.defaultRadius),
           borderSide: const BorderSide(color: Colors.red, width: 2),
         ),
-        contentPadding: const EdgeInsets.symmetric(
+        contentPadding: EdgeInsets.symmetric(
           horizontal: AppConstants.defaultPadding,
           vertical: 16,
         ),
@@ -119,13 +119,13 @@ class AppTheme {
           fontSize: 14,
         ),
         hintStyle: TextStyle(
-          color: AppConstants.lightTextColor.withOpacity(0.6),
+          color: AppConstants.lightTextColor.withValues(alpha: 0.6),
           fontSize: 14,
         ),
       ),
 
       // Text Theme
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         displayLarge: TextStyle(
           fontSize: 32,
           fontWeight: FontWeight.bold,
@@ -169,7 +169,7 @@ class AppTheme {
       ),
 
       // Icon Theme
-      iconTheme: const IconThemeData(
+      iconTheme: IconThemeData(
         color: AppConstants.textColor,
         size: 24,
       ),
@@ -182,18 +182,18 @@ class AppTheme {
       ),
 
       // Floating Action Button Theme
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: AppConstants.primaryColor,
         foregroundColor: Colors.white,
       ),
 
       // Bottom Navigation Bar Theme
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: Colors.white,
         selectedItemColor: AppConstants.primaryColor,
         unselectedItemColor: AppConstants.lightTextColor,
-        selectedLabelStyle: TextStyle(fontSize: 12),
-        unselectedLabelStyle: TextStyle(fontSize: 12),
+        selectedLabelStyle: const TextStyle(fontSize: 12),
+        unselectedLabelStyle: const TextStyle(fontSize: 12),
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         elevation: 8,

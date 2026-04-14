@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "19348056231",
+    "firebase_url": "https://tours-and-travel-app-6fd9d-default-rtdb.firebaseio.com",
     "project_id": "tours-and-travel-app-6fd9d",
     "storage_bucket": "tours-and-travel-app-6fd9d.firebasestorage.app"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.example.tours_and_travel_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "19348056231-d2kteb6a2hnd8qmimambhkcass41ndkq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tours_and_travel_app",
+            "certificate_hash": "2fde440e05b0c2c469d9ba107b32deb7d883ed7c"
+          }
+        },
+        {
+          "client_id": "19348056231-1i007fr0h823glcj69e74aphdtd32cn9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBbJp8fGb9e9VXdGdjGPdh85ccOGlen4XA"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19348056231-1i007fr0h823glcj69e74aphdtd32cn9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

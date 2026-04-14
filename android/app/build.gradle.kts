@@ -47,22 +47,8 @@ flutter {
 }
 
 dependencies {
-    // Import the Firebase BoM
-    // ✅ UPDATE Firebase BoM to latest version
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
-
-    // TODO: Add the dependencies for Firebase products you want to use
-    // When using the BoM, don't specify versions in Firebase dependencies
     implementation("com.google.firebase:firebase-analytics")
-
-    // ✅ ADD THESE DEPENDENCIES for Storage and Auth (needed for profile image)
-    implementation("com.google.firebase:firebase-storage-ktx")
-    implementation("com.google.firebase:firebase-auth-ktx")
-
-    // ✅ ADD THESE EXTRA DEPENDENCIES
     implementation("com.google.firebase:firebase-storage")
     implementation("com.google.firebase:firebase-auth")
-
-    // Add the dependencies for any other desired Firebase products
-    // https://firebase.google.com/docs/android/setup#available-libraries
 }

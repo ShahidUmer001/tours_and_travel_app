@@ -1,6 +1,5 @@
 // screens/tour_booking_screen.dart
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/tour_model.dart';
 import '../services/auth_service.dart';
@@ -25,7 +24,7 @@ class TourBookingScreen extends StatefulWidget {
 
 class _TourBookingScreenState extends State<TourBookingScreen> {
   final AuthService _authService = AuthService();
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  FirebaseFirestore get _firestore => FirebaseFirestore.instance;
 
   String _selectedPaymentMethod = 'Credit Card';
   bool _isLoading = false;

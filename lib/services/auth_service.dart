@@ -1,15 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../main.dart' show firebaseInitialized;
 
 class AuthService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  FirebaseAuth get _auth => FirebaseAuth.instance;
+  FirebaseFirestore get _firestore => FirebaseFirestore.instance;
 
   // Get current user
-  User? get currentUser => _auth.currentUser;
+  User? get currentUser => firebaseInitialized ? _auth.currentUser : null;
 
   // User stream for real-time updates
-  Stream<User?> get userStream => _auth.authStateChanges();
+  Stream<User?> get userStream => firebaseInitialized
+      ? _auth.authStateChanges()
+      : const Stream.empty();
 
   // Sign in with email and password
   Future<User?> signIn(String email, String password) async {

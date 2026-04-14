@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/destination_model.dart';
 import '../models/hotel_model.dart';
 import '../widgets/custom_button.dart';

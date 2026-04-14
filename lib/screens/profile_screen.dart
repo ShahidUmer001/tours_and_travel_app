@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart'; // ✅ ADDED: Firebase Storage
+import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,7 +19,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final AuthService _authService = AuthService();
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  FirebaseFirestore get _firestore => FirebaseFirestore.instance;
   final ImagePicker _picker = ImagePicker();
 
   // Settings variables
@@ -27,7 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   String _nightMode = 'System';
   File? _profileImageFile;
   bool _isLoading = false;
-  bool _isImageUploading = false; // ✅ ADDED: Image upload loading state
+  bool _isImageUploading = false;
 
   // Available languages
   final List<String> _languages = [
@@ -54,6 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   // ===================== AUTH METHODS =====================
   void _logout() async {
     await _authService.signOut();
+    if (!mounted) return;
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => const LoginScreen()),
@@ -72,6 +73,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         status = await Permission.photos.request();
 
         if (status.isDenied || status.isPermanentlyDenied) {
+          if (!mounted) return;
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Permission denied to access photos'),
@@ -92,17 +94,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       if (pickedFile != null) {
         setState(() {
-          _isImageUploading = true; // Start loading
+          _isImageUploading = true;
         });
 
-        // ✅ UPLOAD TO FIREBASE STORAGE
+        // UPLOAD TO FIREBASE STORAGE
         await _uploadImageToFirebase(File(pickedFile.path));
 
         setState(() {
           _profileImageFile = File(pickedFile.path);
-          _isImageUploading = false; // Stop loading
+          _isImageUploading = false;
         });
 
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Profile image uploaded successfully!'),
@@ -111,10 +114,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         );
       }
     } catch (e) {
-      print('Error picking image: $e');
+      debugPrint('Error picking image: $e');
       setState(() {
         _isImageUploading = false;
       });
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error: ${e.toString()}'),
@@ -124,7 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  // ===================== NEW: FIREBASE STORAGE UPLOAD FUNCTION =====================
+  // ===================== FIREBASE STORAGE UPLOAD FUNCTION =====================
   Future<void> _uploadImageToFirebase(File imageFile) async {
     try {
       final User? user = _authService.currentUser;
@@ -158,9 +162,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         'profileImageUpdatedAt': FieldValue.serverTimestamp(),
       });
 
-      print('Image uploaded to: $downloadUrl');
+      debugPrint('Image uploaded to: $downloadUrl');
     } catch (e) {
-      print('Firebase upload error: $e');
+      debugPrint('Firebase upload error: $e');
       throw e;
     }
   }
@@ -177,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         _nightMode = nightMode;
       });
     } catch (e) {
-      print('Error loading settings: $e');
+      debugPrint('Error loading settings: $e');
     }
   }
 
@@ -202,6 +206,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         });
       }
 
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Settings saved successfully!'),
@@ -209,6 +214,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       );
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error saving settings: $e'),
@@ -216,9 +222,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       );
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -276,7 +284,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 phoneController.text,
                 addressController.text,
               );
-              Navigator.pop(context);
+              if (mounted) Navigator.pop(context);
             },
             child: const Text('Save'),
           ),
@@ -296,6 +304,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           'updatedAt': FieldValue.serverTimestamp(),
         });
 
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Profile updated successfully!'),
@@ -303,6 +312,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         );
       } catch (e) {
+        if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Error updating profile: $e'),
@@ -349,9 +359,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     'phone': phoneController.text,
                   });
                 }
-                Navigator.pop(context);
-                setState(() {});
+                if (mounted) Navigator.pop(context);
+                if (mounted) setState(() {});
               } else {
+                if (!mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('Please enter a valid phone number'),
@@ -370,28 +381,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _showLanguageDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Select Language'),
-        content: SizedBox(
-          width: double.maxFinite,
-          height: 300,
-          child: ListView.builder(
-            itemCount: _languages.length,
-            itemBuilder: (context, index) {
-              return RadioListTile<String>(
-                title: Text(_languages[index]),
-                value: _languages[index],
-                groupValue: _language,
-                onChanged: (value) {
-                  setState(() {
-                    _language = value!;
-                  });
-                  Navigator.pop(context);
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) {
+          return AlertDialog(
+            title: const Text('Select Language'),
+            content: SizedBox(
+              width: double.maxFinite,
+              height: 300,
+              child: ListView.builder(
+                itemCount: _languages.length,
+                itemBuilder: (context, index) {
+                  return RadioListTile<String>(
+                    title: Text(_languages[index]),
+                    value: _languages[index],
+                    groupValue: _language,
+                    onChanged: (String? value) {
+                      if (value != null) {
+                        setState(() {
+                          _language = value;
+                        });
+                        Navigator.pop(context);
+                      }
+                    },
+                  );
                 },
-              );
-            },
-          ),
-        ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -399,38 +416,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _showNightModeDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Night Mode'),
-        content: SizedBox(
-          width: double.maxFinite,
-          height: 200,
-          child: ListView.builder(
-            itemCount: _nightModes.length,
-            itemBuilder: (context, index) {
-              return RadioListTile<String>(
-                title: Text(_nightModes[index]),
-                value: _nightModes[index],
-                groupValue: _nightMode,
-                onChanged: (value) {
-                  setState(() {
-                    _nightMode = value!;
-                  });
-                  Navigator.pop(context);
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) {
+          return AlertDialog(
+            title: const Text('Night Mode'),
+            content: SizedBox(
+              width: double.maxFinite,
+              height: 200,
+              child: ListView.builder(
+                itemCount: _nightModes.length,
+                itemBuilder: (context, index) {
+                  return RadioListTile<String>(
+                    title: Text(_nightModes[index]),
+                    value: _nightModes[index],
+                    groupValue: _nightMode,
+                    onChanged: (String? value) {
+                      if (value != null) {
+                        setState(() {
+                          _nightMode = value;
+                        });
+                        Navigator.pop(context);
+                      }
+                    },
+                  );
                 },
-              );
-            },
-          ),
-        ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
 
-  void _showRulesAndTerms() async {
+  Future<void> _showRulesAndTerms() async {
     const url = 'https://yourwebsite.com/terms';
 
     if (await canLaunchUrl(Uri.parse(url))) {
       await launchUrl(Uri.parse(url));
     } else {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Could not open terms and conditions'),
@@ -477,6 +501,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         await user.delete();
         await _authService.signOut();
 
+        if (!mounted) return;
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const LoginScreen()),
@@ -484,6 +509,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         );
       }
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error deleting account: $e'),
@@ -645,8 +671,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return '+92********53';
   }
 
-  // ===================== UPDATED PROFILE HEADER WITH LOADING =====================
+  // ===================== FIXED PROFILE HEADER =====================
   Widget _buildProfileHeader(Map<String, dynamic>? userData, User? user) {
+    ImageProvider<Object>? backgroundImage;
+
+    if (_profileImageFile != null) {
+      backgroundImage = FileImage(_profileImageFile!);
+    } else if (userData?['profileImageUrl'] != null &&
+        userData!['profileImageUrl'] is String &&
+        (userData['profileImageUrl'] as String).isNotEmpty) {
+      backgroundImage = NetworkImage(userData['profileImageUrl'] as String);
+    }
+
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -658,7 +694,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           Stack(
             children: [
-              // Loading indicator while uploading
               if (_isImageUploading)
                 Container(
                   width: 100,
@@ -675,14 +710,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 CircleAvatar(
                   radius: 50,
                   backgroundColor: Colors.blue.shade700,
-                  backgroundImage: _profileImageFile != null
-                      ? FileImage(_profileImageFile!)
-                      : userData?['profileImageUrl'] != null
-                      ? NetworkImage(userData!['profileImageUrl'])
-                      : null,
-                  child: _profileImageFile == null &&
-                      (userData?['profileImageUrl'] == null ||
-                          (userData?['profileImageUrl'] as String).isEmpty)
+                  backgroundImage: backgroundImage,
+                  child: backgroundImage == null
                       ? const Icon(
                     Icons.person,
                     size: 50,
@@ -729,9 +758,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           const SizedBox(height: 8),
-          if (userData?['phone'] != null && userData!['phone'].isNotEmpty)
+          if (userData?['phone'] != null && (userData!['phone'] as String).isNotEmpty)
             Text(
-              userData['phone'],
+              userData['phone'] as String,
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey.shade600,
@@ -782,16 +811,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: 'Night mode',
           value: _nightMode,
           onTap: _showNightModeDialog,
-        ),
-
-        // Navigation Setting
-        _buildSettingItem(
-          icon: Icons.navigation,
-          title: 'Navigation',
-          value: 'Settings',
-          onTap: () {
-            // Optional: NavigationSettingsScreen add karein
-          },
         ),
 
         // Rules and Terms
@@ -885,7 +904,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: StreamBuilder<DocumentSnapshot>(
         stream: user != null ? _firestore.collection('users').doc(user.uid).snapshots() : null,
         builder: (context, snapshot) {
-          final userData = snapshot.data?.data() as Map<String, dynamic>?;
+          final Map<String, dynamic>? userData = snapshot.data?.data() != null
+              ? snapshot.data!.data() as Map<String, dynamic>
+              : null;
 
           return SingleChildScrollView(
             padding: const EdgeInsets.all(20.0),

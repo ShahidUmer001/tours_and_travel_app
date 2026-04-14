@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart' as material;
 import 'package:flutter/material.dart';
 
 class NavigationService {
@@ -86,7 +87,7 @@ class NavigationService {
   }
 
   // Show dialog
-  Future<T?> showDialog<T>({
+  Future<T?> showAppDialog<T>({
     required WidgetBuilder builder,
     bool barrierDismissible = true,
     Color? barrierColor,
@@ -95,7 +96,7 @@ class NavigationService {
     bool useRootNavigator = true,
     RouteSettings? routeSettings,
   }) {
-    return showDialog(
+    return material.showDialog<T>(
       context: navigatorKey.currentContext!,
       builder: builder,
       barrierDismissible: barrierDismissible,
@@ -108,7 +109,7 @@ class NavigationService {
   }
 
   // Show modal bottom sheet
-  Future<T?> showModalBottomSheet<T>({
+  Future<T?> showAppModalBottomSheet<T>({
     required WidgetBuilder builder,
     Color? backgroundColor,
     double? elevation,
@@ -124,7 +125,7 @@ class NavigationService {
     RouteSettings? routeSettings,
     AnimationController? transitionAnimationController,
   }) {
-    return showModalBottomSheet(
+    return material.showModalBottomSheet<T>(
       context: navigatorKey.currentContext!,
       builder: builder,
       backgroundColor: backgroundColor,

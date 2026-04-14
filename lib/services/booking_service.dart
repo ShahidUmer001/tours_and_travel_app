@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/booking_model.dart';
 
 class BookingService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  FirebaseFirestore get _firestore => FirebaseFirestore.instance;
 
   // Get user's bookings - YAHAN FIX KARENA
   Stream<List<Booking>> getUserBookings(String userId) {
@@ -14,7 +14,7 @@ class BookingService {
         .snapshots()
         .map((snapshot) {
       return snapshot.docs.map((doc) {
-        return Booking.fromMap(doc.data() as Map<String, dynamic>); // ✅ Fix yahan hai
+        return Booking.fromMap(doc.data());
       }).toList();
     });
   }

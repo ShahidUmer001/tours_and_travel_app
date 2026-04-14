@@ -19,11 +19,6 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
   final AuthService _authService = AuthService();
   int _selectedTab = 0; // 0: All, 1: Tours, 2: Hotels, 3: Cars
 
-  // Simple date formatter function (no intl package needed)
-  String _formatDate(DateTime date) {
-    return '${date.day}/${date.month}/${date.year}';
-  }
-
   String _formatDateWithMonth(DateTime date) {
     final months = [
       'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',

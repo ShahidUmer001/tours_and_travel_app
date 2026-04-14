@@ -10,8 +10,9 @@ import '../screens/profile_screen.dart';
 import '../screens/booking_history_screen.dart';
 import '../screens/map_screen.dart';
 import '../screens/multi_city_hotel_screen.dart';
-import '../screens/car_booking_screen.dart';
-import '../screens/hotel_search_screen.dart';
+// ✅ Changed imports:
+import 'car_booking_screen.dart';
+import 'hotel_search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +23,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final AuthService _authService = AuthService();
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  FirebaseFirestore get _firestore => FirebaseFirestore.instance;
   int _currentIndex = 0;
   int _selectedCategory = 0;
   final TextEditingController _searchController = TextEditingController();
@@ -425,19 +426,19 @@ class _HomeScreenState extends State<HomeScreen> {
           case 'map':
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MapScreen()),
+              MaterialPageRoute(builder: (context) => MapScreen()),
             );
             break;
           case 'city_car':
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const CarBookingScreen()),
+              MaterialPageRoute(builder: (context) => CityToCityCarBookingScreen()),
             );
             break;
           case 'all_hotels':
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const HotelSearchScreen()),
+              MaterialPageRoute(builder: (context) => AllPakistanHotelBookingScreen()),
             );
             break;
           default:
@@ -504,7 +505,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const CarBookingScreen()),
+                MaterialPageRoute(builder: (context) => CityToCityCarBookingScreen()),
               );
             },
             borderRadius: BorderRadius.circular(12),
@@ -568,7 +569,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const HotelSearchScreen()),
+                MaterialPageRoute(builder: (context) => AllPakistanHotelBookingScreen()),
               );
             },
             borderRadius: BorderRadius.circular(12),

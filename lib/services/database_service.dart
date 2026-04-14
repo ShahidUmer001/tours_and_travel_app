@@ -4,7 +4,7 @@ import '../models/hotel_model.dart';
 import '../models/booking_model.dart';
 
 class DatabaseService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  FirebaseFirestore get _firestore => FirebaseFirestore.instance;
 
   // Destinations
   Stream<List<Destination>> getDestinations() {
