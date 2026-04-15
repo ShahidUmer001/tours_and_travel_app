@@ -6,6 +6,7 @@ import '../models/booking_model.dart';
 import '../models/car_booking_model.dart';
 import '../models/hotel_booking_model.dart';
 import '../services/auth_service.dart';
+import '../services/local_booking_store.dart';
 
 class BookingHistoryScreen extends StatefulWidget {
   const BookingHistoryScreen({super.key});
@@ -27,6 +28,148 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
     return '${date.day} ${months[date.month - 1]} ${date.year}';
   }
 
+  List<LocalBooking> _filterLocalBookings() {
+    final all = LocalBookingStore.instance.bookings;
+    switch (_selectedTab) {
+      case 1:
+        return all.where((b) => b.type == 'tour').toList();
+      case 2:
+        return all.where((b) => b.type == 'hotel').toList();
+      case 3:
+        return all.where((b) => b.type == 'car').toList();
+      default:
+        return all;
+    }
+  }
+
+  IconData _iconForBookingType(String type) {
+    switch (type) {
+      case 'tour':
+        return Icons.airline_stops_rounded;
+      case 'hotel':
+        return Icons.hotel_rounded;
+      case 'car':
+        return Icons.directions_car_rounded;
+      default:
+        return Icons.bookmark_rounded;
+    }
+  }
+
+  Color _colorForBookingType(String type) {
+    switch (type) {
+      case 'tour':
+        return Colors.deepPurple;
+      case 'hotel':
+        return Colors.orange;
+      case 'car':
+        return Colors.indigo;
+      default:
+        return Colors.blue;
+    }
+  }
+
+  Widget _buildLocalBookingCard(LocalBooking booking) {
+    final color = _colorForBookingType(booking.type);
+    return Container(
+      margin: const EdgeInsets.only(bottom: 14),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.06),
+            blurRadius: 14,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 56,
+            height: 56,
+            decoration: BoxDecoration(
+              color: color.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: Icon(_iconForBookingType(booking.type), color: color, size: 28),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  booking.title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  booking.subtitle,
+                  style: TextStyle(fontSize: 13, color: Colors.grey[700]),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 6),
+                Row(
+                  children: [
+                    Icon(Icons.calendar_today_rounded, size: 12, color: Colors.grey[500]),
+                    const SizedBox(width: 4),
+                    Text(
+                      _formatDateWithMonth(booking.bookingDate),
+                      style: TextStyle(fontSize: 11, color: Colors.grey[600]),
+                    ),
+                    const SizedBox(width: 12),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: Colors.green.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Text(
+                        'Confirmed',
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                'Rs. ${booking.amount.toStringAsFixed(0)}',
+                style: TextStyle(
+                  color: color,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                booking.paymentMethod,
+                style: TextStyle(fontSize: 10, color: Colors.grey[600]),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,19 +186,19 @@ class _BookingHistoryScreenState extends State<BookingHistoryScreen> {
           _buildTabBar(),
 
           Expanded(
-            child: StreamBuilder<User?>(
-              stream: _authService.userStream,
-              builder: (context, userSnapshot) {
-                if (userSnapshot.connectionState == ConnectionState.waiting) {
-                  return _buildLoadingState();
-                }
-
-                final user = userSnapshot.data;
-                if (user == null) {
+            child: AnimatedBuilder(
+              animation: LocalBookingStore.instance,
+              builder: (context, _) {
+                final localBookings = _filterLocalBookings();
+                if (localBookings.isEmpty) {
                   return _buildGuestState();
                 }
-
-                return _buildBookingsContent(user.uid);
+                return ListView.builder(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: localBookings.length,
+                  itemBuilder: (context, index) =>
+                      _buildLocalBookingCard(localBookings[index]),
+                );
               },
             ),
           ),

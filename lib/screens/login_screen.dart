@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../services/auth_service.dart';
+import '../utils/animations.dart';
 import 'home_screen.dart';
 import 'signup_screen.dart';
 
@@ -11,12 +13,35 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final AuthService _authService = AuthService();
   bool _isLoading = false;
   bool _obscurePassword = true;
+
+  late AnimationController _animController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _animController.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    _animController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   void _login() async {
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
@@ -40,11 +65,13 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     if (user != null) {
+      if (!mounted) return;
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        PageTransitions.fadeScale(const HomeScreen()),
       );
     } else {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Login failed. Please check your credentials.')),
       );
@@ -76,14 +103,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 40),
 
                 // App Logo/Title with travel theme
-                Container(
+                FadeTransition(
+                  opacity: CurvedAnimation(
+                    parent: _animController,
+                    curve: const Interval(0.0, 0.4, curve: Curves.easeOut),
+                  ),
+                  child: SlideTransition(
+                    position: Tween<Offset>(
+                      begin: const Offset(0, -0.3),
+                      end: Offset.zero,
+                    ).animate(CurvedAnimation(
+                      parent: _animController,
+                      curve: const Interval(0.0, 0.4, curve: Curves.easeOutCubic),
+                    )),
+                    child: Container(
                   padding: const EdgeInsets.all(25),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.95),
+                    color: Colors.white.withValues(alpha: 0.95),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
+                        color: Colors.black.withValues(alpha: 0.3),
                         blurRadius: 20,
                         offset: const Offset(0, 10),
                       ),
@@ -123,18 +163,33 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
+                  ),
+                ),
 
                 const SizedBox(height: 40),
 
                 // Login Form
-                Container(
+                FadeTransition(
+                  opacity: CurvedAnimation(
+                    parent: _animController,
+                    curve: const Interval(0.2, 0.7, curve: Curves.easeOut),
+                  ),
+                  child: SlideTransition(
+                    position: Tween<Offset>(
+                      begin: const Offset(0, 0.3),
+                      end: Offset.zero,
+                    ).animate(CurvedAnimation(
+                      parent: _animController,
+                      curve: const Interval(0.2, 0.7, curve: Curves.easeOutCubic),
+                    )),
+                    child: Container(
                   padding: const EdgeInsets.all(30),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.95),
+                    color: Colors.white.withValues(alpha: 0.95),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
+                        color: Colors.black.withValues(alpha: 0.2),
                         blurRadius: 20,
                         offset: const Offset(0, 10),
                       ),
@@ -193,28 +248,49 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 25),
 
                       _isLoading
-                          ? const CircularProgressIndicator()
-                          : SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: ElevatedButton(
-                          onPressed: _login,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue.shade700,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                          ? SpinKitFadingCircle(
+                              color: Colors.blue.shade700,
+                              size: 44,
+                            )
+                          : ScaleTransition(
+                              scale: Tween<double>(begin: 0.0, end: 1.0).animate(
+                                CurvedAnimation(
+                                  parent: _animController,
+                                  curve: const Interval(0.5, 0.95, curve: Curves.elasticOut),
+                                ),
+                              ),
+                              child: ScaleOnTap(
+                                onTap: _login,
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 52,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [Colors.blue.shade700, Colors.blue.shade500],
+                                    ),
+                                    borderRadius: BorderRadius.circular(14),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.blue.shade700.withValues(alpha: 0.4),
+                                        blurRadius: 12,
+                                        offset: const Offset(0, 6),
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'LOGIN',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1.2,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                          child: const Text(
-                            'LOGIN',
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
                       const SizedBox(height: 15),
 
                       Row(
@@ -228,7 +304,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const SignupScreen()),
+                                PageTransitions.fadeSlide(const SignupScreen()),
                               );
                             },
                             child: Text(
@@ -241,7 +317,60 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Expanded(child: Divider(color: Colors.grey.shade300)),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Text(
+                              'OR',
+                              style: TextStyle(
+                                color: Colors.grey.shade500,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          Expanded(child: Divider(color: Colors.grey.shade300)),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      ScaleOnTap(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            PageTransitions.fadeScale(const HomeScreen()),
+                          );
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: Colors.blue.shade700, width: 2),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.explore_rounded, color: Colors.blue.shade700, size: 20),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Continue as Guest',
+                                style: TextStyle(
+                                  color: Colors.blue.shade700,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
+                  ),
+                ),
                   ),
                 ),
                 const SizedBox(height: 20),

@@ -98,11 +98,11 @@ class _MapScreenState extends State<MapScreen> {
 
   void _getCurrentLocation() async {
     try {
-      // Check location permission
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
       if (!serviceEnabled) {
         setState(() {
           _isLoading = false;
+          _addMarkers();
         });
         return;
       }
@@ -113,14 +113,16 @@ class _MapScreenState extends State<MapScreen> {
         if (permission == LocationPermission.denied) {
           setState(() {
             _isLoading = false;
+            _addMarkers();
           });
           return;
         }
       }
 
-      // Get current location
       Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
+        locationSettings: const LocationSettings(
+          accuracy: LocationAccuracy.high,
+        ),
       );
 
       setState(() {
@@ -129,8 +131,10 @@ class _MapScreenState extends State<MapScreen> {
         _addMarkers();
       });
     } catch (e) {
+      debugPrint('Location error: $e');
       setState(() {
         _isLoading = false;
+        _addMarkers();
       });
     }
   }

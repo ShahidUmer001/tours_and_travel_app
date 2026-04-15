@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import '../services/auth_service.dart';
 import '../models/destination_model.dart';
 import '../models/tour_model.dart';
@@ -10,23 +11,31 @@ import '../screens/profile_screen.dart';
 import '../screens/booking_history_screen.dart';
 import '../screens/map_screen.dart';
 import '../screens/multi_city_hotel_screen.dart';
-// ✅ Changed imports:
+import '../utils/animations.dart';
+import '../utils/constants.dart';
 import 'car_booking_screen.dart';
 import 'hotel_search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final int initialTab;
+  const HomeScreen({super.key, this.initialTab = 0});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final AuthService _authService = AuthService();
   FirebaseFirestore get _firestore => FirebaseFirestore.instance;
-  int _currentIndex = 0;
+  late int _currentIndex = widget.initialTab;
   int _selectedCategory = 0;
   final TextEditingController _searchController = TextEditingController();
+  final FocusNode _searchFocusNode = FocusNode();
+  bool _searchFocused = false;
+
+  // Animation controllers
+  late AnimationController _servicesAnimController;
+  late AnimationController _cardsAnimController;
 
   // Categories for tour selection
   final List<Map<String, dynamic>> tourCategories = [
@@ -40,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
       id: '1',
       name: 'Hunza Valley',
       description: 'Heaven on Earth with stunning views of Rakaposhi and Ultar Sar peaks.',
-      imageUrl: 'https://images.unsplash.com/photo-1599240636297-1eed2ae72cc3?w=800',
+      imageUrl: 'assets/images/destinations/Hunza_1.jpg',
       rating: 4.9,
       location: 'Gilgit-Baltistan, Pakistan',
       price: 24999,
@@ -52,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
       id: '2',
       name: 'Skardu & Shangrila',
       description: 'Gateway to the world\'s highest peaks including K2.',
-      imageUrl: 'https://images.unsplash.com/photo-1587477704623-53a0c4456e7d?w=800',
+      imageUrl: 'assets/images/destinations/Skardu_&_Shangrila_1.jpg',
       rating: 4.8,
       location: 'Skardu, Gilgit-Baltistan',
       price: 29999,
@@ -64,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
       id: '3',
       name: 'Swat Valley',
       description: 'Switzerland of Pakistan with green valleys, waterfalls, and ancient Buddhist heritage sites.',
-      imageUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800',
+      imageUrl: 'assets/images/destinations/Swat_Valley_1.jpg',
       rating: 4.7,
       location: 'Khyber Pakhtunkhwa, Pakistan',
       price: 18999,
@@ -76,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
       id: '4',
       name: 'Naran & Kaghan',
       description: 'Beautiful valleys with lakes, pine forests, and stunning mountain views.',
-      imageUrl: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800',
+      imageUrl: 'assets/images/destinations/Naran_&_Kaghan_1.jpeg',
       rating: 4.6,
       location: 'Khyber Pakhtunkhwa, Pakistan',
       price: 17999,
@@ -88,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
       id: '5',
       name: 'Fairy Meadows',
       description: 'Magical grassland at the base of Nanga Parbat, the killer mountain.',
-      imageUrl: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800',
+      imageUrl: 'assets/images/destinations/Fairy_Meadows_1.jpg',
       rating: 4.8,
       location: 'Diamer, Gilgit-Baltistan',
       price: 21999,
@@ -104,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
       id: 'm1',
       name: 'Complete Northern Pakistan Tour',
       description: 'Experience the best of Northern Areas in one amazing journey.',
-      imageUrl: 'https://images.unsplash.com/photo-1599240636297-1eed2ae72cc3?w=800',
+      imageUrl: 'assets/images/destinations/Hunza_1.jpg',
       price: 69999,
       duration: '12 Days 11 Nights',
       bestSeason: 'May to September',
@@ -129,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
       id: 'm2',
       name: 'Hunza & Skardu Adventure',
       description: 'Perfect combination of Hunza and Skardu with all major attractions covered.',
-      imageUrl: 'https://images.unsplash.com/photo-1587477704623-53a0c4456e7d?w=800',
+      imageUrl: 'assets/images/destinations/Skardu_&_Shangrila_1.jpg',
       price: 49999,
       duration: '8 Days 7 Nights',
       bestSeason: 'April to October',
@@ -160,26 +169,182 @@ class _HomeScreenState extends State<HomeScreen> {
     {'icon': Icons.camera_alt, 'title': 'Photos', 'color': Colors.red, 'route': 'photos'},
   ];
 
+  final List<Map<String, String>> _allPhotos = [
+    {'image': 'assets/images/destinations/Hunza_1.jpg', 'title': 'Hunza Valley'},
+    {'image': 'assets/images/destinations/Skardu_&_Shangrila_1.jpg', 'title': 'Skardu & Shangrila'},
+    {'image': 'assets/images/destinations/Swat_Valley_1.jpg', 'title': 'Swat Valley'},
+    {'image': 'assets/images/destinations/Naran_&_Kaghan_1.jpeg', 'title': 'Naran & Kaghan'},
+    {'image': 'assets/images/destinations/Fairy_Meadows_1.jpg', 'title': 'Fairy Meadows'},
+  ];
+
+  void _showPhotoGallery() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) => DraggableScrollableSheet(
+        initialChildSize: 0.85,
+        minChildSize: 0.5,
+        maxChildSize: 0.95,
+        expand: false,
+        builder: (context, scrollController) => Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 8),
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Text(
+                'Pakistan Photo Gallery',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Expanded(
+              child: GridView.builder(
+                controller: scrollController,
+                padding: const EdgeInsets.all(12),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 0.8,
+                ),
+                itemCount: _allPhotos.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                      final destination = singleDestinations.firstWhere(
+                        (d) => d.name == _allPhotos[index]['title'],
+                        orElse: () => singleDestinations[0],
+                      );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DestinationScreen(destination: destination),
+                        ),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          Image.asset(
+                            _allPhotos[index]['image']!,
+                            fit: BoxFit.cover,
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                  colors: [Colors.black87, Colors.transparent],
+                                ),
+                              ),
+                              child: Text(
+                                _allPhotos[index]['title']!,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _servicesAnimController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+    _cardsAnimController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+    _searchFocusNode.addListener(() {
+      setState(() => _searchFocused = _searchFocusNode.hasFocus);
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _servicesAnimController.forward();
+      Future.delayed(const Duration(milliseconds: 400), () {
+        if (mounted) _cardsAnimController.forward();
+      });
+    });
+  }
+
   @override
   void dispose() {
     _searchController.dispose();
+    _searchFocusNode.dispose();
+    _servicesAnimController.dispose();
+    _cardsAnimController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: AppConstants.backgroundColor,
       appBar: _buildAppBar(),
-      body: _currentIndex == 0 ? _buildHomeTab() : _buildBookingsTab(),
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 350),
+        switchInCurve: Curves.easeOut,
+        switchOutCurve: Curves.easeIn,
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return FadeTransition(
+            opacity: animation,
+            child: SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0, 0.05),
+                end: Offset.zero,
+              ).animate(animation),
+              child: child,
+            ),
+          );
+        },
+        child: _currentIndex == 0
+            ? Container(key: const ValueKey('home'), child: _buildHomeTab())
+            : Container(key: const ValueKey('bookings'), child: _buildBookingsTab()),
+      ),
       bottomNavigationBar: _buildBottomNavBar(),
     );
   }
 
   AppBar _buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFF0D47A1),
       elevation: 0,
+      iconTheme: const IconThemeData(color: Colors.white),
+      systemOverlayStyle: null,
       title: StreamBuilder<User?>(
         stream: _authService.userStream,
         builder: (context, userSnapshot) {
@@ -192,14 +357,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+                    color: Colors.white,
                   ),
                 ),
                 Text(
                   'Loading...',
                   style: TextStyle(
                     fontSize: 14,
-                    color: Colors.grey,
+                    color: Colors.white70,
                   ),
                 ),
               ],
@@ -216,14 +381,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+                    color: Colors.white,
                   ),
                 ),
                 Text(
                   'Please login to continue',
                   style: TextStyle(
                     fontSize: 14,
-                    color: Colors.grey,
+                    color: Colors.white70,
                   ),
                 ),
               ],
@@ -242,14 +407,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: Colors.black87,
+                        color: Colors.white,
                       ),
                     ),
                     Text(
                       'Loading...',
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.grey,
+                        color: Colors.white70,
                       ),
                     ),
                   ],
@@ -279,14 +444,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: Colors.black87,
+                      color: Colors.white,
                     ),
                   ),
                   Text(
                     'Ready for your next adventure?',
                     style: const TextStyle(
                       fontSize: 14,
-                      color: Colors.grey,
+                      color: Colors.white70,
                     ),
                   ),
                 ],
@@ -297,29 +462,48 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       actions: [
         IconButton(
-          icon: Container(
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(Icons.notifications_none, color: Colors.black87, size: 22),
+          icon: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.2),
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
+                ),
+                child: const Icon(Icons.notifications_none_rounded, color: Colors.white, size: 20),
+              ),
+              Positioned(
+                right: 2,
+                top: 2,
+                child: Container(
+                  width: 8,
+                  height: 8,
+                  decoration: const BoxDecoration(
+                    color: Colors.redAccent,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            ],
           ),
           onPressed: () {},
         ),
         IconButton(
           icon: Container(
-            padding: const EdgeInsets.all(6),
+            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.grey[100],
+              color: Colors.white.withValues(alpha: 0.2),
               shape: BoxShape.circle,
+              border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
             ),
-            child: const Icon(Icons.person_outline, color: Colors.black87, size: 22),
+            child: const Icon(Icons.person_outline_rounded, color: Colors.white, size: 20),
           ),
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const ProfileScreen()),
+              PageTransitions.fadeSlide(const ProfileScreen()),
             );
           },
         ),
@@ -329,60 +513,239 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildHomeTab() {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildSearchBar(),
-          const SizedBox(height: 30),
-          _buildServicesGrid(),
-          const SizedBox(height: 30),
-          _buildQuickAccessSection(),
-          const SizedBox(height: 30),
-          _buildTourTypeSelector(),
-          const SizedBox(height: 20),
-          _selectedCategory == 0
-              ? _buildSingleDestinations()
-              : _buildMultiCityTours(),
+          _buildHeroBanner(),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildStatsRow(),
+                const SizedBox(height: 28),
+                _buildServicesGrid(),
+                const SizedBox(height: 32),
+                _buildQuickAccessSection(),
+                const SizedBox(height: 32),
+                _buildTourTypeSelector(),
+                const SizedBox(height: 20),
+                _selectedCategory == 0
+                    ? _buildSingleDestinations()
+                    : _buildMultiCityTours(),
+                const SizedBox(height: 20),
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildSearchBar() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
+  Widget _buildHeroBanner() {
+    return AnimatedFadeSlide(
+      delay: const Duration(milliseconds: 50),
+      beginOffset: const Offset(0, -0.1),
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(20, 20, 20, 50),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFF0D47A1), Color(0xFF1976D2), Color(0xFF42A5F5)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(40),
+            bottomRight: Radius.circular(40),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: AppConstants.primaryColor.withValues(alpha: 0.3),
+              blurRadius: 24,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 4),
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
+                  ),
+                  child: const Row(
+                    children: [
+                      Icon(Icons.auto_awesome, color: Colors.amber, size: 14),
+                      SizedBox(width: 6),
+                      Text(
+                        'Discover Pakistan',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Where will you\ngo next?',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                height: 1.2,
+                letterSpacing: -0.5,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Explore breathtaking destinations across Pakistan',
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.85),
+                fontSize: 14,
+              ),
+            ),
+            const SizedBox(height: 20),
+            _buildSearchBar(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStatsRow() {
+    return AnimatedFadeSlide(
+      delay: const Duration(milliseconds: 150),
+      child: Transform.translate(
+        offset: const Offset(0, -30),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(22),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.08),
+                blurRadius: 24,
+                offset: const Offset(0, 8),
+              ),
+            ],
+          ),
+          child: Row(
+            children: [
+              _buildStatItem('5+', 'Destinations', Icons.location_on_rounded, AppConstants.primaryColor),
+              _buildStatDivider(),
+              _buildStatItem('20+', 'Hotels', Icons.hotel_rounded, AppConstants.accentColor),
+              _buildStatDivider(),
+              _buildStatItem('9', 'Tourist Spots', Icons.explore_rounded, AppConstants.warmAccent),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStatItem(String value, String label, IconData icon, Color color) {
+    return Expanded(
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: color.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: color, size: 22),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppConstants.textColor,
+            ),
+          ),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 11,
+              color: AppConstants.lightTextColor,
+            ),
           ),
         ],
       ),
-      child: TextField(
-        controller: _searchController,
-        decoration: InputDecoration(
-          hintText: 'Search destinations, hotels, tours...',
-          hintStyle: const TextStyle(color: Colors.grey),
-          prefixIcon: const Icon(Icons.search, color: Colors.blue),
-          border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-          suffixIcon: _searchController.text.isNotEmpty
-              ? IconButton(
-            icon: const Icon(Icons.close),
-            onPressed: () {
-              _searchController.clear();
-              FocusScope.of(context).unfocus();
-            },
-          )
-              : null,
+    );
+  }
+
+  Widget _buildStatDivider() {
+    return Container(
+      width: 1,
+      height: 50,
+      color: AppConstants.borderColor,
+    );
+  }
+
+  Widget _buildSearchBar() {
+    return AnimatedFadeSlide(
+      delay: const Duration(milliseconds: 100),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeInOut,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: _searchFocused ? AppConstants.primaryColor : Colors.transparent,
+            width: 2,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: _searchFocused
+                  ? AppConstants.primaryColor.withValues(alpha: 0.2)
+                  : Colors.black.withValues(alpha: 0.08),
+              blurRadius: _searchFocused ? 20 : 12,
+              offset: const Offset(0, 6),
+            ),
+          ],
         ),
-        onChanged: (value) {
-          setState(() {});
-        },
+        child: TextField(
+          controller: _searchController,
+          focusNode: _searchFocusNode,
+          decoration: InputDecoration(
+            hintText: 'Search destinations, hotels, tours...',
+            hintStyle: TextStyle(color: Colors.grey[400]),
+            prefixIcon: Icon(
+              Icons.search_rounded,
+              color: _searchFocused ? AppConstants.primaryColor : Colors.grey[500],
+              size: 24,
+            ),
+            border: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+            suffixIcon: _searchController.text.isNotEmpty
+                ? IconButton(
+                    icon: const Icon(Icons.close_rounded),
+                    onPressed: () {
+                      _searchController.clear();
+                      FocusScope.of(context).unfocus();
+                    },
+                  )
+                : null,
+          ),
+          onChanged: (value) => setState(() {}),
+        ),
       ),
     );
   }
@@ -391,12 +754,28 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'What do you need?',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 200),
+          child: Row(
+            children: [
+              Container(
+                width: 4,
+                height: 24,
+                decoration: BoxDecoration(
+                  gradient: AppConstants.primaryGradient,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                'What do you need?',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: AppConstants.textColor,
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: 16),
@@ -412,7 +791,25 @@ class _HomeScreenState extends State<HomeScreen> {
           itemCount: services.length,
           itemBuilder: (context, index) {
             final service = services[index];
-            return _buildServiceCard(service);
+            final start = (index * 0.1).clamp(0.0, 0.6);
+            final end = (start + 0.5).clamp(0.0, 1.0);
+            final animation = CurvedAnimation(
+              parent: _servicesAnimController,
+              curve: Interval(start, end, curve: Curves.easeOutBack),
+            );
+            return AnimatedBuilder(
+              animation: animation,
+              builder: (context, child) {
+                return Opacity(
+                  opacity: animation.value.clamp(0.0, 1.0),
+                  child: Transform.scale(
+                    scale: 0.5 + (0.5 * animation.value.clamp(0.0, 1.0)),
+                    child: child,
+                  ),
+                );
+              },
+              child: _buildServiceCard(service),
+            );
           },
         ),
       ],
@@ -420,29 +817,29 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildServiceCard(Map<String, dynamic> service) {
-    return GestureDetector(
+    return ScaleOnTap(
+      scaleDown: 0.88,
       onTap: () {
         switch (service['route']) {
+          case 'hotels':
+            Navigator.push(context, PageTransitions.fadeSlide(AllPakistanHotelBookingScreen()));
+            break;
+          case 'transport':
+            Navigator.push(context, PageTransitions.fadeSlide(CityToCityCarBookingScreen()));
+            break;
           case 'map':
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MapScreen()),
-            );
+            Navigator.push(context, PageTransitions.fadeSlide(MapScreen()));
             break;
           case 'city_car':
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => CityToCityCarBookingScreen()),
-            );
+            Navigator.push(context, PageTransitions.fadeSlide(CityToCityCarBookingScreen()));
             break;
           case 'all_hotels':
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AllPakistanHotelBookingScreen()),
-            );
+            Navigator.push(context, PageTransitions.fadeSlide(AllPakistanHotelBookingScreen()));
+            break;
+          case 'photos':
+            _showPhotoGallery();
             break;
           default:
-          // Handle other services
             break;
         }
       },
@@ -450,32 +847,32 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: 70,
-            height: 70,
+            width: 72,
+            height: 72,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [service['color'], service['color'].withOpacity(0.7)],
+                colors: [service['color'], service['color'].withValues(alpha: 0.7)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(22),
               boxShadow: [
                 BoxShadow(
-                  color: service['color'].withOpacity(0.3),
-                  blurRadius: 10,
-                  offset: const Offset(0, 5),
+                  color: service['color'].withValues(alpha: 0.45),
+                  blurRadius: 16,
+                  offset: const Offset(0, 8),
                 ),
               ],
             ),
             child: Icon(service['icon'], color: Colors.white, size: 32),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 10),
           Text(
             service['title'],
             style: const TextStyle(
               fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: Colors.black87,
+              fontWeight: FontWeight.w600,
+              color: AppConstants.textColor,
             ),
             textAlign: TextAlign.center,
           ),
@@ -488,46 +885,69 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Quick Access',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 250),
+          child: Row(
+            children: [
+              Container(
+                width: 4,
+                height: 24,
+                decoration: BoxDecoration(
+                  gradient: AppConstants.accentGradient,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                'Quick Access',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: AppConstants.textColor,
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: 16),
 
         // City to City Car Rental Card
-        Card(
-          elevation: 4,
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CityToCityCarBookingScreen()),
-              );
-            },
-            borderRadius: BorderRadius.circular(12),
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 300),
+          beginOffset: const Offset(-0.2, 0),
+          child: ScaleOnTap(
+            scaleDown: 0.97,
+            onTap: () => Navigator.push(
+              context,
+              PageTransitions.fadeSlide(CityToCityCarBookingScreen()),
+            ),
             child: Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.blue.withOpacity(0.1), Colors.blue.withOpacity(0.05)],
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(22),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF6366F1).withValues(alpha: 0.35),
+                    blurRadius: 16,
+                    offset: const Offset(0, 8),
+                  ),
+                ],
               ),
               child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: const BoxDecoration(
-                      color: Colors.blue,
-                      shape: BoxShape.circle,
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.2),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
                     ),
-                    child: const Icon(Icons.directions_car, color: Colors.white, size: 24),
+                    child: const Icon(Icons.directions_car_rounded, color: Colors.white, size: 28),
                   ),
                   const SizedBox(width: 16),
                   const Expanded(
@@ -537,23 +957,30 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           'City to City Car Rental',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue,
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(height: 4),
                         Text(
-                          'Book cars for intercity travel across Pakistan',
+                          'Book cars for intercity travel',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.grey,
+                            color: Colors.white70,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const Icon(Icons.arrow_forward_ios, color: Colors.blue, size: 16),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.2),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.arrow_forward_rounded, color: Colors.white, size: 18),
+                  ),
                 ],
               ),
             ),
@@ -563,35 +990,42 @@ class _HomeScreenState extends State<HomeScreen> {
         const SizedBox(height: 12),
 
         // All Pakistan Hotels Card
-        Card(
-          elevation: 4,
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AllPakistanHotelBookingScreen()),
-              );
-            },
-            borderRadius: BorderRadius.circular(12),
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 400),
+          beginOffset: const Offset(-0.2, 0),
+          child: ScaleOnTap(
+            scaleDown: 0.97,
+            onTap: () => Navigator.push(
+              context,
+              PageTransitions.fadeSlide(AllPakistanHotelBookingScreen()),
+            ),
             child: Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.purple.withOpacity(0.1), Colors.purple.withOpacity(0.05)],
+                gradient: const LinearGradient(
+                  colors: [Color(0xFFFF7043), Color(0xFFFF9F40)],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(22),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFFFF7043).withValues(alpha: 0.35),
+                    blurRadius: 16,
+                    offset: const Offset(0, 8),
+                  ),
+                ],
               ),
               child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: const BoxDecoration(
-                      color: Colors.purple,
-                      shape: BoxShape.circle,
+                    padding: const EdgeInsets.all(14),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.2),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
                     ),
-                    child: const Icon(Icons.hotel, color: Colors.white, size: 24),
+                    child: const Icon(Icons.hotel_rounded, color: Colors.white, size: 28),
                   ),
                   const SizedBox(width: 16),
                   const Expanded(
@@ -601,23 +1035,30 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           'Pakistan Hotels Booking',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
-                            color: Colors.purple,
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(height: 4),
                         Text(
-                          'Find and book hotels in all major cities',
+                          'Find hotels in all major cities',
                           style: TextStyle(
                             fontSize: 12,
-                            color: Colors.grey,
+                            color: Colors.white70,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const Icon(Icons.arrow_forward_ios, color: Colors.purple, size: 16),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.2),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.arrow_forward_rounded, color: Colors.white, size: 18),
+                  ),
                 ],
               ),
             ),
@@ -631,71 +1072,215 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Choose Your Travel Style',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 350),
+          child: Row(
+            children: [
+              Container(
+                width: 4,
+                height: 24,
+                decoration: BoxDecoration(
+                  gradient: AppConstants.primaryGradient,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                'Choose Your Travel Style',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: AppConstants.textColor,
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: 16),
-        Row(
-          children: tourCategories.map((category) {
-            final index = tourCategories.indexOf(category);
-            final isSelected = _selectedCategory == index;
-
-            return Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _selectedCategory = index;
-                  });
-                },
-                child: Container(
-                  margin: EdgeInsets.only(right: index == 0 ? 8 : 0),
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: isSelected ? Colors.blue[50] : Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      color: isSelected ? Colors.blue : Colors.grey[300]!,
-                      width: isSelected ? 2 : 1,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        category['icon'],
-                        color: isSelected ? Colors.blue : Colors.grey,
-                        size: 32,
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        category['title'],
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: isSelected ? Colors.blue : Colors.black87,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 450),
+          child: Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(22),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.06),
+                  blurRadius: 20,
+                  offset: const Offset(0, 6),
                 ),
-              ),
-            );
-          }).toList(),
+              ],
+            ),
+            child: Row(
+              children: tourCategories.map((category) {
+                final index = tourCategories.indexOf(category);
+                final isSelected = _selectedCategory == index;
+                return Expanded(
+                  child: GestureDetector(
+                    onTap: () => setState(() => _selectedCategory = index),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeOutCubic,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      decoration: BoxDecoration(
+                        gradient: isSelected ? AppConstants.primaryGradient : null,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: isSelected
+                            ? [
+                                BoxShadow(
+                                  color: AppConstants.primaryColor.withValues(alpha: 0.3),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ]
+                            : null,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          AnimatedScale(
+                            duration: const Duration(milliseconds: 300),
+                            scale: isSelected ? 1.1 : 1.0,
+                            child: Icon(
+                              category['icon'],
+                              color: isSelected ? Colors.white : Colors.grey[500],
+                              size: 26,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          AnimatedDefaultTextStyle(
+                            duration: const Duration(milliseconds: 300),
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                              color: isSelected ? Colors.white : Colors.grey[600]!,
+                            ),
+                            child: Text(category['title']),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
         ),
       ],
+    );
+  }
+
+  Widget _buildFeaturedCarousel() {
+    return CarouselSlider.builder(
+      itemCount: singleDestinations.length,
+      itemBuilder: (context, index, realIndex) {
+        final destination = singleDestinations[index];
+        return GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            PageTransitions.heroFade(DestinationScreen(destination: destination)),
+          ),
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 6),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              boxShadow: [
+                BoxShadow(
+                  color: AppConstants.primaryColor.withValues(alpha: 0.25),
+                  blurRadius: 20,
+                  offset: const Offset(0, 10),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.asset(
+                    destination.imageUrl,
+                    fit: BoxFit.cover,
+                    errorBuilder: (c, e, s) => Container(color: Colors.grey[300]),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                        colors: [Colors.black87, Colors.transparent, Colors.transparent],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 14,
+                    right: 14,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.95),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.star_rounded, color: Colors.amber, size: 18),
+                          const SizedBox(width: 4),
+                          Text(
+                            destination.rating.toString(),
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 18,
+                    left: 18,
+                    right: 18,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          destination.name,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            const Icon(Icons.location_on, color: Colors.white70, size: 16),
+                            const SizedBox(width: 4),
+                            Expanded(
+                              child: Text(
+                                destination.location,
+                                style: const TextStyle(color: Colors.white70, fontSize: 13),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+      options: CarouselOptions(
+        height: 230,
+        autoPlay: true,
+        autoPlayInterval: const Duration(seconds: 4),
+        autoPlayAnimationDuration: const Duration(milliseconds: 900),
+        autoPlayCurve: Curves.easeInOutCubic,
+        enlargeCenterPage: true,
+        enlargeFactor: 0.25,
+        viewportFraction: 0.82,
+      ),
     );
   }
 
@@ -703,25 +1288,58 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Popular Destinations',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 300),
+          child: Row(
+            children: [
+              Container(
+                width: 4,
+                height: 24,
+                decoration: BoxDecoration(
+                  gradient: AppConstants.warmGradient,
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
-            ),
-            Text(
-              'See All',
-              style: TextStyle(
-                color: Colors.blue,
-                fontWeight: FontWeight.w600,
+              const SizedBox(width: 10),
+              const Text(
+                'Featured Destinations',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: AppConstants.textColor,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
+        ),
+        const SizedBox(height: 16),
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 400),
+          child: _buildFeaturedCarousel(),
+        ),
+        const SizedBox(height: 24),
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 500),
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Popular Destinations',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: AppConstants.textColor,
+                ),
+              ),
+              Text(
+                'See All',
+                style: TextStyle(
+                  color: AppConstants.primaryColor,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: 16),
         ListView.builder(
@@ -730,7 +1348,11 @@ class _HomeScreenState extends State<HomeScreen> {
           itemCount: singleDestinations.length,
           itemBuilder: (context, index) {
             final destination = singleDestinations[index];
-            return _buildDestinationCard(destination);
+            return StaggeredListItem(
+              index: index,
+              animation: _cardsAnimController,
+              child: _buildDestinationCard(destination),
+            );
           },
         ),
       ],
@@ -741,12 +1363,28 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Multi-City Tour Packages',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 300),
+          child: Row(
+            children: [
+              Container(
+                width: 4,
+                height: 24,
+                decoration: BoxDecoration(
+                  gradient: AppConstants.accentGradient,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(width: 10),
+              const Text(
+                'Multi-City Tour Packages',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: AppConstants.textColor,
+                ),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: 16),
@@ -756,7 +1394,11 @@ class _HomeScreenState extends State<HomeScreen> {
           itemCount: multiCityTours.length,
           itemBuilder: (context, index) {
             final tour = multiCityTours[index];
-            return _buildTourPackageCard(tour);
+            return StaggeredListItem(
+              index: index,
+              animation: _cardsAnimController,
+              child: _buildTourPackageCard(tour),
+            );
           },
         ),
       ],
@@ -764,70 +1406,100 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildDestinationCard(Destination destination) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 16),
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.08),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
       ),
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DestinationScreen(destination: destination),
-            ),
-          );
-        },
-        borderRadius: BorderRadius.circular(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(24),
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              PageTransitions.heroFade(DestinationScreen(destination: destination)),
+            );
+          },
+          borderRadius: BorderRadius.circular(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Stack(
+                children: [
+                  Hero(
+                    tag: 'destination_${destination.id}',
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(24),
+                        topRight: Radius.circular(24),
+                      ),
+                      child: destination.imageUrl.startsWith('assets/')
+                          ? Image.asset(
+                              destination.imageUrl,
+                              height: 200,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) => Container(
+                                height: 200,
+                                color: Colors.grey[300],
+                            child: const Icon(Icons.image, size: 50, color: Colors.grey),
+                          ),
+                        )
+                      : CachedNetworkImage(
+                          imageUrl: destination.imageUrl,
+                          height: 200,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) => Container(
+                            height: 200,
+                            color: Colors.grey[300],
+                            child: const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            height: 200,
+                            color: Colors.grey[300],
+                            child: const Icon(Icons.image, size: 50, color: Colors.grey),
+                          ),
+                        ),
+                    ),
                   ),
-                  child: CachedNetworkImage(
-                    imageUrl: destination.imageUrl,
-                    height: 200,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Container(
-                      height: 200,
-                      color: Colors.grey[300],
-                      child: const Center(
-                        child: CircularProgressIndicator(),
+                  Positioned(
+                    bottom: 12,
+                    right: 12,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+                      decoration: BoxDecoration(
+                        gradient: AppConstants.accentGradient,
+                        borderRadius: BorderRadius.circular(14),
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppConstants.accentColor.withValues(alpha: 0.4),
+                            blurRadius: 8,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Text(
+                        'Rs. ${destination.price.toStringAsFixed(0)}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    errorWidget: (context, url, error) => Container(
-                      height: 200,
-                      color: Colors.grey[300],
-                      child: const Icon(Icons.image, size: 50, color: Colors.grey),
-                    ),
                   ),
-                ),
-                Positioned(
-                  bottom: 12,
-                  right: 12,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(
-                      'Rs. ${destination.price.toStringAsFixed(0)}',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
                 Positioned(
                   top: 12,
                   right: 12,
@@ -864,21 +1536,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
+                      color: AppConstants.textColor,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      const Icon(Icons.location_on, size: 16, color: Colors.grey),
+                      Icon(Icons.location_on, size: 16, color: Colors.grey[600]),
                       const SizedBox(width: 4),
-                      Text(
-                        destination.location,
-                        style: const TextStyle(color: Colors.grey),
+                      Expanded(
+                        child: Text(
+                          destination.location,
+                          style: TextStyle(color: Colors.grey[700], fontSize: 13),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                      const Spacer(),
+                      const SizedBox(width: 8),
                       Text(
                         destination.duration,
-                        style: const TextStyle(color: Colors.grey),
+                        style: TextStyle(color: Colors.grey[700], fontSize: 13),
                       ),
                     ],
                   ),
@@ -887,7 +1563,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     destination.description,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Colors.grey[700], fontSize: 13),
                   ),
                   const SizedBox(height: 12),
                   Wrap(
@@ -904,30 +1580,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget _buildTourPackageCard(TourPackage tour) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 16),
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.08),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
       ),
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MultiCityHotelScreen(tourPackage: tour),
-            ),
-          );
-        },
-        borderRadius: BorderRadius.circular(20),
-        child: Column(
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(24),
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              PageTransitions.fadeSlide(MultiCityHotelScreen(tourPackage: tour)),
+            );
+          },
+          borderRadius: BorderRadius.circular(24),
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
@@ -937,24 +1622,34 @@ class _HomeScreenState extends State<HomeScreen> {
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
                   ),
-                  child: CachedNetworkImage(
-                    imageUrl: tour.imageUrl,
-                    height: 180,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Container(
-                      height: 180,
-                      color: Colors.grey[300],
-                      child: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    ),
-                    errorWidget: (context, url, error) => Container(
-                      height: 180,
-                      color: Colors.grey[300],
-                      child: const Icon(Icons.tour, size: 50, color: Colors.grey),
-                    ),
-                  ),
+                  child: tour.imageUrl.startsWith('assets/')
+                      ? Image.asset(
+                          tour.imageUrl,
+                          height: 180,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) => Container(
+                            height: 180,
+                            color: Colors.grey[300],
+                            child: const Icon(Icons.tour, size: 50, color: Colors.grey),
+                          ),
+                        )
+                      : CachedNetworkImage(
+                          imageUrl: tour.imageUrl,
+                          height: 180,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) => Container(
+                            height: 180,
+                            color: Colors.grey[300],
+                            child: const Center(child: CircularProgressIndicator()),
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            height: 180,
+                            color: Colors.grey[300],
+                            child: const Icon(Icons.tour, size: 50, color: Colors.grey),
+                          ),
+                        ),
                 ),
                 Positioned(
                   top: 12,
@@ -991,24 +1686,35 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        tour.name,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                      Expanded(
+                        child: Text(
+                          tour.name,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: AppConstants.textColor,
+                          ),
                         ),
                       ),
+                      const SizedBox(width: 8),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                         decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(8),
+                          gradient: AppConstants.accentGradient,
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppConstants.accentColor.withValues(alpha: 0.4),
+                              blurRadius: 8,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
                         ),
                         child: Text(
                           'Rs. ${tour.price.toStringAsFixed(0)}',
                           style: const TextStyle(
                             color: Colors.white,
-                            fontSize: 14,
+                            fontSize: 13,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -1018,14 +1724,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(height: 8),
                   Text(
                     tour.duration,
-                    style: const TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Colors.grey[700], fontSize: 13),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     tour.description,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(color: Colors.grey),
+                    style: TextStyle(color: Colors.grey[700], fontSize: 13),
                   ),
                   const SizedBox(height: 12),
                   SingleChildScrollView(
@@ -1054,6 +1760,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ],
+          ),
         ),
       ),
     );
@@ -1063,33 +1770,106 @@ class _HomeScreenState extends State<HomeScreen> {
     return const BookingHistoryScreen();
   }
 
-  BottomNavigationBar _buildBottomNavBar() {
-    return BottomNavigationBar(
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: const Color(0xFF1E88E5),
-      unselectedItemColor: Colors.grey,
-      selectedLabelStyle: const TextStyle(fontSize: 12),
-      unselectedLabelStyle: const TextStyle(fontSize: 12),
-      backgroundColor: Colors.white,
-      elevation: 10,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.explore_outlined),
-          activeIcon: Icon(Icons.explore),
-          label: 'Explore',
+  Widget _buildBottomNavBar() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(28),
+          topRight: Radius.circular(28),
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.bookmark_border),
-          activeIcon: Icon(Icons.bookmark),
-          label: 'Bookings',
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.1),
+            blurRadius: 20,
+            offset: const Offset(0, -5),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(28),
+          topRight: Radius.circular(28),
         ),
-      ],
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildNavItem(
+                  icon: Icons.explore_rounded,
+                  label: 'Explore',
+                  index: 0,
+                ),
+                _buildNavItem(
+                  icon: Icons.bookmark_rounded,
+                  label: 'Bookings',
+                  index: 1,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNavItem({
+    required IconData icon,
+    required String label,
+    required int index,
+  }) {
+    final isSelected = _currentIndex == index;
+    return GestureDetector(
+      onTap: () => setState(() => _currentIndex = index),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOutCubic,
+        padding: EdgeInsets.symmetric(
+          horizontal: isSelected ? 20 : 16,
+          vertical: 10,
+        ),
+        decoration: BoxDecoration(
+          gradient: isSelected ? AppConstants.primaryGradient : null,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: AppConstants.primaryColor.withValues(alpha: 0.35),
+                    blurRadius: 12,
+                    offset: const Offset(0, 4),
+                  ),
+                ]
+              : null,
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: isSelected ? Colors.white : Colors.grey[500],
+              size: 24,
+            ),
+            AnimatedSize(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              child: isSelected
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Text(
+                        label,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

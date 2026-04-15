@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../services/local_booking_store.dart';
+import 'home_screen.dart';
 
 class PaymentScreen extends StatefulWidget {
   final String bookingType;
@@ -61,6 +63,34 @@ class _PaymentScreenState extends State<PaymentScreen> {
         return (widget.bookingData['totalAmount'] ?? 0).toDouble();
       default:
         return 0.0;
+    }
+  }
+
+  String _getBookingSubtitle() {
+    switch (widget.bookingType) {
+      case 'tour':
+        return widget.tourData?['destination'] ?? 'Multi-city Tour';
+      case 'car':
+        final from = widget.bookingData['pickupCity'] ?? '';
+        final to = widget.bookingData['dropoffCity'] ?? '';
+        return from.isNotEmpty && to.isNotEmpty ? '$from → $to' : 'Car Rental';
+      case 'hotel':
+        return widget.bookingData['location'] ?? 'Hotel Stay';
+      default:
+        return 'Confirmed booking';
+    }
+  }
+
+  String? _getBookingImage() {
+    switch (widget.bookingType) {
+      case 'tour':
+        return widget.tourData?['imageUrl'] ?? widget.bookingData['hotel']?['imageUrl'];
+      case 'car':
+        return widget.bookingData['carImageUrl'];
+      case 'hotel':
+        return widget.bookingData['hotelImageUrl'] ?? widget.bookingData['imageUrl'];
+      default:
+        return null;
     }
   }
 
@@ -508,6 +538,20 @@ class _PaymentScreenState extends State<PaymentScreen> {
       // Simulate payment processing
       await Future.delayed(Duration(seconds: 2));
 
+      // Save booking to local store so it appears in Bookings tab
+      LocalBookingStore.instance.add(LocalBooking(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        type: widget.bookingType.toLowerCase(),
+        title: _getBookingTitle(),
+        subtitle: _getBookingSubtitle(),
+        imageUrl: _getBookingImage(),
+        amount: _getTotalAmount().toDouble(),
+        paymentMethod: _selectedPaymentMethod ?? 'Cash',
+        bookingDate: DateTime.now(),
+      ));
+
+      if (!mounted) return;
+
       // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -646,20 +690,27 @@ class BookingSuccessScreen extends StatelessWidget {
                 Expanded(
                   child: OutlinedButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (_) => const HomeScreen()),
+                        (route) => false,
+                      );
                     },
-                    child: Text('View Booking'),
+                    child: Text('Back to Home'),
                   ),
                 ),
                 SizedBox(width: 10),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (_) => const HomeScreen(initialTab: 1)),
+                        (route) => false,
+                      );
                     },
-                    child: Text('Back to Home'),
+                    child: Text('View Bookings'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
                     ),
                   ),
                 ),

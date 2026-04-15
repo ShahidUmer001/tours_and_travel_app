@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/car_model.dart';
-import '../models/car_booking_model.dart';
 import 'payment_screen.dart';
 
 class CityToCityCarBookingScreen extends StatefulWidget {
@@ -33,7 +32,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       id: '1',
       name: 'Toyota Corolla',
       type: 'Sedan',
-      imageUrl: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&w=1000&q=80',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Toyota_Corolla_Limousine_Monrepos_2019_IMG_1908.jpg/400px-Toyota_Corolla_Limousine_Monrepos_2019_IMG_1908.jpg',
       pricePerKm: 25,
       capacity: 4,
       features: ['AC', 'Music System', 'Comfortable Seats', 'Fuel Efficient'],
@@ -46,7 +45,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       id: '2',
       name: 'Honda Civic',
       type: 'Sedan',
-      imageUrl: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&w=1000&q=80',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/2022_Honda_Civic_Touring_in_Lunar_Silver_Metallic%2C_Front_Left%2C_05-10-2022.jpg/400px-2022_Honda_Civic_Touring_in_Lunar_Silver_Metallic%2C_Front_Left%2C_05-10-2022.jpg',
       pricePerKm: 28,
       capacity: 4,
       features: ['AC', 'Premium Sound', 'Leather Seats', 'Sunroof'],
@@ -59,7 +58,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       id: '3',
       name: 'Toyota Hiace',
       type: 'Van',
-      imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25856cd64?ixlib=rb-4.0.3&w=1000&q=80',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/2020_Toyota_HiAce_%28front%29.jpg/400px-2020_Toyota_HiAce_%28front%29.jpg',
       pricePerKm: 35,
       capacity: 12,
       features: ['AC', 'Spacious', 'Luggage Space', 'Comfortable'],
@@ -72,7 +71,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       id: '4',
       name: 'Suzuki Mehran',
       type: 'Hatchback',
-      imageUrl: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&w=1000&q=80',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Mehran_Model_2001_Right_Side_View_At_Lowari_Pass%2CChitral%2CKPK.jpg/400px-Mehran_Model_2001_Right_Side_View_At_Lowari_Pass%2CChitral%2CKPK.jpg',
       pricePerKm: 15,
       capacity: 4,
       features: ['Economical', 'Easy Parking', 'Fuel Efficient', 'Low Maintenance'],
@@ -85,7 +84,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       id: '5',
       name: 'Toyota Fortuner',
       type: 'SUV',
-      imageUrl: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&w=1000&q=80',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/2015_Toyota_Fortuner_%28New_Zealand%29.jpg/400px-2015_Toyota_Fortuner_%28New_Zealand%29.jpg',
       pricePerKm: 40,
       capacity: 7,
       features: ['AC', '4x4', 'Luxury', 'Off-road', 'Spacious'],
@@ -494,7 +493,4 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
     );
   }
 
-  String _getFormattedDate(DateTime date) {
-    return '${date.day}/${date.month}/${date.year}';
-  }
 }

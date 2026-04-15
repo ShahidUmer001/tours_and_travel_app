@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../models/destination_model.dart';
+import '../utils/animations.dart';
+import '../utils/constants.dart';
 import 'hotel_selection_screen.dart';
 
 class DestinationScreen extends StatefulWidget {
@@ -12,7 +14,34 @@ class DestinationScreen extends StatefulWidget {
   State<DestinationScreen> createState() => _DestinationScreenState();
 }
 
-class _DestinationScreenState extends State<DestinationScreen> {
+class _DestinationScreenState extends State<DestinationScreen>
+    with TickerProviderStateMixin {
+  late AnimationController _contentController;
+  final ScrollController _scrollController = ScrollController();
+  double _scrollOffset = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _contentController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+    _scrollController.addListener(() {
+      setState(() => _scrollOffset = _scrollController.offset);
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _contentController.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    _contentController.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +53,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
           icon: Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.5),
+              color: Colors.black.withValues(alpha: 0.5),
               shape: BoxShape.circle,
             ),
             child: const Icon(Icons.arrow_back, color: Colors.white),
@@ -33,6 +62,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
         ),
       ),
       body: SingleChildScrollView(
+        controller: _scrollController,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,7 +75,10 @@ class _DestinationScreenState extends State<DestinationScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  StaggeredListItem(
+                    index: 0,
+                    animation: _contentController,
+                    child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
@@ -100,46 +133,55 @@ class _DestinationScreenState extends State<DestinationScreen> {
                       ),
                     ],
                   ),
+                  ),
 
                   const SizedBox(height: 20),
 
                   // Quick Info Cards
-                  Row(
-                    children: [
-                      Expanded(
-                        child: _buildInfoCard(
-                          Icons.access_time,
-                          'Duration',
-                          widget.destination.duration,
+                  StaggeredListItem(
+                    index: 1,
+                    animation: _contentController,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: _buildInfoCard(
+                            Icons.access_time,
+                            'Duration',
+                            widget.destination.duration,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: _buildInfoCard(
-                          Icons.calendar_today,
-                          'Best Season',
-                          widget.destination.bestSeason,
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _buildInfoCard(
+                            Icons.calendar_today,
+                            'Best Season',
+                            widget.destination.bestSeason,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: _buildInfoCard(
-                          Icons.attach_money,
-                          'Price',
-                          'Rs. ${widget.destination.price.toStringAsFixed(0)}',
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _buildInfoCard(
+                            Icons.attach_money,
+                            'Price',
+                            'Rs. ${widget.destination.price.toStringAsFixed(0)}',
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
 
                   const SizedBox(height: 25),
 
                   // Description
-                  const Text(
-                    'About Destination',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  StaggeredListItem(
+                    index: 2,
+                    animation: _contentController,
+                    child: const Text(
+                      'About Destination',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -201,41 +243,53 @@ class _DestinationScreenState extends State<DestinationScreen> {
                   const SizedBox(height: 40),
 
                   // Book Now Button
-                  SizedBox(
-                    width: double.infinity,
-                    height: 56,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HotelSelectionScreen(
-                              destination: widget.destination,
+                  StaggeredListItem(
+                    index: 6,
+                    animation: _contentController,
+                    child: PulseAnimation(
+                      child: Container(
+                        width: double.infinity,
+                        height: 58,
+                        decoration: BoxDecoration(
+                          gradient: AppConstants.primaryGradient,
+                          borderRadius: BorderRadius.circular(18),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppConstants.primaryColor.withValues(alpha: 0.4),
+                              blurRadius: 16,
+                              offset: const Offset(0, 8),
                             ),
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
+                          ],
                         ),
-                        elevation: 5,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(Icons.book_online),
-                          const SizedBox(width: 10),
-                          Text(
-                            'Book Now - Rs. ${widget.destination.price.toStringAsFixed(0)}',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(18),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                PageTransitions.fadeSlide(
+                                  HotelSelectionScreen(destination: widget.destination),
+                                ),
+                              );
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(Icons.book_online, color: Colors.white),
+                                const SizedBox(width: 10),
+                                Text(
+                                  'Book Now - Rs. ${widget.destination.price.toStringAsFixed(0)}',
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
@@ -251,34 +305,56 @@ class _DestinationScreenState extends State<DestinationScreen> {
   }
 
   Widget _buildHeroImage() {
+    final parallaxOffset = (_scrollOffset * 0.4).clamp(0.0, 200.0);
     return Stack(
       children: [
-        Container(
-          height: 300,
-          width: double.infinity,
-          child: CachedNetworkImage(
-            imageUrl: widget.destination.imageUrl,
-            fit: BoxFit.cover,
-            placeholder: (context, url) => Container(
-              color: Colors.grey[300],
-              child: const Center(child: CircularProgressIndicator()),
-            ),
-            errorWidget: (context, url, error) => Container(
-              color: Colors.grey[300],
-              child: const Icon(Icons.landscape, size: 100, color: Colors.grey),
+        Transform.translate(
+          offset: Offset(0, -parallaxOffset),
+          child: Hero(
+            tag: 'destination_${widget.destination.id}',
+            child: SizedBox(
+              height: 340,
+              width: double.infinity,
+              child: widget.destination.imageUrl.startsWith('assets/')
+                  ? Image.asset(
+                      widget.destination.imageUrl,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        color: Colors.grey[300],
+                        child: const Icon(Icons.landscape, size: 100, color: Colors.grey),
+                      ),
+                    )
+                  : CachedNetworkImage(
+                      imageUrl: widget.destination.imageUrl,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => Container(
+                        color: Colors.grey[300],
+                        child: const Center(child: CircularProgressIndicator()),
+                      ),
+                      errorWidget: (context, url, error) => Container(
+                        color: Colors.grey[300],
+                        child: const Icon(Icons.landscape, size: 100, color: Colors.grey),
+                      ),
+                    ),
             ),
           ),
         ),
-        Container(
-          height: 300,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              colors: [
-                Colors.black.withOpacity(0.7),
-                Colors.transparent,
-              ],
+        Positioned.fill(
+          child: IgnorePointer(
+            child: Container(
+              height: 340,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    Colors.black.withValues(alpha: 0.75),
+                    Colors.transparent,
+                    Colors.black.withValues(alpha: 0.3),
+                  ],
+                  stops: const [0.0, 0.5, 1.0],
+                ),
+              ),
             ),
           ),
         ),
@@ -320,37 +396,37 @@ class _DestinationScreenState extends State<DestinationScreen> {
   }
 
   Widget _buildPhotoGallery() {
-    // Sample photos for each destination
+    // Real photos of each destination's areas from Wikimedia Commons
     Map<String, List<String>> destinationPhotos = {
       'Hunza Valley': [
-        'https://images.unsplash.com/photo-1599240636297-1eed2ae72cc3?w=400',
-        'https://images.unsplash.com/photo-1599982890795-64e3b4c33d07?w=400',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?w=400',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Baltit_fort_from_ultar_sar_trek.jpg/400px-Baltit_fort_from_ultar_sar_trek.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Attabad_Lake_2020.jpg/400px-Attabad_Lake_2020.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Altit_Fort%2C_Hunza.jpg/400px-Altit_Fort%2C_Hunza.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Borith_Lake_in_Hunza.jpg/400px-Borith_Lake_in_Hunza.jpg',
       ],
       'Skardu & Shangrila': [
-        'https://images.unsplash.com/photo-1587477704623-53a0c4456e7d?w=400',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?w=400',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?w=400',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Shangrila_resort_skardu.jpg/400px-Shangrila_resort_skardu.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Storm%2C_Satpara_Lake.jpg/400px-Storm%2C_Satpara_Lake.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Shangrila%2C_Lower_Kachura_Lake.jpg/400px-Shangrila%2C_Lower_Kachura_Lake.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Barra_Pani%2C_Deosai_National_Park%2C_Pakistan.jpg/400px-Barra_Pani%2C_Deosai_National_Park%2C_Pakistan.jpg',
       ],
       'Swat Valley': [
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?w=400',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?w=400',
-        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Mahodand_l.jpg/400px-Mahodand_l.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/River_Swat_Pakistan_3.jpg/400px-River_Swat_Pakistan_3.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Mountains_in_Swat_Vally_Pakistan.jpg/400px-Mountains_in_Swat_Vally_Pakistan.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Clouds_floating_upwards.jpg/400px-Clouds_floating_upwards.jpg',
       ],
       'Naran & Kaghan': [
-        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?w=400',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?w=400',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Lake_SaifulMalook.jpeg/400px-Lake_SaifulMalook.jpeg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Saif-ul-Muluk_Complete_Panorama_in_Spring.jpg/400px-Saif-ul-Muluk_Complete_Panorama_in_Spring.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Saif_ul_Malook_Lake_road.JPG/400px-Saif_ul_Malook_Lake_road.JPG',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Hunza_Valley_HDR.jpg/400px-Hunza_Valley_HDR.jpg',
       ],
       'Fairy Meadows': [
-        'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400',
-        'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-        'https://images.unsplash.com/photo-1592210459276-38a175f6e4c9?w=400',
-        'https://images.unsplash.com/photo-1559666647-1c355f4b8eb4?w=400',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Nanga_Parbat_The_Killer_Mountain.jpg/400px-Nanga_Parbat_The_Killer_Mountain.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Fairy_Meadows_240622_02.jpg/400px-Fairy_Meadows_240622_02.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/View_of_cottages_at_Fairy_Meadows_-_Photo_by_Shams_Shaukat_Films.jpg/400px-View_of_cottages_at_Fairy_Meadows_-_Photo_by_Shams_Shaukat_Films.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Fairy_Meadows%2C_Pakistan.jpg/400px-Fairy_Meadows%2C_Pakistan.jpg',
       ],
     };
 
@@ -390,17 +466,26 @@ class _DestinationScreenState extends State<DestinationScreen> {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: CachedNetworkImage(
-                    imageUrl: photos[index],
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => Container(
-                      color: Colors.grey[300],
-                    ),
-                    errorWidget: (context, url, error) => Container(
-                      color: Colors.grey[300],
-                      child: const Icon(Icons.image, color: Colors.grey),
-                    ),
-                  ),
+                  child: photos[index].startsWith('assets/')
+                      ? Image.asset(
+                          photos[index],
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) => Container(
+                            color: Colors.grey[300],
+                            child: const Icon(Icons.image, color: Colors.grey),
+                          ),
+                        )
+                      : CachedNetworkImage(
+                          imageUrl: photos[index],
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) => Container(
+                            color: Colors.grey[300],
+                          ),
+                          errorWidget: (context, url, error) => Container(
+                            color: Colors.grey[300],
+                            child: const Icon(Icons.image, color: Colors.grey),
+                          ),
+                        ),
                 ),
               );
             },

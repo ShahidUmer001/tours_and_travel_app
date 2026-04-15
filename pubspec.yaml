@@ -56,7 +56,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-    #- assets/images/destinations/
-    #- assets/images/hotels/
-    #- assets/images/cars/
-    #- assets/animations/
+    - assets/images/destinations/
