@@ -9,10 +9,10 @@ class TransportSelectionScreen extends StatefulWidget {
   final Hotel selectedHotel;
 
   const TransportSelectionScreen({
-    Key? key,
+    super.key,
     required this.destination,
     required this.selectedHotel,
-  }) : super(key: key);
+  });
 
   @override
   State<TransportSelectionScreen> createState() => _TransportSelectionScreenState();
@@ -39,7 +39,7 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
       'type': 'Premium Van',
       'name': 'Toyota Hiace',
       'price': 12000,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/2020_Toyota_HiAce_%28front%29.jpg/600px-2020_Toyota_HiAce_%28front%29.jpg',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/2020_Toyota_HiAce_%28front%29.jpg/500px-2020_Toyota_HiAce_%28front%29.jpg',
       'features': ['AC', '12 Seats', 'Luggage Space', 'Comfortable', 'Privacy'],
       'capacity': '12 seats',
       'duration': '10-12 hours',
@@ -51,7 +51,7 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
       'type': 'SUV 4x4',
       'name': 'Toyota Fortuner',
       'price': 18000,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/2015_Toyota_Fortuner_%28New_Zealand%29.jpg/600px-2015_Toyota_Fortuner_%28New_Zealand%29.jpg',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/2015_Toyota_Fortuner_%28New_Zealand%29.jpg/500px-2015_Toyota_Fortuner_%28New_Zealand%29.jpg',
       'features': ['AC', '7 Seats', '4x4', 'Luxury', 'Off-road Capable'],
       'capacity': '7 seats',
       'duration': '8-10 hours',
@@ -63,7 +63,7 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
       'type': 'Flight',
       'name': 'PIA Domestic',
       'price': 25000,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/PIA_Airbus_A320_at_Skardu_International_Airport.jpg/600px-PIA_Airbus_A320_at_Skardu_International_Airport.jpg',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/PIA_Airbus_A320_at_Skardu_International_Airport.jpg/500px-PIA_Airbus_A320_at_Skardu_International_Airport.jpg',
       'features': ['Quick', 'Comfortable', 'Meals', 'Entertainment', 'Priority'],
       'capacity': 'Economy Class',
       'duration': '1 hour',
@@ -75,7 +75,7 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
       'type': 'Jeep 4x4',
       'name': 'Toyota Land Cruiser',
       'price': 15000,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/2021_Toyota_Land_Cruiser_300_3.4_ZX_%28Colombia%29_front_view_04.png/600px-2021_Toyota_Land_Cruiser_300_3.4_ZX_%28Colombia%29_front_view_04.png',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/2021_Toyota_Land_Cruiser_300_3.4_ZX_%28Colombia%29_front_view_04.png/500px-2021_Toyota_Land_Cruiser_300_3.4_ZX_%28Colombia%29_front_view_04.png',
       'features': ['4x4', 'Off-road', 'Adventure', 'Mountain Ready', 'Experienced Driver'],
       'capacity': '5 seats',
       'duration': 'Varies by route',
@@ -99,7 +99,7 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
       'type': 'Private Car',
       'name': 'Honda Civic',
       'price': 10000,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/2022_Honda_Civic_Touring_in_Lunar_Silver_Metallic%2C_Front_Left%2C_05-10-2022.jpg/600px-2022_Honda_Civic_Touring_in_Lunar_Silver_Metallic%2C_Front_Left%2C_05-10-2022.jpg',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/2022_Honda_Civic_Touring_in_Lunar_Silver_Metallic%2C_Front_Left%2C_05-10-2022.jpg/500px-2022_Honda_Civic_Touring_in_Lunar_Silver_Metallic%2C_Front_Left%2C_05-10-2022.jpg',
       'features': ['AC', '5 Seats', 'Privacy', 'Comfortable', 'Fuel Efficient'],
       'capacity': '5 seats',
       'duration': '10-12 hours',
@@ -111,7 +111,7 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
       'type': 'Flight Business',
       'name': 'Airblue Business',
       'price': 35000,
-      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/PIA_Airbus_A320_at_Skardu_International_Airport.jpg/600px-PIA_Airbus_A320_at_Skardu_International_Airport.jpg',
+      'image': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/PIA_Airbus_A320_at_Skardu_International_Airport.jpg/500px-PIA_Airbus_A320_at_Skardu_International_Airport.jpg',
       'features': ['Priority Boarding', 'Luxury Seats', 'Gourmet Meals', 'Entertainment', 'Extra Luggage'],
       'capacity': 'Business Class',
       'duration': '1 hour',

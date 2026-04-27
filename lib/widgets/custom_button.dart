@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
   final double elevation;
 
   const CustomButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.backgroundColor,
@@ -36,7 +36,7 @@ class CustomButton extends StatelessWidget {
     this.isOutlined = false,
     this.isDisabled = false,
     this.elevation = 2,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

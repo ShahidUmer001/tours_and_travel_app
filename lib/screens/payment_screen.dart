@@ -8,11 +8,11 @@ class PaymentScreen extends StatefulWidget {
   final Map<String, dynamic>? tourData;
 
   const PaymentScreen({
-    Key? key,
+    super.key,
     required this.bookingType,
     required this.bookingData,
     this.tourData,
-  }) : super(key: key);
+  });
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -23,18 +23,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
   bool _isProcessing = false;
 
   // Form Controllers for different payment methods
-  TextEditingController _cardNumberController = TextEditingController();
-  TextEditingController _cardNameController = TextEditingController();
-  TextEditingController _expiryController = TextEditingController();
-  TextEditingController _cvvController = TextEditingController();
+  final TextEditingController _cardNumberController = TextEditingController();
+  final TextEditingController _cardNameController = TextEditingController();
+  final TextEditingController _expiryController = TextEditingController();
+  final TextEditingController _cvvController = TextEditingController();
 
-  TextEditingController _jazzcashNumberController = TextEditingController();
-  TextEditingController _jazzcashPinController = TextEditingController();
+  final TextEditingController _jazzcashNumberController = TextEditingController();
+  final TextEditingController _jazzcashPinController = TextEditingController();
 
-  TextEditingController _easypaisaNumberController = TextEditingController();
-  TextEditingController _easypaisaPinController = TextEditingController();
+  final TextEditingController _easypaisaNumberController = TextEditingController();
+  final TextEditingController _easypaisaPinController = TextEditingController();
 
-  TextEditingController _cashInstructionsController = TextEditingController();
+  final TextEditingController _cashInstructionsController = TextEditingController();
 
   // Get booking details based on booking type
   String _getBookingTitle() {
@@ -608,12 +608,12 @@ class BookingSuccessScreen extends StatelessWidget {
   final String bookingTitle;
 
   const BookingSuccessScreen({
-    Key? key,
+    super.key,
     required this.bookingType,
     required this.paymentMethod,
     required this.totalAmount,
     required this.bookingTitle,
-  }) : super(key: key);
+  });
 
   String _getPaymentMethodText() {
     switch (paymentMethod) {
@@ -707,11 +707,11 @@ class BookingSuccessScreen extends StatelessWidget {
                         (route) => false,
                       );
                     },
-                    child: Text('View Bookings'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                       foregroundColor: Colors.white,
                     ),
+                    child: Text('View Bookings'),
                   ),
                 ),
               ],

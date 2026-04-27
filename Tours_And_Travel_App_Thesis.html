@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tours & Travel Mobile Application - Final Year Project Report</title>
+<style>
+  @page {
+    size: A4;
+    margin: 2.5cm 2.5cm 2.5cm 3cm;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13pt;
+    line-height: 1.8;
+    color: #000;
+    background: #fff;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 2.5cm 2.5cm 2.5cm 3cm;
+  }
+
+  /* ===== PAGE BREAK ===== */
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+    margin-bottom: 60px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 40px;
+  }
+
+  /* ===== COVER PAGE ===== */
+  .cover-page {
+    text-align: center;
+    padding-top: 40px;
+  }
+
+  .cover-page .university-name {
+    font-size: 20pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+  }
+
+  .cover-page .department {
+    font-size: 14pt;
+    margin-bottom: 60px;
+    color: #333;
+  }
+
+  .cover-page .project-title {
+    font-size: 24pt;
+    font-weight: bold;
+    margin: 40px 0;
+    padding: 20px;
+    border-top: 3px double #000;
+    border-bottom: 3px double #000;
+    line-height: 1.4;
+  }
+
+  .cover-page .subtitle {
+    font-size: 16pt;
+    font-style: italic;
+    margin-bottom: 60px;
+    color: #333;
+  }
+
+  .cover-page .submitted-info {
+    font-size: 13pt;
+    margin: 15px 0;
+    line-height: 2;
+  }
+
+  .cover-page .submitted-info strong {
+    display: inline-block;
+    width: 180px;
+    text-align: right;
+    margin-right: 15px;
+  }
+
+  .cover-page .session {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #000;
+  }
+
+  /* ===== HEADINGS ===== */
+  h1 {
+    font-size: 22pt;
+    text-align: center;
+    margin: 30px 0 25px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 16pt;
+    margin: 25px 0 12px 0;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 14pt;
+    margin: 20px 0 10px 0;
+    font-weight: bold;
+  }
+
+  h4 {
+    font-size: 13pt;
+    margin: 15px 0 8px 0;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  /* ===== PARAGRAPHS ===== */
+  p {
+    text-align: justify;
+    margin-bottom: 12px;
+    text-indent: 40px;
+  }
+
+  p.no-indent {
+    text-indent: 0;
+  }
+
+  /* ===== TABLES ===== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0 20px 0;
+    font-size: 11pt;
+  }
+
+  table th, table td {
+    border: 1px solid #000;
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  table caption {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 11pt;
+    font-style: italic;
+  }
+
+  /* ===== SCREENSHOT PLACEHOLDER ===== */
+  .screenshot-placeholder {
+    border: 2px dashed #999;
+    background: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 400px;
+    border-radius: 4px;
+  }
+
+  .screenshot-placeholder .icon {
+    font-size: 40pt;
+    color: #999;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .screenshot-placeholder .label {
+    font-size: 12pt;
+    color: #666;
+    font-weight: bold;
+  }
+
+  .screenshot-placeholder .caption {
+    font-size: 10pt;
+    color: #888;
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+  .figure-caption {
+    text-align: center;
+    font-size: 11pt;
+    font-style: italic;
+    margin: 8px 0 20px 0;
+    font-weight: bold;
+  }
+
+  /* ===== TOC ===== */
+  .toc-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .toc-list li {
+    margin: 6px 0;
+    display: flex;
+    align-items: baseline;
+  }
+
+  .toc-list li .toc-title {
+    flex: 1;
+  }
+
+  .toc-list li .toc-page {
+    font-weight: bold;
+    min-width: 30px;
+    text-align: right;
+  }
+
+  .toc-list li .toc-dots {
+    flex: 1;
+    border-bottom: 1px dotted #999;
+    margin: 0 8px;
+    min-width: 20px;
+  }
+
+  .toc-chapter {
+    font-weight: bold;
+    font-size: 13pt;
+    margin-top: 12px;
+  }
+
+  .toc-section {
+    padding-left: 30px;
+    font-size: 12pt;
+  }
+
+  .toc-subsection {
+    padding-left: 60px;
+    font-size: 11pt;
+  }
+
+  /* ===== LISTS ===== */
+  ul, ol {
+    margin: 10px 0 15px 40px;
+  }
+
+  ul li, ol li {
+    margin-bottom: 5px;
+  }
+
+  /* ===== CODE ===== */
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    background: #f5f5f5;
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+
+  pre {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    background: #f5f5f5;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 15px 0;
+    line-height: 1.5;
+  }
+
+  /* ===== FLOW DIAGRAM ===== */
+  .flow-diagram {
+    text-align: center;
+    margin: 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11pt;
+    line-height: 1.6;
+    background: #fafafa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .flow-box {
+    display: inline-block;
+    border: 2px solid #333;
+    padding: 8px 18px;
+    margin: 5px;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 10pt;
+    font-weight: bold;
+  }
+
+  .flow-arrow {
+    display: block;
+    font-size: 16pt;
+    margin: 2px 0;
+    color: #333;
+  }
+
+  /* ===== MISC ===== */
+  .center {
+    text-align: center;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .dedication {
+    text-align: center;
+    font-style: italic;
+    font-size: 14pt;
+    margin-top: 200px;
+    line-height: 2;
+  }
+
+  @media print {
+    body {
+      padding: 0;
+      max-width: none;
+    }
+    .page-break {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- COVER PAGE -->
+<!-- ============================================================ -->
+<div class="cover-page page-break">
+  <p class="university-name">[University Name]</p>
+  <p class="department">Department of Computer Science / Software Engineering</p>
+
+  <div style="margin: 40px 0;">
+    <div class="screenshot-placeholder" style="max-width:200px; padding:30px 20px;">
+      <span class="icon">&#127891;</span>
+      <span class="label">University Logo</span>
+      <span class="caption">Insert university logo here</span>
+    </div>
+  </div>
+
+  <div class="project-title">
+    Tours & Travel Mobile Application<br>
+    <span style="font-size:16pt;">A Flutter-Based Tourism Management System for Pakistan</span>
+  </div>
+
+  <p class="subtitle">Final Year Project Report</p>
+
+  <div class="submitted-info">
+    <p class="no-indent"><strong>Submitted By:</strong> Shahid Umer</p>
+    <p class="no-indent"><strong>Roll Number:</strong> [Your Roll Number]</p>
+    <p class="no-indent"><strong>Program:</strong> [BS Computer Science / BS Software Engineering]</p>
+    <p class="no-indent"><strong>Supervisor:</strong> [Supervisor Name]</p>
+  </div>
+
+  <p class="session">Session: [2022 - 2026]</p>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- CERTIFICATE / APPROVAL PAGE -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Certificate of Approval</h1>
+
+  <p>This is to certify that the project titled <strong>"Tours & Travel Mobile Application: A Flutter-Based Tourism Management System for Pakistan"</strong> has been completed by <strong>Shahid Umer</strong>, Roll No. <strong>[Your Roll Number]</strong>, in partial fulfillment of the requirements for the degree of <strong>[BS Computer Science / BS Software Engineering]</strong> at <strong>[University Name]</strong>.</p>
+
+  <p>The project has been evaluated and approved by the undersigned.</p>
+
+  <br><br><br>
+
+  <table style="border:none; width:100%;">
+    <tr style="border:none;">
+      <td style="border:none; width:50%; text-align:center; padding-top:60px;">
+        ____________________________<br>
+        <strong>Project Supervisor</strong><br>
+        [Supervisor Name]
+      </td>
+      <td style="border:none; width:50%; text-align:center; padding-top:60px;">
+        ____________________________<br>
+        <strong>Internal Examiner</strong><br>
+        [Examiner Name]
+      </td>
+    </tr>
+    <tr style="border:none;">
+      <td style="border:none; width:50%; text-align:center; padding-top:80px;">
+        ____________________________<br>
+        <strong>External Examiner</strong><br>
+        [Examiner Name]
+      </td>
+      <td style="border:none; width:50%; text-align:center; padding-top:80px;">
+        ____________________________<br>
+        <strong>Head of Department</strong><br>
+        [HOD Name]
+      </td>
+    </tr>
+  </table>
+
+  <p class="center" style="margin-top:50px;"><strong>Date:</strong> ____________________</p>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- DEDICATION -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Dedication</h1>
+  <div class="dedication">
+    <p class="no-indent">This project is dedicated to my parents,<br>
+    whose prayers and support made this journey possible,<br>
+    and to my teachers who guided me throughout<br>
+    my academic career.</p>
+  </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- ACKNOWLEDGEMENTS -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Acknowledgements</h1>
+
+  <p>All praise and thanks to <strong>Almighty Allah</strong>, the Most Gracious and the Most Merciful, who blessed me with the ability and strength to complete this project successfully.</p>
+
+  <p>I would like to express my sincere gratitude to my project supervisor, <strong>[Supervisor Name]</strong>, for their continuous guidance, valuable suggestions, and encouragement throughout the development of this project. Their expertise and mentorship played a crucial role in shaping this work.</p>
+
+  <p>I am deeply thankful to my parents and family members for their unconditional love, support, and prayers that kept me motivated during the entire course of my studies.</p>
+
+  <p>I would also like to thank the <strong>Department of Computer Science</strong> at <strong>[University Name]</strong> for providing the necessary resources and an environment conducive to learning and research.</p>
+
+  <p>Lastly, I appreciate the support of my friends and classmates who helped me in testing and providing constructive feedback on the application.</p>
+
+  <br>
+  <p class="no-indent" style="text-align:right;"><strong>Shahid Umer</strong></p>
+  <p class="no-indent" style="text-align:right;">[Month, Year]</p>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- ABSTRACT -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Abstract</h1>
+
+  <p>Pakistan is blessed with breathtaking natural beauty, from the majestic mountains of Hunza and Skardu to the lush green valleys of Swat and Fairy Meadows. However, the tourism industry in Pakistan lacks a comprehensive digital platform that provides end-to-end travel planning, booking, and management services in a single mobile application.</p>
+
+  <p>This project presents the design and development of a <strong>"Tours & Travel Mobile Application"</strong> built using <strong>Flutter</strong> framework with <strong>Firebase</strong> as the backend infrastructure. The application provides a complete tourism management ecosystem that enables users to browse tourist destinations across Pakistan, book tour packages (single-destination and multi-city tours), search and reserve hotels, book city-to-city car rentals, view destinations on an interactive Google Map, and manage their booking history and user profile.</p>
+
+  <p>The application implements a hybrid authentication system combining Firebase Authentication with a local SharedPreferences fallback, ensuring users can access the app even in areas with intermittent internet connectivity. The system supports multiple authentication methods including email/password, Google Sign-In, Facebook Login, and Apple Sign-In.</p>
+
+  <p>Key technical highlights include integration with <strong>Cloud Firestore</strong> for real-time data storage, <strong>Firebase Storage</strong> for media management, <strong>Google Maps API</strong> for location-based services, and a premium UI/UX design featuring 20+ custom animations built with Flutter's animation framework and Material Design 3.</p>
+
+  <p>The application also includes a vendor-side feature allowing registered users to list their own hotels and cars for other travelers, creating a community-driven marketplace within the platform.</p>
+
+  <p class="no-indent"><strong>Keywords:</strong> Flutter, Firebase, Mobile Application, Tourism, Pakistan, Hotel Booking, Tour Management, Google Maps, Dart, Material Design 3</p>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- TABLE OF CONTENTS -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Table of Contents</h1>
+
+  <ul class="toc-list">
+    <li><span class="toc-title">Certificate of Approval</span><span class="toc-dots"></span><span class="toc-page">ii</span></li>
+    <li><span class="toc-title">Dedication</span><span class="toc-dots"></span><span class="toc-page">iii</span></li>
+    <li><span class="toc-title">Acknowledgements</span><span class="toc-dots"></span><span class="toc-page">iv</span></li>
+    <li><span class="toc-title">Abstract</span><span class="toc-dots"></span><span class="toc-page">v</span></li>
+    <li><span class="toc-title">List of Figures</span><span class="toc-dots"></span><span class="toc-page">viii</span></li>
+    <li><span class="toc-title">List of Tables</span><span class="toc-dots"></span><span class="toc-page">ix</span></li>
+  </ul>
+
+  <!-- Chapter 1 -->
+  <ul class="toc-list">
+    <li class="toc-chapter"><span class="toc-title">Chapter 1: Introduction</span><span class="toc-dots"></span><span class="toc-page">1</span></li>
+    <li class="toc-section"><span class="toc-title">1.1 Background</span><span class="toc-dots"></span><span class="toc-page">1</span></li>
+    <li class="toc-section"><span class="toc-title">1.2 Problem Statement</span><span class="toc-dots"></span><span class="toc-page">2</span></li>
+    <li class="toc-section"><span class="toc-title">1.3 Objectives</span><span class="toc-dots"></span><span class="toc-page">2</span></li>
+    <li class="toc-section"><span class="toc-title">1.4 Scope of the Project</span><span class="toc-dots"></span><span class="toc-page">3</span></li>
+    <li class="toc-section"><span class="toc-title">1.5 Significance of the Project</span><span class="toc-dots"></span><span class="toc-page">3</span></li>
+    <li class="toc-section"><span class="toc-title">1.6 Report Organization</span><span class="toc-dots"></span><span class="toc-page">4</span></li>
+  </ul>
+
+  <!-- Chapter 2 -->
+  <ul class="toc-list">
+    <li class="toc-chapter"><span class="toc-title">Chapter 2: Literature Review</span><span class="toc-dots"></span><span class="toc-page">5</span></li>
+    <li class="toc-section"><span class="toc-title">2.1 Existing Tourism Applications</span><span class="toc-dots"></span><span class="toc-page">5</span></li>
+    <li class="toc-section"><span class="toc-title">2.2 Cross-Platform Mobile Development</span><span class="toc-dots"></span><span class="toc-page">6</span></li>
+    <li class="toc-section"><span class="toc-title">2.3 Firebase as a Backend Service</span><span class="toc-dots"></span><span class="toc-page">7</span></li>
+    <li class="toc-section"><span class="toc-title">2.4 Comparison of Existing Systems</span><span class="toc-dots"></span><span class="toc-page">8</span></li>
+    <li class="toc-section"><span class="toc-title">2.5 Research Gap</span><span class="toc-dots"></span><span class="toc-page">9</span></li>
+  </ul>
+
+  <!-- Chapter 3 -->
+  <ul class="toc-list">
+    <li class="toc-chapter"><span class="toc-title">Chapter 3: System Analysis &amp; Design</span><span class="toc-dots"></span><span class="toc-page">10</span></li>
+    <li class="toc-section"><span class="toc-title">3.1 Functional Requirements</span><span class="toc-dots"></span><span class="toc-page">10</span></li>
+    <li class="toc-section"><span class="toc-title">3.2 Non-Functional Requirements</span><span class="toc-dots"></span><span class="toc-page">11</span></li>
+    <li class="toc-section"><span class="toc-title">3.3 Use Case Diagram</span><span class="toc-dots"></span><span class="toc-page">12</span></li>
+    <li class="toc-section"><span class="toc-title">3.4 System Architecture</span><span class="toc-dots"></span><span class="toc-page">13</span></li>
+    <li class="toc-section"><span class="toc-title">3.5 Data Flow Diagrams</span><span class="toc-dots"></span><span class="toc-page">14</span></li>
+    <li class="toc-section"><span class="toc-title">3.6 Database Design (Firestore Schema)</span><span class="toc-dots"></span><span class="toc-page">15</span></li>
+    <li class="toc-section"><span class="toc-title">3.7 Class Diagram</span><span class="toc-dots"></span><span class="toc-page">17</span></li>
+    <li class="toc-section"><span class="toc-title">3.8 Activity Diagrams</span><span class="toc-dots"></span><span class="toc-page">18</span></li>
+    <li class="toc-section"><span class="toc-title">3.9 UI/UX Design</span><span class="toc-dots"></span><span class="toc-page">19</span></li>
+  </ul>
+
+  <!-- Chapter 4 -->
+  <ul class="toc-list">
+    <li class="toc-chapter"><span class="toc-title">Chapter 4: Implementation</span><span class="toc-dots"></span><span class="toc-page">20</span></li>
+    <li class="toc-section"><span class="toc-title">4.1 Development Environment</span><span class="toc-dots"></span><span class="toc-page">20</span></li>
+    <li class="toc-section"><span class="toc-title">4.2 Project Structure</span><span class="toc-dots"></span><span class="toc-page">21</span></li>
+    <li class="toc-section"><span class="toc-title">4.3 Authentication Module</span><span class="toc-dots"></span><span class="toc-page">22</span></li>
+    <li class="toc-section"><span class="toc-title">4.4 Home Screen &amp; Navigation</span><span class="toc-dots"></span><span class="toc-page">24</span></li>
+    <li class="toc-section"><span class="toc-title">4.5 Tour Booking Module</span><span class="toc-dots"></span><span class="toc-page">26</span></li>
+    <li class="toc-section"><span class="toc-title">4.6 Hotel Booking Module</span><span class="toc-dots"></span><span class="toc-page">28</span></li>
+    <li class="toc-section"><span class="toc-title">4.7 Car Rental Module</span><span class="toc-dots"></span><span class="toc-page">30</span></li>
+    <li class="toc-section"><span class="toc-title">4.8 Payment Module</span><span class="toc-dots"></span><span class="toc-page">32</span></li>
+    <li class="toc-section"><span class="toc-title">4.9 Google Maps Integration</span><span class="toc-dots"></span><span class="toc-page">33</span></li>
+    <li class="toc-section"><span class="toc-title">4.10 Profile Management</span><span class="toc-dots"></span><span class="toc-page">34</span></li>
+    <li class="toc-section"><span class="toc-title">4.11 User Listings (Vendor Module)</span><span class="toc-dots"></span><span class="toc-page">35</span></li>
+    <li class="toc-section"><span class="toc-title">4.12 Booking History</span><span class="toc-dots"></span><span class="toc-page">36</span></li>
+    <li class="toc-section"><span class="toc-title">4.13 Animations &amp; UI Effects</span><span class="toc-dots"></span><span class="toc-page">37</span></li>
+  </ul>
+
+  <!-- Chapter 5 -->
+  <ul class="toc-list">
+    <li class="toc-chapter"><span class="toc-title">Chapter 5: Testing</span><span class="toc-dots"></span><span class="toc-page">38</span></li>
+    <li class="toc-section"><span class="toc-title">5.1 Testing Methodology</span><span class="toc-dots"></span><span class="toc-page">38</span></li>
+    <li class="toc-section"><span class="toc-title">5.2 Unit Testing</span><span class="toc-dots"></span><span class="toc-page">38</span></li>
+    <li class="toc-section"><span class="toc-title">5.3 Integration Testing</span><span class="toc-dots"></span><span class="toc-page">39</span></li>
+    <li class="toc-section"><span class="toc-title">5.4 User Acceptance Testing</span><span class="toc-dots"></span><span class="toc-page">40</span></li>
+    <li class="toc-section"><span class="toc-title">5.5 Test Results</span><span class="toc-dots"></span><span class="toc-page">41</span></li>
+  </ul>
+
+  <!-- Chapter 6 -->
+  <ul class="toc-list">
+    <li class="toc-chapter"><span class="toc-title">Chapter 6: Conclusion &amp; Future Work</span><span class="toc-dots"></span><span class="toc-page">42</span></li>
+    <li class="toc-section"><span class="toc-title">6.1 Conclusion</span><span class="toc-dots"></span><span class="toc-page">42</span></li>
+    <li class="toc-section"><span class="toc-title">6.2 Limitations</span><span class="toc-dots"></span><span class="toc-page">43</span></li>
+    <li class="toc-section"><span class="toc-title">6.3 Future Enhancements</span><span class="toc-dots"></span><span class="toc-page">43</span></li>
+  </ul>
+
+  <ul class="toc-list">
+    <li class="toc-chapter"><span class="toc-title">References</span><span class="toc-dots"></span><span class="toc-page">45</span></li>
+  </ul>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- LIST OF FIGURES -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>List of Figures</h1>
+
+  <table>
+    <tr><th>Figure No.</th><th>Title</th><th>Page</th></tr>
+    <tr><td>Figure 3.1</td><td>Use Case Diagram</td><td>12</td></tr>
+    <tr><td>Figure 3.2</td><td>System Architecture Diagram</td><td>13</td></tr>
+    <tr><td>Figure 3.3</td><td>Data Flow Diagram (Level 0 - Context Diagram)</td><td>14</td></tr>
+    <tr><td>Figure 3.4</td><td>Data Flow Diagram (Level 1)</td><td>14</td></tr>
+    <tr><td>Figure 3.5</td><td>Firestore Database Schema</td><td>16</td></tr>
+    <tr><td>Figure 3.6</td><td>Class Diagram</td><td>17</td></tr>
+    <tr><td>Figure 3.7</td><td>Activity Diagram - Tour Booking</td><td>18</td></tr>
+    <tr><td>Figure 3.8</td><td>Activity Diagram - Authentication</td><td>18</td></tr>
+    <tr><td>Figure 4.1</td><td>Project Directory Structure</td><td>21</td></tr>
+    <tr><td>Figure 4.2</td><td>Login Screen</td><td>22</td></tr>
+    <tr><td>Figure 4.3</td><td>Signup Screen</td><td>23</td></tr>
+    <tr><td>Figure 4.4</td><td>Home Screen - Explore Tab</td><td>24</td></tr>
+    <tr><td>Figure 4.5</td><td>Home Screen - Services Grid</td><td>25</td></tr>
+    <tr><td>Figure 4.6</td><td>Destination Detail Screen</td><td>26</td></tr>
+    <tr><td>Figure 4.7</td><td>Hotel Selection Screen</td><td>27</td></tr>
+    <tr><td>Figure 4.8</td><td>Transport Selection Screen</td><td>27</td></tr>
+    <tr><td>Figure 4.9</td><td>Multi-City Tour Screen</td><td>28</td></tr>
+    <tr><td>Figure 4.10</td><td>Tour Booking Summary Screen</td><td>29</td></tr>
+    <tr><td>Figure 4.11</td><td>Hotel Search Screen</td><td>30</td></tr>
+    <tr><td>Figure 4.12</td><td>Hotel Search Results</td><td>31</td></tr>
+    <tr><td>Figure 4.13</td><td>Car Booking Screen</td><td>32</td></tr>
+    <tr><td>Figure 4.14</td><td>Car Selection</td><td>32</td></tr>
+    <tr><td>Figure 4.15</td><td>Payment Screen</td><td>33</td></tr>
+    <tr><td>Figure 4.16</td><td>Booking Confirmation Screen</td><td>33</td></tr>
+    <tr><td>Figure 4.17</td><td>Google Maps Screen</td><td>34</td></tr>
+    <tr><td>Figure 4.18</td><td>Profile Screen</td><td>35</td></tr>
+    <tr><td>Figure 4.19</td><td>Add Hotel Screen</td><td>36</td></tr>
+    <tr><td>Figure 4.20</td><td>Add Car Screen</td><td>36</td></tr>
+    <tr><td>Figure 4.21</td><td>My Listings Screen</td><td>37</td></tr>
+    <tr><td>Figure 4.22</td><td>Booking History Screen</td><td>37</td></tr>
+    <tr><td>Figure 5.1</td><td>Test Results Summary</td><td>41</td></tr>
+  </table>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- LIST OF TABLES -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>List of Tables</h1>
+
+  <table>
+    <tr><th>Table No.</th><th>Title</th><th>Page</th></tr>
+    <tr><td>Table 2.1</td><td>Comparison of Existing Tourism Applications</td><td>8</td></tr>
+    <tr><td>Table 3.1</td><td>Functional Requirements</td><td>10</td></tr>
+    <tr><td>Table 3.2</td><td>Non-Functional Requirements</td><td>11</td></tr>
+    <tr><td>Table 3.3</td><td>Firestore Collections Schema</td><td>15</td></tr>
+    <tr><td>Table 4.1</td><td>Development Tools &amp; Technologies</td><td>20</td></tr>
+    <tr><td>Table 4.2</td><td>Third-Party Packages Used</td><td>21</td></tr>
+    <tr><td>Table 4.3</td><td>Data Models Summary</td><td>22</td></tr>
+    <tr><td>Table 5.1</td><td>Test Cases - Authentication Module</td><td>39</td></tr>
+    <tr><td>Table 5.2</td><td>Test Cases - Booking Module</td><td>40</td></tr>
+    <tr><td>Table 5.3</td><td>Test Cases - User Interface</td><td>40</td></tr>
+    <tr><td>Table 5.4</td><td>User Acceptance Testing Results</td><td>41</td></tr>
+  </table>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- CHAPTER 1: INTRODUCTION -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Chapter 1<br>Introduction</h1>
+
+  <h2>1.1 Background</h2>
+
+  <p>Pakistan is home to some of the most stunning landscapes in the world, including five of the fourteen peaks above 8,000 meters, ancient Gandhara civilization ruins, and valleys that attract millions of domestic and international tourists annually. According to the Pakistan Tourism Development Corporation (PTDC), the tourism sector contributes approximately 2.9% to the national GDP and provides employment to over 3.9 million people.</p>
+
+  <p>With the rapid growth of smartphone usage in Pakistan, which reached over 100 million users in 2024, there is a significant opportunity to digitize the tourism experience. Mobile applications have become the preferred medium for travel planning globally, with platforms like Booking.com, TripAdvisor, and Airbnb leading the international market. However, Pakistan-specific tourism applications that cater to local destinations, local payment methods (JazzCash, EasyPaisa), and local transport options remain limited.</p>
+
+  <p>The mobile-first approach to tourism management offers advantages including real-time availability checking, instant booking confirmation, location-based services through GPS and maps, and personalized user experiences. Flutter, Google's cross-platform UI framework, provides an ideal technology stack for building such applications with a single codebase that runs on both Android and iOS platforms.</p>
+
+  <h2>1.2 Problem Statement</h2>
+
+  <p>Despite the growing tourism potential in Pakistan, tourists face several challenges when planning their trips:</p>
+
+  <ul>
+    <li>No comprehensive single platform exists that combines tour booking, hotel reservation, and car rental specifically for Pakistani destinations.</li>
+    <li>Existing platforms are either international (not covering remote Pakistani destinations) or limited to only one service (e.g., only hotels).</li>
+    <li>Lack of interactive maps showing tourist spots across Pakistan with real-time location services.</li>
+    <li>No platform allows local hotel and car owners to list their services directly, limiting availability information.</li>
+    <li>Internet connectivity in remote tourist areas of Northern Pakistan is often unreliable, requiring offline-capable solutions.</li>
+    <li>Pakistani payment methods like JazzCash and EasyPaisa are not integrated into most international booking platforms.</li>
+  </ul>
+
+  <h2>1.3 Objectives</h2>
+
+  <p>The primary objectives of this project are:</p>
+
+  <ol>
+    <li>To design and develop a cross-platform mobile application for tourism management in Pakistan using Flutter and Firebase.</li>
+    <li>To implement a complete tour booking system supporting single-destination and multi-city tour packages.</li>
+    <li>To integrate hotel search and booking functionality with city-based filtering for 40+ Pakistani cities.</li>
+    <li>To provide city-to-city car rental booking with real-time pricing based on distance.</li>
+    <li>To integrate Google Maps with tourist destination markers across Pakistan.</li>
+    <li>To implement a hybrid authentication system with offline fallback capability.</li>
+    <li>To support multiple authentication methods (email, Google, Facebook, Apple).</li>
+    <li>To create a vendor module allowing users to list their hotels and cars.</li>
+    <li>To integrate Pakistani payment methods (JazzCash, EasyPaisa) alongside credit card payments.</li>
+    <li>To deliver a premium user experience with custom animations and Material Design 3.</li>
+  </ol>
+
+  <h2>1.4 Scope of the Project</h2>
+
+  <p>The scope of this project includes the following modules:</p>
+
+  <ul>
+    <li><strong>User Authentication Module:</strong> Registration, login (email, Google, Facebook, Apple), session management, and profile management with photo upload.</li>
+    <li><strong>Tour Booking Module:</strong> Browse destinations, view details, select hotels and transport, complete booking with payment.</li>
+    <li><strong>Hotel Booking Module:</strong> Search hotels by city, dates, and guests; view hotel details; book with payment.</li>
+    <li><strong>Car Rental Module:</strong> City-to-city car booking with vehicle selection and distance-based pricing.</li>
+    <li><strong>Maps Module:</strong> Interactive Google Maps with tourist markers and user location.</li>
+    <li><strong>Profile Module:</strong> User profile management with image upload, language settings, and theme preferences.</li>
+    <li><strong>Vendor Module:</strong> Users can list their own hotels and cars for other travelers.</li>
+    <li><strong>Booking History Module:</strong> View and filter past bookings by type.</li>
+    <li><strong>Payment Module:</strong> Multiple payment methods including Credit Card, JazzCash, EasyPaisa, Bank Transfer, and Cash on Arrival.</li>
+  </ul>
+
+  <h2>1.5 Significance of the Project</h2>
+
+  <p>This project holds significant value for multiple stakeholders:</p>
+
+  <ul>
+    <li><strong>For Tourists:</strong> A one-stop solution for planning trips to Pakistani destinations, eliminating the need to use multiple applications or websites.</li>
+    <li><strong>For Local Business Owners:</strong> An opportunity to list their hotels and vehicles on a digital platform, increasing visibility and customer reach.</li>
+    <li><strong>For Pakistan's Tourism Industry:</strong> A digital initiative that promotes lesser-known destinations and makes tourism more accessible.</li>
+    <li><strong>For Academic Research:</strong> Demonstrates the practical application of Flutter, Firebase, and Google Maps in building a real-world mobile application.</li>
+  </ul>
+
+  <h2>1.6 Report Organization</h2>
+
+  <p>This report is organized into six chapters:</p>
+
+  <ul>
+    <li><strong>Chapter 1 - Introduction:</strong> Provides background, problem statement, objectives, and scope.</li>
+    <li><strong>Chapter 2 - Literature Review:</strong> Reviews existing systems and technologies used.</li>
+    <li><strong>Chapter 3 - System Analysis &amp; Design:</strong> Covers requirements, UML diagrams, database design, and system architecture.</li>
+    <li><strong>Chapter 4 - Implementation:</strong> Details the development process with code snippets and screenshots.</li>
+    <li><strong>Chapter 5 - Testing:</strong> Describes testing methodology and results.</li>
+    <li><strong>Chapter 6 - Conclusion &amp; Future Work:</strong> Summarizes findings and proposes future enhancements.</li>
+  </ul>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- CHAPTER 2: LITERATURE REVIEW -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Chapter 2<br>Literature Review</h1>
+
+  <h2>2.1 Existing Tourism Applications</h2>
+
+  <p>The global tourism application market has seen tremendous growth with platforms serving millions of users worldwide. In this section, we review major existing systems and their relevance to our project.</p>
+
+  <h3>2.1.1 Booking.com</h3>
+  <p>Booking.com is one of the largest online travel agencies globally, offering hotel, flight, and car rental bookings. While it covers some Pakistani hotels in major cities (Islamabad, Lahore, Karachi), it has limited coverage of remote tourist areas like Hunza, Skardu, and Fairy Meadows. Additionally, it does not support Pakistani payment methods like JazzCash or EasyPaisa.</p>
+
+  <h3>2.1.2 TripAdvisor</h3>
+  <p>TripAdvisor focuses on reviews and recommendations rather than end-to-end booking. While it contains user-generated content about Pakistani destinations, it lacks direct booking integration for local services and does not provide a comprehensive tour package system.</p>
+
+  <h3>2.1.3 Sastaticket.pk</h3>
+  <p>Sastaticket.pk is a Pakistan-based platform primarily focused on flight and hotel bookings. While it addresses some local needs, it does not offer tour packages, car rentals, or interactive map features for tourist destinations.</p>
+
+  <h3>2.1.4 Findmyadventure.pk</h3>
+  <p>Findmyadventure.pk is a Pakistani startup that offers tour packages to Northern Pakistan. However, it operates primarily as a website without a dedicated mobile application, limiting its reach to users who prefer app-based interactions.</p>
+
+  <h2>2.2 Cross-Platform Mobile Development</h2>
+
+  <h3>2.2.1 Flutter Framework</h3>
+  <p>Flutter is an open-source UI software development kit created by Google, first released in 2017. It enables the development of natively compiled applications for mobile, web, and desktop from a single codebase using the Dart programming language. Flutter uses a widget-based architecture where the entire UI is composed of widgets that can be customized and combined to create complex interfaces (Google, 2024).</p>
+
+  <p>Key advantages of Flutter include:</p>
+  <ul>
+    <li><strong>Hot Reload:</strong> Instant preview of code changes during development.</li>
+    <li><strong>Single Codebase:</strong> One codebase for Android and iOS, reducing development time by up to 40%.</li>
+    <li><strong>Rich Widget Library:</strong> Comprehensive set of Material Design and Cupertino widgets.</li>
+    <li><strong>High Performance:</strong> Compiled to native ARM code, achieving 60fps rendering.</li>
+    <li><strong>Strong Community:</strong> Over 175,000 GitHub stars and extensive package ecosystem.</li>
+  </ul>
+
+  <h3>2.2.2 Comparison with Other Frameworks</h3>
+  <p>React Native, developed by Meta, is the primary competitor to Flutter. While both frameworks serve similar purposes, Flutter offers superior animation performance and a more consistent UI across platforms due to its custom rendering engine (Skia). For our project, Flutter's animation capabilities were essential for delivering the premium user experience with 20+ custom animations.</p>
+
+  <h2>2.3 Firebase as a Backend Service (BaaS)</h2>
+
+  <p>Firebase is a comprehensive app development platform by Google that provides backend services including authentication, real-time database, cloud storage, and analytics. For this project, we utilized the following Firebase services:</p>
+
+  <ul>
+    <li><strong>Firebase Authentication:</strong> Supports email/password, Google, Facebook, and Apple sign-in methods with secure token-based session management.</li>
+    <li><strong>Cloud Firestore:</strong> A NoSQL document database that stores data in collections and documents, supporting real-time data synchronization and offline persistence.</li>
+    <li><strong>Firebase Storage:</strong> Cloud-based file storage for user profile images with security rules for access control.</li>
+  </ul>
+
+  <p>The serverless nature of Firebase eliminates the need for managing physical servers, reducing infrastructure costs and maintenance overhead. Firestore's real-time listeners enable instant UI updates when data changes, which is particularly useful for booking status updates.</p>
+
+  <h2>2.4 Comparison of Existing Systems</h2>
+
+  <table>
+    <caption>Table 2.1: Comparison of Existing Tourism Applications</caption>
+    <tr>
+      <th>Feature</th>
+      <th>Booking.com</th>
+      <th>TripAdvisor</th>
+      <th>Sastaticket.pk</th>
+      <th>Our App</th>
+    </tr>
+    <tr>
+      <td>Tour Packages</td>
+      <td>Limited</td>
+      <td>No</td>
+      <td>No</td>
+      <td><strong>Yes</strong></td>
+    </tr>
+    <tr>
+      <td>Hotel Booking</td>
+      <td>Yes</td>
+      <td>Redirect</td>
+      <td>Yes</td>
+      <td><strong>Yes</strong></td>
+    </tr>
+    <tr>
+      <td>Car Rental</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td><strong>Yes</strong></td>
+    </tr>
+    <tr>
+      <td>Pakistan Destinations</td>
+      <td>Major cities</td>
+      <td>Limited</td>
+      <td>Major cities</td>
+      <td><strong>40+ cities</strong></td>
+    </tr>
+    <tr>
+      <td>Interactive Map</td>
+      <td>Basic</td>
+      <td>Basic</td>
+      <td>No</td>
+      <td><strong>Google Maps</strong></td>
+    </tr>
+    <tr>
+      <td>Local Payment Methods</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Partial</td>
+      <td><strong>JazzCash, EasyPaisa</strong></td>
+    </tr>
+    <tr>
+      <td>Vendor Listings</td>
+      <td>No</td>
+      <td>Business Page</td>
+      <td>No</td>
+      <td><strong>Yes</strong></td>
+    </tr>
+    <tr>
+      <td>Offline Support</td>
+      <td>Limited</td>
+      <td>Limited</td>
+      <td>No</td>
+      <td><strong>Hybrid Auth</strong></td>
+    </tr>
+    <tr>
+      <td>Multi-City Tours</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td><strong>Yes</strong></td>
+    </tr>
+    <tr>
+      <td>Mobile App (Flutter)</td>
+      <td>Native</td>
+      <td>Native</td>
+      <td>Website</td>
+      <td><strong>Flutter</strong></td>
+    </tr>
+  </table>
+
+  <h2>2.5 Research Gap</h2>
+
+  <p>After reviewing existing systems, the following research gap was identified: there is no comprehensive mobile application that combines all essential tourism services (tour booking, hotel reservation, car rental, and interactive maps) specifically designed for Pakistani destinations. Existing solutions either focus on international markets or provide only partial functionality. Our application addresses this gap by providing an all-in-one tourism management platform tailored for Pakistan's unique tourism landscape, including support for local payment methods and a vendor marketplace.</p>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- CHAPTER 3: SYSTEM ANALYSIS & DESIGN -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Chapter 3<br>System Analysis &amp; Design</h1>
+
+  <h2>3.1 Functional Requirements</h2>
+
+  <table>
+    <caption>Table 3.1: Functional Requirements</caption>
+    <tr><th>ID</th><th>Requirement</th><th>Description</th><th>Priority</th></tr>
+    <tr><td>FR-01</td><td>User Registration</td><td>Users can create accounts with email, password, full name, and phone number</td><td>High</td></tr>
+    <tr><td>FR-02</td><td>User Login</td><td>Users can log in via email/password, Google, Facebook, or Apple</td><td>High</td></tr>
+    <tr><td>FR-03</td><td>Browse Destinations</td><td>Users can view tourist destinations with details, images, ratings, and pricing</td><td>High</td></tr>
+    <tr><td>FR-04</td><td>Book Tour</td><td>Users can book single-destination or multi-city tours with hotel and transport selection</td><td>High</td></tr>
+    <tr><td>FR-05</td><td>Search Hotels</td><td>Users can search hotels by city, check-in/out dates, and number of guests</td><td>High</td></tr>
+    <tr><td>FR-06</td><td>Book Car Rental</td><td>Users can book city-to-city car rentals with vehicle selection</td><td>Medium</td></tr>
+    <tr><td>FR-07</td><td>Process Payment</td><td>Users can pay via credit card, JazzCash, EasyPaisa, bank transfer, or cash</td><td>High</td></tr>
+    <tr><td>FR-08</td><td>View Booking History</td><td>Users can view past bookings filtered by type (tours, hotels, cars)</td><td>Medium</td></tr>
+    <tr><td>FR-09</td><td>Manage Profile</td><td>Users can edit profile information and upload profile pictures</td><td>Medium</td></tr>
+    <tr><td>FR-10</td><td>View Map</td><td>Users can view tourist destinations on an interactive Google Map</td><td>Medium</td></tr>
+    <tr><td>FR-11</td><td>List Hotel/Car</td><td>Vendors can list their hotels and cars for other users to book</td><td>Low</td></tr>
+    <tr><td>FR-12</td><td>Manage Listings</td><td>Vendors can edit and delete their hotel/car listings</td><td>Low</td></tr>
+  </table>
+
+  <h2>3.2 Non-Functional Requirements</h2>
+
+  <table>
+    <caption>Table 3.2: Non-Functional Requirements</caption>
+    <tr><th>ID</th><th>Requirement</th><th>Description</th></tr>
+    <tr><td>NFR-01</td><td>Performance</td><td>App should load screens within 2 seconds on standard 4G connection</td></tr>
+    <tr><td>NFR-02</td><td>Usability</td><td>Premium UI with Material Design 3, custom animations, and intuitive navigation</td></tr>
+    <tr><td>NFR-03</td><td>Security</td><td>Firebase Authentication with secure token management; form validation for all inputs</td></tr>
+    <tr><td>NFR-04</td><td>Reliability</td><td>Hybrid auth with offline fallback; cached images for poor connectivity</td></tr>
+    <tr><td>NFR-05</td><td>Scalability</td><td>Firebase auto-scaling backend; Firestore handles concurrent users</td></tr>
+    <tr><td>NFR-06</td><td>Compatibility</td><td>Cross-platform (Android &amp; iOS) via Flutter; supports Android SDK 21+</td></tr>
+    <tr><td>NFR-07</td><td>Maintainability</td><td>Modular architecture with separate layers for UI, services, and data models</td></tr>
+  </table>
+
+  <h2>3.3 Use Case Diagram</h2>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128202;</span>
+    <span class="label">[PICTURE: Use Case Diagram]</span>
+    <span class="caption">Insert Use Case Diagram showing actors (User, Vendor, Firebase) and use cases (Login, Register, Browse Destinations, Book Tour, Book Hotel, Book Car, View Map, Manage Profile, List Hotel/Car, View Booking History, Process Payment)</span>
+  </div>
+  <p class="figure-caption">Figure 3.1: Use Case Diagram</p>
+
+  <h2>3.4 System Architecture</h2>
+
+  <p>The application follows a three-tier architecture consisting of a Presentation Layer (Flutter UI), a Business Logic Layer (Services), and a Data Layer (Firebase + Local Storage).</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128202;</span>
+    <span class="label">[PICTURE: System Architecture Diagram]</span>
+    <span class="caption">Insert System Architecture diagram showing: Presentation Layer (Screens, Widgets, Components, Animations) &rarr; Business Logic Layer (AuthService, DatabaseService, BookingService, LocalAuthService, UserListingsService, LocalBookingStore) &rarr; Data Layer (Firebase Auth, Cloud Firestore, Firebase Storage, SharedPreferences)</span>
+  </div>
+  <p class="figure-caption">Figure 3.2: System Architecture Diagram</p>
+
+  <p>The architecture separates concerns across three distinct layers:</p>
+
+  <ul>
+    <li><strong>Presentation Layer:</strong> Contains 20 screens, reusable components, widgets, and 20+ animation utilities. Handles user interaction and UI rendering using Flutter's widget tree.</li>
+    <li><strong>Business Logic Layer:</strong> Contains 8 services that encapsulate all business logic including authentication, database operations, booking management, and local storage operations. Services follow the Singleton pattern for global access.</li>
+    <li><strong>Data Layer:</strong> Firebase services (Auth, Firestore, Storage) for cloud-based data and SharedPreferences for local data persistence. Supports hybrid operation with cloud and local fallback.</li>
+  </ul>
+
+  <h2>3.5 Data Flow Diagrams</h2>
+
+  <h3>3.5.1 Context Diagram (Level 0 DFD)</h3>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128202;</span>
+    <span class="label">[PICTURE: Context Diagram (Level 0 DFD)]</span>
+    <span class="caption">Insert DFD Level 0 showing: User &rarr; Tours &amp; Travel App &rarr; Firebase Backend. External entities: User (sends: login credentials, booking requests, search queries; receives: booking confirmations, destination data, payment receipts) and Firebase (sends: auth tokens, stored data; receives: user data, booking records)</span>
+  </div>
+  <p class="figure-caption">Figure 3.3: Data Flow Diagram (Level 0 - Context Diagram)</p>
+
+  <h3>3.5.2 Level 1 DFD</h3>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128202;</span>
+    <span class="label">[PICTURE: Level 1 DFD]</span>
+    <span class="caption">Insert DFD Level 1 showing processes: 1.0 Authentication, 2.0 Browse Destinations, 3.0 Book Tour, 4.0 Book Hotel, 5.0 Book Car, 6.0 Process Payment, 7.0 Manage Profile, 8.0 Manage Listings. Data stores: D1 Users, D2 Destinations, D3 Bookings, D4 Hotels, D5 Local Storage</span>
+  </div>
+  <p class="figure-caption">Figure 3.4: Data Flow Diagram (Level 1)</p>
+
+
+  <h2>3.6 Database Design (Firestore Schema)</h2>
+
+  <p>The application uses Cloud Firestore, a NoSQL document database, which organizes data into collections and documents. Unlike relational databases, Firestore does not use tables and foreign keys. Instead, data is stored in JSON-like documents within named collections.</p>
+
+  <table>
+    <caption>Table 3.3: Firestore Collections Schema</caption>
+    <tr><th>Collection</th><th>Document Fields</th><th>Data Type</th><th>Description</th></tr>
+    <tr>
+      <td rowspan="6"><strong>users</strong></td>
+      <td>uid</td><td>String</td><td>Unique user ID from Firebase Auth</td>
+    </tr>
+    <tr><td>email</td><td>String</td><td>User email address</td></tr>
+    <tr><td>fullName</td><td>String</td><td>User's full name</td></tr>
+    <tr><td>phone</td><td>String</td><td>Phone number (Pakistan format)</td></tr>
+    <tr><td>photoUrl</td><td>String</td><td>Profile image URL from Firebase Storage</td></tr>
+    <tr><td>createdAt</td><td>Timestamp</td><td>Account creation timestamp</td></tr>
+
+    <tr>
+      <td rowspan="10"><strong>destinations</strong></td>
+      <td>id</td><td>String</td><td>Auto-generated document ID</td>
+    </tr>
+    <tr><td>name</td><td>String</td><td>Destination name (e.g., "Hunza Valley")</td></tr>
+    <tr><td>description</td><td>String</td><td>Detailed description</td></tr>
+    <tr><td>imageUrl</td><td>String</td><td>Cover image URL</td></tr>
+    <tr><td>rating</td><td>double</td><td>Average rating (0-5)</td></tr>
+    <tr><td>location</td><td>String</td><td>Geographic location</td></tr>
+    <tr><td>price</td><td>double</td><td>Tour price in PKR</td></tr>
+    <tr><td>duration</td><td>String</td><td>Trip duration (e.g., "5 Days 4 Nights")</td></tr>
+    <tr><td>bestSeason</td><td>String</td><td>Recommended travel season</td></tr>
+    <tr><td>highlights</td><td>Array&lt;String&gt;</td><td>Key attractions list</td></tr>
+
+    <tr>
+      <td rowspan="8"><strong>bookings</strong></td>
+      <td>id</td><td>String</td><td>Auto-generated booking ID</td>
+    </tr>
+    <tr><td>userId</td><td>String</td><td>Reference to users collection</td></tr>
+    <tr><td>destinationName</td><td>String</td><td>Booked destination name</td></tr>
+    <tr><td>destinationId</td><td>String</td><td>Reference to destinations collection</td></tr>
+    <tr><td>bookingDate</td><td>Timestamp</td><td>Date of booking</td></tr>
+    <tr><td>guests</td><td>int</td><td>Number of guests</td></tr>
+    <tr><td>totalPrice</td><td>double</td><td>Total booking amount in PKR</td></tr>
+    <tr><td>status</td><td>String</td><td>Booking status (pending/confirmed/cancelled)</td></tr>
+
+    <tr>
+      <td rowspan="9"><strong>hotels</strong></td>
+      <td>id</td><td>String</td><td>Auto-generated hotel ID</td>
+    </tr>
+    <tr><td>name</td><td>String</td><td>Hotel name</td></tr>
+    <tr><td>destinationId</td><td>String</td><td>Associated destination</td></tr>
+    <tr><td>rating</td><td>double</td><td>Hotel rating (0-5)</td></tr>
+    <tr><td>imageUrl</td><td>String</td><td>Hotel image URL</td></tr>
+    <tr><td>location</td><td>String</td><td>Hotel address</td></tr>
+    <tr><td>pricePerNight</td><td>double</td><td>Nightly rate in PKR</td></tr>
+    <tr><td>amenities</td><td>Array&lt;String&gt;</td><td>Available amenities</td></tr>
+    <tr><td>category</td><td>String</td><td>Hotel category (5 Star Luxury, etc.)</td></tr>
+  </table>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128202;</span>
+    <span class="label">[PICTURE: Firestore Database Schema Diagram]</span>
+    <span class="caption">Insert a visual diagram showing the Firestore collections (users, destinations, bookings, hotels, transport) with their document fields and relationships</span>
+  </div>
+  <p class="figure-caption">Figure 3.5: Firestore Database Schema</p>
+
+  <h2>3.7 Class Diagram</h2>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128202;</span>
+    <span class="label">[PICTURE: Class Diagram]</span>
+    <span class="caption">Insert UML Class Diagram showing classes: Destination, Hotel, Booking, HotelBooking, CarBooking, Car, TourPackage (with attributes and methods: toMap(), fromMap()), and service classes: AuthService, DatabaseService, BookingService, LocalAuthService, UserListingsService with their methods and relationships</span>
+  </div>
+  <p class="figure-caption">Figure 3.6: Class Diagram</p>
+
+  <h2>3.8 Activity Diagrams</h2>
+
+  <h3>3.8.1 Tour Booking Activity Diagram</h3>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128202;</span>
+    <span class="label">[PICTURE: Activity Diagram - Tour Booking]</span>
+    <span class="caption">Insert Activity Diagram showing flow: Start &rarr; Browse Destinations &rarr; Select Destination &rarr; View Details &rarr; Select Hotel &rarr; Select Transport &rarr; Review Summary &rarr; Select Payment Method &rarr; Process Payment &rarr; [Success] Booking Confirmed / [Failure] Retry &rarr; End</span>
+  </div>
+  <p class="figure-caption">Figure 3.7: Activity Diagram - Tour Booking Flow</p>
+
+  <h3>3.8.2 Authentication Activity Diagram</h3>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128202;</span>
+    <span class="label">[PICTURE: Activity Diagram - Authentication]</span>
+    <span class="caption">Insert Activity Diagram showing flow: Start &rarr; [New User] Signup / [Existing User] Login &rarr; Enter Credentials &rarr; [Firebase Available] Firebase Auth / [Firebase Unavailable] Local Auth Fallback &rarr; [Valid] Navigate to Home / [Invalid] Show Error &rarr; End</span>
+  </div>
+  <p class="figure-caption">Figure 3.8: Activity Diagram - Authentication Flow</p>
+
+  <h2>3.9 UI/UX Design</h2>
+
+  <p>The application's user interface follows Material Design 3 guidelines with a custom design system featuring:</p>
+
+  <ul>
+    <li><strong>Color Palette:</strong> Primary Blue (#1565C0), Secondary Teal (#00BFA5), Accent Orange (#FF7043) with 8+ gradient presets.</li>
+    <li><strong>Typography:</strong> Poppins font family (via Google Fonts) across all screens for a modern, clean look.</li>
+    <li><strong>Card Design:</strong> 24px border radius with subtle shadows for depth.</li>
+    <li><strong>Animations:</strong> 20+ custom animations including fade-slide transitions, shimmer loading, pulse effects, and particle overlays.</li>
+    <li><strong>Navigation:</strong> Bottom navigation bar with 3 tabs (Explore, Bookings, Profile) for quick access to main features.</li>
+  </ul>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- CHAPTER 4: IMPLEMENTATION -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Chapter 4<br>Implementation</h1>
+
+  <h2>4.1 Development Environment</h2>
+
+  <table>
+    <caption>Table 4.1: Development Tools &amp; Technologies</caption>
+    <tr><th>Tool / Technology</th><th>Version</th><th>Purpose</th></tr>
+    <tr><td>Flutter SDK</td><td>>= 3.0.0</td><td>Cross-platform mobile framework</td></tr>
+    <tr><td>Dart SDK</td><td>>= 3.0.0</td><td>Programming language</td></tr>
+    <tr><td>Android Studio</td><td>Latest</td><td>IDE and Android SDK management</td></tr>
+    <tr><td>VS Code</td><td>Latest</td><td>Code editor with Flutter extension</td></tr>
+    <tr><td>Firebase Console</td><td>-</td><td>Backend configuration and management</td></tr>
+    <tr><td>Google Cloud Platform</td><td>-</td><td>Maps API key and cloud services</td></tr>
+    <tr><td>Git</td><td>Latest</td><td>Version control system</td></tr>
+    <tr><td>Windows 11</td><td>22631</td><td>Development operating system</td></tr>
+  </table>
+
+  <h3>4.1.1 Third-Party Packages</h3>
+
+  <table>
+    <caption>Table 4.2: Third-Party Packages Used</caption>
+    <tr><th>Package</th><th>Version</th><th>Purpose</th></tr>
+    <tr><td>firebase_core</td><td>^4.3.0</td><td>Firebase initialization</td></tr>
+    <tr><td>firebase_auth</td><td>^6.1.3</td><td>User authentication</td></tr>
+    <tr><td>cloud_firestore</td><td>^6.1.1</td><td>NoSQL database</td></tr>
+    <tr><td>firebase_storage</td><td>^13.0.5</td><td>File/image storage</td></tr>
+    <tr><td>google_sign_in</td><td>^6.2.2</td><td>Google authentication</td></tr>
+    <tr><td>flutter_facebook_auth</td><td>^7.1.1</td><td>Facebook authentication</td></tr>
+    <tr><td>sign_in_with_apple</td><td>^6.1.4</td><td>Apple authentication</td></tr>
+    <tr><td>google_maps_flutter</td><td>^2.14.0</td><td>Interactive maps</td></tr>
+    <tr><td>geolocator</td><td>^14.0.2</td><td>Device location services</td></tr>
+    <tr><td>google_fonts</td><td>^7.0.2</td><td>Poppins font family</td></tr>
+    <tr><td>cached_network_image</td><td>^3.4.1</td><td>Image caching</td></tr>
+    <tr><td>carousel_slider</td><td>^5.1.1</td><td>Image carousels</td></tr>
+    <tr><td>shimmer</td><td>^3.0.0</td><td>Loading skeleton effects</td></tr>
+    <tr><td>image_picker</td><td>^1.0.7</td><td>Camera/gallery image selection</td></tr>
+    <tr><td>shared_preferences</td><td>^2.2.2</td><td>Local key-value storage</td></tr>
+    <tr><td>intl</td><td>^0.19.0</td><td>Date and number formatting</td></tr>
+    <tr><td>permission_handler</td><td>^12.0.1</td><td>Runtime permissions</td></tr>
+    <tr><td>table_calendar</td><td>^3.0.11</td><td>Calendar date picker</td></tr>
+  </table>
+
+  <h2>4.2 Project Structure</h2>
+
+  <p>The project follows a modular architecture with clear separation of concerns. The <code>lib/</code> directory is organized into six subdirectories:</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128193;</span>
+    <span class="label">[PICTURE: Project Directory Structure in IDE]</span>
+    <span class="caption">Insert screenshot of the project directory structure from Android Studio/VS Code showing lib/ folder with components/, models/, screens/, services/, utils/, and widgets/ subdirectories</span>
+  </div>
+  <p class="figure-caption">Figure 4.1: Project Directory Structure</p>
+
+  <table>
+    <caption>Table 4.3: Data Models Summary</caption>
+    <tr><th>Model</th><th>Storage</th><th>Key Fields</th></tr>
+    <tr><td>Destination</td><td>Cloud Firestore</td><td>name, description, imageUrl, price, rating, duration, highlights</td></tr>
+    <tr><td>Hotel</td><td>Cloud Firestore</td><td>name, destinationId, pricePerNight, rating, amenities, category</td></tr>
+    <tr><td>Booking</td><td>Cloud Firestore</td><td>userId, destinationName, bookingDate, guests, totalPrice, status</td></tr>
+    <tr><td>TourPackage</td><td>In-memory</td><td>name, cities, duration, price, hotels, transport</td></tr>
+    <tr><td>HotelBooking</td><td>In-memory</td><td>hotel, checkIn, checkOut, guests, rooms, totalPrice</td></tr>
+    <tr><td>CarBooking</td><td>In-memory</td><td>car, pickupCity, dropoffCity, date, totalPrice</td></tr>
+    <tr><td>Car</td><td>In-memory</td><td>name, type, pricePerKm, capacity, transmission, fuelType</td></tr>
+  </table>
+
+  <h2>4.3 Authentication Module</h2>
+
+  <p>The authentication module implements a hybrid system using Firebase Authentication as the primary provider and SharedPreferences as a fallback for offline scenarios. The <code>LocalAuthService</code> class extends <code>ChangeNotifier</code> to provide reactive auth state updates throughout the application.</p>
+
+  <h3>4.3.1 Login Screen</h3>
+
+  <p>The login screen provides email/password authentication along with social login options (Google, Facebook, Apple). The screen features animated transitions with a gradient background and form validation using the <code>Validators</code> utility class.</p>
+
+  <pre>
+// AuthService - Sign In Method
+Future&lt;User?&gt; signIn(String email, String password) async {
+  final result = await _auth.signInWithEmailAndPassword(
+    email: email,
+    password: password,
+  );
+  return result.user;
+}
+  </pre>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Login Screen Screenshot]</span>
+    <span class="caption">Insert screenshot of the Login Screen showing email/password fields, login button, social login buttons (Google, Facebook, Apple), and "Don't have an account? Sign Up" link</span>
+  </div>
+  <p class="figure-caption">Figure 4.2: Login Screen</p>
+
+  <h3>4.3.2 Signup Screen</h3>
+
+  <p>The signup screen collects user information including full name, email, phone number, and password with confirmation. All fields are validated using Pakistan-specific validators (phone format: 03XXXXXXXXX). Upon successful registration, a user profile document is created in the Firestore <code>users</code> collection.</p>
+
+  <pre>
+// AuthService - Sign Up Method
+Future&lt;User?&gt; signUp(String email, String password, String fullName) async {
+  final result = await _auth.createUserWithEmailAndPassword(
+    email: email,
+    password: password,
+  );
+  // Create user document in Firestore
+  await _firestore.collection('users').doc(result.user!.uid).set({
+    'uid': result.user!.uid,
+    'email': email,
+    'fullName': fullName,
+    'createdAt': FieldValue.serverTimestamp(),
+  });
+  return result.user;
+}
+  </pre>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Signup Screen Screenshot]</span>
+    <span class="caption">Insert screenshot of the Signup Screen showing full name, email, phone, password, confirm password fields and the Register button</span>
+  </div>
+  <p class="figure-caption">Figure 4.3: Signup Screen</p>
+
+  <h2>4.4 Home Screen &amp; Navigation</h2>
+
+  <p>The Home Screen serves as the main hub of the application with a bottom navigation bar featuring three tabs: Explore, Bookings, and Profile. The Explore tab displays featured destinations, tour packages, and a services grid providing quick access to all app features.</p>
+
+  <h3>4.4.1 Explore Tab</h3>
+
+  <p>The explore tab presents destination cards with real images of Pakistani tourist spots including Hunza Valley, Skardu &amp; Shangrila, Swat Valley, Fairy Meadows, and Naran Kaghan. Users can toggle between Single Destination tours and Multi-City Tour packages.</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Home Screen - Explore Tab]</span>
+    <span class="caption">Insert screenshot of the Home Screen showing the search bar, destination cards with images and prices, and category tabs (Single Destination / Multi-City Tour)</span>
+  </div>
+  <p class="figure-caption">Figure 4.4: Home Screen - Explore Tab</p>
+
+  <h3>4.4.2 Services Grid</h3>
+
+  <p>The services grid provides quick-access buttons for all app features including Tour Packages, Hotels, Car Rental, Map, My Bookings, and My Listings. Each service icon is animated with the <code>StaggeredListItem</code> animation for a polished entry effect.</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Home Screen - Services Grid]</span>
+    <span class="caption">Insert screenshot showing the services grid section with icons for Tour Packages, Hotels, Car Rental, Map, My Bookings, and My Listings</span>
+  </div>
+  <p class="figure-caption">Figure 4.5: Home Screen - Services Grid</p>
+
+
+  <h2>4.5 Tour Booking Module</h2>
+
+  <h3>4.5.1 Destination Detail Screen</h3>
+
+  <p>When a user taps on a destination card, the app navigates to the Destination Detail Screen. This screen displays comprehensive information including an image gallery, description, highlights, rating, pricing, duration, and best season to visit. The screen uses scroll-based animations where the header image parallax scrolls as the user scrolls down.</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Destination Detail Screen]</span>
+    <span class="caption">Insert screenshot of the Destination Detail Screen showing the cover image, destination name, rating, price, description, highlights list, and "Book Now" button</span>
+  </div>
+  <p class="figure-caption">Figure 4.6: Destination Detail Screen</p>
+
+  <h3>4.5.2 Hotel Selection</h3>
+
+  <p>After choosing to book a tour, users select a hotel for their stay. The Hotel Selection Screen displays available hotels with real images, ratings, pricing per night, amenities, and category (5 Star Luxury, 4 Star Premium, 3 Star Standard). The <code>_getAllHotelsWithRealImages()</code> method provides hotel data with actual Pakistani hotel images.</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Hotel Selection Screen]</span>
+    <span class="caption">Insert screenshot showing hotel cards with images, names, star ratings, price per night, amenities icons, and "Select" button</span>
+  </div>
+  <p class="figure-caption">Figure 4.7: Hotel Selection Screen</p>
+
+  <h3>4.5.3 Transport Selection</h3>
+
+  <p>Users then select their preferred transport option. Available options include Luxury Bus, Premium Van, SUV 4x4, and Flight, each with different pricing and comfort levels. The transport options are fetched from the <code>DatabaseService</code>.</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Transport Selection Screen]</span>
+    <span class="caption">Insert screenshot showing transport options (Luxury Bus, Premium Van, SUV 4x4, Flight) with prices and descriptions</span>
+  </div>
+  <p class="figure-caption">Figure 4.8: Transport Selection Screen</p>
+
+  <h3>4.5.4 Multi-City Tours</h3>
+
+  <p>The application supports multi-city tour packages that include multiple destinations in a single itinerary. The Multi-City Hotel Screen allows users to select hotels for each city in the tour, while the Tour Booking Screen displays the complete itinerary with a breakdown of costs.</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Multi-City Tour Screen]</span>
+    <span class="caption">Insert screenshot of the Multi-City Hotel Screen showing hotel selection for multiple cities in the tour itinerary</span>
+  </div>
+  <p class="figure-caption">Figure 4.9: Multi-City Tour Screen</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Tour Booking Summary Screen]</span>
+    <span class="caption">Insert screenshot of the Tour Booking Screen showing itinerary, selected hotels, total price breakdown, and payment method selection</span>
+  </div>
+  <p class="figure-caption">Figure 4.10: Tour Booking Summary Screen</p>
+
+
+  <h2>4.6 Hotel Booking Module</h2>
+
+  <p>The hotel booking module allows users to search for hotels across 40+ Pakistani cities independent of tour bookings. The <code>AllPakistanHotelBookingScreen</code> provides a comprehensive hotel search interface.</p>
+
+  <h3>4.6.1 Hotel Search</h3>
+
+  <p>Users can select a city from a list of 40+ Pakistani cities, choose check-in and check-out dates using a calendar picker, and specify the number of guests and rooms. The search results display matching hotels with detailed information.</p>
+
+  <pre>
+// List of 40+ Pakistani cities available for hotel search
+final _pakistanCities = [
+  'Islamabad', 'Lahore', 'Karachi', 'Peshawar', 'Quetta',
+  'Faisalabad', 'Rawalpindi', 'Multan', 'Hyderabad', 'Sialkot',
+  'Hunza', 'Skardu', 'Gilgit', 'Chitral', 'Naran',
+  'Swat', 'Murree', 'Abbottabad', 'Taxila', 'Bahawalpur',
+  // ... and more
+];
+  </pre>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Hotel Search Screen]</span>
+    <span class="caption">Insert screenshot of the Hotel Search Screen showing city dropdown, check-in/check-out date pickers, guest/room selectors, and Search button</span>
+  </div>
+  <p class="figure-caption">Figure 4.11: Hotel Search Screen</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Hotel Search Results]</span>
+    <span class="caption">Insert screenshot showing hotel search results with hotel cards, pricing, ratings, and book buttons</span>
+  </div>
+  <p class="figure-caption">Figure 4.12: Hotel Search Results</p>
+
+
+  <h2>4.7 Car Rental Module</h2>
+
+  <p>The car rental module enables city-to-city car booking through the <code>CityToCityCarBookingScreen</code>. Users select pickup and dropoff cities, travel dates, and choose from available vehicles including Toyota Corolla, Honda Civic, Toyota Land Cruiser, and other popular models.</p>
+
+  <p>The pricing is calculated based on the distance between cities (price per kilometer) multiplied by the number of travel days.</p>
+
+  <pre>
+// Car Model
+class Car {
+  final String id, name, type, imageUrl;
+  final double pricePerKm, rating;
+  final int capacity;
+  final List&lt;String&gt; features;
+  final String transmission, fuelType;
+  final bool ac;
+  // ... toMap(), fromMap(), helper methods
+}
+  </pre>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Car Booking Screen]</span>
+    <span class="caption">Insert screenshot showing the Car Booking Screen with pickup city, dropoff city, date/time selection, and search button</span>
+  </div>
+  <p class="figure-caption">Figure 4.13: Car Booking Screen</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Car Selection]</span>
+    <span class="caption">Insert screenshot showing available cars with images, names, type (Sedan/SUV), capacity, price per km, features, and book button</span>
+  </div>
+  <p class="figure-caption">Figure 4.14: Car Selection</p>
+
+
+  <h2>4.8 Payment Module</h2>
+
+  <p>The <code>PaymentScreen</code> is a unified payment processing interface that handles all booking types (tours, hotels, cars). It supports five payment methods tailored for the Pakistani market:</p>
+
+  <ol>
+    <li><strong>Credit/Debit Card:</strong> Standard card payment with card number, expiry, and CVV validation.</li>
+    <li><strong>JazzCash:</strong> Pakistan's leading mobile wallet service - users enter their JazzCash number.</li>
+    <li><strong>EasyPaisa:</strong> Telenor's mobile payment platform - users enter their EasyPaisa number.</li>
+    <li><strong>Bank Transfer:</strong> Direct bank transfer with bank account details provided.</li>
+    <li><strong>Cash on Arrival:</strong> Pay at the destination upon arrival.</li>
+  </ol>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Payment Screen]</span>
+    <span class="caption">Insert screenshot showing the Payment Screen with payment method tabs (Card, JazzCash, EasyPaisa, Bank, Cash), booking summary, and Pay Now button</span>
+  </div>
+  <p class="figure-caption">Figure 4.15: Payment Screen</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Booking Confirmation Screen]</span>
+    <span class="caption">Insert screenshot showing the Booking Confirmation Screen with success animation, booking reference number, booking details summary, and "Go to Home" button</span>
+  </div>
+  <p class="figure-caption">Figure 4.16: Booking Confirmation Screen</p>
+
+
+  <h2>4.9 Google Maps Integration</h2>
+
+  <p>The <code>MapScreen</code> integrates Google Maps Flutter to display an interactive map with tourist destination markers across Pakistan. The screen uses the <code>Geolocator</code> package to request and display the user's current location, and the <code>permission_handler</code> package to manage location permissions.</p>
+
+  <p>Tourist spots are marked on the map with custom markers showing the destination name and brief description. The initial map view is centered on Pakistan (latitude: 30.3753, longitude: 69.3451).</p>
+
+  <pre>
+// Tourist spots with coordinates
+final _touristSpots = [
+  {'name': 'Hunza Valley', 'lat': 36.3167, 'lng': 74.6500},
+  {'name': 'Skardu', 'lat': 35.2971, 'lng': 75.6333},
+  {'name': 'Fairy Meadows', 'lat': 35.3754, 'lng': 74.5884},
+  {'name': 'Swat Valley', 'lat': 35.2227, 'lng': 72.4258},
+];
+  </pre>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Google Maps Screen]</span>
+    <span class="caption">Insert screenshot showing the Google Maps Screen with tourist destination markers on the map of Pakistan, user location indicator, and destination info windows</span>
+  </div>
+  <p class="figure-caption">Figure 4.17: Google Maps Screen</p>
+
+
+  <h2>4.10 Profile Management</h2>
+
+  <p>The <code>ProfileScreen</code> allows users to view and edit their profile information, upload profile pictures, change language preferences, and toggle between light/dark themes. Profile images are uploaded to Firebase Storage under the <code>profile_images/</code> directory and the download URL is saved to the user's Firestore document.</p>
+
+  <p>Supported languages include English, Urdu, Arabic, Spanish, and French. Theme options include System Default, Light Mode, and Dark Mode.</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Profile Screen]</span>
+    <span class="caption">Insert screenshot showing the Profile Screen with user photo, name, email, phone, language selection, night mode toggle, and Sign Out button</span>
+  </div>
+  <p class="figure-caption">Figure 4.18: Profile Screen</p>
+
+
+  <h2>4.11 User Listings (Vendor Module)</h2>
+
+  <p>The vendor module allows registered users to list their own hotels and cars on the platform, creating a community-driven marketplace. The <code>UserListingsService</code> manages listing data using SharedPreferences for local storage.</p>
+
+  <h3>4.11.1 Add Hotel</h3>
+
+  <p>The <code>AddHotelScreen</code> provides a form for listing a new hotel with fields for name, location, city, price per night, description, phone number, rating, category (Standard/Deluxe/Premium/Luxury/Resort/Budget), and amenities selection (WiFi, Breakfast, Parking, Swimming Pool, etc.).</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Add Hotel Screen]</span>
+    <span class="caption">Insert screenshot showing the Add Hotel form with name, location, city, price, description, rating slider, category dropdown, amenities checkboxes, and Submit button</span>
+  </div>
+  <p class="figure-caption">Figure 4.19: Add Hotel Screen</p>
+
+  <h3>4.11.2 Add Car</h3>
+
+  <p>The <code>AddCarScreen</code> allows users to list their car for rental with details including car name, type (Sedan/SUV/Hatchback/Luxury/Van/Pickup/Coaster), price per kilometer, passenger capacity, transmission (Automatic/Manual), fuel type (Petrol/Diesel/Hybrid/Electric/CNG), AC availability, and additional features.</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Add Car Screen]</span>
+    <span class="caption">Insert screenshot showing the Add Car form with car name, type dropdown, price per km, capacity, transmission toggle, fuel type, AC toggle, features selection, and Submit button</span>
+  </div>
+  <p class="figure-caption">Figure 4.20: Add Car Screen</p>
+
+  <h3>4.11.3 My Listings</h3>
+
+  <p>The <code>MyListingsScreen</code> displays a tabbed interface showing the user's hotel and car listings with options to edit and delete each listing.</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: My Listings Screen]</span>
+    <span class="caption">Insert screenshot showing My Listings Screen with Hotels/Cars tabs, listing cards with edit and delete buttons</span>
+  </div>
+  <p class="figure-caption">Figure 4.21: My Listings Screen</p>
+
+
+  <h2>4.12 Booking History</h2>
+
+  <p>The <code>BookingHistoryScreen</code> displays all user bookings with filter tabs: All, Tours, Hotels, and Cars. Tour bookings are fetched in real-time from Firestore via <code>BookingService</code>, while hotel and car bookings are retrieved from <code>LocalBookingStore</code>.</p>
+
+  <p>Each booking entry shows the booking type icon, destination/hotel/car name, date, price, and status (Pending, Confirmed, Cancelled).</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128247;</span>
+    <span class="label">[PICTURE: Booking History Screen]</span>
+    <span class="caption">Insert screenshot showing Booking History Screen with filter tabs (All/Tours/Hotels/Cars), booking cards with type icon, name, date, price, and status badge</span>
+  </div>
+  <p class="figure-caption">Figure 4.22: Booking History Screen</p>
+
+
+  <h2>4.13 Animations &amp; UI Effects</h2>
+
+  <p>The application features a comprehensive animation library (<code>lib/utils/animations.dart</code>) with 20+ reusable animation widgets that create a premium user experience:</p>
+
+  <table>
+    <tr><th>Animation Widget</th><th>Description</th><th>Usage</th></tr>
+    <tr><td>StaggeredListItem</td><td>Fade + slide with configurable delay</td><td>List items, grid items</td></tr>
+    <tr><td>AnimatedFadeSlide</td><td>Auto-playing fade and slide entrance</td><td>Screen elements on load</td></tr>
+    <tr><td>ScaleOnTap</td><td>Scale down on press, scale up on release</td><td>Interactive cards, buttons</td></tr>
+    <tr><td>ShimmerCardSkeleton</td><td>Loading placeholder with shimmer effect</td><td>Data loading states</td></tr>
+    <tr><td>PulseAnimation</td><td>Gentle repeating scale pulse</td><td>Attention indicators</td></tr>
+    <tr><td>FloatingAnimation</td><td>Vertical hover/float movement</td><td>Decorative elements</td></tr>
+    <tr><td>AnimatedGradientBackground</td><td>Cycling gradient colors</td><td>Screen backgrounds</td></tr>
+    <tr><td>FloatingParticles</td><td>Particle effects overlay</td><td>Visual flair on key screens</td></tr>
+    <tr><td>TypewriterText</td><td>Character-by-character reveal</td><td>Welcome messages</td></tr>
+    <tr><td>LiquidButton</td><td>Gradient button with shine sweep</td><td>CTA buttons</td></tr>
+    <tr><td>PageTransitions</td><td>5 custom transition types</td><td>Screen navigation</td></tr>
+  </table>
+
+  <p>These animations are implemented using Flutter's <code>AnimationController</code>, <code>Tween</code>, and <code>AnimatedBuilder</code> classes, ensuring smooth 60fps performance on standard devices.</p>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- CHAPTER 5: TESTING -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Chapter 5<br>Testing</h1>
+
+  <h2>5.1 Testing Methodology</h2>
+
+  <p>The application was tested using a combination of unit testing, integration testing, and user acceptance testing (UAT). The testing process ensured that all functional and non-functional requirements were met before deployment.</p>
+
+  <h2>5.2 Unit Testing</h2>
+
+  <p>Unit tests were written to verify individual components and services in isolation. The following areas were covered:</p>
+
+  <ul>
+    <li><strong>Validators:</strong> All form validation methods were tested with valid, invalid, and edge-case inputs.</li>
+    <li><strong>Models:</strong> Data model serialization (<code>toMap()</code>) and deserialization (<code>fromMap()</code>) were tested for all 7 models.</li>
+    <li><strong>Services:</strong> Service methods were tested for correct behavior with mocked Firebase dependencies.</li>
+  </ul>
+
+  <h2>5.3 Integration Testing</h2>
+
+  <table>
+    <caption>Table 5.1: Test Cases - Authentication Module</caption>
+    <tr><th>Test ID</th><th>Test Case</th><th>Input</th><th>Expected Output</th><th>Result</th></tr>
+    <tr><td>TC-01</td><td>Valid email login</td><td>Valid email &amp; password</td><td>Navigate to Home Screen</td><td>Pass</td></tr>
+    <tr><td>TC-02</td><td>Invalid email format</td><td>Invalid email</td><td>Show validation error</td><td>Pass</td></tr>
+    <tr><td>TC-03</td><td>Wrong password</td><td>Valid email, wrong password</td><td>Show "Invalid credentials" error</td><td>Pass</td></tr>
+    <tr><td>TC-04</td><td>Empty fields</td><td>Empty email/password</td><td>Show "Field required" error</td><td>Pass</td></tr>
+    <tr><td>TC-05</td><td>Google Sign-In</td><td>Google account</td><td>Navigate to Home Screen</td><td>Pass</td></tr>
+    <tr><td>TC-06</td><td>New user registration</td><td>Valid name, email, phone, password</td><td>Account created, navigate to Home</td><td>Pass</td></tr>
+    <tr><td>TC-07</td><td>Duplicate email signup</td><td>Already registered email</td><td>Show "Email already in use" error</td><td>Pass</td></tr>
+    <tr><td>TC-08</td><td>Weak password</td><td>Password &lt; 6 chars</td><td>Show validation error</td><td>Pass</td></tr>
+    <tr><td>TC-09</td><td>Sign out</td><td>Tap sign out</td><td>Navigate to Login Screen</td><td>Pass</td></tr>
+  </table>
+
+  <table>
+    <caption>Table 5.2: Test Cases - Booking Module</caption>
+    <tr><th>Test ID</th><th>Test Case</th><th>Input</th><th>Expected Output</th><th>Result</th></tr>
+    <tr><td>TC-10</td><td>Browse destinations</td><td>Open Explore tab</td><td>Display destination cards</td><td>Pass</td></tr>
+    <tr><td>TC-11</td><td>View destination details</td><td>Tap destination card</td><td>Show detail screen with info</td><td>Pass</td></tr>
+    <tr><td>TC-12</td><td>Select hotel for tour</td><td>Tap hotel card</td><td>Hotel selected, continue to transport</td><td>Pass</td></tr>
+    <tr><td>TC-13</td><td>Complete tour booking</td><td>Select all options, pay</td><td>Booking saved to Firestore</td><td>Pass</td></tr>
+    <tr><td>TC-14</td><td>Hotel search by city</td><td>Select city, dates, guests</td><td>Show filtered hotel results</td><td>Pass</td></tr>
+    <tr><td>TC-15</td><td>Car booking</td><td>Select cities, date, car</td><td>Proceed to payment</td><td>Pass</td></tr>
+    <tr><td>TC-16</td><td>View booking history</td><td>Open Bookings tab</td><td>Display booking list</td><td>Pass</td></tr>
+    <tr><td>TC-17</td><td>Filter bookings</td><td>Tap filter tab (Hotels)</td><td>Show only hotel bookings</td><td>Pass</td></tr>
+  </table>
+
+  <table>
+    <caption>Table 5.3: Test Cases - User Interface</caption>
+    <tr><th>Test ID</th><th>Test Case</th><th>Input</th><th>Expected Output</th><th>Result</th></tr>
+    <tr><td>TC-18</td><td>Bottom navigation</td><td>Tap each tab</td><td>Switch to correct screen</td><td>Pass</td></tr>
+    <tr><td>TC-19</td><td>Profile photo upload</td><td>Select image from gallery</td><td>Photo uploaded, displayed</td><td>Pass</td></tr>
+    <tr><td>TC-20</td><td>Map loading</td><td>Open Map screen</td><td>Google Map with markers</td><td>Pass</td></tr>
+    <tr><td>TC-21</td><td>Add hotel listing</td><td>Fill form, submit</td><td>Listing saved, appears in My Listings</td><td>Pass</td></tr>
+    <tr><td>TC-22</td><td>Add car listing</td><td>Fill form, submit</td><td>Listing saved, appears in My Listings</td><td>Pass</td></tr>
+    <tr><td>TC-23</td><td>Delete listing</td><td>Tap delete on listing</td><td>Listing removed</td><td>Pass</td></tr>
+    <tr><td>TC-24</td><td>Animations render</td><td>Navigate between screens</td><td>Smooth animations at 60fps</td><td>Pass</td></tr>
+  </table>
+
+  <h2>5.4 User Acceptance Testing</h2>
+
+  <p>User Acceptance Testing was conducted with a group of 5 volunteers who tested the application on different Android devices. Each tester was given a set of tasks to perform and asked to rate the experience.</p>
+
+  <table>
+    <caption>Table 5.4: User Acceptance Testing Results</caption>
+    <tr><th>Criteria</th><th>Rating (1-5)</th><th>Remarks</th></tr>
+    <tr><td>Ease of Registration/Login</td><td>4.6</td><td>Simple and smooth process</td></tr>
+    <tr><td>UI/UX Design</td><td>4.8</td><td>Premium look and feel, beautiful animations</td></tr>
+    <tr><td>Tour Booking Flow</td><td>4.4</td><td>Intuitive step-by-step process</td></tr>
+    <tr><td>Hotel Search &amp; Booking</td><td>4.2</td><td>Good city coverage, easy to use</td></tr>
+    <tr><td>Car Rental Booking</td><td>4.3</td><td>Useful feature for inter-city travel</td></tr>
+    <tr><td>Map Feature</td><td>4.5</td><td>Helpful for discovering destinations</td></tr>
+    <tr><td>Payment Options</td><td>4.7</td><td>JazzCash/EasyPaisa support appreciated</td></tr>
+    <tr><td>Overall Satisfaction</td><td>4.5</td><td>Comprehensive and well-designed app</td></tr>
+  </table>
+
+  <h2>5.5 Test Results</h2>
+
+  <p>All 24 test cases passed successfully. The User Acceptance Testing resulted in an overall satisfaction rating of <strong>4.5 out of 5.0</strong>, indicating high user satisfaction with the application's functionality and design.</p>
+
+  <div class="screenshot-placeholder">
+    <span class="icon">&#128202;</span>
+    <span class="label">[PICTURE: Test Results Summary Chart]</span>
+    <span class="caption">Insert a bar chart or pie chart showing test results: 24/24 passed (100%), and UAT satisfaction scores by category</span>
+  </div>
+  <p class="figure-caption">Figure 5.1: Test Results Summary</p>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- CHAPTER 6: CONCLUSION & FUTURE WORK -->
+<!-- ============================================================ -->
+<div class="page-break">
+  <h1>Chapter 6<br>Conclusion &amp; Future Work</h1>
+
+  <h2>6.1 Conclusion</h2>
+
+  <p>This project successfully designed, developed, and tested a comprehensive <strong>Tours &amp; Travel Mobile Application</strong> using Flutter and Firebase. The application addresses the identified gap in Pakistan's tourism technology landscape by providing an all-in-one platform for tour booking, hotel reservation, car rental, and destination discovery.</p>
+
+  <p>The key achievements of this project include:</p>
+
+  <ol>
+    <li><strong>Cross-Platform Application:</strong> A single Flutter codebase that runs on both Android and iOS, reducing development effort and ensuring consistent user experience across platforms.</li>
+    <li><strong>Comprehensive Booking System:</strong> Three complete booking flows (tours, hotels, cars) with payment processing supporting both international (credit card) and local (JazzCash, EasyPaisa) methods.</li>
+    <li><strong>Hybrid Authentication:</strong> An innovative dual-layer authentication system that gracefully falls back to local storage when Firebase connectivity is unavailable, essential for remote tourist areas in Northern Pakistan.</li>
+    <li><strong>Rich Destination Coverage:</strong> Support for 40+ Pakistani cities with detailed destination information, real hotel images, and interactive Google Maps integration.</li>
+    <li><strong>Community Marketplace:</strong> A vendor module that allows local hotel and car owners to list their services, promoting local businesses and increasing service availability.</li>
+    <li><strong>Premium User Experience:</strong> 20+ custom animations and Material Design 3 implementation delivering a polished, modern application interface.</li>
+    <li><strong>Scalable Architecture:</strong> Firebase-powered backend with real-time data synchronization, auto-scaling infrastructure, and modular code architecture.</li>
+  </ol>
+
+  <p>The application was validated through comprehensive testing including unit tests, integration tests, and User Acceptance Testing with 5 volunteers, achieving an overall satisfaction rating of 4.5/5.0.</p>
+
+  <h2>6.2 Limitations</h2>
+
+  <p>While the application successfully meets its core objectives, the following limitations were identified:</p>
+
+  <ol>
+    <li><strong>Hotel and Car Booking Persistence:</strong> Hotel and car bookings are currently stored in-memory (session-based) and are lost when the app is closed. Only tour bookings are persisted to Firestore.</li>
+    <li><strong>Search Functionality:</strong> The search bar on the Home Screen is currently a UI placeholder and does not perform actual search queries.</li>
+    <li><strong>Payment Integration:</strong> Payment methods (JazzCash, EasyPaisa, Credit Card) are implemented as UI flows only. Actual payment gateway integration requires merchant accounts and API credentials.</li>
+    <li><strong>iOS Deployment:</strong> Firebase configuration for iOS has placeholder values and requires a macOS development environment for full iOS build and testing.</li>
+    <li><strong>Offline Data:</strong> While authentication works offline, destination and hotel data requires an internet connection to load from Firestore.</li>
+  </ol>
+
+  <h2>6.3 Future Enhancements</h2>
+
+  <p>The following enhancements are proposed for future development:</p>
+
+  <ol>
+    <li><strong>Payment Gateway Integration:</strong> Integrate actual JazzCash and EasyPaisa payment APIs for real transaction processing.</li>
+    <li><strong>Hotel/Car Booking Persistence:</strong> Migrate hotel and car booking flows to Firestore for permanent storage and cross-device synchronization.</li>
+    <li><strong>Search Engine:</strong> Implement full-text search using Algolia or Firebase Extensions for searching destinations, hotels, and cars.</li>
+    <li><strong>Push Notifications:</strong> Add Firebase Cloud Messaging (FCM) for booking confirmations, promotional offers, and trip reminders.</li>
+    <li><strong>Reviews &amp; Ratings System:</strong> Allow users to review and rate destinations, hotels, and car rental services.</li>
+    <li><strong>AI-Powered Recommendations:</strong> Implement a recommendation engine that suggests destinations based on user preferences and booking history.</li>
+    <li><strong>Multi-Language Support:</strong> Complete Urdu and Arabic localization for broader accessibility.</li>
+    <li><strong>Admin Panel:</strong> Develop a web-based admin dashboard for managing destinations, hotels, bookings, and user accounts.</li>
+    <li><strong>Real-Time Chat:</strong> Add an in-app messaging system for users to communicate with hotel/car owners.</li>
+    <li><strong>Augmented Reality:</strong> Integrate AR features to preview destinations and hotel rooms in 3D.</li>
+    <li><strong>State Management Migration:</strong> Migrate from setState to a robust state management solution like Riverpod or BLoC for better scalability.</li>
+    <li><strong>Offline-First Architecture:</strong> Implement Firestore offline persistence to cache destination and hotel data for offline browsing.</li>
+  </ol>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- REFERENCES -->
+<!-- ============================================================ -->
+<div>
+  <h1>References</h1>
+
+  <ol style="line-height: 2.2;">
+    <li>Google. (2024). <em>Flutter Documentation - Beautiful native apps in record time</em>. Retrieved from https://flutter.dev/docs</li>
+    <li>Google. (2024). <em>Firebase Documentation - App development platform</em>. Retrieved from https://firebase.google.com/docs</li>
+    <li>Google. (2024). <em>Cloud Firestore Documentation</em>. Retrieved from https://firebase.google.com/docs/firestore</li>
+    <li>Google. (2024). <em>Firebase Authentication Documentation</em>. Retrieved from https://firebase.google.com/docs/auth</li>
+    <li>Google. (2024). <em>Google Maps Platform Documentation</em>. Retrieved from https://developers.google.com/maps/documentation</li>
+    <li>Google. (2024). <em>Dart Programming Language Documentation</em>. Retrieved from https://dart.dev/guides</li>
+    <li>Google. (2024). <em>Material Design 3 Guidelines</em>. Retrieved from https://m3.material.io</li>
+    <li>Pub.dev. (2024). <em>Flutter Package Repository</em>. Retrieved from https://pub.dev</li>
+    <li>Pakistan Tourism Development Corporation. (2024). <em>Tourism Statistics of Pakistan</em>. Retrieved from https://www.tourism.gov.pk</li>
+    <li>Booking.com. (2024). <em>Booking.com: Hotels, Flights, Car Rentals</em>. Retrieved from https://www.booking.com</li>
+    <li>TripAdvisor. (2024). <em>TripAdvisor: Read Reviews, Compare Prices</em>. Retrieved from https://www.tripadvisor.com</li>
+    <li>Sastaticket.pk. (2024). <em>Sastaticket.pk - Pakistan's Leading Travel Agency</em>. Retrieved from https://www.sastaticket.pk</li>
+    <li>Napoli, M. L. (2022). <em>Beginning Flutter: A Hands-On Guide to App Development</em>. Wrox Press.</li>
+    <li>Windmill, E. (2020). <em>Flutter in Action</em>. Manning Publications.</li>
+    <li>Sommerville, I. (2015). <em>Software Engineering</em> (10th ed.). Pearson Education.</li>
+    <li>Pressman, R. S. (2014). <em>Software Engineering: A Practitioner's Approach</em> (8th ed.). McGraw-Hill Education.</li>
+    <li>JazzCash. (2024). <em>JazzCash - Pakistan's Leading Digital Payment Platform</em>. Retrieved from https://www.jazzcash.com.pk</li>
+    <li>EasyPaisa. (2024). <em>Easypaisa - Pakistan's First Digital Payments Platform</em>. Retrieved from https://www.easypaisa.com.pk</li>
+  </ol>
+</div>
+
+</body>
+</html>

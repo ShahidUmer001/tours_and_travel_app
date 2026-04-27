@@ -22,7 +22,7 @@ class CachedImage extends StatelessWidget {
   final bool cache;
 
   const CachedImage({
-    Key? key,
+    super.key,
     required this.imageUrl,
     this.width,
     this.height,
@@ -41,7 +41,7 @@ class CachedImage extends StatelessWidget {
     this.borderRadius,
     this.shadow,
     this.cache = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,24 +50,41 @@ class CachedImage extends StatelessWidget {
       return errorWidget ?? _buildDefaultErrorWidget();
     }
 
-    Widget imageWidget = CachedNetworkImage(
-      imageUrl: imageUrl,
-      width: width,
-      height: height,
-      fit: fit,
-      color: color,
-      alignment: alignment,
-      repeat: repeat,
-      filterQuality: filterQuality,
-      placeholder: (context, url) =>
-      showPlaceholder ? (placeholder ?? _buildPlaceholder()) : const SizedBox(),
-      errorWidget: (context, url, error) =>
-      errorWidget ?? _buildDefaultErrorWidget(),
-      fadeInDuration: fadeInDuration,
-      fadeOutDuration: fadeOutDuration,
-      fadeInCurve: fadeInCurve,
-      fadeOutCurve: fadeOutCurve,
-    );
+    // Handle local asset images
+    Widget imageWidget;
+    if (imageUrl.startsWith('assets/')) {
+      imageWidget = Image.asset(
+        imageUrl,
+        width: width,
+        height: height,
+        fit: fit,
+        color: color,
+        alignment: alignment,
+        repeat: repeat,
+        filterQuality: filterQuality,
+        errorBuilder: (context, error, stackTrace) =>
+            errorWidget ?? _buildDefaultErrorWidget(),
+      );
+    } else {
+      imageWidget = CachedNetworkImage(
+        imageUrl: imageUrl,
+        width: width,
+        height: height,
+        fit: fit,
+        color: color,
+        alignment: alignment,
+        repeat: repeat,
+        filterQuality: filterQuality,
+        placeholder: (context, url) =>
+        showPlaceholder ? (placeholder ?? _buildPlaceholder()) : const SizedBox(),
+        errorWidget: (context, url, error) =>
+        errorWidget ?? _buildDefaultErrorWidget(),
+        fadeInDuration: fadeInDuration,
+        fadeOutDuration: fadeOutDuration,
+        fadeInCurve: fadeInCurve,
+        fadeOutCurve: fadeOutCurve,
+      );
+    }
 
     // Apply border radius if provided
     if (borderRadius != null) {

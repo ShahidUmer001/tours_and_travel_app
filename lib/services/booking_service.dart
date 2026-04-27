@@ -28,7 +28,7 @@ class BookingService {
           .set(booking.toMap());
     } catch (e) {
       print('Error creating booking: $e');
-      throw e;
+      rethrow;
     }
   }
 
@@ -41,7 +41,7 @@ class BookingService {
           .update({'status': status});
     } catch (e) {
       print('Error updating booking status: $e');
-      throw e;
+      rethrow;
     }
   }
 }

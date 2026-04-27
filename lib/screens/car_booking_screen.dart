@@ -3,6 +3,8 @@ import '../models/car_model.dart';
 import 'payment_screen.dart';
 
 class CityToCityCarBookingScreen extends StatefulWidget {
+  const CityToCityCarBookingScreen({super.key});
+
   @override
   State<CityToCityCarBookingScreen> createState() => _CityToCityCarBookingScreenState();
 }
@@ -32,7 +34,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       id: '1',
       name: 'Toyota Corolla',
       type: 'Sedan',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Toyota_Corolla_Limousine_Monrepos_2019_IMG_1908.jpg/400px-Toyota_Corolla_Limousine_Monrepos_2019_IMG_1908.jpg',
+      imageUrl: 'assets/images/cars/toyota_corolla.jpg',
       pricePerKm: 25,
       capacity: 4,
       features: ['AC', 'Music System', 'Comfortable Seats', 'Fuel Efficient'],
@@ -45,7 +47,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       id: '2',
       name: 'Honda Civic',
       type: 'Sedan',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/2022_Honda_Civic_Touring_in_Lunar_Silver_Metallic%2C_Front_Left%2C_05-10-2022.jpg/400px-2022_Honda_Civic_Touring_in_Lunar_Silver_Metallic%2C_Front_Left%2C_05-10-2022.jpg',
+      imageUrl: 'assets/images/cars/honda_civic.jpg',
       pricePerKm: 28,
       capacity: 4,
       features: ['AC', 'Premium Sound', 'Leather Seats', 'Sunroof'],
@@ -58,7 +60,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       id: '3',
       name: 'Toyota Hiace',
       type: 'Van',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/2020_Toyota_HiAce_%28front%29.jpg/400px-2020_Toyota_HiAce_%28front%29.jpg',
+      imageUrl: 'assets/images/cars/toyota_hiace.jpg',
       pricePerKm: 35,
       capacity: 12,
       features: ['AC', 'Spacious', 'Luggage Space', 'Comfortable'],
@@ -71,7 +73,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       id: '4',
       name: 'Suzuki Mehran',
       type: 'Hatchback',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Mehran_Model_2001_Right_Side_View_At_Lowari_Pass%2CChitral%2CKPK.jpg/400px-Mehran_Model_2001_Right_Side_View_At_Lowari_Pass%2CChitral%2CKPK.jpg',
+      imageUrl: 'assets/images/cars/suzuki_mehran.jpg',
       pricePerKm: 15,
       capacity: 4,
       features: ['Economical', 'Easy Parking', 'Fuel Efficient', 'Low Maintenance'],
@@ -84,7 +86,7 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       id: '5',
       name: 'Toyota Fortuner',
       type: 'SUV',
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/2015_Toyota_Fortuner_%28New_Zealand%29.jpg/400px-2015_Toyota_Fortuner_%28New_Zealand%29.jpg',
+      imageUrl: 'assets/images/cars/toyota_fortuner.jpg',
       pricePerKm: 40,
       capacity: 7,
       features: ['AC', '4x4', 'Luxury', 'Off-road', 'Spacious'],
@@ -149,17 +151,17 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
 
             // Book Now Button
             if (_selectedCar != null)
-              Container(
+              SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: _bookCar,
-                  child: Text('Book Car - Rs. ${_calculateTotalAmount().toStringAsFixed(0)}'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(vertical: 16),
                     textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
+                  child: Text('Book Car - Rs. ${_calculateTotalAmount().toStringAsFixed(0)}'),
                 ),
               ),
           ],
@@ -350,19 +352,22 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       margin: EdgeInsets.only(bottom: 12),
       color: isSelected ? Colors.blue[50] : Colors.white,
       child: ListTile(
-        leading: Image.network(
-          car.imageUrl,
-          width: 60,
-          height: 60,
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            return Container(
-              width: 60,
-              height: 60,
-              color: Colors.grey[200],
-              child: Icon(Icons.directions_car, color: Colors.grey),
-            );
-          },
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Image.asset(
+            car.imageUrl,
+            width: 60,
+            height: 60,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                width: 60,
+                height: 60,
+                color: Colors.grey[200],
+                child: Icon(Icons.directions_car, color: Colors.grey),
+              );
+            },
+          ),
         ),
         title: Text(
           car.name,
@@ -441,8 +446,8 @@ class _CityToCityCarBookingScreenState extends State<CityToCityCarBookingScreen>
       'Lahore-Multan': 320,
     };
 
-    String key = '${_selectedPickupCity}-${_selectedDropoffCity}';
-    String reverseKey = '${_selectedDropoffCity}-${_selectedPickupCity}';
+    String key = '$_selectedPickupCity-$_selectedDropoffCity';
+    String reverseKey = '$_selectedDropoffCity-$_selectedPickupCity';
 
     return cityDistances[key] ?? cityDistances[reverseKey] ?? 100;
   }

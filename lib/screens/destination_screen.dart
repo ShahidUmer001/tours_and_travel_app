@@ -8,7 +8,7 @@ import 'hotel_selection_screen.dart';
 class DestinationScreen extends StatefulWidget {
   final Destination destination;
 
-  const DestinationScreen({Key? key, required this.destination}) : super(key: key);
+  const DestinationScreen({super.key, required this.destination});
 
   @override
   State<DestinationScreen> createState() => _DestinationScreenState();
@@ -396,37 +396,35 @@ class _DestinationScreenState extends State<DestinationScreen>
   }
 
   Widget _buildPhotoGallery() {
-    // Real photos of each destination's areas from Wikimedia Commons
+    // Real local photos of each destination
     Map<String, List<String>> destinationPhotos = {
       'Hunza Valley': [
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Baltit_fort_from_ultar_sar_trek.jpg/400px-Baltit_fort_from_ultar_sar_trek.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Attabad_Lake_2020.jpg/400px-Attabad_Lake_2020.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Altit_Fort%2C_Hunza.jpg/400px-Altit_Fort%2C_Hunza.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Borith_Lake_in_Hunza.jpg/400px-Borith_Lake_in_Hunza.jpg',
+        'assets/images/destinations/Hunza_1.jpg',
+        'assets/images/destinations/Hunza_2.jpg',
+        'assets/images/destinations/Hunza_3.jpg',
+        'assets/images/destinations/Hunza_4.jpg',
       ],
       'Skardu & Shangrila': [
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Shangrila_resort_skardu.jpg/400px-Shangrila_resort_skardu.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Storm%2C_Satpara_Lake.jpg/400px-Storm%2C_Satpara_Lake.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Shangrila%2C_Lower_Kachura_Lake.jpg/400px-Shangrila%2C_Lower_Kachura_Lake.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Barra_Pani%2C_Deosai_National_Park%2C_Pakistan.jpg/400px-Barra_Pani%2C_Deosai_National_Park%2C_Pakistan.jpg',
+        'assets/images/destinations/Skardu_&_Shangrila_1.jpg',
+        'assets/images/destinations/Skardu_2.jpg',
+        'assets/images/destinations/Skardu_3.jpg',
+        'assets/images/destinations/Skardu_4.jpg',
       ],
       'Swat Valley': [
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Mahodand_l.jpg/400px-Mahodand_l.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/River_Swat_Pakistan_3.jpg/400px-River_Swat_Pakistan_3.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Mountains_in_Swat_Vally_Pakistan.jpg/400px-Mountains_in_Swat_Vally_Pakistan.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Clouds_floating_upwards.jpg/400px-Clouds_floating_upwards.jpg',
+        'assets/images/destinations/Swat_Valley_1.jpg',
+        'assets/images/destinations/Swat_Valley_2.jpg',
+        'assets/images/destinations/Swat_Valley_3.jpg',
       ],
       'Naran & Kaghan': [
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Lake_SaifulMalook.jpeg/400px-Lake_SaifulMalook.jpeg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Saif-ul-Muluk_Complete_Panorama_in_Spring.jpg/400px-Saif-ul-Muluk_Complete_Panorama_in_Spring.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Saif_ul_Malook_Lake_road.JPG/400px-Saif_ul_Malook_Lake_road.JPG',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Hunza_Valley_HDR.jpg/400px-Hunza_Valley_HDR.jpg',
+        'assets/images/destinations/Naran_&_Kaghan_1.jpeg',
+        'assets/images/destinations/Naran_2.jpg',
+        'assets/images/destinations/Naran_3.jpg',
+        'assets/images/destinations/Naran_4.jpg',
       ],
       'Fairy Meadows': [
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Nanga_Parbat_The_Killer_Mountain.jpg/400px-Nanga_Parbat_The_Killer_Mountain.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Fairy_Meadows_240622_02.jpg/400px-Fairy_Meadows_240622_02.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/View_of_cottages_at_Fairy_Meadows_-_Photo_by_Shams_Shaukat_Films.jpg/400px-View_of_cottages_at_Fairy_Meadows_-_Photo_by_Shams_Shaukat_Films.jpg',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Fairy_Meadows%2C_Pakistan.jpg/400px-Fairy_Meadows%2C_Pakistan.jpg',
+        'assets/images/destinations/Fairy_Meadows_1.jpg',
+        'assets/images/destinations/Fairy_Meadows_2.jpg',
+        'assets/images/destinations/Fairy_Meadows_3.jpg',
       ],
     };
 
@@ -466,26 +464,14 @@ class _DestinationScreenState extends State<DestinationScreen>
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: photos[index].startsWith('assets/')
-                      ? Image.asset(
-                          photos[index],
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) => Container(
-                            color: Colors.grey[300],
-                            child: const Icon(Icons.image, color: Colors.grey),
-                          ),
-                        )
-                      : CachedNetworkImage(
-                          imageUrl: photos[index],
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => Container(
-                            color: Colors.grey[300],
-                          ),
-                          errorWidget: (context, url, error) => Container(
-                            color: Colors.grey[300],
-                            child: const Icon(Icons.image, color: Colors.grey),
-                          ),
-                        ),
+                  child: Image.asset(
+                    photos[index],
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => Container(
+                      color: Colors.grey[300],
+                      child: const Icon(Icons.image, color: Colors.grey),
+                    ),
+                  ),
                 ),
               );
             },

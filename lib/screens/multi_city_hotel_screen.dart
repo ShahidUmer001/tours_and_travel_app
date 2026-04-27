@@ -6,15 +6,15 @@ import 'tour_booking_screen.dart';
 class MultiCityHotelScreen extends StatefulWidget {
   final TourPackage tourPackage;
 
-  const MultiCityHotelScreen({Key? key, required this.tourPackage}) : super(key: key);
+  const MultiCityHotelScreen({super.key, required this.tourPackage});
 
   @override
   State<MultiCityHotelScreen> createState() => _MultiCityHotelScreenState();
 }
 
 class _MultiCityHotelScreenState extends State<MultiCityHotelScreen> {
-  Map<String, String> _selectedHotels = {};
-  Map<String, String> _selectedRoomTypes = {};
+  final Map<String, String> _selectedHotels = {};
+  final Map<String, String> _selectedRoomTypes = {};
 
   final Map<String, List<Map<String, dynamic>>> _cityHotels = {
     'Hunza': [
@@ -104,7 +104,7 @@ class _MultiCityHotelScreenState extends State<MultiCityHotelScreen> {
                 ...widget.tourPackage.destinations.where((dest) =>
                 dest != 'Islamabad' && _cityHotels.containsKey(dest)).map((destination) {
                   return _buildDestinationHotelSection(destination);
-                }).toList(),
+                }),
 
                 const SizedBox(height: 20),
 
@@ -301,7 +301,7 @@ class _MultiCityHotelScreenState extends State<MultiCityHotelScreen> {
           ),
           const SizedBox(height: 12),
           _buildPriceRow('Tour Package', widget.tourPackage.price),
-          _buildPriceRow('Hotels (${numberOfNights} nights)', _calculateHotelTotal()),
+          _buildPriceRow('Hotels ($numberOfNights nights)', _calculateHotelTotal()),
           const Divider(),
           _buildPriceRow(
             'Total Amount',

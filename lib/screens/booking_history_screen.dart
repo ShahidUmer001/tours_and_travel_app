@@ -1,6 +1,5 @@
 // screens/booking_history_screen.dart
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../services/booking_service.dart';
 import '../models/booking_model.dart';
 import '../models/car_booking_model.dart';

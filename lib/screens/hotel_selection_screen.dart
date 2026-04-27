@@ -8,7 +8,7 @@ import '../widgets/cached_image.dart';
 class HotelSelectionScreen extends StatefulWidget {
   final Destination destination;
 
-  const HotelSelectionScreen({Key? key, required this.destination}) : super(key: key);
+  const HotelSelectionScreen({super.key, required this.destination});
 
   @override
   State<HotelSelectionScreen> createState() => _HotelSelectionScreenState();
@@ -33,18 +33,16 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
   }
 
   List<Hotel> _getAllHotelsWithRealImages() {
-    // ✅ REAL PAKISTANI HOTELS IMAGES
-
     return [
       // ================================
-      // ✅ HUNZA VALLEY HOTELS (ID: '1')
+      // HUNZA VALLEY HOTELS (ID: '1')
       // ================================
       Hotel(
         id: 'hunza1',
         name: 'Serena Hotel Hunza',
         destinationId: '1',
         rating: 4.8,
-        imageUrl: 'https://image-tc.galaxy.tf/wijpeg-5c2b1c249enjvc8nmgna840n6/baltit-lounge_square.jpg',
+        imageUrl: 'assets/images/hotels/hunza_hotel_1.jpg',
         location: 'Karimabad, Hunza, Gilgit-Baltistan',
         pricePerNight: 25000,
         description: 'Luxury hotel with breathtaking views of Rakaposhi and Ultar Sar peaks.',
@@ -56,7 +54,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Eagle\'s Nest Hotel',
         destinationId: '1',
         rating: 4.6,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Hunza_Valley_HDR.jpg/400px-Hunza_Valley_HDR.jpg',
+        imageUrl: 'assets/images/hotels/hunza_hotel_2.jpg',
         location: 'Duikar, Hunza, Gilgit-Baltistan',
         pricePerNight: 15000,
         description: 'Highest point in Hunza offering panoramic views of entire valley.',
@@ -68,7 +66,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Hunza Embassy Hotel',
         destinationId: '1',
         rating: 4.3,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Baltit_Fort%2C_Karimabad%2C_Hunza%2C_Gilgit_Baltistan.jpg/400px-Baltit_Fort%2C_Karimabad%2C_Hunza%2C_Gilgit_Baltistan.jpg',
+        imageUrl: 'assets/images/hotels/hunza_hotel_3.jpg',
         location: 'Karimabad, Hunza, Gilgit-Baltistan',
         pricePerNight: 12000,
         description: 'Comfortable hotel in central Karimabad with easy access to local markets.',
@@ -77,14 +75,14 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
       ),
 
       // ================================
-      // ✅ SKARDU HOTELS (ID: '2')
+      // SKARDU HOTELS (ID: '2')
       // ================================
       Hotel(
         id: 'skardu1',
         name: 'Shangrila Resort Skardu',
         destinationId: '2',
         rating: 4.7,
-        imageUrl: 'https://image-tc.galaxy.tf/wijpeg-bm80x0knbz674oz86sbtm720n/shigar-fort-with-oldhouse_square.jpg',
+        imageUrl: 'assets/images/hotels/skardu_hotel_1.jpg',
         location: 'Upper Kachura, Skardu, Gilgit-Baltistan',
         pricePerNight: 22000,
         description: 'Iconic luxury resort with stunning Shangrila Lake view.',
@@ -96,7 +94,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'PTDC Motel Skardu',
         destinationId: '2',
         rating: 4.2,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Miandam_ptdc.JPG/400px-Miandam_ptdc.JPG',
+        imageUrl: 'assets/images/hotels/skardu_hotel_2.jpg',
         location: 'Skardu City, Gilgit-Baltistan',
         pricePerNight: 11000,
         description: 'Comfortable government hotel with essential amenities.',
@@ -108,7 +106,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Baltoro Hotel Skardu',
         destinationId: '2',
         rating: 4.1,
-        imageUrl: 'https://image-tc.galaxy.tf/wijpeg-b6vekcyaq8xhl2rj5xyweepza/wankoo-main-entrance-to-palace-recent-photograph-june-2010-1_square.jpg',
+        imageUrl: 'assets/images/hotels/skardu_hotel_3.jpg',
         location: 'Skardu Road, Gilgit-Baltistan',
         pricePerNight: 13000,
         description: 'Modern hotel catering to both tourists and mountaineers.',
@@ -117,14 +115,14 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
       ),
 
       // ================================
-      // ✅ FAIRY MEADOWS HOTELS (ID: '5')
+      // FAIRY MEADOWS HOTELS (ID: '5')
       // ================================
       Hotel(
         id: 'fairy1',
         name: 'Fairy Meadows Resort',
         destinationId: '5',
         rating: 4.5,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/View_of_cottages_at_Fairy_Meadows_-_Photo_by_Shams_Shaukat_Films.jpg/400px-View_of_cottages_at_Fairy_Meadows_-_Photo_by_Shams_Shaukat_Films.jpg',
+        imageUrl: 'assets/images/hotels/fairy_hotel_1.jpg',
         location: 'Fairy Meadows, Gilgit-Baltistan',
         pricePerNight: 18000,
         description: 'Luxury camping resort with direct views of Nanga Parbat.',
@@ -136,7 +134,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Beyal Camp',
         destinationId: '5',
         rating: 4.4,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Fairy_Meadows_240622_02.jpg/400px-Fairy_Meadows_240622_02.jpg',
+        imageUrl: 'assets/images/hotels/fairy_hotel_2.jpg',
         location: 'Beyal Camp, Fairy Meadows',
         pricePerNight: 15000,
         description: 'Adventure camp offering luxury tented accommodation.',
@@ -148,7 +146,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Raikot Serai Hotel',
         destinationId: '5',
         rating: 4.2,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Fairy_Meadows%2C_Pakistan.jpg/400px-Fairy_Meadows%2C_Pakistan.jpg',
+        imageUrl: 'assets/images/hotels/fairy_hotel_3.jpg',
         location: 'Raikot Bridge, Gilgit-Baltistan',
         pricePerNight: 12000,
         description: 'Base camp hotel for Fairy Meadows trek.',
@@ -157,14 +155,14 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
       ),
 
       // ================================
-      // ✅ SWAT VALLEY HOTELS (ID: '3')
+      // SWAT VALLEY HOTELS (ID: '3')
       // ================================
       Hotel(
         id: 'swat1',
         name: 'Swat Serena Hotel',
         destinationId: '3',
         rating: 4.6,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Mahodand_l.jpg/400px-Mahodand_l.jpg',
+        imageUrl: 'assets/images/hotels/swat_hotel_1.jpg',
         location: 'Mingora, Swat, KPK',
         pricePerNight: 20000,
         description: 'Luxury 5-star hotel in the heart of Swat Valley.',
@@ -176,7 +174,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Rock City Hotel & Resort',
         destinationId: '3',
         rating: 4.3,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/River_Swat_Pakistan_3.jpg/400px-River_Swat_Pakistan_3.jpg',
+        imageUrl: 'assets/images/hotels/swat_hotel_2.jpg',
         location: 'Mingora, Swat, KPK',
         pricePerNight: 14000,
         description: 'Modern hotel with excellent facilities for exploring Swat Valley.',
@@ -188,7 +186,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Malam Jabba Resort',
         destinationId: '3',
         rating: 4.1,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Malam_Jaba%2C_Swat%2C_Pakistan.JPG/400px-Malam_Jaba%2C_Swat%2C_Pakistan.JPG',
+        imageUrl: 'assets/images/hotels/swat_hotel_3.jpg',
         location: 'Malam Jabba, Swat, KPK',
         pricePerNight: 11000,
         description: 'Picturesque resort in Malam Jabba with stunning valley views.',
@@ -200,7 +198,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Swat View Hotel',
         destinationId: '3',
         rating: 4.0,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Mountains_in_Swat_Vally_Pakistan.jpg/400px-Mountains_in_Swat_Vally_Pakistan.jpg',
+        imageUrl: 'assets/images/hotels/swat_hotel_4.jpg',
         location: 'Mingora, Swat, KPK',
         pricePerNight: 8500,
         description: 'Comfortable hotel with beautiful Swat Valley views.',
@@ -209,14 +207,14 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
       ),
 
       // ================================
-      // ✅ NARAN & KAGHAN HOTELS (ID: '4')
+      // NARAN & KAGHAN HOTELS (ID: '4')
       // ================================
       Hotel(
         id: 'naran1',
         name: 'Pearl Continental Bhurban',
         destinationId: '4',
         rating: 4.7,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Bhurban_PC.JPG/400px-Bhurban_PC.JPG',
+        imageUrl: 'assets/images/hotels/naran_hotel_1.jpg',
         location: 'Bhurban, Near Naran, KPK',
         pricePerNight: 28000,
         description: 'Luxury 5-star resort with spectacular mountain views.',
@@ -228,7 +226,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Hotel One Naran',
         destinationId: '4',
         rating: 4.4,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Lake_SaifulMalook.jpeg/400px-Lake_SaifulMalook.jpeg',
+        imageUrl: 'assets/images/hotels/naran_hotel_2.jpg',
         location: 'Naran City Center, KPK',
         pricePerNight: 16000,
         description: 'Premium hotel in central Naran with modern amenities.',
@@ -240,7 +238,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Kaghan Continental Hotel',
         destinationId: '4',
         rating: 4.2,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Saif-ul-Muluk_Complete_Panorama_in_Spring.jpg/400px-Saif-ul-Muluk_Complete_Panorama_in_Spring.jpg',
+        imageUrl: 'assets/images/hotels/naran_hotel_3.jpg',
         location: 'Kaghan City Center, KPK',
         pricePerNight: 12000,
         description: 'Comfortable hotel in Kaghan valley with beautiful views.',
@@ -252,7 +250,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Naran Park Hotel',
         destinationId: '4',
         rating: 4.1,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Saif_ul_Malook_Lake_road.JPG/400px-Saif_ul_Malook_Lake_road.JPG',
+        imageUrl: 'assets/images/hotels/naran_hotel_4.jpg',
         location: 'Naran Valley, KPK',
         pricePerNight: 9500,
         description: 'Cozy hotel surrounded by natural beauty.',
@@ -264,7 +262,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Saif-ul-Malook Hotel',
         destinationId: '4',
         rating: 3.8,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Lake_SaifulMalook.jpeg/400px-Lake_SaifulMalook.jpeg',
+        imageUrl: 'assets/images/hotels/naran_hotel_5.jpg',
         location: 'Lake Saif-ul-Malook Road, Naran',
         pricePerNight: 8000,
         description: 'Budget hotel near famous Lake Saif-ul-Malook.',
@@ -276,7 +274,7 @@ class _HotelSelectionScreenState extends State<HotelSelectionScreen> {
         name: 'Royal Hotel Naran',
         destinationId: '4',
         rating: 4.0,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Saif-ul-Muluk_Complete_Panorama_in_Spring.jpg/400px-Saif-ul-Muluk_Complete_Panorama_in_Spring.jpg',
+        imageUrl: 'assets/images/hotels/naran_hotel_6.jpg',
         location: 'Naran Bazaar, KPK',
         pricePerNight: 10000,
         description: 'Well-maintained hotel in central Naran.',

@@ -20,6 +20,12 @@ dependencies:
   cloud_firestore: ^6.1.1
   firebase_storage: ^13.0.5
 
+  # SOCIAL LOGIN
+  google_sign_in: ^6.2.2
+  flutter_facebook_auth: ^7.1.1
+  sign_in_with_apple: ^6.1.4
+  crypto: ^3.0.6
+
   # UI (TESTED)
   google_fonts: ^7.0.2
   cached_network_image: ^3.4.1
@@ -57,3 +63,6 @@ flutter:
   assets:
     - assets/images/
     - assets/images/destinations/
+    - assets/images/login/
+    - assets/images/cars/
+    - assets/images/hotels/

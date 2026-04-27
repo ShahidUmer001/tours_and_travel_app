@@ -51,11 +51,12 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA6SdEXAMPLE_EXAMPLE_EXAMPLE',
-    appId: '1:123456789012:android:abcd1234example',
-    messagingSenderId: '123456789012',
-    projectId: 'tours-and-travel-app',
-    storageBucket: 'tours-and-travel-app.appspot.com',
+    apiKey: 'AIzaSyBbJp8fGb9e9VXdGdjGPdh85ccOGlen4XA',
+    appId: '1:19348056231:android:92d7588cf14e15d7bdd382',
+    messagingSenderId: '19348056231',
+    projectId: 'tours-and-travel-app-6fd9d',
+    databaseURL: 'https://tours-and-travel-app-6fd9d-default-rtdb.firebaseio.com',
+    storageBucket: 'tours-and-travel-app-6fd9d.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(

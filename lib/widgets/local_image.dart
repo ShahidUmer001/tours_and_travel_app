@@ -15,7 +15,7 @@ class LocalImage extends StatelessWidget {
   final FilterQuality filterQuality;
 
   const LocalImage({
-    Key? key,
+    super.key,
     required this.path,
     this.width,
     this.height,
@@ -28,7 +28,7 @@ class LocalImage extends StatelessWidget {
     this.showPlaceholder = true,
     this.fadeInDuration = const Duration(milliseconds: 300),
     this.filterQuality = FilterQuality.medium,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -12,11 +12,11 @@ class TourBookingScreen extends StatefulWidget {
   final double totalPrice;
 
   const TourBookingScreen({
-    Key? key,
+    super.key,
     required this.tourPackage,
     required this.hotelSelections,
     required this.totalPrice,
-  }) : super(key: key);
+  });
 
   @override
   State<TourBookingScreen> createState() => _TourBookingScreenState();
@@ -127,7 +127,7 @@ class _TourBookingScreenState extends State<TourBookingScreen> {
             SizedBox(height: 12),
             _buildSummaryRow('Tour Package', widget.tourPackage.name),
             _buildSummaryRow('Duration', widget.tourPackage.duration),
-            Container(
+            SizedBox(
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -363,7 +363,7 @@ class _TourBookingScreenState extends State<TourBookingScreen> {
             ),
             SizedBox(height: 16),
             DropdownButtonFormField<String>(
-              value: _selectedPaymentMethod,
+              initialValue: _selectedPaymentMethod,
               decoration: InputDecoration(
                 labelText: 'Select Payment Method',
                 border: OutlineInputBorder(),
@@ -438,7 +438,7 @@ class _TourBookingScreenState extends State<TourBookingScreen> {
           ),
           SizedBox(height: 4),
           Text(
-            'Send payment to JazzCash Account: 0300-1234567\nAccount Title: Pakistan Tours',
+            'Send payment to JazzCash Account: 0310-5959607\nAccount Title: Tours and Travel',
             style: TextStyle(fontSize: 12, color: Colors.red[700]),
           ),
         ],
@@ -462,7 +462,7 @@ class _TourBookingScreenState extends State<TourBookingScreen> {
           ),
           SizedBox(height: 4),
           Text(
-            'Send payment to EasyPaisa Account: 0312-3456789\nAccount Title: Pakistan Tours',
+            'Send payment to EasyPaisa Account: 0310-5959607\nAccount Title: Tours and Travel',
             style: TextStyle(fontSize: 12, color: Colors.orange[700]),
           ),
         ],
@@ -486,7 +486,7 @@ class _TourBookingScreenState extends State<TourBookingScreen> {
           ),
           SizedBox(height: 4),
           Text(
-            'Bank: HBL\nAccount: 12345678901\nTitle: Pakistan Tours Pvt Ltd',
+            'Bank: HBL\nAccount: 12345678901\nTitle: Tours and Travel Pvt Ltd',
             style: TextStyle(fontSize: 12, color: Colors.green[700]),
           ),
         ],
@@ -630,7 +630,7 @@ class _TourBookingScreenState extends State<TourBookingScreen> {
                     ),
                     SizedBox(height: 4),
                     Text(
-                      '⭐ Thank you for choosing Pakistan Tours!',
+                      '⭐ Thank you for choosing Tours and Travel!',
                       style: TextStyle(color: Colors.blue[800], fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                   ],

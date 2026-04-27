@@ -7,8 +7,15 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../services/auth_service.dart';
+import '../services/local_auth_service.dart';
+import '../utils/animations.dart';
+import '../utils/constants.dart';
+import 'add_car_screen.dart';
+import 'add_hotel_screen.dart';
 import 'login_screen.dart';
+import 'my_listings_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -54,11 +61,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   // ===================== AUTH METHODS =====================
   void _logout() async {
     await _authService.signOut();
+    await LocalAuthService.instance.signOut();
     if (!mounted) return;
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (context) => const LoginScreen()),
-          (route) => false,
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (_) => const LoginScreen()),
+      (route) => false,
     );
   }
 
@@ -165,7 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       debugPrint('Image uploaded to: $downloadUrl');
     } catch (e) {
       debugPrint('Firebase upload error: $e');
-      throw e;
+      rethrow;
     }
   }
 
@@ -683,91 +690,236 @@ class _ProfileScreenState extends State<ProfileScreen> {
       backgroundImage = NetworkImage(userData['profileImageUrl'] as String);
     }
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.blue.shade50,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        children: [
-          Stack(
-            children: [
-              if (_isImageUploading)
-                Container(
+    return AnimatedFadeSlide(
+      beginOffset: const Offset(0, -0.15),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.fromLTRB(20, 28, 20, 24),
+        decoration: BoxDecoration(
+          gradient: AppConstants.primaryGradient,
+          borderRadius: BorderRadius.circular(28),
+          boxShadow: [
+            BoxShadow(
+              color: AppConstants.primaryColor.withValues(alpha: 0.35),
+              blurRadius: 24,
+              offset: const Offset(0, 12),
+            ),
+          ],
+        ),
+        child: Stack(
+          children: [
+            // Decorative floating blobs
+            Positioned(
+              top: -30,
+              right: -20,
+              child: FloatingAnimation(
+                offset: 10,
+                child: Container(
+                  width: 120,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white.withValues(alpha: 0.08),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: -30,
+              left: -30,
+              child: FloatingAnimation(
+                offset: 12,
+                duration: const Duration(seconds: 4),
+                child: Container(
                   width: 100,
                   height: 100,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
                     shape: BoxShape.circle,
+                    color: Colors.amber.withValues(alpha: 0.14),
                   ),
-                  child: const Center(
-                    child: CircularProgressIndicator(),
+                ),
+              ),
+            ),
+            Column(
+              children: [
+                FloatingAnimation(
+                  offset: 5,
+                  child: GlowPulse(
+                    glowColor: AppConstants.goldAccent,
+                    maxRadius: 44,
+                    borderRadius: BorderRadius.circular(999),
+                    child: Stack(
+                      children: [
+                        if (_isImageUploading)
+                          Container(
+                            width: 110,
+                            height: 110,
+                            decoration: BoxDecoration(
+                              color: Colors.white.withValues(alpha: 0.2),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
+                        else
+                          Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                colors: [Color(0xFFFFD54F), Color(0xFFFF7043)],
+                              ),
+                            ),
+                            child: CircleAvatar(
+                              radius: 52,
+                              backgroundColor: Colors.white,
+                              backgroundImage: backgroundImage,
+                              child: backgroundImage == null
+                                  ? const Icon(
+                                      Icons.person,
+                                      size: 52,
+                                      color: AppConstants.primaryColor,
+                                    )
+                                  : null,
+                            ),
+                          ),
+                        Positioned(
+                          bottom: 2,
+                          right: 2,
+                          child: ScaleOnTap(
+                            onTap: _isImageUploading ? null : _pickProfileImage,
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: _isImageUploading
+                                    ? Colors.grey
+                                    : AppConstants.warmAccent,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                    color: Colors.white, width: 2.5),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black
+                                        .withValues(alpha: 0.25),
+                                    blurRadius: 8,
+                                    offset: const Offset(0, 4),
+                                  ),
+                                ],
+                              ),
+                              child: const Icon(
+                                Icons.camera_alt,
+                                size: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                )
-              else
-                CircleAvatar(
-                  radius: 50,
-                  backgroundColor: Colors.blue.shade700,
-                  backgroundImage: backgroundImage,
-                  child: backgroundImage == null
-                      ? const Icon(
-                    Icons.person,
-                    size: 50,
+                ),
+                const SizedBox(height: 18),
+                ShimmerText(
+                  text: userData?['fullName'] ?? 'User',
+                  highlightColor: const Color(0xFFFFD54F),
+                  style: GoogleFonts.poppins(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w800,
                     color: Colors.white,
-                  )
-                      : null,
-                ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: GestureDetector(
-                  onTap: _isImageUploading ? null : _pickProfileImage,
-                  child: Container(
-                    padding: const EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      color: _isImageUploading ? Colors.grey : Colors.blue.shade700,
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: 2),
-                    ),
-                    child: Icon(
-                      Icons.camera_alt,
-                      size: 18,
-                      color: _isImageUploading ? Colors.grey.shade400 : Colors.white,
-                    ),
+                    letterSpacing: -0.3,
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Text(
-            userData?['fullName'] ?? 'User',
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+                const SizedBox(height: 4),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 14, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(999),
+                    border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.35)),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.email_outlined,
+                          color: Colors.white, size: 14),
+                      const SizedBox(width: 6),
+                      Text(
+                        user?.email ?? 'No email',
+                        style: GoogleFonts.poppins(
+                          fontSize: 13,
+                          color: Colors.white.withValues(alpha: 0.95),
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                if (userData?['phone'] != null &&
+                    (userData!['phone'] as String).isNotEmpty) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    userData['phone'] as String,
+                    style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      color: Colors.white.withValues(alpha: 0.85),
+                    ),
+                  ),
+                ],
+                const SizedBox(height: 20),
+                // Animated stat badges
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _buildProfileStat(12, 'Trips', Icons.flight_takeoff_rounded),
+                    Container(
+                      width: 1,
+                      height: 36,
+                      color: Colors.white.withValues(alpha: 0.25),
+                    ),
+                    _buildProfileStat(8, 'Reviews', Icons.star_rounded),
+                    Container(
+                      width: 1,
+                      height: 36,
+                      color: Colors.white.withValues(alpha: 0.25),
+                    ),
+                    _buildProfileStat(5, 'Saved', Icons.bookmark_rounded),
+                  ],
+                ),
+              ],
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            user?.email ?? 'No email',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey.shade600,
-            ),
-          ),
-          const SizedBox(height: 8),
-          if (userData?['phone'] != null && (userData!['phone'] as String).isNotEmpty)
-            Text(
-              userData['phone'] as String,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey.shade600,
-              ),
-            ),
-        ],
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildProfileStat(int value, String label, IconData icon) {
+    return Column(
+      children: [
+        Icon(icon, color: Colors.white, size: 18),
+        const SizedBox(height: 4),
+        AnimatedCounter(
+          value: value,
+          style: GoogleFonts.poppins(
+            fontSize: 18,
+            fontWeight: FontWeight.w800,
+            color: Colors.white,
+          ),
+        ),
+        Text(
+          label,
+          style: GoogleFonts.poppins(
+            fontSize: 11,
+            color: Colors.white.withValues(alpha: 0.85),
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
     );
   }
 
@@ -775,80 +927,59 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 16),
-          child: Text(
-            'Settings',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.blue,
-            ),
+        StaggeredEntry(
+          index: 0,
+          child: _buildSettingItem(
+            icon: Icons.phone,
+            title: 'Phone number',
+            value: _getMaskedPhoneNumber(),
+            onTap: _showPhoneNumberDialog,
           ),
         ),
-
-        // Phone Number Setting
-        _buildSettingItem(
-          icon: Icons.phone,
-          title: 'Phone number',
-          value: _getMaskedPhoneNumber(),
-          onTap: _showPhoneNumberDialog,
-        ),
-
-        // Language Setting
-        _buildSettingItem(
-          icon: Icons.language,
-          title: 'Language',
-          value: _language,
-          onTap: _showLanguageDialog,
-        ),
-
-        // Night Mode Setting
-        _buildSettingItem(
-          icon: _nightMode == 'On'
-              ? Icons.nightlight_round
-              : Icons.light_mode,
-          title: 'Night mode',
-          value: _nightMode,
-          onTap: _showNightModeDialog,
-        ),
-
-        // Rules and Terms
-        _buildSettingItem(
-          icon: Icons.description,
-          title: 'Rules and terms',
-          value: '',
-          onTap: _showRulesAndTerms,
-        ),
-
-        // Save Settings Button
-        const SizedBox(height: 20),
-        if (_isLoading)
-          const Center(child: CircularProgressIndicator())
-        else
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: _saveSettings,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green.shade600,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              child: const Text(
-                'Save Settings',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+        StaggeredEntry(
+          index: 1,
+          child: _buildSettingItem(
+            icon: Icons.language,
+            title: 'Language',
+            value: _language,
+            onTap: _showLanguageDialog,
           ),
-
-        const SizedBox(height: 30),
+        ),
+        StaggeredEntry(
+          index: 2,
+          child: _buildSettingItem(
+            icon: _nightMode == 'On'
+                ? Icons.nightlight_round
+                : Icons.light_mode,
+            title: 'Night mode',
+            value: _nightMode,
+            onTap: _showNightModeDialog,
+          ),
+        ),
+        StaggeredEntry(
+          index: 3,
+          child: _buildSettingItem(
+            icon: Icons.description,
+            title: 'Rules and terms',
+            value: '',
+            onTap: _showRulesAndTerms,
+          ),
+        ),
+        const SizedBox(height: 16),
+        AnimatedFadeSlide(
+          delay: const Duration(milliseconds: 400),
+          child: LiquidButton(
+            label: _isLoading ? 'SAVING...' : 'SAVE SETTINGS',
+            icon: Icons.save_rounded,
+            isLoading: _isLoading,
+            onPressed: _saveSettings,
+            colors: const [
+              AppConstants.successColor,
+              Color(0xFF16A085),
+            ],
+          ),
+        ),
+        const SizedBox(height: 12),
       ],
     );
   }
@@ -859,17 +990,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
     required String value,
     required VoidCallback onTap,
   }) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 12),
-      child: ListTile(
-        leading: Icon(icon, color: Colors.blue.shade700),
-        title: Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.w500),
+    return ScaleOnTap(
+      scaleDown: 0.97,
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: AppConstants.cardElevation,
         ),
-        subtitle: value.isNotEmpty ? Text(value) : null,
-        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-        onTap: onTap,
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [AppConstants.primaryLight, AppConstants.primaryColor],
+                ),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: Colors.white, size: 20),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                      color: AppConstants.textColor,
+                    ),
+                  ),
+                  if (value.isNotEmpty)
+                    Text(
+                      value,
+                      style: GoogleFonts.poppins(
+                        fontSize: 12,
+                        color: AppConstants.lightTextColor,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            const Icon(Icons.arrow_forward_ios,
+                size: 14, color: AppConstants.lightTextColor),
+          ],
+        ),
       ),
     );
   }
@@ -878,14 +1049,51 @@ class _ProfileScreenState extends State<ProfileScreen> {
     required IconData icon,
     required String title,
     required VoidCallback onTap,
+    Color? color,
   }) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 8),
-      child: ListTile(
-        leading: Icon(icon, color: Colors.blue.shade700),
-        title: Text(title),
-        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-        onTap: onTap,
+    final c = color ?? AppConstants.primaryColor;
+    return ScaleOnTap(
+      scaleDown: 0.97,
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: AppConstants.cardElevation,
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: c.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: c, size: 20),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Text(
+                title,
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                  color: AppConstants.textColor,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                color: c.withValues(alpha: 0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(Icons.arrow_forward_ios, size: 12, color: c),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -896,10 +1104,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final User? user = _authService.currentUser;
 
     return Scaffold(
+      backgroundColor: AppConstants.backgroundColor,
       appBar: AppBar(
-        title: const Text('Profile & Settings'),
-        backgroundColor: Colors.blue.shade700,
+        title: Text(
+          'Profile & Settings',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            fontSize: 18,
+            color: AppConstants.textColor,
+          ),
+        ),
+        backgroundColor: Colors.white,
+        foregroundColor: AppConstants.textColor,
         elevation: 0,
+        centerTitle: true,
       ),
       body: StreamBuilder<DocumentSnapshot>(
         stream: user != null ? _firestore.collection('users').doc(user.uid).snapshots() : null,
@@ -909,103 +1127,335 @@ class _ProfileScreenState extends State<ProfileScreen> {
               : null;
 
           return SingleChildScrollView(
-            padding: const EdgeInsets.all(20.0),
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                // Profile Header
                 _buildProfileHeader(userData, user),
+                const SizedBox(height: 24),
 
-                const SizedBox(height: 30),
+                _buildPartnerSection(),
+                const SizedBox(height: 22),
 
-                // Profile Options
-                _buildProfileOption(
-                  icon: Icons.edit,
-                  title: 'Edit Profile',
-                  onTap: () {
-                    _showEditProfileDialog(userData ?? {});
-                  },
+                _buildSectionHeader(
+                  'Account',
+                  Icons.person_rounded,
+                  AppConstants.primaryColor,
                 ),
-                _buildProfileOption(
-                  icon: Icons.history,
-                  title: 'Booking History',
-                  onTap: () {
-                    _showBookingHistory(user?.uid);
-                  },
+                const SizedBox(height: 10),
+                StaggeredEntry(
+                  index: 0,
+                  child: _buildProfileOption(
+                    icon: Icons.edit_rounded,
+                    title: 'Edit Profile',
+                    color: AppConstants.primaryColor,
+                    onTap: () => _showEditProfileDialog(userData ?? {}),
+                  ),
                 ),
-                _buildProfileOption(
-                  icon: Icons.security,
-                  title: 'Privacy & Security',
-                  onTap: _showPrivacySettings,
+                StaggeredEntry(
+                  index: 1,
+                  child: _buildProfileOption(
+                    icon: Icons.history_rounded,
+                    title: 'Booking History',
+                    color: AppConstants.accentColor,
+                    onTap: () => _showBookingHistory(user?.uid),
+                  ),
                 ),
-                _buildProfileOption(
-                  icon: Icons.help,
-                  title: 'Help & Support',
-                  onTap: _showHelpSupport,
+                StaggeredEntry(
+                  index: 2,
+                  child: _buildProfileOption(
+                    icon: Icons.security_rounded,
+                    title: 'Privacy & Security',
+                    color: AppConstants.successColor,
+                    onTap: _showPrivacySettings,
+                  ),
                 ),
-                _buildProfileOption(
-                  icon: Icons.info,
-                  title: 'About App',
-                  onTap: _showAboutApp,
+                StaggeredEntry(
+                  index: 3,
+                  child: _buildProfileOption(
+                    icon: Icons.help_outline_rounded,
+                    title: 'Help & Support',
+                    color: AppConstants.warmAccent,
+                    onTap: _showHelpSupport,
+                  ),
+                ),
+                StaggeredEntry(
+                  index: 4,
+                  child: _buildProfileOption(
+                    icon: Icons.info_outline_rounded,
+                    title: 'About App',
+                    color: AppConstants.infoColor,
+                    onTap: _showAboutApp,
+                  ),
                 ),
 
-                const SizedBox(height: 30),
-
-                // Settings Section
+                const SizedBox(height: 22),
+                _buildSectionHeader(
+                  'Settings',
+                  Icons.settings_rounded,
+                  AppConstants.accentColor,
+                ),
+                const SizedBox(height: 10),
                 _buildSettingsSection(),
 
-                // Logout and Delete Account Buttons
-                const SizedBox(height: 20),
-                Column(
-                  children: [
-                    // Logout Button
-                    SizedBox(
+                const SizedBox(height: 14),
+                AnimatedFadeSlide(
+                  delay: const Duration(milliseconds: 500),
+                  child: ScaleOnTap(
+                    scaleDown: 0.96,
+                    onTap: _logout,
+                    child: Container(
                       width: double.infinity,
-                      height: 50,
-                      child: OutlinedButton(
-                        onPressed: _logout,
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: Colors.red.shade600),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
+                      height: 54,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(
+                          color: AppConstants.errorColor.withValues(alpha: 0.6),
+                          width: 1.5,
                         ),
-                        child: const Text(
-                          'Log Out',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
+                        boxShadow: AppConstants.cardElevation,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.logout_rounded,
+                              color: AppConstants.errorColor, size: 20),
+                          const SizedBox(width: 8),
+                          Text(
+                            'Log Out',
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              color: AppConstants.errorColor,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
-
-                    const SizedBox(height: 12),
-
-                    // Delete Account Button
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: TextButton(
-                        onPressed: _showDeleteAccountDialog,
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.red.shade600,
-                        ),
-                        child: const Text(
-                          'Delete Account',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
+
+                const SizedBox(height: 12),
+
+                AnimatedFadeSlide(
+                  delay: const Duration(milliseconds: 600),
+                  child: TextButton.icon(
+                    onPressed: _showDeleteAccountDialog,
+                    icon: const Icon(Icons.delete_outline_rounded,
+                        color: AppConstants.errorColor),
+                    label: Text(
+                      'Delete Account',
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        color: AppConstants.errorColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
               ],
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildPartnerSection() {
+    return AnimatedFadeSlide(
+      delay: const Duration(milliseconds: 150),
+      child: Container(
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFF1A237E), Color(0xFF3949AB), Color(0xFF5C6BC0)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(22),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF3949AB).withValues(alpha: 0.35),
+              blurRadius: 20,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                FloatingAnimation(
+                  offset: 4,
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.22),
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.35),
+                      ),
+                    ),
+                    child: const Icon(
+                      Icons.business_center_rounded,
+                      color: Colors.white,
+                      size: 22,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ShimmerText(
+                        text: 'Become a Partner',
+                        highlightColor: const Color(0xFFFFD54F),
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        'Register your hotel or car and earn',
+                        style: GoogleFonts.poppins(
+                          fontSize: 11,
+                          color: Colors.white.withValues(alpha: 0.88),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 14),
+            Row(
+              children: [
+                Expanded(
+                  child: _partnerAction(
+                    Icons.hotel_rounded,
+                    'Add Hotel',
+                    const [Color(0xFFFFAB40), Color(0xFFFF7043)],
+                    () {
+                      Navigator.push(
+                        context,
+                        PageTransitions.slideUp(const AddHotelScreen()),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: _partnerAction(
+                    Icons.directions_car_rounded,
+                    'Add Car',
+                    const [Color(0xFF00BFA5), Color(0xFF00E5FF)],
+                    () {
+                      Navigator.push(
+                        context,
+                        PageTransitions.slideUp(const AddCarScreen()),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: _partnerAction(
+                    Icons.list_alt_rounded,
+                    'My Listings',
+                    const [Color(0xFFFFD54F), Color(0xFFFFC107)],
+                    () {
+                      Navigator.push(
+                        context,
+                        PageTransitions.slideUp(const MyListingsScreen()),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _partnerAction(
+    IconData icon,
+    String label,
+    List<Color> colors,
+    VoidCallback onTap,
+  ) {
+    return ScaleOnTap(
+      scaleDown: 0.94,
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: colors),
+          borderRadius: BorderRadius.circular(14),
+          boxShadow: [
+            BoxShadow(
+              color: colors.last.withValues(alpha: 0.4),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            Icon(icon, color: Colors.white, size: 22),
+            const SizedBox(height: 6),
+            Text(
+              label,
+              style: GoogleFonts.poppins(
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSectionHeader(String title, IconData icon, Color color) {
+    return AnimatedFadeSlide(
+      delay: const Duration(milliseconds: 200),
+      beginOffset: const Offset(-0.1, 0),
+      child: Row(
+        children: [
+          Container(
+            width: 4,
+            height: 22,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [color, color.withValues(alpha: 0.5)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Icon(icon, color: color, size: 20),
+          const SizedBox(width: 8),
+          Text(
+            title,
+            style: GoogleFonts.poppins(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: AppConstants.textColor,
+              letterSpacing: -0.3,
+            ),
+          ),
+        ],
       ),
     );
   }

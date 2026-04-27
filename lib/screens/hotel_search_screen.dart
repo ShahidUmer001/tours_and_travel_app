@@ -3,6 +3,8 @@ import '../models/hotel_model.dart';
 import 'payment_screen.dart'; // ✅ Add payment screen import
 
 class AllPakistanHotelBookingScreen extends StatefulWidget {
+  const AllPakistanHotelBookingScreen({super.key});
+
   @override
   State<AllPakistanHotelBookingScreen> createState() => _AllPakistanHotelBookingScreenState();
 }
@@ -70,12 +72,12 @@ class _AllPakistanHotelBookingScreenState extends State<AllPakistanHotelBookingS
                 // Search Button
                 ElevatedButton(
                   onPressed: _searchHotels,
-                  child: Text('Search Hotels'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple,
                     foregroundColor: Colors.white,
                     minimumSize: Size(double.infinity, 50),
                   ),
+                  child: Text('Search Hotels'),
                 ),
               ],
             ),
@@ -216,32 +218,50 @@ class _AllPakistanHotelBookingScreenState extends State<AllPakistanHotelBookingS
       child: Column(
         children: [
           // Hotel Image
-          Container(
+          SizedBox(
             height: 200,
             width: double.infinity,
-            child: Image.network(
-              hotel.imageUrl,
-              fit: BoxFit.cover,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) return child;
-                return Container(
-                  color: Colors.grey[300],
-                  child: Center(child: CircularProgressIndicator()),
-                );
-              },
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: Colors.grey[300],
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.hotel, size: 50, color: Colors.grey),
-                      SizedBox(height: 8),
-                      Text('Hotel Image', style: TextStyle(color: Colors.grey)),
-                    ],
-                  ),
-                );
-              },
+            child: hotel.imageUrl.startsWith('assets/')
+              ? Image.asset(
+                  hotel.imageUrl,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Colors.grey[300],
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.hotel, size: 50, color: Colors.grey),
+                          SizedBox(height: 8),
+                          Text('Hotel Image', style: TextStyle(color: Colors.grey)),
+                        ],
+                      ),
+                    );
+                  },
+                )
+              : Image.network(
+                  hotel.imageUrl,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Container(
+                      color: Colors.grey[300],
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Colors.grey[300],
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.hotel, size: 50, color: Colors.grey),
+                          SizedBox(height: 8),
+                          Text('Hotel Image', style: TextStyle(color: Colors.grey)),
+                        ],
+                      ),
+                    );
+                  },
             ),
           ),
 
@@ -315,11 +335,11 @@ class _AllPakistanHotelBookingScreenState extends State<AllPakistanHotelBookingS
                     ),
                     ElevatedButton(
                       onPressed: () => _bookHotel(hotel),
-                      child: Text('Book Now'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.purple,
                         foregroundColor: Colors.white,
                       ),
+                      child: Text('Book Now'),
                     ),
                   ],
                 ),
@@ -390,14 +410,13 @@ class _AllPakistanHotelBookingScreenState extends State<AllPakistanHotelBookingS
   }
 
   List<Hotel> _getHotelsByCity(String city) {
-    // Sample hotel data
     return [
       Hotel(
         id: '1',
         name: 'Serena Hotel $city',
         destinationId: '1',
         rating: 4.8,
-        imageUrl: 'https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=600',
+        imageUrl: 'assets/images/hotels/hunza_hotel_1.jpg',
         location: 'Main Boulevard, $city',
         pricePerNight: 15000,
         description: 'Luxury 5-star hotel in the heart of $city with world-class amenities and services.',
@@ -409,7 +428,7 @@ class _AllPakistanHotelBookingScreenState extends State<AllPakistanHotelBookingS
         name: 'Pearl Continental $city',
         destinationId: '1',
         rating: 4.6,
-        imageUrl: 'https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=600',
+        imageUrl: 'assets/images/hotels/skardu_hotel_1.jpg',
         location: 'City Center, $city',
         pricePerNight: 12000,
         description: 'Premium hotel with excellent amenities and convenient location in $city.',
@@ -421,7 +440,7 @@ class _AllPakistanHotelBookingScreenState extends State<AllPakistanHotelBookingS
         name: 'Hotel One $city',
         destinationId: '1',
         rating: 4.2,
-        imageUrl: 'https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=600',
+        imageUrl: 'assets/images/hotels/swat_hotel_2.jpg',
         location: 'Commercial Area, $city',
         pricePerNight: 8000,
         description: 'Comfortable business hotel with modern facilities in $city.',
@@ -433,7 +452,7 @@ class _AllPakistanHotelBookingScreenState extends State<AllPakistanHotelBookingS
         name: 'Ramada $city',
         destinationId: '1',
         rating: 4.4,
-        imageUrl: 'https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=600',
+        imageUrl: 'assets/images/hotels/naran_hotel_2.jpg',
         location: 'Downtown $city',
         pricePerNight: 10000,
         description: 'International standard hotel with premium services in $city.',

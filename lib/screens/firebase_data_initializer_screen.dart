@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseDataInitializerScreen extends StatelessWidget {
+  const FirebaseDataInitializerScreen({super.key});
+
   FirebaseFirestore get _firestore => FirebaseFirestore.instance;
 
   Future<void> _addSampleHotels() async {

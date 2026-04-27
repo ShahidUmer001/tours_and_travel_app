@@ -4,6 +4,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
 class MapScreen extends StatefulWidget {
+  const MapScreen({super.key});
+
   @override
   State<MapScreen> createState() => _MapScreenState();
 }
@@ -362,8 +364,8 @@ class _MapScreenState extends State<MapScreen> {
             _currentPosition!.longitude,
           );
         },
-        child: Icon(Icons.my_location),
         tooltip: 'Go to Your Location',
+        child: Icon(Icons.my_location),
       )
           : null,
     );

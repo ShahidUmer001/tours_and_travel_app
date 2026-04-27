@@ -13,8 +13,16 @@ import '../screens/map_screen.dart';
 import '../screens/multi_city_hotel_screen.dart';
 import '../utils/animations.dart';
 import '../utils/constants.dart';
+import 'add_car_screen.dart';
+import 'add_hotel_screen.dart';
 import 'car_booking_screen.dart';
 import 'hotel_search_screen.dart';
+import 'my_listings_screen.dart';
+import 'weather_screen.dart';
+import 'chat_screen.dart';
+import 'review_screen.dart';
+import 'admin_dashboard_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
   final int initialTab;
@@ -164,8 +172,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     {'icon': Icons.hotel, 'title': 'Hotels', 'color': Colors.blue, 'route': 'hotels'},
     {'icon': Icons.directions_car, 'title': 'Transport', 'color': Colors.green, 'route': 'transport'},
     {'icon': Icons.map, 'title': 'Map', 'color': Colors.orange, 'route': 'map'},
-    {'icon': Icons.directions_car, 'title': 'City Car', 'color': Colors.purple, 'route': 'city_car'},
-    {'icon': Icons.hotel, 'title': 'All Hotels', 'color': Colors.teal, 'route': 'all_hotels'},
+    {'icon': Icons.wb_sunny_rounded, 'title': 'Weather', 'color': const Color(0xFF11998E), 'route': 'weather'},
+    {'icon': Icons.chat_bubble_rounded, 'title': 'Chat', 'color': const Color(0xFF667EEA), 'route': 'chat'},
+    {'icon': Icons.star_rounded, 'title': 'Reviews', 'color': Colors.amber, 'route': 'reviews'},
+    {'icon': Icons.admin_panel_settings, 'title': 'Admin', 'color': const Color(0xFF764BA2), 'route': 'admin'},
     {'icon': Icons.camera_alt, 'title': 'Photos', 'color': Colors.red, 'route': 'photos'},
   ];
 
@@ -523,9 +533,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildStatsRow(),
-                const SizedBox(height: 28),
+                const SizedBox(height: 8),
                 _buildServicesGrid(),
                 const SizedBox(height: 32),
+                _buildSpecialOfferBanner(),
+                const SizedBox(height: 28),
+                _buildPartnerBanner(),
+                const SizedBox(height: 28),
                 _buildQuickAccessSection(),
                 const SizedBox(height: 32),
                 _buildTourTypeSelector(),
@@ -546,29 +560,70 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return AnimatedFadeSlide(
       delay: const Duration(milliseconds: 50),
       beginOffset: const Offset(0, -0.1),
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 50),
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [Color(0xFF0D47A1), Color(0xFF1976D2), Color(0xFF42A5F5)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(40),
-            bottomRight: Radius.circular(40),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: AppConstants.primaryColor.withValues(alpha: 0.3),
-              blurRadius: 24,
-              offset: const Offset(0, 10),
+      child: Stack(
+        children: [
+          Container(
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 50),
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xFF0D47A1), Color(0xFF1976D2), Color(0xFF42A5F5)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(40),
+                bottomRight: Radius.circular(40),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: AppConstants.primaryColor.withValues(alpha: 0.3),
+                  blurRadius: 24,
+                  offset: const Offset(0, 10),
+                ),
+              ],
             ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+            child: Stack(
+              children: [
+                // Decorative circles
+                Positioned(
+                  top: -30,
+                  right: -30,
+                  child: Container(
+                    width: 140,
+                    height: 140,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white.withValues(alpha: 0.06),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 60,
+                  right: 40,
+                  child: Container(
+                    width: 80,
+                    height: 80,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white.withValues(alpha: 0.08),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 20,
+                  left: -20,
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white.withValues(alpha: 0.05),
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
             const SizedBox(height: 4),
             Row(
               children: [
@@ -597,26 +652,426 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ],
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Where will you\ngo next?',
-              style: TextStyle(
+            ShimmerText(
+              text: 'Where will you',
+              highlightColor: const Color(0xFFFFD54F),
+              style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontSize: 32,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w800,
+                height: 1.2,
+                letterSpacing: -0.5,
+              ),
+            ),
+            GradientText(
+              text: 'go next?',
+              colors: const [Color(0xFFFFD54F), Color(0xFFFFAB40), Color(0xFFFFFFFF)],
+              style: GoogleFonts.poppins(
+                fontSize: 32,
+                fontWeight: FontWeight.w800,
                 height: 1.2,
                 letterSpacing: -0.5,
               ),
             ),
             const SizedBox(height: 8),
-            Text(
-              'Explore breathtaking destinations across Pakistan',
-              style: TextStyle(
-                color: Colors.white.withValues(alpha: 0.85),
+            TypewriterText(
+              text: 'Explore breathtaking destinations across Pakistan',
+              duration: const Duration(milliseconds: 2200),
+              style: GoogleFonts.poppins(
+                color: Colors.white.withValues(alpha: 0.9),
                 fontSize: 14,
+                fontWeight: FontWeight.w500,
               ),
             ),
             const SizedBox(height: 20),
             _buildSearchBar(),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSpecialOfferBanner() {
+    return AnimatedFadeSlide(
+      delay: const Duration(milliseconds: 220),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFF1A237E), Color(0xFF3949AB), Color(0xFF5C6BC0)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF3949AB).withValues(alpha: 0.4),
+              blurRadius: 20,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              right: -20,
+              top: -20,
+              child: Container(
+                width: 120,
+                height: 120,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white.withValues(alpha: 0.08),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 30,
+              bottom: -30,
+              child: Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white.withValues(alpha: 0.08),
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.local_offer, color: Colors.black87, size: 12),
+                            SizedBox(width: 4),
+                            Text(
+                              'SPECIAL OFFER',
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Summer Sale',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Get 25% off on all tours\nLimited time offer',
+                        style: TextStyle(
+                          color: Colors.white.withValues(alpha: 0.85),
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                PulseAnimation(
+                  minScale: 0.98,
+                  maxScale: 1.08,
+                  child: GlowPulse(
+                    glowColor: const Color(0xFFFFC107),
+                    maxRadius: 30,
+                    borderRadius: BorderRadius.circular(999),
+                    child: Container(
+                      width: 80,
+                      height: 80,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFFFFD54F), Color(0xFFFFA726)],
+                        ),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.3),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '25%',
+                            style: GoogleFonts.poppins(
+                              color: Colors.black87,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                          Text(
+                            'OFF',
+                            style: GoogleFonts.poppins(
+                              color: Colors.black87,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 1.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPartnerBanner() {
+    return AnimatedFadeSlide(
+      delay: const Duration(milliseconds: 240),
+      child: Container(
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFF0F2027), Color(0xFF2C5364), Color(0xFF00BFA5)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: [0.0, 0.5, 1.0],
+          ),
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: [
+            BoxShadow(
+              color: AppConstants.accentColor.withValues(alpha: 0.35),
+              blurRadius: 20,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              right: -30,
+              top: -30,
+              child: FloatingAnimation(
+                offset: 8,
+                child: Container(
+                  width: 120,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white.withValues(alpha: 0.08),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 40,
+              bottom: -40,
+              child: FloatingAnimation(
+                offset: 10,
+                duration: const Duration(seconds: 4),
+                child: Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.amber.withValues(alpha: 0.15),
+                  ),
+                ),
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.circular(999),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.workspace_premium_rounded,
+                              color: Colors.black87, size: 12),
+                          const SizedBox(width: 4),
+                          Text(
+                            'BECOME A PARTNER',
+                            style: GoogleFonts.poppins(
+                              color: Colors.black87,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                ShimmerText(
+                  text: 'List Your Hotel or Car',
+                  highlightColor: const Color(0xFFFFD54F),
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: -0.3,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Earn money by renting out your property\nor vehicle to travelers — it\'s easy!',
+                  style: GoogleFonts.poppins(
+                    color: Colors.white.withValues(alpha: 0.9),
+                    fontSize: 12,
+                    height: 1.4,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ScaleOnTap(
+                        scaleDown: 0.96,
+                        onTap: () => Navigator.push(
+                          context,
+                          PageTransitions.slideUp(const AddHotelScreen()),
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFFFFAB40), Color(0xFFFF7043)],
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: AppConstants.warmAccent
+                                    .withValues(alpha: 0.5),
+                                blurRadius: 10,
+                                offset: const Offset(0, 5),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.hotel_rounded,
+                                  color: Colors.white, size: 16),
+                              const SizedBox(width: 6),
+                              Text(
+                                'Add Hotel',
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: ScaleOnTap(
+                        scaleDown: 0.96,
+                        onTap: () => Navigator.push(
+                          context,
+                          PageTransitions.slideUp(const AddCarScreen()),
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+                            ),
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFF6366F1)
+                                    .withValues(alpha: 0.5),
+                                blurRadius: 10,
+                                offset: const Offset(0, 5),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.directions_car_rounded,
+                                  color: Colors.white, size: 16),
+                              const SizedBox(width: 6),
+                              Text(
+                                'Add Car',
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Center(
+                  child: ScaleOnTap(
+                    onTap: () => Navigator.push(
+                      context,
+                      PageTransitions.slideUp(const MyListingsScreen()),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.list_alt_rounded,
+                            color: Colors.white.withValues(alpha: 0.9),
+                            size: 14),
+                        const SizedBox(width: 4),
+                        Text(
+                          'View My Listings',
+                          style: GoogleFonts.poppins(
+                            color: Colors.white.withValues(alpha: 0.9),
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.underline,
+                            decorationColor:
+                                Colors.white.withValues(alpha: 0.6),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -643,11 +1098,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
           child: Row(
             children: [
-              _buildStatItem('5+', 'Destinations', Icons.location_on_rounded, AppConstants.primaryColor),
+              _buildStatItem(5, '+', 'Destinations', Icons.location_on_rounded, AppConstants.primaryColor),
               _buildStatDivider(),
-              _buildStatItem('20+', 'Hotels', Icons.hotel_rounded, AppConstants.accentColor),
+              _buildStatItem(20, '+', 'Hotels', Icons.hotel_rounded, AppConstants.accentColor),
               _buildStatDivider(),
-              _buildStatItem('9', 'Tourist Spots', Icons.explore_rounded, AppConstants.warmAccent),
+              _buildStatItem(9, '', 'Tourist Spots', Icons.explore_rounded, AppConstants.warmAccent),
             ],
           ),
         ),
@@ -655,32 +1110,49 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildStatItem(String value, String label, IconData icon, Color color) {
+  Widget _buildStatItem(int value, String suffix, String label, IconData icon, Color color) {
     return Expanded(
       child: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(12),
+          FloatingAnimation(
+            offset: 3,
+            duration: const Duration(seconds: 3),
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [color.withValues(alpha: 0.22), color.withValues(alpha: 0.08)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(14),
+                boxShadow: [
+                  BoxShadow(
+                    color: color.withValues(alpha: 0.18),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: Icon(icon, color: color, size: 22),
             ),
-            child: Icon(icon, color: color, size: 22),
           ),
           const SizedBox(height: 10),
-          Text(
-            value,
-            style: const TextStyle(
+          AnimatedCounter(
+            value: value,
+            suffix: suffix,
+            style: GoogleFonts.poppins(
               fontSize: 20,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w800,
               color: AppConstants.textColor,
             ),
           ),
           Text(
             label,
-            style: const TextStyle(
+            style: GoogleFonts.poppins(
               fontSize: 11,
               color: AppConstants.lightTextColor,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ],
@@ -783,10 +1255,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            childAspectRatio: 0.9,
+            crossAxisCount: 4,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 14,
+            childAspectRatio: 0.8,
           ),
           itemCount: services.length,
           itemBuilder: (context, index) {
@@ -830,11 +1302,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           case 'map':
             Navigator.push(context, PageTransitions.fadeSlide(MapScreen()));
             break;
-          case 'city_car':
-            Navigator.push(context, PageTransitions.fadeSlide(CityToCityCarBookingScreen()));
+          case 'weather':
+            Navigator.push(context, PageTransitions.fadeSlide(const WeatherScreen()));
             break;
-          case 'all_hotels':
-            Navigator.push(context, PageTransitions.fadeSlide(AllPakistanHotelBookingScreen()));
+          case 'chat':
+            Navigator.push(context, PageTransitions.fadeSlide(const ChatScreen()));
+            break;
+          case 'reviews':
+            Navigator.push(context, PageTransitions.fadeSlide(const ReviewScreen()));
+            break;
+          case 'admin':
+            Navigator.push(context, PageTransitions.fadeSlide(const AdminDashboardScreen()));
             break;
           case 'photos':
             _showPhotoGallery();
@@ -846,30 +1324,39 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            width: 72,
-            height: 72,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [service['color'], service['color'].withValues(alpha: 0.7)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
+          FloatingAnimation(
+            offset: 4,
+            duration: const Duration(milliseconds: 2600),
+            child: GlowPulse(
+              glowColor: service['color'],
+              maxRadius: 24,
               borderRadius: BorderRadius.circular(22),
-              boxShadow: [
-                BoxShadow(
-                  color: service['color'].withValues(alpha: 0.45),
-                  blurRadius: 16,
-                  offset: const Offset(0, 8),
+              child: Container(
+                width: 72,
+                height: 72,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [service['color'], service['color'].withValues(alpha: 0.7)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(22),
+                  boxShadow: [
+                    BoxShadow(
+                      color: service['color'].withValues(alpha: 0.45),
+                      blurRadius: 16,
+                      offset: const Offset(0, 8),
+                    ),
+                  ],
                 ),
-              ],
+                child: Icon(service['icon'], color: Colors.white, size: 32),
+              ),
             ),
-            child: Icon(service['icon'], color: Colors.white, size: 32),
           ),
           const SizedBox(height: 10),
           Text(
             service['title'],
-            style: const TextStyle(
+            style: GoogleFonts.poppins(
               fontSize: 12,
               fontWeight: FontWeight.w600,
               color: AppConstants.textColor,
@@ -1472,6 +1959,50 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             child: const Icon(Icons.image, size: 50, color: Colors.grey),
                           ),
                         ),
+                    ),
+                  ),
+                  // POPULAR / TRENDING Badge
+                  Positioned(
+                    top: 12,
+                    left: 12,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                        gradient: destination.rating >= 4.8
+                            ? const LinearGradient(
+                                colors: [Color(0xFFFF6B35), Color(0xFFFF9F40)],
+                              )
+                            : const LinearGradient(
+                                colors: [Color(0xFF667EEA), Color(0xFF764BA2)],
+                              ),
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.2),
+                            blurRadius: 6,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            destination.rating >= 4.8 ? Icons.local_fire_department : Icons.trending_up,
+                            color: Colors.white,
+                            size: 12,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            destination.rating >= 4.8 ? 'POPULAR' : 'TRENDING',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Positioned(

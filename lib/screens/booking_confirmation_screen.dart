@@ -341,6 +341,8 @@ class BookingConfirmationScreen extends StatelessWidget {
 
 // Alternative Simple Success Screen (Agar aapko detailed screen nahi chahiye)
 class BookingSuccessScreen extends StatelessWidget {
+  const BookingSuccessScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
