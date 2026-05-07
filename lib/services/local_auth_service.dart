@@ -24,6 +24,7 @@ class LocalAuthService extends ChangeNotifier {
 
   String? _currentEmail;
   String? _currentFullName;
+  bool _googleSignInInitialized = false;
 
   String? get currentEmail => _currentEmail;
   String? get currentFullName => _currentFullName;
@@ -191,10 +192,18 @@ class LocalAuthService extends ChangeNotifier {
     return null;
   }
 
+  Future<void> _ensureGoogleSignInInitialized() async {
+    if (!_googleSignInInitialized) {
+      await GoogleSignIn.instance.initialize();
+      _googleSignInInitialized = true;
+    }
+  }
+
   Future<void> signOut() async {
     if (firebaseInitialized) {
       try {
-        await GoogleSignIn().signOut();
+        await _ensureGoogleSignInInitialized();
+        await GoogleSignIn.instance.signOut();
       } catch (_) {}
       try {
         await FacebookAuth.instance.logOut();
@@ -219,18 +228,15 @@ class LocalAuthService extends ChangeNotifier {
     }
 
     try {
-      final GoogleSignIn googleSignIn = GoogleSignIn();
-      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      await _ensureGoogleSignInInitialized();
 
-      if (googleUser == null) {
-        return 'Google Sign-In was cancelled';
-      }
+      final GoogleSignInAccount googleUser =
+          await GoogleSignIn.instance.authenticate();
 
       final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+          googleUser.authentication;
 
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
 
@@ -262,6 +268,11 @@ class LocalAuthService extends ChangeNotifier {
       }
 
       return null; // success
+    } on GoogleSignInException catch (e) {
+      if (e.code == GoogleSignInExceptionCode.canceled) {
+        return 'Google Sign-In was cancelled';
+      }
+      return 'Google Sign-In failed: ${e.description ?? e.toString()}';
     } on FirebaseAuthException catch (e) {
       return e.message ?? 'Google Sign-In failed';
     } catch (e) {
