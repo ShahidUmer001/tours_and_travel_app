@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../main.dart' show firebaseInitialized;
@@ -23,7 +24,7 @@ class AuthService {
       );
       return result.user;
     } catch (e) {
-      print("Sign in error: $e");
+      debugPrint("Sign in error: $e");
       return null;
     }
   }
@@ -47,7 +48,7 @@ class AuthService {
 
       return result.user;
     } catch (e) {
-      print("Sign up error: $e");
+      debugPrint("Sign up error: $e");
       return null;
     }
   }
@@ -58,7 +59,7 @@ class AuthService {
       DocumentSnapshot doc = await _firestore.collection('users').doc(uid).get();
       return doc.data() as Map<String, dynamic>?;
     } catch (e) {
-      print("Get user data error: $e");
+      debugPrint("Get user data error: $e");
       return null;
     }
   }

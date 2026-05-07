@@ -291,7 +291,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 phoneController.text,
                 addressController.text,
               );
-              if (mounted) Navigator.pop(context);
+              if (context.mounted) Navigator.pop(context);
             },
             child: const Text('Save'),
           ),
@@ -366,10 +366,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     'phone': phoneController.text,
                   });
                 }
-                if (mounted) Navigator.pop(context);
-                if (mounted) setState(() {});
+                if (context.mounted) Navigator.pop(context);
+                if (context.mounted) setState(() {});
               } else {
-                if (!mounted) return;
+                if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('Please enter a valid phone number'),
@@ -392,26 +392,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
         builder: (context, setState) {
           return AlertDialog(
             title: const Text('Select Language'),
-            content: SizedBox(
-              width: double.maxFinite,
-              height: 300,
-              child: ListView.builder(
-                itemCount: _languages.length,
-                itemBuilder: (context, index) {
-                  return RadioListTile<String>(
-                    title: Text(_languages[index]),
-                    value: _languages[index],
-                    groupValue: _language,
-                    onChanged: (String? value) {
-                      if (value != null) {
-                        setState(() {
-                          _language = value;
-                        });
-                        Navigator.pop(context);
-                      }
-                    },
-                  );
-                },
+            content: RadioGroup<String>(
+              groupValue: _language,
+              onChanged: (String? value) {
+                if (value != null) {
+                  setState(() {
+                    _language = value;
+                  });
+                  Navigator.pop(context);
+                }
+              },
+              child: SizedBox(
+                width: double.maxFinite,
+                height: 300,
+                child: ListView.builder(
+                  itemCount: _languages.length,
+                  itemBuilder: (context, index) {
+                    return RadioListTile<String>(
+                      title: Text(_languages[index]),
+                      value: _languages[index],
+                    );
+                  },
+                ),
               ),
             ),
           );
@@ -427,26 +429,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
         builder: (context, setState) {
           return AlertDialog(
             title: const Text('Night Mode'),
-            content: SizedBox(
-              width: double.maxFinite,
-              height: 200,
-              child: ListView.builder(
-                itemCount: _nightModes.length,
-                itemBuilder: (context, index) {
-                  return RadioListTile<String>(
-                    title: Text(_nightModes[index]),
-                    value: _nightModes[index],
-                    groupValue: _nightMode,
-                    onChanged: (String? value) {
-                      if (value != null) {
-                        setState(() {
-                          _nightMode = value;
-                        });
-                        Navigator.pop(context);
-                      }
-                    },
-                  );
-                },
+            content: RadioGroup<String>(
+              groupValue: _nightMode,
+              onChanged: (String? value) {
+                if (value != null) {
+                  setState(() {
+                    _nightMode = value;
+                  });
+                  Navigator.pop(context);
+                }
+              },
+              child: SizedBox(
+                width: double.maxFinite,
+                height: 200,
+                child: ListView.builder(
+                  itemCount: _nightModes.length,
+                  itemBuilder: (context, index) {
+                    return RadioListTile<String>(
+                      title: Text(_nightModes[index]),
+                      value: _nightModes[index],
+                    );
+                  },
+                ),
               ),
             ),
           );

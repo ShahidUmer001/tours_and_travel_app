@@ -12,7 +12,7 @@ import '../main.dart' show firebaseInitialized;
 
 /// Hybrid authentication service.
 /// - When Firebase is initialized (Android with google-services.json):
-///   Uses Firebase Auth + Firestore for real backend auth.
+///   Uses Firebase Auth SDK directly + Firestore for user profiles.
 /// - When Firebase is not initialized (e.g., web without config):
 ///   Falls back to local SharedPreferences-based auth.
 class LocalAuthService extends ChangeNotifier {
@@ -32,10 +32,25 @@ class LocalAuthService extends ChangeNotifier {
   Future<void> init() async {
     // If Firebase is available, hydrate from current Firebase user.
     if (firebaseInitialized) {
+      // Disable reCAPTCHA verification on emulators (debug mode only)
+      if (kDebugMode) {
+        await FirebaseAuth.instance.setSettings(
+          appVerificationDisabledForTesting: true,
+        );
+      }
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         _currentEmail = user.email;
         _currentFullName = user.displayName;
+        notifyListeners();
+        return;
+      }
+      // Also check local saved state (for REST API based logins)
+      final prefs = await SharedPreferences.getInstance();
+      final savedEmail = prefs.getString(_kCurrentEmailKey);
+      if (savedEmail != null) {
+        _currentEmail = savedEmail;
+        _currentFullName = prefs.getString('local_current_fullname');
         notifyListeners();
       }
       return;
@@ -70,6 +85,28 @@ class LocalAuthService extends ChangeNotifier {
         .join(';');
   }
 
+  String _mapFirebaseAuthError(String code) {
+    switch (code) {
+      case 'email-already-in-use':
+        return 'Account already exists. Please login instead.';
+      case 'user-not-found':
+      case 'invalid-credential':
+        return 'No account found. Please sign up first.';
+      case 'wrong-password':
+        return 'Incorrect password';
+      case 'invalid-email':
+        return 'Invalid email address';
+      case 'too-many-requests':
+        return 'Too many attempts. Please wait a moment and try again.';
+      case 'user-disabled':
+        return 'This account has been disabled.';
+      case 'weak-password':
+        return 'Password is too weak';
+      default:
+        return code;
+    }
+  }
+
   /// Returns null on success, or error message on failure.
   Future<String?> signUp({
     required String email,
@@ -83,40 +120,34 @@ class LocalAuthService extends ChangeNotifier {
       return 'Password must be at least 6 characters';
     }
 
-    // Try Firebase first if available
+    // Use Firebase Auth SDK directly (works on emulator via Google Play Services)
     if (firebaseInitialized) {
       try {
-        final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        final credential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
           email: email.trim(),
           password: password,
         );
-        await credential.user?.updateDisplayName(fullName.trim());
+        final user = credential.user!;
+
         // Store user profile in Firestore
-        if (credential.user != null) {
+        try {
           await FirebaseFirestore.instance
               .collection('users')
-              .doc(credential.user!.uid)
+              .doc(user.uid)
               .set({
-            'uid': credential.user!.uid,
+            'uid': user.uid,
             'email': email.trim(),
             'fullName': fullName.trim(),
             'createdAt': FieldValue.serverTimestamp(),
           });
+        } catch (e) {
+          debugPrint('Firestore write failed: $e');
         }
-        // Sign out so user goes through login flow explicitly
-        await FirebaseAuth.instance.signOut();
+
         return null;
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'email-already-in-use') {
-          return 'Account already exists. Please login instead.';
-        }
-        if (e.code == 'weak-password') {
-          return 'Password is too weak';
-        }
-        if (e.code == 'invalid-email') {
-          return 'Invalid email address';
-        }
-        return e.message ?? 'Sign up failed';
+        return _mapFirebaseAuthError(e.code);
       } catch (e) {
         return 'Sign up failed: $e';
       }
@@ -146,28 +177,43 @@ class LocalAuthService extends ChangeNotifier {
       return 'Please fill all fields';
     }
 
-    // Try Firebase first if available
+    // Use Firebase Auth SDK directly (works on emulator via Google Play Services)
     if (firebaseInitialized) {
       try {
-        final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        final credential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
           email: email.trim(),
           password: password,
         );
-        _currentEmail = credential.user?.email;
-        _currentFullName = credential.user?.displayName;
+        final user = credential.user!;
+
+        // Get user profile from Firestore
+        String? fullName;
+        try {
+          final doc = await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.uid)
+              .get();
+          if (doc.exists) {
+            fullName = doc.data()?['fullName'] as String?;
+          }
+        } catch (e) {
+          debugPrint('Firestore read failed: $e');
+        }
+
+        _currentEmail = user.email;
+        _currentFullName = fullName ?? user.displayName ?? '';
+
+        // Save login state
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString(_kCurrentEmailKey, user.email ?? email.trim());
+        await prefs.setString('local_current_uid', user.uid);
+        await prefs.setString('local_current_fullname', _currentFullName ?? '');
+
         notifyListeners();
         return null;
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'user-not-found' || e.code == 'invalid-credential') {
-          return 'No account found. Please sign up first.';
-        }
-        if (e.code == 'wrong-password') {
-          return 'Incorrect password';
-        }
-        if (e.code == 'invalid-email') {
-          return 'Invalid email address';
-        }
-        return e.message ?? 'Sign in failed';
+        return _mapFirebaseAuthError(e.code);
       } catch (e) {
         return 'Sign in failed: $e';
       }
@@ -205,6 +251,8 @@ class LocalAuthService extends ChangeNotifier {
     }
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_kCurrentEmailKey);
+    await prefs.remove('local_current_uid');
+    await prefs.remove('local_current_fullname');
     _currentEmail = null;
     _currentFullName = null;
     notifyListeners();

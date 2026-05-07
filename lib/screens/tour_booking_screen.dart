@@ -57,7 +57,7 @@ class _TourBookingScreenState extends State<TourBookingScreen> {
         }
       }
     } catch (e) {
-      print('Error loading user data: $e');
+      debugPrint('Error loading user data: $e');
     }
   }
 
@@ -568,7 +568,8 @@ class _TourBookingScreenState extends State<TourBookingScreen> {
       _showBookingSuccessDialog(newBooking);
 
     } catch (e) {
-      print('Booking error: $e');
+      debugPrint('Booking error: $e');
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Booking failed: $e')),
       );

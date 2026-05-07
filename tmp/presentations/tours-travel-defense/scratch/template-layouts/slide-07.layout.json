@@ -1,0 +1,398 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/70snj3",
+    "id": "70snj3",
+    "slide": 7,
+    "layoutId": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/ovahoza1",
+      "id": "1",
+      "bbox": [
+        19.2,
+        9.6,
+        134.4,
+        62.4
+      ],
+      "alt": "Abasyn University logo",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "64ed7807-131a-4588-882a-e99c9c506912",
+        "contentType": "image/png",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\swift-template-assets\\image1.png",
+        "byteLength": 79219
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ytsvu9kn",
+      "id": "2",
+      "bbox": [
+        172.8,
+        20,
+        614.4,
+        42
+      ],
+      "geometry": "rect",
+      "text": "System Design",
+      "textPreview": "System Design",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "System Design"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "System Design",
+          "runs": [
+            {
+              "index": 1,
+              "text": "System Design",
+              "fontSize": 32,
+              "typeface": "Calibri",
+              "color": "#1F7A3E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/neloj2t8",
+      "id": "3",
+      "bbox": [
+        240,
+        513.6,
+        480,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "AUIC – CS/SE - FYP Presentation",
+      "textPreview": "AUIC – CS/SE - FYP Presentation",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "AUIC – CS/SE - FYP Presentation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "AUIC – CS/SE - FYP Presentation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "AUIC – CS/SE - FYP Presentation",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cbulwval",
+      "id": "4",
+      "bbox": [
+        892.8,
+        513.6,
+        48,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "7",
+      "textPreview": "7",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "right"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "7"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "7",
+          "runs": [
+            {
+              "index": 1,
+              "text": "7",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "right"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/onyd0z61",
+      "id": "5",
+      "bbox": [
+        198.6,
+        104,
+        562.8,
+        330
+      ],
+      "alt": "System architecture diagram",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "8c1abf89-bc32-4b76-ac76-6ac9eff42b63",
+        "contentType": "image/png",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p27_img1.png",
+        "byteLength": 75063
+      }
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/u54zidon",
+      "id": "6",
+      "bbox": [
+        144,
+        465.6,
+        672,
+        24
+      ],
+      "geometry": "rect",
+      "text": "Proposed System Architecture Diagram",
+      "textPreview": "Proposed System Architecture Diagram",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "italic": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Proposed System Architecture Diagram"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Proposed System Architecture Diagram",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Proposed System Architecture Diagram",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "italic": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nqxs72x4",
+      "id": "7",
+      "bbox": [
+        240,
+        513.6,
+        480,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "AUIC – CS/SE - FYP Presentation",
+      "textPreview": "AUIC – CS/SE - FYP Presentation",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "AUIC – CS/SE - FYP Presentation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "AUIC – CS/SE - FYP Presentation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "AUIC – CS/SE - FYP Presentation",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gbq1oryt",
+      "id": "8",
+      "bbox": [
+        892.8,
+        513.6,
+        48,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "7",
+      "textPreview": "7",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "right"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "7"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "7",
+          "runs": [
+            {
+              "index": 1,
+              "text": "7",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "right"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

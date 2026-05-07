@@ -1,0 +1,567 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/iuvh9y",
+    "id": "iuvh9y",
+    "slide": 17,
+    "layoutId": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/d0z61032",
+      "id": "1",
+      "bbox": [
+        19.2,
+        9.6,
+        134.4,
+        62.4
+      ],
+      "alt": "Abasyn University logo",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "a65a0bd5-abf7-4987-aa2e-9510e7496f47",
+        "contentType": "image/png",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\swift-template-assets\\image1.png",
+        "byteLength": 79219
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7ed8bat4",
+      "id": "2",
+      "bbox": [
+        172.8,
+        20,
+        614.4,
+        42
+      ],
+      "geometry": "rect",
+      "text": "References",
+      "textPreview": "References",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "References"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "References",
+          "runs": [
+            {
+              "index": 1,
+              "text": "References",
+              "fontSize": 32,
+              "typeface": "Calibri",
+              "color": "#1F7A3E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/itgfmlkj",
+      "id": "3",
+      "bbox": [
+        240,
+        513.6,
+        480,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "AUIC – CS/SE - FYP Presentation",
+      "textPreview": "AUIC – CS/SE - FYP Presentation",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "AUIC – CS/SE - FYP Presentation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "AUIC – CS/SE - FYP Presentation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "AUIC – CS/SE - FYP Presentation",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p8nqxs72",
+      "id": "4",
+      "bbox": [
+        892.8,
+        513.6,
+        48,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "17",
+      "textPreview": "17",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "right"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "17"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "17",
+          "runs": [
+            {
+              "index": 1,
+              "text": "17",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "right"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0nuxc3yl",
+      "id": "5",
+      "bbox": [
+        33.6,
+        88.32,
+        892.8,
+        38
+      ],
+      "geometry": "rect",
+      "text": "[1] Google, \"Flutter documentation,\" https://docs.flutter.dev/.",
+      "textPreview": "[1] Google, \"Flutter documentation,\" https://docs.flutter.dev/.",
+      "resolvedFontSize": 13,
+      "resolvedTextStyle": {
+        "fontSize": 13,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "[1] Google, \"Flutter documentation,\" https://docs.flutter.dev/."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "[1] Google, \"Flutter documentation,\" https://docs.flutter.dev/.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "[1] Google, \"Flutter documentation,\" https://docs.flutter.dev/.",
+              "fontSize": 13,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/72x4nap4",
+      "id": "6",
+      "bbox": [
+        33.6,
+        134.32,
+        892.8,
+        38
+      ],
+      "geometry": "rect",
+      "text": "[2] Google, \"Firebase documentation,\" https://firebase.google.com/docs.",
+      "textPreview": "[2] Google, \"Firebase documentation,\" https://firebase.google.com/docs.",
+      "resolvedFontSize": 13,
+      "resolvedTextStyle": {
+        "fontSize": 13,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "[2] Google, \"Firebase documentation,\" https://firebase.google.com/docs."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "[2] Google, \"Firebase documentation,\" https://firebase.google.com/docs.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "[2] Google, \"Firebase documentation,\" https://firebase.google.com/docs.",
+              "fontSize": 13,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ih4byhgn",
+      "id": "7",
+      "bbox": [
+        33.6,
+        180.32,
+        892.8,
+        38
+      ],
+      "geometry": "rect",
+      "text": "[3] Google for Developers, \"Google Maps Platform documentation,\" https://developers.google.com/maps/documentation.",
+      "textPreview": "[3] Google for Developers, \"Google Maps Platform documentation,\" https://developers.google.com/maps/documentation.",
+      "resolvedFontSize": 13,
+      "resolvedTextStyle": {
+        "fontSize": 13,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "[3] Google for Developers, \"Google Maps Platform documentation,\" https://developers.google.com/maps/documentation."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "[3] Google for Developers, \"Google Maps Platform documentation,\" https://developers.google.com/maps/documentation.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "[3] Google for Developers, \"Google Maps Platform documentation,\" https://developers.google.com/maps/documentation.",
+              "fontSize": 13,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p4r65wju",
+      "id": "8",
+      "bbox": [
+        33.6,
+        226.32,
+        892.8,
+        38
+      ],
+      "geometry": "rect",
+      "text": "[4] Material Design 3 guidelines, https://m3.material.io/.",
+      "textPreview": "[4] Material Design 3 guidelines, https://m3.material.io/.",
+      "resolvedFontSize": 13,
+      "resolvedTextStyle": {
+        "fontSize": 13,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "[4] Material Design 3 guidelines, https://m3.material.io/."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "[4] Material Design 3 guidelines, https://m3.material.io/.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "[4] Material Design 3 guidelines, https://m3.material.io/.",
+              "fontSize": 13,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wjudg7ad",
+      "id": "9",
+      "bbox": [
+        33.6,
+        272.32,
+        892.8,
+        38
+      ],
+      "geometry": "rect",
+      "text": "[5] Dart documentation, \"Dart language tour,\" https://dart.dev/guides/language/language-tour.",
+      "textPreview": "[5] Dart documentation, \"Dart language tour,\" https://dart.dev/guides/language/language-tour.",
+      "resolvedFontSize": 13,
+      "resolvedTextStyle": {
+        "fontSize": 13,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "[5] Dart documentation, \"Dart language tour,\" https://dart.dev/guides/language/language-tour."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "[5] Dart documentation, \"Dart language tour,\" https://dart.dev/guides/language/language-tour.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "[5] Dart documentation, \"Dart language tour,\" https://dart.dev/guides/language/language-tour.",
+              "fontSize": 13,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6tovahoz",
+      "id": "10",
+      "bbox": [
+        33.6,
+        318.32,
+        892.8,
+        38
+      ],
+      "geometry": "rect",
+      "text": "[6] Geolocator package documentation, https://pub.dev/packages/geolocator.",
+      "textPreview": "[6] Geolocator package documentation, https://pub.dev/packages/geolocator.",
+      "resolvedFontSize": 13,
+      "resolvedTextStyle": {
+        "fontSize": 13,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "[6] Geolocator package documentation, https://pub.dev/packages/geolocator."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "[6] Geolocator package documentation, https://pub.dev/packages/geolocator.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "[6] Geolocator package documentation, https://pub.dev/packages/geolocator.",
+              "fontSize": 13,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vahoza1g",
+      "id": "11",
+      "bbox": [
+        33.6,
+        364.32,
+        892.8,
+        38
+      ],
+      "geometry": "rect",
+      "text": "[7] Cloud Firestore package documentation, https://pub.dev/packages/cloud_firestore.",
+      "textPreview": "[7] Cloud Firestore package documentation, https://pub.dev/packages/cloud_firestore.",
+      "resolvedFontSize": 13,
+      "resolvedTextStyle": {
+        "fontSize": 13,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "[7] Cloud Firestore package documentation, https://pub.dev/packages/cloud_firestore."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "[7] Cloud Firestore package documentation, https://pub.dev/packages/cloud_firestore.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "[7] Cloud Firestore package documentation, https://pub.dev/packages/cloud_firestore.",
+              "fontSize": 13,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

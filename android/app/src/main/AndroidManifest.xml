@@ -18,7 +18,8 @@
         android:label="Tours and Travel"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme"
-        android:name="${applicationName}">
+        android:name="${applicationName}"
+        android:usesCleartextTraffic="true">
 
         <!-- ✅ Google Maps API Key (YOUR KEY) -->
         <meta-data

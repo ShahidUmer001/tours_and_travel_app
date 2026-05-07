@@ -1,0 +1,1503 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/0kka7y",
+    "id": "0kka7y",
+    "slide": 5,
+    "layoutId": "039380ba-7443-4105-b08a-1761c9602b37",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri",
+      "Cambria"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "039380ba-7443-4105-b08a-1761c9602b37",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xc3ylc7u",
+      "id": "1",
+      "name": "slide-5-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "geometry": "rect",
+      "fillColor": "#F7F7F4",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mlkjm1cf",
+      "id": "2",
+      "bbox": [
+        100,
+        90,
+        980,
+        28
+      ],
+      "geometry": "rect",
+      "text": "System design",
+      "textPreview": "System design",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "System design"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "System design",
+          "runs": [
+            {
+              "index": 1,
+              "text": "System design",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#0FA5A6",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f6dcbulw",
+      "id": "3",
+      "bbox": [
+        100,
+        120,
+        980,
+        120
+      ],
+      "geometry": "rect",
+      "text": "A layered architecture keeps the app modular and explainable.",
+      "textPreview": "A layered architecture keeps the app modular and explainable.",
+      "resolvedFontSize": 48,
+      "resolvedTextStyle": {
+        "fontSize": 48,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "A layered architecture keeps the app"
+          },
+          {
+            "index": 2,
+            "text": "modular and explainable."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "A layered architecture keeps the app modular and explainable.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "A layered architecture keeps the app modular and explainable.",
+              "fontSize": 48,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4zidonyd",
+      "id": "4",
+      "bbox": [
+        100,
+        258,
+        980,
+        72
+      ],
+      "geometry": "rect",
+      "text": "Screens, services, models, storage, and utility modules are separated to improve maintainability, testing, and presentation clarity.",
+      "textPreview": "Screens, services, models, storage, and utility modules are separated to improve maintainability, testing, and presentation clarity.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Screens, services, models, storage, and utility modules are separated to improve maintainability,"
+          },
+          {
+            "index": 2,
+            "text": "testing, and presentation clarity."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Screens, services, models, storage, and utility modules are separated to improve maintainability, testing, and presentation clarity.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Screens, services, models, storage, and utility modules are separated to improve maintainability, testing, and presentation clarity.",
+              "fontSize": 24,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xkf6dcbu",
+      "id": "5",
+      "name": "slide-5-diagram-frame",
+      "bbox": [
+        100,
+        255,
+        980,
+        640
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8E1EA",
+      "lineWidth": 1.5
+    },
+    {
+      "order": 6,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/zqtcj6to",
+      "id": "6",
+      "name": "slide-5-architecture-image",
+      "bbox": [
+        130,
+        300,
+        920,
+        560
+      ],
+      "alt": "System architecture diagram",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "d4fb801d-9d6f-481c-880a-4474763cf4f1",
+        "contentType": "image/png",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p27_img1.png",
+        "byteLength": 75063
+      }
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fepkzupw",
+      "id": "7",
+      "bbox": [
+        1160,
+        250,
+        420,
+        44
+      ],
+      "geometry": "rect",
+      "text": "Key layers",
+      "textPreview": "Key layers",
+      "resolvedFontSize": 30,
+      "resolvedTextStyle": {
+        "fontSize": 30,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Key layers"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Key layers",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Key layers",
+              "fontSize": 30,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/83itgfml",
+      "id": "8",
+      "bbox": [
+        1160,
+        305,
+        650,
+        104
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#E8F0FB",
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xobm58z2",
+      "id": "9",
+      "bbox": [
+        1190,
+        321,
+        600,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Presentation layer",
+      "textPreview": "Presentation layer",
+      "resolvedFontSize": 23,
+      "resolvedTextStyle": {
+        "fontSize": 23,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Presentation layer"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Presentation layer",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Presentation layer",
+              "fontSize": 23,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dcbulwva",
+      "id": "10",
+      "bbox": [
+        1190,
+        353,
+        600,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Flutter screens, reusable widgets, cards, and navigation flows.",
+      "textPreview": "Flutter screens, reusable widgets, cards, and navigation flows.",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Flutter screens, reusable widgets, cards, and navigation flows."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Flutter screens, reusable widgets, cards, and navigation flows.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Flutter screens, reusable widgets, cards, and navigation flows.",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kre1w7mp",
+      "id": "11",
+      "bbox": [
+        1160,
+        427,
+        650,
+        104
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#DDF4F4",
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/val87ed8",
+      "id": "12",
+      "bbox": [
+        1190,
+        443,
+        600,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Service layer",
+      "textPreview": "Service layer",
+      "resolvedFontSize": 23,
+      "resolvedTextStyle": {
+        "fontSize": 23,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Service layer"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Service layer",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Service layer",
+              "fontSize": 23,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6psfil0r",
+      "id": "13",
+      "bbox": [
+        1190,
+        475,
+        600,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Authentication, database, booking, local storage, and listings logic.",
+      "textPreview": "Authentication, database, booking, local storage, and listings logic.",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Authentication, database, booking, local storage, and listings logic."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Authentication, database, booking, local storage, and listings logic.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Authentication, database, booking, local storage, and listings logic.",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/donyd0z6",
+      "id": "14",
+      "bbox": [
+        1160,
+        549,
+        650,
+        104
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFF1D4",
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/k3q5o7qp",
+      "id": "15",
+      "bbox": [
+        1190,
+        565,
+        600,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Data layer",
+      "textPreview": "Data layer",
+      "resolvedFontSize": 23,
+      "resolvedTextStyle": {
+        "fontSize": 23,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Data layer"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Data layer",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Data layer",
+              "fontSize": 23,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vixczed8",
+      "id": "16",
+      "bbox": [
+        1190,
+        597,
+        600,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Firestore, Firebase Storage, Shared Preferences, and in-memory booking support.",
+      "textPreview": "Firestore, Firebase Storage, Shared Preferences, and in-memory booking support.",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Firestore, Firebase Storage, Shared Preferences, and in-memory booking support."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Firestore, Firebase Storage, Shared Preferences, and in-memory booking support.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Firestore, Firebase Storage, Shared Preferences, and in-memory booking support.",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2x4nap4r",
+      "id": "17",
+      "bbox": [
+        1160,
+        671,
+        650,
+        104
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FBE6E1",
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d0z61032",
+      "id": "18",
+      "bbox": [
+        1190,
+        687,
+        600,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Utility layer",
+      "textPreview": "Utility layer",
+      "resolvedFontSize": 23,
+      "resolvedTextStyle": {
+        "fontSize": 23,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Utility layer"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Utility layer",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Utility layer",
+              "fontSize": 23,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kf6dcbul",
+      "id": "19",
+      "bbox": [
+        1190,
+        719,
+        600,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Validators, constants, animations, extensions, maps, and location services.",
+      "textPreview": "Validators, constants, animations, extensions, maps, and location services.",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Validators, constants, animations, extensions, maps, and location services."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Validators, constants, animations, extensions, maps, and location services.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Validators, constants, animations, extensions, maps, and location services.",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0bi9s36h",
+      "id": "20",
+      "bbox": [
+        1160,
+        810,
+        420,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Technology stack",
+      "textPreview": "Technology stack",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Technology stack"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Technology stack",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Technology stack",
+              "fontSize": 28,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pwb2hwfy",
+      "id": "21",
+      "bbox": [
+        1160,
+        852,
+        650,
+        2
+      ],
+      "geometry": "rect",
+      "fillColor": "#D8E1EA",
+      "lineWidth": 0
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i5sneloj",
+      "id": "22",
+      "bbox": [
+        1160,
+        870,
+        170,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Frontend",
+      "textPreview": "Frontend",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Frontend"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Frontend",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Frontend",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7qpg3ex0",
+      "id": "23",
+      "bbox": [
+        1330,
+        870,
+        470,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Flutter and Dart",
+      "textPreview": "Flutter and Dart",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Flutter and Dart"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Flutter and Dart",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Flutter and Dart",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wjudg7ad",
+      "id": "24",
+      "bbox": [
+        1160,
+        901,
+        170,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Auth",
+      "textPreview": "Auth",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Auth"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Auth",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Auth",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 25,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p4r65wju",
+      "id": "25",
+      "bbox": [
+        1330,
+        901,
+        470,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Firebase Auth + Local fallback",
+      "textPreview": "Firebase Auth + Local fallback",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Firebase Auth + Local fallback"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Firebase Auth + Local fallback",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Firebase Auth + Local fallback",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ed8v6psf",
+      "id": "26",
+      "bbox": [
+        1160,
+        932,
+        170,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Cloud data",
+      "textPreview": "Cloud data",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Cloud data"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Cloud data",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Cloud data",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7y1kre1w",
+      "id": "27",
+      "bbox": [
+        1330,
+        932,
+        470,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Cloud Firestore",
+      "textPreview": "Cloud Firestore",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Cloud Firestore"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Cloud Firestore",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Cloud Firestore",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 28,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0nuxc3yl",
+      "id": "28",
+      "bbox": [
+        1160,
+        963,
+        170,
+        32
+      ],
+      "geometry": "rect",
+      "text": "File storage",
+      "textPreview": "File storage",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "File storage"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "File storage",
+          "runs": [
+            {
+              "index": 1,
+              "text": "File storage",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p8nqxs72",
+      "id": "29",
+      "bbox": [
+        1330,
+        963,
+        470,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Firebase Storage",
+      "textPreview": "Firebase Storage",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Firebase Storage"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Firebase Storage",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Firebase Storage",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fepkzupw",
+      "id": "30",
+      "bbox": [
+        1160,
+        994,
+        170,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Local state",
+      "textPreview": "Local state",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Local state"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Local state",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Local state",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 31,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mtwra5gb",
+      "id": "31",
+      "bbox": [
+        1330,
+        994,
+        470,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Shared Preferences + in-memory stores",
+      "textPreview": "Shared Preferences + in-memory stores",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Shared Preferences + in-memory stores"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Shared Preferences + in-memory stores",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Shared Preferences + in-memory stores",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 32,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xkf6dcbu",
+      "id": "32",
+      "bbox": [
+        1160,
+        1025,
+        170,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Maps",
+      "textPreview": "Maps",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Maps"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Maps",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Maps",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 33,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4zidonyd",
+      "id": "33",
+      "bbox": [
+        1330,
+        1025,
+        470,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Google Maps Flutter + Geolocator",
+      "textPreview": "Google Maps Flutter + Geolocator",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Google Maps Flutter + Geolocator"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Google Maps Flutter + Geolocator",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Google Maps Flutter + Geolocator",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 34,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f6dcbulw",
+      "id": "34",
+      "name": "rule-100-1000",
+      "bbox": [
+        100,
+        1000,
+        1720,
+        2
+      ],
+      "geometry": "rect",
+      "fillColor": "#D8E1EA",
+      "lineWidth": 0
+    },
+    {
+      "order": 35,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mlkjm1cf",
+      "id": "35",
+      "bbox": [
+        100,
+        1014,
+        900,
+        28
+      ],
+      "geometry": "rect",
+      "text": "Source: Proposed architecture diagram and technology stack table from Chapter 4.",
+      "textPreview": "Source: Proposed architecture diagram and technology stack table from Chapter 4.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Source: Proposed architecture diagram and technology stack table from Chapter 4."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Source: Proposed architecture diagram and technology stack table from Chapter 4.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Source: Proposed architecture diagram and technology stack table from Chapter 4.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

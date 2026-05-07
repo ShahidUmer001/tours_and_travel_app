@@ -1,0 +1,1177 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/ald4l4",
+    "id": "ald4l4",
+    "slide": 6,
+    "layoutId": "039380ba-7443-4105-b08a-1761c9602b37",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri",
+      "Cambria"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "039380ba-7443-4105-b08a-1761c9602b37",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/l87ed8ba",
+      "id": "1",
+      "name": "slide-6-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ahoza1gv",
+      "id": "2",
+      "bbox": [
+        100,
+        90,
+        880,
+        28
+      ],
+      "geometry": "rect",
+      "text": "Implementation showcase",
+      "textPreview": "Implementation showcase",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Implementation showcase"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Implementation showcase",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Implementation showcase",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#0FA5A6",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/32lszqtc",
+      "id": "3",
+      "bbox": [
+        100,
+        120,
+        880,
+        120
+      ],
+      "geometry": "rect",
+      "text": "The prototype delivers real end-to-end screens, not just design mockups.",
+      "textPreview": "The prototype delivers real end-to-end screens, not just design mockups.",
+      "resolvedFontSize": 48,
+      "resolvedTextStyle": {
+        "fontSize": 48,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The prototype delivers real end-to-end"
+          },
+          {
+            "index": 2,
+            "text": "screens, not just design mockups."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The prototype delivers real end-to-end screens, not just design mockups.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The prototype delivers real end-to-end screens, not just design mockups.",
+              "fontSize": 48,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/szqtcj6t",
+      "id": "4",
+      "bbox": [
+        100,
+        258,
+        880,
+        72
+      ],
+      "geometry": "rect",
+      "text": "Chapter 5 demonstrates complete user-facing modules for authentication, discovery, booking, confirmation, and travel support.",
+      "textPreview": "Chapter 5 demonstrates complete user-facing modules for authentication, discovery, booking, confirmation, and travel support.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Chapter 5 demonstrates complete user-facing modules for authentication, discovery,"
+          },
+          {
+            "index": 2,
+            "text": "booking, confirmation, and travel support."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Chapter 5 demonstrates complete user-facing modules for authentication, discovery, booking, confirmation, and travel support.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Chapter 5 demonstrates complete user-facing modules for authentication, discovery, booking, confirmation, and travel support.",
+              "fontSize": 24,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/lkjm1cfa",
+      "id": "5",
+      "bbox": [
+        100,
+        345,
+        420,
+        44
+      ],
+      "geometry": "rect",
+      "text": "Key modules delivered",
+      "textPreview": "Key modules delivered",
+      "resolvedFontSize": 30,
+      "resolvedTextStyle": {
+        "fontSize": 30,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Key modules delivered"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Key modules delivered",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Key modules delivered",
+              "fontSize": 30,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/at47y1kr",
+      "id": "6",
+      "bbox": [
+        100,
+        419,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#0FA5A6",
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/3ex0nuxc",
+      "id": "7",
+      "bbox": [
+        134,
+        410,
+        396,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Authentication with Firebase-backed and fallback login flow",
+      "textPreview": "Authentication with Firebase-backed and fallback login flow",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Authentication with Firebase-backed and"
+          },
+          {
+            "index": 2,
+            "text": "fallback login flow"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Authentication with Firebase-backed and fallback login flow",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Authentication with Firebase-backed and fallback login flow",
+              "fontSize": 20,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/w3m94fu1",
+      "id": "8",
+      "bbox": [
+        100,
+        501,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#0FA5A6",
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/loj2t83i",
+      "id": "9",
+      "bbox": [
+        134,
+        492,
+        396,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Home discovery screen with destinations, tours, and quick services",
+      "textPreview": "Home discovery screen with destinations, tours, and quick services",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Home discovery screen with destinations,"
+          },
+          {
+            "index": 2,
+            "text": "tours, and quick services"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Home discovery screen with destinations, tours, and quick services",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Home discovery screen with destinations, tours, and quick services",
+              "fontSize": 20,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9knih4by",
+      "id": "10",
+      "bbox": [
+        100,
+        583,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#0FA5A6",
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kzupwb2h",
+      "id": "11",
+      "bbox": [
+        134,
+        574,
+        396,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Destination detail, multi-city hotel selection, and booking summary",
+      "textPreview": "Destination detail, multi-city hotel selection, and booking summary",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Destination detail, multi-city hotel selection,"
+          },
+          {
+            "index": 2,
+            "text": "and booking summary"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Destination detail, multi-city hotel selection, and booking summary",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Destination detail, multi-city hotel selection, and booking summary",
+              "fontSize": 20,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/re1w7mp0",
+      "id": "12",
+      "bbox": [
+        100,
+        665,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#0FA5A6",
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2t83itgf",
+      "id": "13",
+      "bbox": [
+        134,
+        656,
+        396,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Hotel and city-to-city car booking flows",
+      "textPreview": "Hotel and city-to-city car booking flows",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Hotel and city-to-city car booking flows"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Hotel and city-to-city car booking flows",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Hotel and city-to-city car booking flows",
+              "fontSize": 20,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9w3m94fu",
+      "id": "14",
+      "bbox": [
+        100,
+        747,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#0FA5A6",
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kb6xkf6d",
+      "id": "15",
+      "bbox": [
+        134,
+        738,
+        396,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Payment simulation, booking confirmation, and booking history",
+      "textPreview": "Payment simulation, booking confirmation, and booking history",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Payment simulation, booking confirmation, and"
+          },
+          {
+            "index": 2,
+            "text": "booking history"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Payment simulation, booking confirmation, and booking history",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Payment simulation, booking confirmation, and booking history",
+              "fontSize": 20,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rqd4vmtw",
+      "id": "16",
+      "bbox": [
+        100,
+        829,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#0FA5A6",
+      "lineWidth": 0
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/25kb6xkf",
+      "id": "17",
+      "bbox": [
+        134,
+        820,
+        396,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Profile, maps, and user-created hotel / car listings",
+      "textPreview": "Profile, maps, and user-created hotel / car listings",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Profile, maps, and user-created hotel / car"
+          },
+          {
+            "index": 2,
+            "text": "listings"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Profile, maps, and user-created hotel / car listings",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Profile, maps, and user-created hotel / car listings",
+              "fontSize": 20,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/94fu18jq",
+      "id": "18",
+      "bbox": [
+        632,
+        308,
+        236,
+        498
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#F7F7F4",
+      "lineColor": "#D8E1EA",
+      "lineWidth": 1.2
+    },
+    {
+      "order": 19,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/vy90je9c",
+      "id": "19",
+      "bbox": [
+        650,
+        330,
+        200,
+        420
+      ],
+      "geometry": "roundRect",
+      "alt": "Home screen",
+      "contentType": "image/jpeg",
+      "asset": {
+        "assetId": "c56a46fe-9acb-4bf2-b15c-1f0c4b99897b",
+        "contentType": "image/jpeg",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p40_img1.jpg",
+        "byteLength": 42232
+      }
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wfyxobm5",
+      "id": "20",
+      "bbox": [
+        644,
+        772,
+        212,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Home discovery",
+      "textPreview": "Home discovery",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Home discovery"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Home discovery",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Home discovery",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/l0rqd4vm",
+      "id": "21",
+      "bbox": [
+        902,
+        308,
+        236,
+        498
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#F7F7F4",
+      "lineColor": "#D8E1EA",
+      "lineWidth": 1.2
+    },
+    {
+      "order": 22,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/9s36hcrm",
+      "id": "22",
+      "bbox": [
+        920,
+        330,
+        200,
+        420
+      ],
+      "geometry": "roundRect",
+      "alt": "Destination detail",
+      "contentType": "image/jpeg",
+      "asset": {
+        "assetId": "ffd4fd1a-f562-446d-9863-77177111ceff",
+        "contentType": "image/jpeg",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p43_img1.jpg",
+        "byteLength": 37484
+      }
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7u54zido",
+      "id": "23",
+      "bbox": [
+        914,
+        772,
+        212,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Destination detail",
+      "textPreview": "Destination detail",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Destination detail"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Destination detail",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Destination detail",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wra5gbq1",
+      "id": "24",
+      "bbox": [
+        1172,
+        308,
+        236,
+        498
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#F7F7F4",
+      "lineColor": "#D8E1EA",
+      "lineWidth": 1.2
+    },
+    {
+      "order": 25,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/yd0z6103",
+      "id": "25",
+      "bbox": [
+        1190,
+        330,
+        200,
+        420
+      ],
+      "geometry": "roundRect",
+      "alt": "Hotel selection",
+      "contentType": "image/jpeg",
+      "asset": {
+        "assetId": "4f62190b-2cee-4d5f-8f66-4c2686d3e738",
+        "contentType": "image/jpeg",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p44_img2.jpg",
+        "byteLength": 37717
+      }
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/eloj2t83",
+      "id": "26",
+      "bbox": [
+        1184,
+        772,
+        212,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Hotel selection",
+      "textPreview": "Hotel selection",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Hotel selection"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Hotel selection",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Hotel selection",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/36hcrmhk",
+      "id": "27",
+      "bbox": [
+        1442,
+        308,
+        236,
+        498
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#F7F7F4",
+      "lineColor": "#D8E1EA",
+      "lineWidth": 1.2
+    },
+    {
+      "order": 28,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/r65wjudg",
+      "id": "28",
+      "bbox": [
+        1460,
+        330,
+        200,
+        420
+      ],
+      "geometry": "roundRect",
+      "alt": "Booking confirmation",
+      "contentType": "image/jpeg",
+      "asset": {
+        "assetId": "6501bc23-f7c3-4cfd-ba21-c86756b79c28",
+        "contentType": "image/jpeg",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p52_img1.jpg",
+        "byteLength": 27513
+      }
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pg3ex0nu",
+      "id": "29",
+      "bbox": [
+        1454,
+        772,
+        212,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Booking confirmation",
+      "textPreview": "Booking confirmation",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Booking confirmation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Booking confirmation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Booking confirmation",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bm58z25k",
+      "id": "30",
+      "bbox": [
+        660,
+        840,
+        940,
+        60
+      ],
+      "geometry": "rect",
+      "text": "The UI emphasizes readable cards, strong imagery, clear actions, and smooth progression from exploration to confirmation.",
+      "textPreview": "The UI emphasizes readable cards, strong imagery, clear actions, and smooth progression from exploration to confirmation.",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The UI emphasizes readable cards, strong imagery, clear actions, and smooth progression from"
+          },
+          {
+            "index": 2,
+            "text": "exploration to confirmation."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The UI emphasizes readable cards, strong imagery, clear actions, and smooth progression from exploration to confirmation.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The UI emphasizes readable cards, strong imagery, clear actions, and smooth progression from exploration to confirmation.",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 31,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/m1cfa9w3",
+      "id": "31",
+      "name": "rule-100-1000",
+      "bbox": [
+        100,
+        1000,
+        1720,
+        2
+      ],
+      "geometry": "rect",
+      "fillColor": "#D8E1EA",
+      "lineWidth": 0
+    },
+    {
+      "order": 32,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tsvu9kni",
+      "id": "32",
+      "bbox": [
+        100,
+        1014,
+        900,
+        28
+      ],
+      "geometry": "rect",
+      "text": "Source: Extracted implementation screenshots from Chapter 5 of the thesis PDF.",
+      "textPreview": "Source: Extracted implementation screenshots from Chapter 5 of the thesis PDF.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Source: Extracted implementation screenshots from Chapter 5 of the thesis PDF."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Source: Extracted implementation screenshots from Chapter 5 of the thesis PDF.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Source: Extracted implementation screenshots from Chapter 5 of the thesis PDF.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

@@ -16,8 +16,6 @@ class _WeatherScreenState extends State<WeatherScreen>
     with TickerProviderStateMixin {
   late AnimationController _animController;
   int _selectedDestination = 0;
-  final bool _isLoading = false;
-  Map<String, dynamic>? _weatherData;
 
   final List<Map<String, dynamic>> _destinations = [
     {

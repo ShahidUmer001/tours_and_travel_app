@@ -1,0 +1,1749 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/lfel14",
+    "id": "lfel14",
+    "slide": 5,
+    "layoutId": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/1032lszq",
+      "id": "1",
+      "bbox": [
+        19.2,
+        9.6,
+        134.4,
+        62.4
+      ],
+      "alt": "Abasyn University logo",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "07b4e80b-012b-4760-a82c-14614ccad99f",
+        "contentType": "image/png",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\swift-template-assets\\image1.png",
+        "byteLength": 79219
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fepkzupw",
+      "id": "2",
+      "bbox": [
+        172.8,
+        20,
+        614.4,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Methodology",
+      "textPreview": "Methodology",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Methodology"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Methodology",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Methodology",
+              "fontSize": 32,
+              "typeface": "Calibri",
+              "color": "#1F7A3E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mtwra5gb",
+      "id": "3",
+      "bbox": [
+        28.8,
+        72,
+        902.4,
+        24
+      ],
+      "geometry": "rect",
+      "text": "Academic software engineering approach — requirement-driven, modular, and iterative",
+      "textPreview": "Academic software engineering approach — requirement-driven, modular, and iterative",
+      "resolvedFontSize": 13,
+      "resolvedTextStyle": {
+        "fontSize": 13,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Academic software engineering approach — requirement-driven, modular, and iterative"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Academic software engineering approach — requirement-driven, modular, and iterative",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Academic software engineering approach — requirement-driven, modular, and iterative",
+              "fontSize": 13,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xc3ylc7u",
+      "id": "4",
+      "bbox": [
+        240,
+        513.6,
+        480,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "AUIC – CS/SE - FYP Presentation",
+      "textPreview": "AUIC – CS/SE - FYP Presentation",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "AUIC – CS/SE - FYP Presentation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "AUIC – CS/SE - FYP Presentation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "AUIC – CS/SE - FYP Presentation",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4r65wjud",
+      "id": "5",
+      "bbox": [
+        892.8,
+        513.6,
+        48,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "5",
+      "textPreview": "5",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "right"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "5"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "5",
+          "runs": [
+            {
+              "index": 1,
+              "text": "5",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "right"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f6dcbulw",
+      "id": "6",
+      "bbox": [
+        24,
+        124.8,
+        441.6,
+        36.48
+      ],
+      "geometry": "rect",
+      "fillColor": "#1F2937",
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mlkjm1cf",
+      "id": "7",
+      "bbox": [
+        43,
+        132.8,
+        400,
+        20
+      ],
+      "geometry": "rect",
+      "text": "Requirement Engineering",
+      "textPreview": "Requirement Engineering",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Requirement Engineering"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Requirement Engineering",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Requirement Engineering",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/x0nuxc3y",
+      "id": "8",
+      "bbox": [
+        489.6,
+        124.8,
+        441.6,
+        36.48
+      ],
+      "geometry": "rect",
+      "fillColor": "#1F2937",
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4fu18jqh",
+      "id": "9",
+      "bbox": [
+        508.6,
+        132.8,
+        400,
+        20
+      ],
+      "geometry": "rect",
+      "text": "Core Feature Modules",
+      "textPreview": "Core Feature Modules",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Core Feature Modules"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Core Feature Modules",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Core Feature Modules",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6dcbulwv",
+      "id": "10",
+      "bbox": [
+        24,
+        316.8,
+        441.6,
+        36.48
+      ],
+      "geometry": "rect",
+      "fillColor": "#1F2937",
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vy90je9c",
+      "id": "11",
+      "bbox": [
+        43,
+        324.8,
+        400,
+        20
+      ],
+      "geometry": "rect",
+      "text": "Data & Service Layer",
+      "textPreview": "Data & Service Layer",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Data & Service Layer"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Data & Service Layer",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Data & Service Layer",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/oj2t83it",
+      "id": "12",
+      "bbox": [
+        489.6,
+        316.8,
+        441.6,
+        36.48
+      ],
+      "geometry": "rect",
+      "fillColor": "#1F2937",
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d4vmtwra",
+      "id": "13",
+      "bbox": [
+        508.6,
+        324.8,
+        400,
+        20
+      ],
+      "geometry": "rect",
+      "text": "Testing & Validation",
+      "textPreview": "Testing & Validation",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Testing & Validation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Testing & Validation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Testing & Validation",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/61032lsz",
+      "id": "14",
+      "bbox": [
+        38.4,
+        205,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vmtwra5g",
+      "id": "15",
+      "bbox": [
+        66.4,
+        205,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Stakeholder identification and requirement analysis",
+      "textPreview": "Stakeholder identification and requirement analysis",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Stakeholder identification and requirement analysis"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Stakeholder identification and requirement analysis",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Stakeholder identification and requirement analysis",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/o7qpg3ex",
+      "id": "16",
+      "bbox": [
+        38.4,
+        230,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dsji5sne",
+      "id": "17",
+      "bbox": [
+        66.4,
+        230,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Functional / non-functional requirements definition",
+      "textPreview": "Functional / non-functional requirements definition",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Functional / non-functional requirements definition"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Functional / non-functional requirements definition",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Functional / non-functional requirements definition",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6tovahoz",
+      "id": "18",
+      "bbox": [
+        38.4,
+        255,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vahoza1g",
+      "id": "19",
+      "bbox": [
+        66.4,
+        255,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Feasibility study, risk assessment, and traceability planning",
+      "textPreview": "Feasibility study, risk assessment, and traceability planning",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Feasibility study, risk assessment, and traceability planning"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Feasibility study, risk assessment, and traceability planning",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Feasibility study, risk assessment, and traceability planning",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r65wjudg",
+      "id": "20",
+      "bbox": [
+        504,
+        205,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ylc7u54z",
+      "id": "21",
+      "bbox": [
+        532,
+        205,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Authentication, destination discovery, and booking workflow design",
+      "textPreview": "Authentication, destination discovery, and booking workflow design",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Authentication, destination discovery, and booking workflow design"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Authentication, destination discovery, and booking workflow design",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Authentication, destination discovery, and booking workflow design",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9cvixcze",
+      "id": "22",
+      "bbox": [
+        504,
+        230,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gr2p8nqx",
+      "id": "23",
+      "bbox": [
+        532,
+        230,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Hotel search, car rental, payment simulation, and map support",
+      "textPreview": "Hotel search, car rental, payment simulation, and map support",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Hotel search, car rental, payment simulation, and map support"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Hotel search, car rental, payment simulation, and map support",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Hotel search, car rental, payment simulation, and map support",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nih4byhg",
+      "id": "24",
+      "bbox": [
+        504,
+        255,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 25,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/yxobm58z",
+      "id": "25",
+      "bbox": [
+        532,
+        255,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Profile management, booking history, and user listing modules",
+      "textPreview": "Profile management, booking history, and user listing modules",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Profile management, booking history, and user listing modules"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Profile management, booking history, and user listing modules",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Profile management, booking history, and user listing modules",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5o7qpg3e",
+      "id": "26",
+      "bbox": [
+        38.4,
+        396,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/g3ex0nux",
+      "id": "27",
+      "bbox": [
+        66.4,
+        396,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Service-oriented separation of screens, models, and storage logic",
+      "textPreview": "Service-oriented separation of screens, models, and storage logic",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Service-oriented separation of screens, models, and storage logic"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Service-oriented separation of screens, models, and storage logic",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Service-oriented separation of screens, models, and storage logic",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 28,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rmhk3q5o",
+      "id": "28",
+      "bbox": [
+        38.4,
+        421,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y1kre1w7",
+      "id": "29",
+      "bbox": [
+        66.4,
+        421,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Firebase Auth, Firestore, Storage, Shared Preferences, and in-memory fallback",
+      "textPreview": "Firebase Auth, Firestore, Storage, Shared Preferences, and in-memory fallback",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Firebase Auth, Firestore, Storage, Shared Preferences, and in-memory"
+          },
+          {
+            "index": 2,
+            "text": "fallback"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Firebase Auth, Firestore, Storage, Shared Preferences, and in-memory fallback",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Firebase Auth, Firestore, Storage, Shared Preferences, and in-memory fallback",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/sji5snel",
+      "id": "30",
+      "bbox": [
+        38.4,
+        446,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 31,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/h4byhgn2",
+      "id": "31",
+      "bbox": [
+        66.4,
+        446,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Reusable validators, constants, theme utilities, and navigation helpers",
+      "textPreview": "Reusable validators, constants, theme utilities, and navigation helpers",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Reusable validators, constants, theme utilities, and navigation helpers"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Reusable validators, constants, theme utilities, and navigation helpers",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Reusable validators, constants, theme utilities, and navigation helpers",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 32,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/adsji5sn",
+      "id": "32",
+      "bbox": [
+        504,
+        396,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 33,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/3ylc7u54",
+      "id": "33",
+      "bbox": [
+        532,
+        396,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Manual and integration testing across major user flows",
+      "textPreview": "Manual and integration testing across major user flows",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Manual and integration testing across major user flows"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Manual and integration testing across major user flows",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Manual and integration testing across major user flows",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 34,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/s72x4nap",
+      "id": "34",
+      "bbox": [
+        504,
+        421,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 35,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/lszqtcj6",
+      "id": "35",
+      "bbox": [
+        532,
+        421,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Positive / negative case validation for forms, bookings, and routing",
+      "textPreview": "Positive / negative case validation for forms, bookings, and routing",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Positive / negative case validation for forms, bookings, and routing"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Positive / negative case validation for forms, bookings, and routing",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Positive / negative case validation for forms, bookings, and routing",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 36,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/a5gbq1or",
+      "id": "36",
+      "bbox": [
+        504,
+        446,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 37,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/3m94fu18",
+      "id": "37",
+      "bbox": [
+        532,
+        446,
+        384.8,
+        54
+      ],
+      "geometry": "rect",
+      "text": "Honest reporting of defects, limitations, and production gaps",
+      "textPreview": "Honest reporting of defects, limitations, and production gaps",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Honest reporting of defects, limitations, and production gaps"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Honest reporting of defects, limitations, and production gaps",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Honest reporting of defects, limitations, and production gaps",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

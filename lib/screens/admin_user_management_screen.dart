@@ -524,22 +524,24 @@ class _AdminUserManagementScreenState extends State<AdminUserManagementScreen> {
             'Edit Role - $name',
             style: GoogleFonts.poppins(fontWeight: FontWeight.w700),
           ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: ['user', 'admin', 'partner'].map((role) {
-              return RadioListTile<String>(
-                title: Text(
-                  role.toUpperCase(),
-                  style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
-                ),
-                value: role,
-                groupValue: selectedRole,
-                activeColor: AppConstants.primaryColor,
-                onChanged: (value) {
-                  setDialogState(() => selectedRole = value!);
-                },
-              );
-            }).toList(),
+          content: RadioGroup<String>(
+            groupValue: selectedRole,
+            onChanged: (value) {
+              setDialogState(() => selectedRole = value!);
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: ['user', 'admin', 'partner'].map((role) {
+                return RadioListTile<String>(
+                  title: Text(
+                    role.toUpperCase(),
+                    style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                  ),
+                  value: role,
+                  activeColor: AppConstants.primaryColor,
+                );
+              }).toList(),
+            ),
           ),
           actions: [
             TextButton(

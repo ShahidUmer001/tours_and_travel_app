@@ -1,0 +1,639 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/n1kks8",
+    "id": "n1kks8",
+    "slide": 2,
+    "layoutId": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/vu9knih4",
+      "id": "1",
+      "bbox": [
+        19.2,
+        9.6,
+        134.4,
+        62.4
+      ],
+      "alt": "Abasyn University logo",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "787f60ad-3b3c-4759-9dae-2fd93df2ceb0",
+        "contentType": "image/png",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\swift-template-assets\\image1.png",
+        "byteLength": 79219
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5o7qpg3e",
+      "id": "2",
+      "bbox": [
+        172.8,
+        20,
+        614.4,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Introduction",
+      "textPreview": "Introduction",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Introduction"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Introduction",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Introduction",
+              "fontSize": 32,
+              "typeface": "Calibri",
+              "color": "#1F7A3E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/g3ex0nux",
+      "id": "3",
+      "bbox": [
+        240,
+        513.6,
+        480,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "AUIC – CS/SE - FYP Presentation",
+      "textPreview": "AUIC – CS/SE - FYP Presentation",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "AUIC – CS/SE - FYP Presentation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "AUIC – CS/SE - FYP Presentation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "AUIC – CS/SE - FYP Presentation",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r65wjudg",
+      "id": "4",
+      "bbox": [
+        892.8,
+        513.6,
+        48,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "2",
+      "textPreview": "2",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "right"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "2"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "2",
+          "runs": [
+            {
+              "index": 1,
+              "text": "2",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "right"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ylc7u54z",
+      "id": "5",
+      "bbox": [
+        62,
+        118,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9cvixcze",
+      "id": "6",
+      "bbox": [
+        90,
+        118,
+        778,
+        52
+      ],
+      "geometry": "rect",
+      "text": "Tours & Travel is a Flutter-based mobile application designed to unify destination discovery, hotel booking, transport planning, maps, and traveler support in one platform.",
+      "textPreview": "Tours & Travel is a Flutter-based mobile application designed to unify destination discovery, hotel booking, transport planning, maps, an...",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Tours & Travel is a Flutter-based mobile application designed to unify destination discovery, hotel booking, transport planning, maps, and"
+          },
+          {
+            "index": 2,
+            "text": "traveler support in one platform."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Tours & Travel is a Flutter-based mobile application designed to unify destination discovery, hotel booking, transport planning, maps, and traveler support in one platform.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Tours & Travel is a Flutter-based mobile application designed to unify destination discovery, hotel booking, transport planning, maps, and traveler support in one platform.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gr2p8nqx",
+      "id": "7",
+      "bbox": [
+        62,
+        174,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rytsvu9k",
+      "id": "8",
+      "bbox": [
+        90,
+        174,
+        778,
+        52
+      ],
+      "geometry": "rect",
+      "text": "The project targets Pakistan’s domestic tourism context, where users still depend on scattered sources for places, hotels, payments, and travel coordination.",
+      "textPreview": "The project targets Pakistan’s domestic tourism context, where users still depend on scattered sources for places, hotels, payments, and ...",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The project targets Pakistan’s domestic tourism context, where users still depend on scattered sources for places, hotels, payments, and"
+          },
+          {
+            "index": 2,
+            "text": "travel coordination."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The project targets Pakistan’s domestic tourism context, where users still depend on scattered sources for places, hotels, payments, and travel coordination.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The project targets Pakistan’s domestic tourism context, where users still depend on scattered sources for places, hotels, payments, and travel coordination.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/yd0z6103",
+      "id": "9",
+      "bbox": [
+        62,
+        230,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wb2hwfyx",
+      "id": "10",
+      "bbox": [
+        90,
+        230,
+        778,
+        52
+      ],
+      "geometry": "rect",
+      "text": "Core objective: build a modular academic prototype that demonstrates authentication, bookings, maps, profile management, booking history, and user-created listings.",
+      "textPreview": "Core objective: build a modular academic prototype that demonstrates authentication, bookings, maps, profile management, booking history,...",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Core objective: build a modular academic prototype that demonstrates authentication, bookings, maps, profile management, booking"
+          },
+          {
+            "index": 2,
+            "text": "history, and user-created listings."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Core objective: build a modular academic prototype that demonstrates authentication, bookings, maps, profile management, booking history, and user-created listings.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Core objective: build a modular academic prototype that demonstrates authentication, bookings, maps, profile management, booking history, and user-created listings.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/lwval87e",
+      "id": "11",
+      "bbox": [
+        62,
+        286,
+        22,
+        22
+      ],
+      "geometry": "rect",
+      "text": "•",
+      "textPreview": "•",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "•"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "•",
+          "runs": [
+            {
+              "index": 1,
+              "text": "•",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/e9cvixcz",
+      "id": "12",
+      "bbox": [
+        90,
+        286,
+        778,
+        52
+      ],
+      "geometry": "rect",
+      "text": "The system uses Flutter for the mobile interface and Firebase-backed services with local fallback support for stable final-year demonstration.",
+      "textPreview": "The system uses Flutter for the mobile interface and Firebase-backed services with local fallback support for stable final-year demonstra...",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The system uses Flutter for the mobile interface and Firebase-backed services with local fallback support for stable final-year"
+          },
+          {
+            "index": 2,
+            "text": "demonstration."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The system uses Flutter for the mobile interface and Firebase-backed services with local fallback support for stable final-year demonstration.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The system uses Flutter for the mobile interface and Firebase-backed services with local fallback support for stable final-year demonstration.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

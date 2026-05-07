@@ -177,13 +177,24 @@ class _PaymentScreenState extends State<PaymentScreen> {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Column(
-              children: [
-                _buildPaymentMethodTile('Credit/Debit Card', 'card', Icons.credit_card),
-                _buildPaymentMethodTile('JazzCash', 'jazzcash', Icons.phone_android),
-                _buildPaymentMethodTile('EasyPaisa', 'easypaisa', Icons.phone_iphone),
-                _buildPaymentMethodTile('Cash on Delivery', 'cash', Icons.money),
-              ],
+            IgnorePointer(
+              ignoring: _isProcessing,
+              child: RadioGroup<String>(
+                groupValue: _selectedPaymentMethod ?? '',
+                onChanged: (value) {
+                  setState(() {
+                    _selectedPaymentMethod = value;
+                  });
+                },
+                child: Column(
+                children: [
+                  _buildPaymentMethodTile('Credit/Debit Card', 'card', Icons.credit_card),
+                  _buildPaymentMethodTile('JazzCash', 'jazzcash', Icons.phone_android),
+                  _buildPaymentMethodTile('EasyPaisa', 'easypaisa', Icons.phone_iphone),
+                  _buildPaymentMethodTile('Cash on Delivery', 'cash', Icons.money),
+                ],
+              ),
+              ),
             ),
             SizedBox(height: 20),
 
@@ -246,12 +257,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
           ],
         ),
         value: value,
-        groupValue: _selectedPaymentMethod,
-        onChanged: _isProcessing ? null : (value) {
-          setState(() {
-            _selectedPaymentMethod = value;
-          });
-        },
       ),
     );
   }

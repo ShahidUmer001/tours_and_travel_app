@@ -1,0 +1,779 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/kz33dn",
+    "id": "kz33dn",
+    "slide": 8,
+    "layoutId": "039380ba-7443-4105-b08a-1761c9602b37",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri",
+      "Cambria"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "039380ba-7443-4105-b08a-1761c9602b37",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pwb2hwfy",
+      "id": "1",
+      "name": "slide-8-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i5sneloj",
+      "id": "2",
+      "bbox": [
+        100,
+        90,
+        980,
+        28
+      ],
+      "geometry": "rect",
+      "text": "Outcome",
+      "textPreview": "Outcome",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Outcome"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Outcome",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Outcome",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#0FA5A6",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7qpg3ex0",
+      "id": "3",
+      "bbox": [
+        100,
+        120,
+        980,
+        120
+      ],
+      "geometry": "rect",
+      "text": "The project achieved its main academic and technical goals.",
+      "textPreview": "The project achieved its main academic and technical goals.",
+      "resolvedFontSize": 48,
+      "resolvedTextStyle": {
+        "fontSize": 48,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The project achieved its main academic and"
+          },
+          {
+            "index": 2,
+            "text": "technical goals."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The project achieved its main academic and technical goals.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The project achieved its main academic and technical goals.",
+              "fontSize": 48,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wjudg7ad",
+      "id": "4",
+      "bbox": [
+        100,
+        258,
+        980,
+        72
+      ],
+      "geometry": "rect",
+      "text": "Chapter 7 concludes that the prototype successfully combines travel discovery, booking support, localized content, and modular software design in one explainable system.",
+      "textPreview": "Chapter 7 concludes that the prototype successfully combines travel discovery, booking support, localized content, and modular software d...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Chapter 7 concludes that the prototype successfully combines travel discovery, booking support,"
+          },
+          {
+            "index": 2,
+            "text": "localized content, and modular software design in one explainable system."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Chapter 7 concludes that the prototype successfully combines travel discovery, booking support, localized content, and modular software design in one explainable system.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Chapter 7 concludes that the prototype successfully combines travel discovery, booking support, localized content, and modular software design in one explainable system.",
+              "fontSize": 24,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p4r65wju",
+      "id": "5",
+      "bbox": [
+        100,
+        300,
+        1720,
+        92
+      ],
+      "geometry": "rect",
+      "text": "Most importantly, the application moves beyond isolated screens and demonstrates a complete, connected travel-planning flow.",
+      "textPreview": "Most importantly, the application moves beyond isolated screens and demonstrates a complete, connected travel-planning flow.",
+      "resolvedFontSize": 38,
+      "resolvedTextStyle": {
+        "fontSize": 38,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Most importantly, the application moves beyond isolated screens and demonstrates a complete,"
+          },
+          {
+            "index": 2,
+            "text": "connected travel-planning flow."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Most importantly, the application moves beyond isolated screens and demonstrates a complete, connected travel-planning flow.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Most importantly, the application moves beyond isolated screens and demonstrates a complete, connected travel-planning flow.",
+              "fontSize": 38,
+              "typeface": "Cambria",
+              "color": "#0F2743",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ed8v6psf",
+      "id": "6",
+      "name": "rule-640-470",
+      "bbox": [
+        640,
+        470,
+        2,
+        290
+      ],
+      "geometry": "rect",
+      "fillColor": "#D8E1EA",
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7y1kre1w",
+      "id": "7",
+      "name": "rule-1280-470",
+      "bbox": [
+        1280,
+        470,
+        2,
+        290
+      ],
+      "geometry": "rect",
+      "fillColor": "#D8E1EA",
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0nuxc3yl",
+      "id": "8",
+      "bbox": [
+        120,
+        500,
+        390,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Unified planning flow",
+      "textPreview": "Unified planning flow",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Unified planning flow"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Unified planning flow",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Unified planning flow",
+              "fontSize": 28,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p8nqxs72",
+      "id": "9",
+      "bbox": [
+        120,
+        560,
+        390,
+        140
+      ],
+      "geometry": "rect",
+      "text": "Discovery, hotel selection, transport, payment, and history are brought into one mobile experience.",
+      "textPreview": "Discovery, hotel selection, transport, payment, and history are brought into one mobile experience.",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Discovery, hotel selection, transport,"
+          },
+          {
+            "index": 2,
+            "text": "payment, and history are brought into one"
+          },
+          {
+            "index": 3,
+            "text": "mobile experience."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Discovery, hotel selection, transport, payment, and history are brought into one mobile experience.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Discovery, hotel selection, transport, payment, and history are brought into one mobile experience.",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xobm58z2",
+      "id": "10",
+      "bbox": [
+        760,
+        500,
+        390,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Localized user value",
+      "textPreview": "Localized user value",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Localized user value"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Localized user value",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Localized user value",
+              "fontSize": 28,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/83itgfml",
+      "id": "11",
+      "bbox": [
+        760,
+        560,
+        390,
+        140
+      ],
+      "geometry": "rect",
+      "text": "The app is aligned with Pakistan-focused travel use cases instead of copying only generic global booking patterns.",
+      "textPreview": "The app is aligned with Pakistan-focused travel use cases instead of copying only generic global booking patterns.",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The app is aligned with Pakistan-focused"
+          },
+          {
+            "index": 2,
+            "text": "travel use cases instead of copying only"
+          },
+          {
+            "index": 3,
+            "text": "generic global booking patterns."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The app is aligned with Pakistan-focused travel use cases instead of copying only generic global booking patterns.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The app is aligned with Pakistan-focused travel use cases instead of copying only generic global booking patterns.",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fil0rqd4",
+      "id": "12",
+      "bbox": [
+        1400,
+        500,
+        390,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Explainable architecture",
+      "textPreview": "Explainable architecture",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Explainable architecture"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Explainable architecture",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Explainable architecture",
+              "fontSize": 28,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qxs72x4n",
+      "id": "13",
+      "bbox": [
+        1400,
+        560,
+        390,
+        140
+      ],
+      "geometry": "rect",
+      "text": "Screens, services, models, widgets, and utilities are separated clearly for defense, maintenance, and future reuse.",
+      "textPreview": "Screens, services, models, widgets, and utilities are separated clearly for defense, maintenance, and future reuse.",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Screens, services, models, widgets, and"
+          },
+          {
+            "index": 2,
+            "text": "utilities are separated clearly for defense,"
+          },
+          {
+            "index": 3,
+            "text": "maintenance, and future reuse."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Screens, services, models, widgets, and utilities are separated clearly for defense, maintenance, and future reuse.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Screens, services, models, widgets, and utilities are separated clearly for defense, maintenance, and future reuse.",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/x0nuxc3y",
+      "id": "14",
+      "bbox": [
+        230,
+        820,
+        1460,
+        92
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#DDF4F4",
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4fu18jqh",
+      "id": "15",
+      "bbox": [
+        270,
+        846,
+        1380,
+        40
+      ],
+      "geometry": "rect",
+      "text": "A notable contribution is the hybrid fallback approach, which makes the prototype more resilient and presentation-ready in imperfect demo environments.",
+      "textPreview": "A notable contribution is the hybrid fallback approach, which makes the prototype more resilient and presentation-ready in imperfect demo...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "A notable contribution is the hybrid fallback approach, which makes the prototype more resilient and presentation-ready in imperfect"
+          },
+          {
+            "index": 2,
+            "text": "demo environments."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "A notable contribution is the hybrid fallback approach, which makes the prototype more resilient and presentation-ready in imperfect demo environments.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "A notable contribution is the hybrid fallback approach, which makes the prototype more resilient and presentation-ready in imperfect demo environments.",
+              "fontSize": 24,
+              "typeface": "Calibri",
+              "color": "#0F2743",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fu18jqh0",
+      "id": "16",
+      "name": "rule-100-1000",
+      "bbox": [
+        100,
+        1000,
+        1720,
+        2
+      ],
+      "geometry": "rect",
+      "fillColor": "#D8E1EA",
+      "lineWidth": 0
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/m94fu18j",
+      "id": "17",
+      "bbox": [
+        100,
+        1014,
+        900,
+        28
+      ],
+      "geometry": "rect",
+      "text": "Source: Results, user benefits, technical contributions, and academic value from Chapter 7.",
+      "textPreview": "Source: Results, user benefits, technical contributions, and academic value from Chapter 7.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Source: Results, user benefits, technical contributions, and academic value from Chapter 7."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Source: Results, user benefits, technical contributions, and academic value from Chapter 7.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Source: Results, user benefits, technical contributions, and academic value from Chapter 7.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

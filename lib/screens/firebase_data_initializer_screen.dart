@@ -45,9 +45,9 @@ class FirebaseDataInitializerScreen extends StatelessWidget {
         'category': '3 Star Standard',
       });
 
-      print('✅ Hotels added successfully!');
+      debugPrint('Hotels added successfully!');
     } catch (e) {
-      print('❌ Error: $e');
+      debugPrint('Error: $e');
     }
   }
 
@@ -68,7 +68,7 @@ class FirebaseDataInitializerScreen extends StatelessWidget {
               onPressed: () async {
                 // Check if hotels exist
                 final snapshot = await _firestore.collection('hotels').get();
-                print('Total hotels: ${snapshot.docs.length}');
+                debugPrint('Total hotels: ${snapshot.docs.length}');
               },
               child: Text('Check Existing Hotels'),
             ),

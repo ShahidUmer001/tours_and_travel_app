@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/destination_model.dart';
 import '../models/hotel_model.dart';
@@ -28,7 +29,7 @@ class DatabaseService {
       }
       return null;
     } catch (e) {
-      print('Error getting destination: $e');
+      debugPrint('Error getting destination: $e');
       return null;
     }
   }
@@ -64,7 +65,7 @@ class DatabaseService {
           .set(booking.toMap());
       return true;
     } catch (e) {
-      print('Error creating booking: $e');
+      debugPrint('Error creating booking: $e');
       return false;
     }
   }
@@ -262,9 +263,9 @@ class DatabaseService {
             .set(hotel.toMap());
       }
 
-      print('Sample data added successfully');
+      debugPrint('Sample data added successfully');
     } catch (e) {
-      print('Error adding sample data: $e');
+      debugPrint('Error adding sample data: $e');
     }
   }
 
@@ -274,7 +275,7 @@ class DatabaseService {
       final destinations = await _firestore.collection('destinations').get();
       return destinations.docs.isNotEmpty;
     } catch (e) {
-      print('Error checking data: $e');
+      debugPrint('Error checking data: $e');
       return false;
     }
   }

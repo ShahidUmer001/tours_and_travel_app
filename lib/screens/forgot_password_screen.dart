@@ -19,8 +19,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
   final TextEditingController _confirmPasswordController = TextEditingController();
 
   bool _isLoading = false;
-  final bool _obscureNew = true;
-  final bool _obscureConfirm = true;
   int _currentStep = 0; // 0: email, 1: success message
 
   late AnimationController _animController;

@@ -1,0 +1,387 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/mdl8tn",
+    "id": "mdl8tn",
+    "slide": 4,
+    "layoutId": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/yhgn29gr",
+      "id": "1",
+      "bbox": [
+        19.2,
+        9.6,
+        134.4,
+        62.4
+      ],
+      "alt": "Abasyn University logo",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "aaa5cabb-7deb-483e-ba1a-28104a30c91d",
+        "contentType": "image/png",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\swift-template-assets\\image1.png",
+        "byteLength": 79219
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cj6tovah",
+      "id": "2",
+      "bbox": [
+        172.8,
+        20,
+        614.4,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Problem Statement",
+      "textPreview": "Problem Statement",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Problem Statement"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Problem Statement",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Problem Statement",
+              "fontSize": 32,
+              "typeface": "Calibri",
+              "color": "#1F7A3E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/54zidony",
+      "id": "3",
+      "bbox": [
+        240,
+        513.6,
+        480,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "AUIC – CS/SE - FYP Presentation",
+      "textPreview": "AUIC – CS/SE - FYP Presentation",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "AUIC – CS/SE - FYP Presentation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "AUIC – CS/SE - FYP Presentation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "AUIC – CS/SE - FYP Presentation",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/upwb2hwf",
+      "id": "4",
+      "bbox": [
+        892.8,
+        513.6,
+        48,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "4",
+      "textPreview": "4",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "right"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "4"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "4",
+          "runs": [
+            {
+              "index": 1,
+              "text": "4",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "right"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nap4r65w",
+      "id": "5",
+      "bbox": [
+        95,
+        116,
+        770,
+        72
+      ],
+      "geometry": "rect",
+      "text": "Pakistan’s tourism planning process is still fragmented and semi-manual. Users discover destinations on one platform, research hotels somewhere else, arrange transport separately, and confirm details through calls or messages.",
+      "textPreview": "Pakistan’s tourism planning process is still fragmented and semi-manual. Users discover destinations on one platform, research hotels som...",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Pakistan’s tourism planning process is still fragmented and semi-manual. Users discover destinations on one platform, research hotels"
+          },
+          {
+            "index": 2,
+            "text": "somewhere else, arrange transport separately, and confirm details through calls or messages."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Pakistan’s tourism planning process is still fragmented and semi-manual. Users discover destinations on one platform, research hotels somewhere else, arrange transport separately, and confirm details through calls or messages.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Pakistan’s tourism planning process is still fragmented and semi-manual. Users discover destinations on one platform, research hotels somewhere else, arrange transport separately, and confirm details through calls or messages.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cvixczed",
+      "id": "6",
+      "bbox": [
+        95,
+        194,
+        770,
+        72
+      ],
+      "geometry": "rect",
+      "text": "There is no single user-friendly mobile application that lets travelers move smoothly from exploration to booking confirmation while also supporting maps, profile data, booking history, and service listings.",
+      "textPreview": "There is no single user-friendly mobile application that lets travelers move smoothly from exploration to booking confirmation while also...",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "There is no single user-friendly mobile application that lets travelers move smoothly from exploration to booking confirmation while"
+          },
+          {
+            "index": 2,
+            "text": "also supporting maps, profile data, booking history, and service listings."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "There is no single user-friendly mobile application that lets travelers move smoothly from exploration to booking confirmation while also supporting maps, profile data, booking history, and service listings.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "There is no single user-friendly mobile application that lets travelers move smoothly from exploration to booking confirmation while also supporting maps, profile data, booking history, and service listings.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5gbq1ory",
+      "id": "7",
+      "bbox": [
+        95,
+        272,
+        770,
+        72
+      ],
+      "geometry": "rect",
+      "text": "This creates repeated data entry, weak cost visibility, inconsistent communication, and lower trust for both users and service providers. The project addresses that gap through one integrated tourism app prototype.",
+      "textPreview": "This creates repeated data entry, weak cost visibility, inconsistent communication, and lower trust for both users and service providers....",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "This creates repeated data entry, weak cost visibility, inconsistent communication, and lower trust for both users and service providers."
+          },
+          {
+            "index": 2,
+            "text": "The project addresses that gap through one integrated tourism app prototype."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "This creates repeated data entry, weak cost visibility, inconsistent communication, and lower trust for both users and service providers. The project addresses that gap through one integrated tourism app prototype.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "This creates repeated data entry, weak cost visibility, inconsistent communication, and lower trust for both users and service providers. The project addresses that gap through one integrated tourism app prototype.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

@@ -1,0 +1,420 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/p0z1dx",
+    "id": "p0z1dx",
+    "slide": 1,
+    "layoutId": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/s72x4nap",
+      "id": "1",
+      "bbox": [
+        24,
+        14.4,
+        153.6,
+        72
+      ],
+      "alt": "Abasyn University logo",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "5b95b2e3-a367-4109-8bac-b14f3f508666",
+        "contentType": "image/png",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\swift-template-assets\\image1.png",
+        "byteLength": 79219
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mhk3q5o7",
+      "id": "2",
+      "bbox": [
+        720,
+        9.6,
+        220.8,
+        86.4
+      ],
+      "geometry": "rect",
+      "text": "FYP Defense\nPresentation",
+      "textPreview": "FYP Defense | Presentation",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "FYP Defense"
+          },
+          {
+            "index": 2,
+            "text": "Presentation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "FYP Defense",
+          "runs": [
+            {
+              "index": 1,
+              "text": "FYP Defense",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Presentation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Presentation",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/b2hwfyxo",
+      "id": "3",
+      "bbox": [
+        48,
+        126,
+        864,
+        108
+      ],
+      "geometry": "rect",
+      "text": "Tours & Travel",
+      "textPreview": "Tours & Travel",
+      "resolvedFontSize": 56,
+      "resolvedTextStyle": {
+        "fontSize": 56,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Tours & Travel"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Tours & Travel",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Tours & Travel",
+              "fontSize": 56,
+              "typeface": "Calibri",
+              "color": "#1F7A3E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4byhgn29",
+      "id": "4",
+      "bbox": [
+        48,
+        182,
+        864,
+        62
+      ],
+      "geometry": "rect",
+      "text": "Mobile Application",
+      "textPreview": "Mobile Application",
+      "resolvedFontSize": 40,
+      "resolvedTextStyle": {
+        "fontSize": 40,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Mobile Application"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Mobile Application",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Mobile Application",
+              "fontSize": 40,
+              "typeface": "Calibri",
+              "color": "#1F7A3E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/twra5gbq",
+      "id": "5",
+      "bbox": [
+        48,
+        232,
+        864,
+        34
+      ],
+      "geometry": "rect",
+      "text": "A Smart Tourism Management & Booking Platform",
+      "textPreview": "A Smart Tourism Management & Booking Platform",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "italic": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "A Smart Tourism Management & Booking Platform"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "A Smart Tourism Management & Booking Platform",
+          "runs": [
+            {
+              "index": 1,
+              "text": "A Smart Tourism Management & Booking Platform",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#64748B",
+              "italic": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/m58z25kb",
+      "id": "6",
+      "bbox": [
+        144,
+        292.8,
+        672,
+        86.4
+      ],
+      "geometry": "rect",
+      "text": "Shahid Umer\t\tAUIC-22SG-BSCS-6732\nMusharaf\t\tAUIC-22SG-BSCS-7029",
+      "textPreview": "Shahid Umer\t\tAUIC-22SG-BSCS-6732 | Musharaf\t\tAUIC-22SG-BSCS-7029",
+      "resolvedFontSize": 15,
+      "resolvedTextStyle": {
+        "fontSize": 15,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Shahid Umer\t\tAUIC-22SG-BSCS-6732"
+          },
+          {
+            "index": 2,
+            "text": "Musharaf\t\tAUIC-22SG-BSCS-7029"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Shahid Umer\t\tAUIC-22SG-BSCS-6732",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Shahid Umer\t\tAUIC-22SG-BSCS-6732",
+              "fontSize": 15,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "center"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Musharaf\t\tAUIC-22SG-BSCS-7029",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Musharaf\t\tAUIC-22SG-BSCS-7029",
+              "fontSize": 15,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bq1oryts",
+      "id": "7",
+      "bbox": [
+        96,
+        441.6,
+        768,
+        43.2
+      ],
+      "geometry": "rect",
+      "text": "Supervisor:   Dr. Amjad Khan",
+      "textPreview": "Supervisor:   Dr. Amjad Khan",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Supervisor:   Dr. Amjad Khan"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Supervisor:   Dr. Amjad Khan",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Supervisor:   Dr. Amjad Khan",
+              "fontSize": 16,
+              "typeface": "Calibri",
+              "color": "#1F7A3E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

@@ -1,0 +1,1645 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/urr2rx",
+    "id": "urr2rx",
+    "slide": 3,
+    "layoutId": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "c3c87213-bdb3-41d8-ab66-44d199b7d00d",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "7e69ad50-df0a-4f80-83ed-3ca55e3b4d1c",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/4nap4r65",
+      "id": "1",
+      "bbox": [
+        19.2,
+        9.6,
+        134.4,
+        62.4
+      ],
+      "alt": "Abasyn University logo",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "2c5c0951-b751-4ecc-9b0f-5a7a65a6a2f6",
+        "contentType": "image/png",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\swift-template-assets\\image1.png",
+        "byteLength": 79219
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mlkjm1cf",
+      "id": "2",
+      "bbox": [
+        172.8,
+        20,
+        614.4,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Literature Review",
+      "textPreview": "Literature Review",
+      "resolvedFontSize": 32,
+      "resolvedTextStyle": {
+        "fontSize": 32,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Literature Review"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Literature Review",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Literature Review",
+              "fontSize": 32,
+              "typeface": "Calibri",
+              "color": "#1F7A3E",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f6dcbulw",
+      "id": "3",
+      "bbox": [
+        240,
+        513.6,
+        480,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "AUIC – CS/SE - FYP Presentation",
+      "textPreview": "AUIC – CS/SE - FYP Presentation",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "AUIC – CS/SE - FYP Presentation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "AUIC – CS/SE - FYP Presentation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "AUIC – CS/SE - FYP Presentation",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4zidonyd",
+      "id": "4",
+      "bbox": [
+        892.8,
+        513.6,
+        48,
+        19.2
+      ],
+      "geometry": "rect",
+      "text": "3",
+      "textPreview": "3",
+      "resolvedFontSize": 9,
+      "resolvedTextStyle": {
+        "fontSize": 9,
+        "typeface": "Calibri",
+        "alignment": "right"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "3"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "3",
+          "runs": [
+            {
+              "index": 1,
+              "text": "3",
+              "fontSize": 9,
+              "typeface": "Calibri",
+              "color": "#AAAAAA",
+              "alignment": "right"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xkf6dcbu",
+      "id": "5",
+      "bbox": [
+        50,
+        110,
+        130,
+        30
+      ],
+      "geometry": "rect",
+      "fillColor": "#1F2937",
+      "lineColor": "#FFFFFF",
+      "lineWidth": 1
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mtwra5gb",
+      "id": "6",
+      "bbox": [
+        58,
+        116,
+        114,
+        18
+      ],
+      "geometry": "rect",
+      "text": "App / System",
+      "textPreview": "App / System",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "App / System"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "App / System",
+          "runs": [
+            {
+              "index": 1,
+              "text": "App / System",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fepkzupw",
+      "id": "7",
+      "bbox": [
+        180,
+        110,
+        205,
+        30
+      ],
+      "geometry": "rect",
+      "fillColor": "#1F2937",
+      "lineColor": "#FFFFFF",
+      "lineWidth": 1
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/83itgfml",
+      "id": "8",
+      "bbox": [
+        188,
+        116,
+        189,
+        18
+      ],
+      "geometry": "rect",
+      "text": "It Gives",
+      "textPreview": "It Gives",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "It Gives"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "It Gives",
+          "runs": [
+            {
+              "index": 1,
+              "text": "It Gives",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xobm58z2",
+      "id": "9",
+      "bbox": [
+        385,
+        110,
+        180,
+        30
+      ],
+      "geometry": "rect",
+      "fillColor": "#1F2937",
+      "lineColor": "#FFFFFF",
+      "lineWidth": 1
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dcbulwva",
+      "id": "10",
+      "bbox": [
+        393,
+        116,
+        164,
+        18
+      ],
+      "geometry": "rect",
+      "text": "Gap",
+      "textPreview": "Gap",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Gap"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Gap",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Gap",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kre1w7mp",
+      "id": "11",
+      "bbox": [
+        565,
+        110,
+        345,
+        30
+      ],
+      "geometry": "rect",
+      "fillColor": "#1F2937",
+      "lineColor": "#FFFFFF",
+      "lineWidth": 1
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/val87ed8",
+      "id": "12",
+      "bbox": [
+        573,
+        116,
+        329,
+        18
+      ],
+      "geometry": "rect",
+      "text": "Our App Gives",
+      "textPreview": "Our App Gives",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Our App Gives"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Our App Gives",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Our App Gives",
+              "fontSize": 12,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6psfil0r",
+      "id": "13",
+      "bbox": [
+        50,
+        140,
+        130,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/donyd0z6",
+      "id": "14",
+      "bbox": [
+        58,
+        146,
+        114,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Booking.com",
+      "textPreview": "Booking.com",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Booking.com"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Booking.com",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Booking.com",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/k3q5o7qp",
+      "id": "15",
+      "bbox": [
+        180,
+        140,
+        205,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vixczed8",
+      "id": "16",
+      "bbox": [
+        188,
+        146,
+        189,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Hotels, stays, flights, car rentals, and guest reviews.",
+      "textPreview": "Hotels, stays, flights, car rentals, and guest reviews.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Hotels, stays, flights, car rentals, and guest"
+          },
+          {
+            "index": 2,
+            "text": "reviews."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Hotels, stays, flights, car rentals, and guest reviews.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Hotels, stays, flights, car rentals, and guest reviews.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2x4nap4r",
+      "id": "17",
+      "bbox": [
+        385,
+        140,
+        180,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d0z61032",
+      "id": "18",
+      "bbox": [
+        393,
+        146,
+        164,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Strong booking app, but not one local tourism flow for our project scope.",
+      "textPreview": "Strong booking app, but not one local tourism flow for our project scope.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Strong booking app, but not one local"
+          },
+          {
+            "index": 2,
+            "text": "tourism flow for our project scope."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Strong booking app, but not one local tourism flow for our project scope.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Strong booking app, but not one local tourism flow for our project scope.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kf6dcbul",
+      "id": "19",
+      "bbox": [
+        565,
+        140,
+        345,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0bi9s36h",
+      "id": "20",
+      "bbox": [
+        573,
+        146,
+        329,
+        50
+      ],
+      "geometry": "rect",
+      "text": "We give destination browsing, hotel booking flow, maps, profile, and booking history in one app.",
+      "textPreview": "We give destination browsing, hotel booking flow, maps, profile, and booking history in one app.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "We give destination browsing, hotel booking flow, maps, profile, and booking"
+          },
+          {
+            "index": 2,
+            "text": "history in one app."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "We give destination browsing, hotel booking flow, maps, profile, and booking history in one app.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "We give destination browsing, hotel booking flow, maps, profile, and booking history in one app.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pwb2hwfy",
+      "id": "21",
+      "bbox": [
+        50,
+        202,
+        130,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i5sneloj",
+      "id": "22",
+      "bbox": [
+        58,
+        208,
+        114,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Agoda",
+      "textPreview": "Agoda",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Agoda"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Agoda",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Agoda",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7qpg3ex0",
+      "id": "23",
+      "bbox": [
+        180,
+        202,
+        205,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wjudg7ad",
+      "id": "24",
+      "bbox": [
+        188,
+        208,
+        189,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Hotels, homes, flights, transport, and activities.",
+      "textPreview": "Hotels, homes, flights, transport, and activities.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Hotels, homes, flights, transport, and"
+          },
+          {
+            "index": 2,
+            "text": "activities."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Hotels, homes, flights, transport, and activities.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Hotels, homes, flights, transport, and activities.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 25,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p4r65wju",
+      "id": "25",
+      "bbox": [
+        385,
+        202,
+        180,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ed8v6psf",
+      "id": "26",
+      "bbox": [
+        393,
+        208,
+        164,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Good travel deals app, but not focused on one local tourism workflow.",
+      "textPreview": "Good travel deals app, but not focused on one local tourism workflow.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Good travel deals app, but not focused"
+          },
+          {
+            "index": 2,
+            "text": "on one local tourism workflow."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Good travel deals app, but not focused on one local tourism workflow.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Good travel deals app, but not focused on one local tourism workflow.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7y1kre1w",
+      "id": "27",
+      "bbox": [
+        565,
+        202,
+        345,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 28,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0nuxc3yl",
+      "id": "28",
+      "bbox": [
+        573,
+        208,
+        329,
+        50
+      ],
+      "geometry": "rect",
+      "text": "We give local destination details, booking support, maps, and user account features in one system.",
+      "textPreview": "We give local destination details, booking support, maps, and user account features in one system.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "We give local destination details, booking support, maps, and user account"
+          },
+          {
+            "index": 2,
+            "text": "features in one system."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "We give local destination details, booking support, maps, and user account features in one system.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "We give local destination details, booking support, maps, and user account features in one system.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p8nqxs72",
+      "id": "29",
+      "bbox": [
+        50,
+        264,
+        130,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fepkzupw",
+      "id": "30",
+      "bbox": [
+        58,
+        270,
+        114,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Expedia",
+      "textPreview": "Expedia",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Expedia"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Expedia",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Expedia",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 31,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mtwra5gb",
+      "id": "31",
+      "bbox": [
+        180,
+        264,
+        205,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 32,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xkf6dcbu",
+      "id": "32",
+      "bbox": [
+        188,
+        270,
+        189,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Stays, flights, cars, packages, and things to do.",
+      "textPreview": "Stays, flights, cars, packages, and things to do.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Stays, flights, cars, packages, and things to do."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Stays, flights, cars, packages, and things to do.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Stays, flights, cars, packages, and things to do.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 33,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4zidonyd",
+      "id": "33",
+      "bbox": [
+        385,
+        264,
+        180,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 34,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f6dcbulw",
+      "id": "34",
+      "bbox": [
+        393,
+        270,
+        164,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Strong global travel bundles, but not tailored to our local academic use case.",
+      "textPreview": "Strong global travel bundles, but not tailored to our local academic use case.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Strong global travel bundles, but not"
+          },
+          {
+            "index": 2,
+            "text": "tailored to our local academic use case."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Strong global travel bundles, but not tailored to our local academic use case.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Strong global travel bundles, but not tailored to our local academic use case.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 35,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mlkjm1cf",
+      "id": "35",
+      "bbox": [
+        565,
+        264,
+        345,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 36,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xc3ylc7u",
+      "id": "36",
+      "bbox": [
+        573,
+        270,
+        329,
+        50
+      ],
+      "geometry": "rect",
+      "text": "We combine destination exploration, hotel flow, profile, and booking history in one app.",
+      "textPreview": "We combine destination exploration, hotel flow, profile, and booking history in one app.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "We combine destination exploration, hotel flow, profile, and booking history in"
+          },
+          {
+            "index": 2,
+            "text": "one app."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "We combine destination exploration, hotel flow, profile, and booking history in one app.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "We combine destination exploration, hotel flow, profile, and booking history in one app.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 37,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4r65wjud",
+      "id": "37",
+      "bbox": [
+        50,
+        326,
+        130,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 38,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fu18jqh0",
+      "id": "38",
+      "bbox": [
+        58,
+        332,
+        114,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Trip.com",
+      "textPreview": "Trip.com",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Trip.com"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Trip.com",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Trip.com",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 39,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/m94fu18j",
+      "id": "39",
+      "bbox": [
+        180,
+        326,
+        205,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 40,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6dcbulwv",
+      "id": "40",
+      "bbox": [
+        188,
+        332,
+        189,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Hotels, flights, trains, attractions, and travel deals.",
+      "textPreview": "Hotels, flights, trains, attractions, and travel deals.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Hotels, flights, trains, attractions, and travel"
+          },
+          {
+            "index": 2,
+            "text": "deals."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Hotels, flights, trains, attractions, and travel deals.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Hotels, flights, trains, attractions, and travel deals.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 41,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vy90je9c",
+      "id": "41",
+      "bbox": [
+        385,
+        326,
+        180,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 42,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/oj2t83it",
+      "id": "42",
+      "bbox": [
+        393,
+        332,
+        164,
+        50
+      ],
+      "geometry": "rect",
+      "text": "Strong international app, but it does not match our single local tourism demo flow.",
+      "textPreview": "Strong international app, but it does not match our single local tourism demo flow.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Strong international app, but it does not"
+          },
+          {
+            "index": 2,
+            "text": "match our single local tourism demo"
+          },
+          {
+            "index": 3,
+            "text": "flow."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Strong international app, but it does not match our single local tourism demo flow.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Strong international app, but it does not match our single local tourism demo flow.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 43,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d4vmtwra",
+      "id": "43",
+      "bbox": [
+        565,
+        326,
+        345,
+        62
+      ],
+      "geometry": "rect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8DEE6",
+      "lineWidth": 1
+    },
+    {
+      "order": 44,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/61032lsz",
+      "id": "44",
+      "bbox": [
+        573,
+        332,
+        329,
+        50
+      ],
+      "geometry": "rect",
+      "text": "We give maps, local destinations, hotel booking support, profile, and booking history together.",
+      "textPreview": "We give maps, local destinations, hotel booking support, profile, and booking history together.",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "We give maps, local destinations, hotel booking support, profile, and booking"
+          },
+          {
+            "index": 2,
+            "text": "history together."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "We give maps, local destinations, hotel booking support, profile, and booking history together.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "We give maps, local destinations, hotel booking support, profile, and booking history together.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#1E293B",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 45,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vmtwra5g",
+      "id": "45",
+      "bbox": [
+        64,
+        436,
+        832,
+        32
+      ],
+      "geometry": "rect",
+      "text": "Summary: existing apps provide strong global booking services, while our app combines local destination discovery, hotel flow, maps, profile, and booking history in one academic mobile app.",
+      "textPreview": "Summary: existing apps provide strong global booking services, while our app combines local destination discovery, hotel flow, maps, prof...",
+      "resolvedFontSize": 10,
+      "resolvedTextStyle": {
+        "fontSize": 10,
+        "typeface": "Calibri",
+        "italic": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Summary: existing apps provide strong global booking services, while our app combines local destination discovery, hotel flow, maps, profile, and booking history in one academic mobile app."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Summary: existing apps provide strong global booking services, while our app combines local destination discovery, hotel flow, maps, profile, and booking history in one academic mobile app.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Summary: existing apps provide strong global booking services, while our app combines local destination discovery, hotel flow, maps, profile, and booking history in one academic mobile app.",
+              "fontSize": 10,
+              "typeface": "Calibri",
+              "color": "#64748B",
+              "italic": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

@@ -1,0 +1,1565 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/y4b5c9",
+    "id": "y4b5c9",
+    "slide": 4,
+    "layoutId": "039380ba-7443-4105-b08a-1761c9602b37",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri",
+      "Cambria"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "039380ba-7443-4105-b08a-1761c9602b37",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y1kre1w7",
+      "id": "1",
+      "name": "slide-4-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "geometry": "rect",
+      "fillColor": "#F3FAFA",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9s36hcrm",
+      "id": "2",
+      "bbox": [
+        100,
+        90,
+        1000,
+        28
+      ],
+      "geometry": "rect",
+      "text": "Solution overview",
+      "textPreview": "Solution overview",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Solution overview"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Solution overview",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Solution overview",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#0FA5A6",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/g7adsji5",
+      "id": "3",
+      "bbox": [
+        100,
+        120,
+        1000,
+        120
+      ],
+      "geometry": "rect",
+      "text": "One mobile workflow now covers the full traveler journey.",
+      "textPreview": "One mobile workflow now covers the full traveler journey.",
+      "resolvedFontSize": 50,
+      "resolvedTextStyle": {
+        "fontSize": 50,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "One mobile workflow now covers the full"
+          },
+          {
+            "index": 2,
+            "text": "traveler journey."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "One mobile workflow now covers the full traveler journey.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "One mobile workflow now covers the full traveler journey.",
+              "fontSize": 50,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rytsvu9k",
+      "id": "4",
+      "bbox": [
+        100,
+        258,
+        1000,
+        72
+      ],
+      "geometry": "rect",
+      "text": "Instead of forcing users to jump between separate tools, the app guides them through discovery, selection, confirmation, and post-booking support.",
+      "textPreview": "Instead of forcing users to jump between separate tools, the app guides them through discovery, selection, confirmation, and post-booking...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Instead of forcing users to jump between separate tools, the app guides them through discovery,"
+          },
+          {
+            "index": 2,
+            "text": "selection, confirmation, and post-booking support."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Instead of forcing users to jump between separate tools, the app guides them through discovery, selection, confirmation, and post-booking support.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Instead of forcing users to jump between separate tools, the app guides them through discovery, selection, confirmation, and post-booking support.",
+              "fontSize": 24,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/yd0z6103",
+      "id": "5",
+      "name": "rule-160-430",
+      "bbox": [
+        160,
+        430,
+        930,
+        6
+      ],
+      "geometry": "rect",
+      "fillColor": "#D8E1EA",
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/90je9cvi",
+      "id": "6",
+      "bbox": [
+        150,
+        404,
+        58,
+        58
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#0FA5A6",
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gfmlkjm1",
+      "id": "7",
+      "bbox": [
+        150,
+        414,
+        58,
+        34
+      ],
+      "geometry": "rect",
+      "text": "1",
+      "textPreview": "1",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "1"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "1",
+          "runs": [
+            {
+              "index": 1,
+              "text": "1",
+              "fontSize": 28,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r65wjudg",
+      "id": "8",
+      "bbox": [
+        120,
+        490,
+        120,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Sign in",
+      "textPreview": "Sign in",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Sign in"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Sign in",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Sign in",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ylc7u54z",
+      "id": "9",
+      "bbox": [
+        95,
+        528,
+        170,
+        78
+      ],
+      "geometry": "rect",
+      "text": "Secure login with Firebase and fallback support",
+      "textPreview": "Secure login with Firebase and fallback support",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Secure login with"
+          },
+          {
+            "index": 2,
+            "text": "Firebase and fallback"
+          },
+          {
+            "index": 3,
+            "text": "support"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Secure login with Firebase and fallback support",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Secure login with Firebase and fallback support",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/g7adsji5",
+      "id": "10",
+      "bbox": [
+        315,
+        404,
+        58,
+        58
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#1E63C4",
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9s36hcrm",
+      "id": "11",
+      "bbox": [
+        315,
+        414,
+        58,
+        34
+      ],
+      "geometry": "rect",
+      "text": "2",
+      "textPreview": "2",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "2"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "2",
+          "runs": [
+            {
+              "index": 1,
+              "text": "2",
+              "fontSize": 28,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y1kre1w7",
+      "id": "12",
+      "bbox": [
+        285,
+        490,
+        120,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Discover",
+      "textPreview": "Discover",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Discover"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Discover",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Discover",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rmhk3q5o",
+      "id": "13",
+      "bbox": [
+        260,
+        528,
+        170,
+        78
+      ],
+      "geometry": "rect",
+      "text": "Browse destinations, tours, and featured options",
+      "textPreview": "Browse destinations, tours, and featured options",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Browse destinations,"
+          },
+          {
+            "index": 2,
+            "text": "tours, and featured"
+          },
+          {
+            "index": 3,
+            "text": "options"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Browse destinations, tours, and featured options",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Browse destinations, tours, and featured options",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gfmlkjm1",
+      "id": "14",
+      "bbox": [
+        480,
+        404,
+        58,
+        58
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#F1B756",
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/90je9cvi",
+      "id": "15",
+      "bbox": [
+        480,
+        414,
+        58,
+        34
+      ],
+      "geometry": "rect",
+      "text": "3",
+      "textPreview": "3",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "3"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "3",
+          "runs": [
+            {
+              "index": 1,
+              "text": "3",
+              "fontSize": 28,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/yd0z6103",
+      "id": "16",
+      "bbox": [
+        450,
+        490,
+        120,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Choose",
+      "textPreview": "Choose",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Choose"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Choose",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Choose",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rytsvu9k",
+      "id": "17",
+      "bbox": [
+        425,
+        528,
+        170,
+        78
+      ],
+      "geometry": "rect",
+      "text": "Review trip details and compare packages",
+      "textPreview": "Review trip details and compare packages",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Review trip details and"
+          },
+          {
+            "index": 2,
+            "text": "compare packages"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Review trip details and compare packages",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Review trip details and compare packages",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gr2p8nqx",
+      "id": "18",
+      "bbox": [
+        645,
+        404,
+        58,
+        58
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#0FA5A6",
+      "lineWidth": 0
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9cvixcze",
+      "id": "19",
+      "bbox": [
+        645,
+        414,
+        58,
+        34
+      ],
+      "geometry": "rect",
+      "text": "4",
+      "textPreview": "4",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "4"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "4",
+          "runs": [
+            {
+              "index": 1,
+              "text": "4",
+              "fontSize": 28,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tovahoza",
+      "id": "20",
+      "bbox": [
+        615,
+        490,
+        120,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Select stay",
+      "textPreview": "Select stay",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Select stay"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Select stay",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Select stay",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/032lszqt",
+      "id": "21",
+      "bbox": [
+        590,
+        528,
+        170,
+        78
+      ],
+      "geometry": "rect",
+      "text": "Pick hotels and transport choices",
+      "textPreview": "Pick hotels and transport choices",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Pick hotels and"
+          },
+          {
+            "index": 2,
+            "text": "transport choices"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Pick hotels and transport choices",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Pick hotels and transport choices",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bi9s36hc",
+      "id": "22",
+      "bbox": [
+        810,
+        404,
+        58,
+        58
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#1E63C4",
+      "lineWidth": 0
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ixczed8v",
+      "id": "23",
+      "bbox": [
+        810,
+        414,
+        58,
+        34
+      ],
+      "geometry": "rect",
+      "text": "5",
+      "textPreview": "5",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "5"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "5",
+          "runs": [
+            {
+              "index": 1,
+              "text": "5",
+              "fontSize": 28,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p0bi9s36",
+      "id": "24",
+      "bbox": [
+        780,
+        490,
+        120,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Confirm",
+      "textPreview": "Confirm",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Confirm"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Confirm",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Confirm",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 25,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0fepkzup",
+      "id": "25",
+      "bbox": [
+        755,
+        528,
+        170,
+        78
+      ],
+      "geometry": "rect",
+      "text": "Simulate payment and finalize the booking",
+      "textPreview": "Simulate payment and finalize the booking",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Simulate payment and"
+          },
+          {
+            "index": 2,
+            "text": "finalize the booking"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Simulate payment and finalize the booking",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Simulate payment and finalize the booking",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bulwval8",
+      "id": "26",
+      "bbox": [
+        975,
+        404,
+        58,
+        58
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#F1B756",
+      "lineWidth": 0
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i9s36hcr",
+      "id": "27",
+      "bbox": [
+        975,
+        414,
+        58,
+        34
+      ],
+      "geometry": "rect",
+      "text": "6",
+      "textPreview": "6",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "6"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "6",
+          "runs": [
+            {
+              "index": 1,
+              "text": "6",
+              "fontSize": 28,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 28,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/t47y1kre",
+      "id": "28",
+      "bbox": [
+        945,
+        490,
+        120,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Track",
+      "textPreview": "Track",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Track"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Track",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Track",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0je9cvix",
+      "id": "29",
+      "bbox": [
+        920,
+        528,
+        170,
+        78
+      ],
+      "geometry": "rect",
+      "text": "View history, profile data, and user listings",
+      "textPreview": "View history, profile data, and user listings",
+      "resolvedFontSize": 17,
+      "resolvedTextStyle": {
+        "fontSize": 17,
+        "typeface": "Calibri",
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "View history, profile"
+          },
+          {
+            "index": 2,
+            "text": "data, and user listings"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "View history, profile data, and user listings",
+          "runs": [
+            {
+              "index": 1,
+              "text": "View history, profile data, and user listings",
+              "fontSize": 17,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ahoza1gv",
+      "id": "30",
+      "bbox": [
+        130,
+        690,
+        960,
+        48
+      ],
+      "geometry": "roundRect",
+      "text": "Hybrid local fallback keeps the prototype stable even when cloud services are partially unavailable during demo.",
+      "textPreview": "Hybrid local fallback keeps the prototype stable even when cloud services are partially unavailable during demo.",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Hybrid local fallback keeps the prototype stable even when cloud services are partially unavailable during demo."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Hybrid local fallback keeps the prototype stable even when cloud services are partially unavailable during demo.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Hybrid local fallback keeps the prototype stable even when cloud services are partially unavailable during demo.",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "fillColor": "#0F2743",
+      "lineWidth": 0
+    },
+    {
+      "order": 31,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/32lszqtc",
+      "id": "31",
+      "bbox": [
+        1322,
+        213,
+        286,
+        578
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8E1EA",
+      "lineWidth": 1.2
+    },
+    {
+      "order": 32,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/neloj2t8",
+      "id": "32",
+      "bbox": [
+        1340,
+        235,
+        250,
+        500
+      ],
+      "geometry": "roundRect",
+      "alt": "Home screen",
+      "contentType": "image/jpeg",
+      "asset": {
+        "assetId": "15732078-cac3-4e44-bec4-91f15383bfd3",
+        "contentType": "image/jpeg",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p40_img1.jpg",
+        "byteLength": 42232
+      }
+    },
+    {
+      "order": 33,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/l87ed8ba",
+      "id": "33",
+      "bbox": [
+        1334,
+        757,
+        262,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Travel discovery home",
+      "textPreview": "Travel discovery home",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Travel discovery home"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Travel discovery home",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Travel discovery home",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 34,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/at47y1kr",
+      "id": "34",
+      "bbox": [
+        1582,
+        328,
+        236,
+        488
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8E1EA",
+      "lineWidth": 1.2
+    },
+    {
+      "order": 35,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/cbulwval",
+      "id": "35",
+      "bbox": [
+        1600,
+        350,
+        200,
+        410
+      ],
+      "geometry": "roundRect",
+      "alt": "Map screen",
+      "contentType": "image/jpeg",
+      "asset": {
+        "assetId": "216a1920-9d21-442e-b5a9-817a587fbebf",
+        "contentType": "image/jpeg",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p57_img1.jpg",
+        "byteLength": 47543
+      }
+    },
+    {
+      "order": 36,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/szqtcj6t",
+      "id": "36",
+      "bbox": [
+        1594,
+        782,
+        212,
+        42
+      ],
+      "geometry": "rect",
+      "text": "Map support",
+      "textPreview": "Map support",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Map support"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Map support",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Map support",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 37,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/lkjm1cfa",
+      "id": "37",
+      "name": "rule-100-1000",
+      "bbox": [
+        100,
+        1000,
+        1720,
+        2
+      ],
+      "geometry": "rect",
+      "fillColor": "#D8E1EA",
+      "lineWidth": 0
+    },
+    {
+      "order": 38,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ex0nuxc3",
+      "id": "38",
+      "bbox": [
+        100,
+        1014,
+        900,
+        28
+      ],
+      "geometry": "rect",
+      "text": "Source: Abstract, system flow, and module descriptions from the thesis report.",
+      "textPreview": "Source: Abstract, system flow, and module descriptions from the thesis report.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Source: Abstract, system flow, and module descriptions from the thesis report."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Source: Abstract, system flow, and module descriptions from the thesis report.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Source: Abstract, system flow, and module descriptions from the thesis report.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

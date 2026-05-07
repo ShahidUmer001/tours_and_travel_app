@@ -1,0 +1,14 @@
+{
+  "workspace": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense",
+  "pptx": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\output\\output.pptx",
+  "checks": {
+    "output_hygiene": {
+      "output_dir": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\output",
+      "unexpected_files": []
+    }
+  },
+  "failures": [
+    "PPTX package inspection failed: unzip -Z1 C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\output\\output.pptx failed"
+  ],
+  "warnings": []
+}

@@ -1,0 +1,709 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/m4ey9j",
+    "id": "m4ey9j",
+    "slide": 1,
+    "layoutId": "039380ba-7443-4105-b08a-1761c9602b37",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri",
+      "Cambria"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "039380ba-7443-4105-b08a-1761c9602b37",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2t83itgf",
+      "id": "1",
+      "name": "slide-1-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "geometry": "rect",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9knih4by",
+      "id": "2",
+      "name": "slide-1-accent-a",
+      "bbox": [
+        1290,
+        40,
+        540,
+        540
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#0FA5A6",
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kzupwb2h",
+      "id": "3",
+      "name": "slide-1-accent-b",
+      "bbox": [
+        1040,
+        560,
+        620,
+        400
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#F1B756",
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rqd4vmtw",
+      "id": "4",
+      "name": "slide-1-stage",
+      "bbox": [
+        1070,
+        130,
+        710,
+        820
+      ],
+      "geometry": "roundRect",
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/25kb6xkf",
+      "id": "5",
+      "bbox": [
+        100,
+        92,
+        300,
+        42
+      ],
+      "geometry": "roundRect",
+      "text": "Final Year Project Defense",
+      "textPreview": "Final Year Project Defense",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Final Year Project Defense"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Final Year Project Defense",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Final Year Project Defense",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "fillColor": "#0FA5A6",
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9w3m94fu",
+      "id": "6",
+      "name": "slide-1-title",
+      "bbox": [
+        100,
+        175,
+        860,
+        220
+      ],
+      "geometry": "rect",
+      "text": "Tours & Travel\nMobile Application",
+      "textPreview": "Tours & Travel | Mobile Application",
+      "resolvedFontSize": 62,
+      "resolvedTextStyle": {
+        "fontSize": 62,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Tours & Travel"
+          },
+          {
+            "index": 2,
+            "text": "Mobile Application"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Tours & Travel",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Tours & Travel",
+              "fontSize": 62,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Mobile Application",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Mobile Application",
+              "fontSize": 62,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kb6xkf6d",
+      "id": "7",
+      "name": "slide-1-subtitle",
+      "bbox": [
+        100,
+        405,
+        760,
+        82
+      ],
+      "geometry": "rect",
+      "text": "A Flutter-based tourism management system for Pakistan that unifies discovery, booking, maps, and traveler support in one mobile experience.",
+      "textPreview": "A Flutter-based tourism management system for Pakistan that unifies discovery, booking, maps, and traveler support in one mobile experience.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "A Flutter-based tourism management system for Pakistan that unifies"
+          },
+          {
+            "index": 2,
+            "text": "discovery, booking, maps, and traveler support in one mobile experience."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "A Flutter-based tourism management system for Pakistan that unifies discovery, booking, maps, and traveler support in one mobile experience.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "A Flutter-based tourism management system for Pakistan that unifies discovery, booking, maps, and traveler support in one mobile experience.",
+              "fontSize": 24,
+              "typeface": "Calibri",
+              "color": "#D7E6F6",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r2p8nqxs",
+      "id": "8",
+      "name": "rule-100-522",
+      "bbox": [
+        100,
+        522,
+        180,
+        4
+      ],
+      "geometry": "rect",
+      "fillColor": "#F1B756",
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2hwfyxob",
+      "id": "9",
+      "bbox": [
+        100,
+        560,
+        340,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Submitted by",
+      "textPreview": "Submitted by",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Submitted by"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Submitted by",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Submitted by",
+              "fontSize": 20,
+              "typeface": "Calibri",
+              "color": "#B9CCE1",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/crmhk3q5",
+      "id": "10",
+      "bbox": [
+        100,
+        595,
+        420,
+        86
+      ],
+      "geometry": "rect",
+      "text": "Shahid Umer\nMusharaf",
+      "textPreview": "Shahid Umer | Musharaf",
+      "resolvedFontSize": 30,
+      "resolvedTextStyle": {
+        "fontSize": 30,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Shahid Umer"
+          },
+          {
+            "index": 2,
+            "text": "Musharaf"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Shahid Umer",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Shahid Umer",
+              "fontSize": 30,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "text": "Musharaf",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Musharaf",
+              "fontSize": 30,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1cfa9w3m",
+      "id": "11",
+      "bbox": [
+        500,
+        560,
+        320,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Supervised by",
+      "textPreview": "Supervised by",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Supervised by"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Supervised by",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Supervised by",
+              "fontSize": 20,
+              "typeface": "Calibri",
+              "color": "#B9CCE1",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ulwval87",
+      "id": "12",
+      "bbox": [
+        500,
+        595,
+        350,
+        86
+      ],
+      "geometry": "rect",
+      "text": "Dr. Amjad Khan",
+      "textPreview": "Dr. Amjad Khan",
+      "resolvedFontSize": 30,
+      "resolvedTextStyle": {
+        "fontSize": 30,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Dr. Amjad Khan"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Dr. Amjad Khan",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Dr. Amjad Khan",
+              "fontSize": 30,
+              "typeface": "Cambria",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/j6tovaho",
+      "id": "13",
+      "bbox": [
+        100,
+        820,
+        760,
+        90
+      ],
+      "geometry": "rect",
+      "text": "Department of Computing | Abasyn University Islamabad Campus | April 2026",
+      "textPreview": "Department of Computing | Abasyn University Islamabad Campus | April 2026",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Department of Computing | Abasyn University Islamabad Campus | April 2026"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Department of Computing | Abasyn University Islamabad Campus | April 2026",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Department of Computing | Abasyn University Islamabad Campus | April 2026",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#D7E6F6",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/c3ylc7u5",
+      "id": "14",
+      "bbox": [
+        1170,
+        860,
+        425,
+        44
+      ],
+      "geometry": "roundRect",
+      "text": "Flutter + Firebase + Hybrid fallback support",
+      "textPreview": "Flutter + Firebase + Hybrid fallback support",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Flutter + Firebase + Hybrid fallback support"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Flutter + Firebase + Hybrid fallback support",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Flutter + Firebase + Hybrid fallback support",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#0A1C33",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "fillColor": "#F1B756",
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/2lszqtcj",
+      "id": "15",
+      "name": "slide-1-home",
+      "bbox": [
+        1145,
+        165,
+        238,
+        520
+      ],
+      "geometry": "roundRect",
+      "alt": "Home screen",
+      "contentType": "image/jpeg",
+      "asset": {
+        "assetId": "6cf25fa5-5ed8-4368-a4fa-715c964070bf",
+        "contentType": "image/jpeg",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p40_img1.jpg",
+        "byteLength": 42232
+      }
+    },
+    {
+      "order": 16,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/d8bat47y",
+      "id": "16",
+      "name": "slide-1-destination",
+      "bbox": [
+        1380,
+        245,
+        248,
+        430
+      ],
+      "geometry": "roundRect",
+      "alt": "Destination detail screen",
+      "contentType": "image/jpeg",
+      "asset": {
+        "assetId": "b3232690-09f2-4c1c-9a9d-fcc2e5ae22ae",
+        "contentType": "image/jpeg",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p43_img1.jpg",
+        "byteLength": 37484
+      }
+    },
+    {
+      "order": 17,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/knih4byh",
+      "id": "17",
+      "name": "slide-1-confirm",
+      "bbox": [
+        1530,
+        500,
+        214,
+        420
+      ],
+      "geometry": "roundRect",
+      "alt": "Booking confirmation screen",
+      "contentType": "image/jpeg",
+      "asset": {
+        "assetId": "c670fe89-ad91-4520-a015-2f0252f8d62f",
+        "contentType": "image/jpeg",
+        "uri": "C:\\Users\\HP\\tours_and_travel_app\\tmp\\presentations\\tours-travel-defense\\scratch\\assets\\p52_img1.jpg",
+        "byteLength": 27513
+      }
+    }
+  ],
+  "composeRuns": []
+}

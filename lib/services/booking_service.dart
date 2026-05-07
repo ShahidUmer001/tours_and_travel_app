@@ -1,4 +1,5 @@
 // services/booking_service.dart
+import 'package:flutter/foundation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/booking_model.dart';
 
@@ -27,7 +28,7 @@ class BookingService {
           .doc(booking.id)
           .set(booking.toMap());
     } catch (e) {
-      print('Error creating booking: $e');
+      debugPrint('Error creating booking: $e');
       rethrow;
     }
   }
@@ -40,7 +41,7 @@ class BookingService {
           .doc(bookingId)
           .update({'status': status});
     } catch (e) {
-      print('Error updating booking status: $e');
+      debugPrint('Error updating booking status: $e');
       rethrow;
     }
   }

@@ -6,6 +6,12 @@ plugins {
     id("com.google.gms.google-services")
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+    }
+}
+
 android {
     namespace = "com.example.tours_and_travel_app"
     // ✅ CHANGE from 34 to 36
@@ -15,10 +21,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     defaultConfig {

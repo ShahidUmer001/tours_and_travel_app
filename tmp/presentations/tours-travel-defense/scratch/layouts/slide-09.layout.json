@@ -1,0 +1,1281 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/eajumw",
+    "id": "eajumw",
+    "slide": 9,
+    "layoutId": "039380ba-7443-4105-b08a-1761c9602b37",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "Calibri",
+      "Cambria"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "039380ba-7443-4105-b08a-1761c9602b37",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "b6f7d417-b587-42ff-81ad-5f6bc8b3f4e2",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7y1kre1w",
+      "id": "1",
+      "name": "slide-9-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "geometry": "rect",
+      "fillColor": "#F7F7F4",
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wjudg7ad",
+      "id": "2",
+      "bbox": [
+        100,
+        90,
+        980,
+        28
+      ],
+      "geometry": "rect",
+      "text": "Next phase",
+      "textPreview": "Next phase",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Next phase"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Next phase",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Next phase",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#0FA5A6",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p4r65wju",
+      "id": "3",
+      "bbox": [
+        100,
+        120,
+        980,
+        120
+      ],
+      "geometry": "rect",
+      "text": "The thesis is honest about current limits and the path forward.",
+      "textPreview": "The thesis is honest about current limits and the path forward.",
+      "resolvedFontSize": 48,
+      "resolvedTextStyle": {
+        "fontSize": 48,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The thesis is honest about current limits"
+          },
+          {
+            "index": 2,
+            "text": "and the path forward."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The thesis is honest about current limits and the path forward.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The thesis is honest about current limits and the path forward.",
+              "fontSize": 48,
+              "typeface": "Cambria",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i5sneloj",
+      "id": "4",
+      "bbox": [
+        100,
+        258,
+        980,
+        72
+      ],
+      "geometry": "rect",
+      "text": "This is a strong academic prototype today, with a clear roadmap for maturing into a deployment-ready travel platform.",
+      "textPreview": "This is a strong academic prototype today, with a clear roadmap for maturing into a deployment-ready travel platform.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "This is a strong academic prototype today, with a clear roadmap for maturing into a"
+          },
+          {
+            "index": 2,
+            "text": "deployment-ready travel platform."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "This is a strong academic prototype today, with a clear roadmap for maturing into a deployment-ready travel platform.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "This is a strong academic prototype today, with a clear roadmap for maturing into a deployment-ready travel platform.",
+              "fontSize": 24,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7qpg3ex0",
+      "id": "5",
+      "bbox": [
+        140,
+        355,
+        420,
+        40
+      ],
+      "geometry": "rect",
+      "text": "Current limitations",
+      "textPreview": "Current limitations",
+      "resolvedFontSize": 30,
+      "resolvedTextStyle": {
+        "fontSize": 30,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Current limitations"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Current limitations",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Current limitations",
+              "fontSize": 30,
+              "typeface": "Cambria",
+              "color": "#C85C46",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0bi9s36h",
+      "id": "6",
+      "bbox": [
+        100,
+        410,
+        720,
+        430
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8E1EA",
+      "lineWidth": 1.5
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pwb2hwfy",
+      "id": "7",
+      "bbox": [
+        140,
+        459,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#C85C46",
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/itgfmlkj",
+      "id": "8",
+      "bbox": [
+        174,
+        450,
+        586,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Payments are simulated rather than connected to a real payment gateway.",
+      "textPreview": "Payments are simulated rather than connected to a real payment gateway.",
+      "resolvedFontSize": 21,
+      "resolvedTextStyle": {
+        "fontSize": 21,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Payments are simulated rather than connected to a real payment"
+          },
+          {
+            "index": 2,
+            "text": "gateway."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Payments are simulated rather than connected to a real payment gateway.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Payments are simulated rather than connected to a real payment gateway.",
+              "fontSize": 21,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7ed8bat4",
+      "id": "9",
+      "bbox": [
+        140,
+        547,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#C85C46",
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r2p8nqxs",
+      "id": "10",
+      "bbox": [
+        174,
+        538,
+        586,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Automated testing coverage is still limited.",
+      "textPreview": "Automated testing coverage is still limited.",
+      "resolvedFontSize": 21,
+      "resolvedTextStyle": {
+        "fontSize": 21,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Automated testing coverage is still limited."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Automated testing coverage is still limited.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Automated testing coverage is still limited.",
+              "fontSize": 21,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2hwfyxob",
+      "id": "11",
+      "bbox": [
+        140,
+        635,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#C85C46",
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/94fu18jq",
+      "id": "12",
+      "bbox": [
+        174,
+        626,
+        586,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Some booking states rely on session-level persistence instead of full cloud sync.",
+      "textPreview": "Some booking states rely on session-level persistence instead of full cloud sync.",
+      "resolvedFontSize": 21,
+      "resolvedTextStyle": {
+        "fontSize": 21,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Some booking states rely on session-level persistence instead of"
+          },
+          {
+            "index": 2,
+            "text": "full cloud sync."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Some booking states rely on session-level persistence instead of full cloud sync.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Some booking states rely on session-level persistence instead of full cloud sync.",
+              "fontSize": 21,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kjm1cfa9",
+      "id": "13",
+      "bbox": [
+        140,
+        723,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#C85C46",
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ra5gbq1o",
+      "id": "14",
+      "bbox": [
+        174,
+        714,
+        586,
+        34
+      ],
+      "geometry": "rect",
+      "text": "User-added hotel and car listings are stored locally, not fully server-side.",
+      "textPreview": "User-added hotel and car listings are stored locally, not fully server-side.",
+      "resolvedFontSize": 21,
+      "resolvedTextStyle": {
+        "fontSize": 21,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "User-added hotel and car listings are stored locally, not fully"
+          },
+          {
+            "index": 2,
+            "text": "server-side."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "User-added hotel and car listings are stored locally, not fully server-side.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "User-added hotel and car listings are stored locally, not fully server-side.",
+              "fontSize": 21,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2p8nqxs7",
+      "id": "15",
+      "bbox": [
+        980,
+        355,
+        420,
+        40
+      ],
+      "geometry": "rect",
+      "text": "Future enhancements",
+      "textPreview": "Future enhancements",
+      "resolvedFontSize": 30,
+      "resolvedTextStyle": {
+        "fontSize": 30,
+        "typeface": "Cambria",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Future enhancements"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Future enhancements",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Future enhancements",
+              "fontSize": 30,
+              "typeface": "Cambria",
+              "color": "#1D9B57",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9gr2p8nq",
+      "id": "16",
+      "bbox": [
+        940,
+        410,
+        830,
+        430
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#FFFFFF",
+      "lineColor": "#D8E1EA",
+      "lineWidth": 1.5
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gvy90je9",
+      "id": "17",
+      "bbox": [
+        980,
+        459,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#1D9B57",
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/re1w7mp0",
+      "id": "18",
+      "bbox": [
+        1014,
+        450,
+        686,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Real payment gateway integration",
+      "textPreview": "Real payment gateway integration",
+      "resolvedFontSize": 21,
+      "resolvedTextStyle": {
+        "fontSize": 21,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Real payment gateway integration"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Real payment gateway integration",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Real payment gateway integration",
+              "fontSize": 21,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2t83itgf",
+      "id": "19",
+      "bbox": [
+        980,
+        523,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#1D9B57",
+      "lineWidth": 0
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qpg3ex0n",
+      "id": "20",
+      "bbox": [
+        1014,
+        514,
+        686,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Ratings, reviews, and recommendation engine",
+      "textPreview": "Ratings, reviews, and recommendation engine",
+      "resolvedFontSize": 21,
+      "resolvedTextStyle": {
+        "fontSize": 21,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Ratings, reviews, and recommendation engine"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Ratings, reviews, and recommendation engine",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Ratings, reviews, and recommendation engine",
+              "fontSize": 21,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fa9w3m94",
+      "id": "21",
+      "bbox": [
+        980,
+        587,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#1D9B57",
+      "lineWidth": 0
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/8v6psfil",
+      "id": "22",
+      "bbox": [
+        1014,
+        578,
+        686,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Improved search and personalized user experience",
+      "textPreview": "Improved search and personalized user experience",
+      "resolvedFontSize": 21,
+      "resolvedTextStyle": {
+        "fontSize": 21,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Improved search and personalized user experience"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Improved search and personalized user experience",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Improved search and personalized user experience",
+              "fontSize": 21,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xczed8v6",
+      "id": "23",
+      "bbox": [
+        980,
+        651,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#1D9B57",
+      "lineWidth": 0
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qd4vmtwr",
+      "id": "24",
+      "bbox": [
+        1014,
+        642,
+        686,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Cloud storage for every booking category",
+      "textPreview": "Cloud storage for every booking category",
+      "resolvedFontSize": 21,
+      "resolvedTextStyle": {
+        "fontSize": 21,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Cloud storage for every booking category"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Cloud storage for every booking category",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Cloud storage for every booking category",
+              "fontSize": 21,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 25,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fyxobm58",
+      "id": "25",
+      "bbox": [
+        980,
+        715,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#1D9B57",
+      "lineWidth": 0
+    },
+    {
+      "order": 26,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/8jqh0fep",
+      "id": "26",
+      "bbox": [
+        1014,
+        706,
+        686,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Admin dashboard and push notifications",
+      "textPreview": "Admin dashboard and push notifications",
+      "resolvedFontSize": 21,
+      "resolvedTextStyle": {
+        "fontSize": 21,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Admin dashboard and push notifications"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Admin dashboard and push notifications",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Admin dashboard and push notifications",
+              "fontSize": 21,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 27,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/x4nap4r6",
+      "id": "27",
+      "bbox": [
+        980,
+        779,
+        18,
+        18
+      ],
+      "geometry": "roundRect",
+      "fillColor": "#1D9B57",
+      "lineWidth": 0
+    },
+    {
+      "order": 28,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/q1orytsv",
+      "id": "28",
+      "bbox": [
+        1014,
+        770,
+        686,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Security hardening and broader automated tests",
+      "textPreview": "Security hardening and broader automated tests",
+      "resolvedFontSize": 21,
+      "resolvedTextStyle": {
+        "fontSize": 21,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Security hardening and broader automated tests"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Security hardening and broader automated tests",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Security hardening and broader automated tests",
+              "fontSize": 21,
+              "typeface": "Calibri",
+              "color": "#12243B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 29,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fmlkjm1c",
+      "id": "29",
+      "bbox": [
+        360,
+        900,
+        1180,
+        6
+      ],
+      "geometry": "rect",
+      "fillColor": "#D8E1EA",
+      "lineWidth": 0
+    },
+    {
+      "order": 30,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5sneloj2",
+      "id": "30",
+      "bbox": [
+        300,
+        866,
+        210,
+        44
+      ],
+      "geometry": "roundRect",
+      "text": "Current prototype",
+      "textPreview": "Current prototype",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Current prototype"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Current prototype",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Current prototype",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "fillColor": "#0F2743",
+      "lineWidth": 0
+    },
+    {
+      "order": 31,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cbulwval",
+      "id": "31",
+      "bbox": [
+        1360,
+        866,
+        250,
+        44
+      ],
+      "geometry": "roundRect",
+      "text": "Deployment-ready target",
+      "textPreview": "Deployment-ready target",
+      "resolvedFontSize": 18,
+      "resolvedTextStyle": {
+        "fontSize": 18,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Deployment-ready target"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Deployment-ready target",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Deployment-ready target",
+              "fontSize": 18,
+              "typeface": "Calibri",
+              "color": "#FFFFFF",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "fillColor": "#1D9B57",
+      "lineWidth": 0
+    },
+    {
+      "order": 32,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nqxs72x4",
+      "id": "32",
+      "bbox": [
+        770,
+        850,
+        320,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Prototype  ->  hardening  ->  product",
+      "textPreview": "Prototype  ->  hardening  ->  product",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "Calibri",
+        "bold": true,
+        "alignment": "center"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Prototype  ->  hardening  ->"
+          },
+          {
+            "index": 2,
+            "text": "product"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Prototype  ->  hardening  ->  product",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Prototype  ->  hardening  ->  product",
+              "fontSize": 22,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "bold": true,
+              "alignment": "center"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 33,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/u54zidon",
+      "id": "33",
+      "name": "rule-100-1000",
+      "bbox": [
+        100,
+        1000,
+        1720,
+        2
+      ],
+      "geometry": "rect",
+      "fillColor": "#D8E1EA",
+      "lineWidth": 0
+    },
+    {
+      "order": 34,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5kb6xkf6",
+      "id": "34",
+      "bbox": [
+        100,
+        1014,
+        900,
+        28
+      ],
+      "geometry": "rect",
+      "text": "Source: Limitations, deployment considerations, and future enhancements from Chapters 7 and 8.",
+      "textPreview": "Source: Limitations, deployment considerations, and future enhancements from Chapters 7 and 8.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "Calibri",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Source: Limitations, deployment considerations, and future enhancements from Chapters 7 and 8."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Source: Limitations, deployment considerations, and future enhancements from Chapters 7 and 8.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Source: Limitations, deployment considerations, and future enhancements from Chapters 7 and 8.",
+              "fontSize": 14,
+              "typeface": "Calibri",
+              "color": "#52657A",
+              "alignment": "left"
+            }
+          ]
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}
