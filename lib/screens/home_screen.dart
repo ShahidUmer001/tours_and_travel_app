@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../services/auth_service.dart';
+import '../services/local_auth_service.dart';
+import '../main.dart' show firebaseInitialized;
 import '../models/destination_model.dart';
 import '../models/tour_model.dart';
 import '../screens/destination_screen.dart';
@@ -63,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       price: 24999,
       duration: '5 Days 4 Nights',
       bestSeason: 'April to October',
-      highlights: ['Baltit Fort', 'Attabad Lake', 'Passu Cones', 'Khunjerab Pass'],
+      highlights: ['Baltit Fort', 'Attabad Lake', 'Passu Cones', 'Khunjerab Pass', 'Altit Fort', 'Eagle\'s Nest Duikar', 'Borith Lake', 'Rakaposhi View Point', 'Hussaini Suspension Bridge', 'Karimabad Bazaar'],
     ),
     Destination(
       id: '2',
@@ -75,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       price: 29999,
       duration: '7 Days 6 Nights',
       bestSeason: 'May to September',
-      highlights: ['Shangrila Resort', 'Upper Kachura Lake', 'K2 Base Camp'],
+      highlights: ['Shangrila Resort', 'Upper Kachura Lake', 'K2 Base Camp', 'Deosai Plains', 'Lower Kachura Lake', 'Skardu Fort', 'Satpara Lake', 'Shigar Fort', 'Blind Lake', 'Manthoka Waterfall'],
     ),
     Destination(
       id: '3',
@@ -87,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       price: 18999,
       duration: '4 Days 3 Nights',
       bestSeason: 'March to October',
-      highlights: ['Malam Jabba', 'Mahodand Lake', 'White Palace', 'Waterfalls'],
+      highlights: ['Malam Jabba', 'Mahodand Lake', 'White Palace', 'Waterfalls', 'Kalam Valley', 'Bahrain', 'Ushu Forest', 'Fizagat Park', 'Swat Museum', 'Mingora City'],
     ),
     Destination(
       id: '4',
@@ -99,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       price: 17999,
       duration: '4 Days 3 Nights',
       bestSeason: 'May to September',
-      highlights: ['Saif-ul-Mulook', 'Lulusar Lake', 'Babusar Top', 'Pine Forests'],
+      highlights: ['Saif-ul-Mulook', 'Lulusar Lake', 'Babusar Top', 'Pine Forests', 'Lalazar Meadow', 'Shogran', 'Siri Paye Meadows', 'Ansoo Lake', 'Noori Top', 'Jalkhad'],
     ),
     Destination(
       id: '5',
@@ -111,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       price: 21999,
       duration: '3 Days 2 Nights',
       bestSeason: 'June to September',
-      highlights: ['Nanga Parbat View', 'Beyal Camp', 'Jhelum Meadows', 'Trekking'],
+      highlights: ['Nanga Parbat View', 'Beyal Camp', 'Jhelum Meadows', 'Trekking', 'Raikot Bridge', 'Tattu Village', 'Nanga Parbat Base Camp', 'Rupal Valley', 'Fairy Point', 'Raikot Glacier'],
     ),
   ];
 
@@ -355,7 +357,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       elevation: 0,
       iconTheme: const IconThemeData(color: Colors.white),
       systemOverlayStyle: null,
-      title: StreamBuilder<User?>(
+      title: firebaseInitialized
+          ? StreamBuilder<User?>(
         stream: _authService.userStream,
         builder: (context, userSnapshot) {
           if (userSnapshot.connectionState == ConnectionState.waiting) {
@@ -467,6 +470,48 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ],
               );
             },
+          );
+        },
+      )
+          : AnimatedBuilder(
+        animation: LocalAuthService.instance,
+        builder: (context, _) {
+          final localAuth = LocalAuthService.instance;
+          final displayName = localAuth.currentFullName ?? 'Guest';
+
+          final hour = DateTime.now().hour;
+          String timeGreeting = 'Good Evening';
+          String timeEmoji = '🌙';
+
+          if (hour < 12) {
+            timeGreeting = 'Good Morning';
+            timeEmoji = '☀️';
+          } else if (hour < 17) {
+            timeGreeting = 'Good Afternoon';
+            timeEmoji = '🌤️';
+          }
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '$timeGreeting, $displayName! $timeEmoji',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                localAuth.isLoggedIn
+                    ? 'Ready for your next adventure?'
+                    : 'Please login to continue',
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.white70,
+                ),
+              ),
+            ],
           );
         },
       ),

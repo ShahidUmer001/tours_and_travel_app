@@ -15,10 +15,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-            'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,6 +46,17 @@ class DefaultFirebaseOptions {
         );
     }
   }
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyALTap52dz6VYWNfty1Kk2J7vETXYgnKbk',
+    appId: '1:19348056231:web:8751d98dd7cd8e40bdd382',
+    messagingSenderId: '19348056231',
+    projectId: 'tours-and-travel-app-6fd9d',
+    authDomain: 'tours-and-travel-app-6fd9d.firebaseapp.com',
+    databaseURL: 'https://tours-and-travel-app-6fd9d-default-rtdb.firebaseio.com',
+    storageBucket: 'tours-and-travel-app-6fd9d.firebasestorage.app',
+    measurementId: 'G-P91XNFKPEV',
+  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBbJp8fGb9e9VXdGdjGPdh85ccOGlen4XA',

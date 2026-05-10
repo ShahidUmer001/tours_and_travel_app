@@ -15,7 +15,7 @@ class SampleData {
         'price': 24999,
         'duration': '5 Days',
         'bestSeason': 'April to October',
-        'highlights': ['Baltit Fort', 'Attabad Lake', 'Passu Cones', 'Khunjerab Pass']
+        'highlights': ['Baltit Fort', 'Attabad Lake', 'Passu Cones', 'Khunjerab Pass', 'Altit Fort', 'Eagle\'s Nest Duikar', 'Borith Lake', 'Rakaposhi View Point', 'Hussaini Suspension Bridge', 'Karimabad Bazaar']
       },
       {
         'id': '2',
@@ -27,7 +27,7 @@ class SampleData {
         'price': 29999,
         'duration': '7 Days',
         'bestSeason': 'May to September',
-        'highlights': ['Shangrila Resort', 'Upper Kachura Lake', 'K2 Base Camp', 'Deosai Plains']
+        'highlights': ['Shangrila Resort', 'Upper Kachura Lake', 'K2 Base Camp', 'Deosai Plains', 'Lower Kachura Lake', 'Skardu Fort', 'Satpara Lake', 'Shigar Fort', 'Blind Lake', 'Manthoka Waterfall']
       },
       {
         'id': '3',
@@ -39,7 +39,7 @@ class SampleData {
         'price': 18999,
         'duration': '4 Days',
         'bestSeason': 'June to September',
-        'highlights': ['Nanga Parbat View', 'Beyal Camp', 'Jhelum Meadows', 'Star Gazing']
+        'highlights': ['Nanga Parbat View', 'Beyal Camp', 'Jhelum Meadows', 'Star Gazing', 'Raikot Bridge', 'Tattu Village', 'Nanga Parbat Base Camp', 'Rupal Valley', 'Fairy Point', 'Raikot Glacier']
       },
       {
         'id': '4',
@@ -51,7 +51,7 @@ class SampleData {
         'price': 15999,
         'duration': '3 Days',
         'bestSeason': 'April to October',
-        'highlights': ['Shigar Fort', 'Amacha Garden', 'Traditional Villages', 'Trekking Routes']
+        'highlights': ['Shigar Fort', 'Amacha Garden', 'Traditional Villages', 'Trekking Routes', 'Katpana Cold Desert', 'Basho Valley', 'Mantho Kha Waterfall', 'Hashupi Rock Carvings', 'Shigar River', 'Serena Shigar Fort']
       },
       {
         'id': '5',
@@ -63,7 +63,7 @@ class SampleData {
         'price': 12999,
         'duration': '3 Days',
         'bestSeason': 'June to September',
-        'highlights': ['Naltar Lakes', 'Ski Resort', 'Pine Forests', 'Wildlife Spotting']
+        'highlights': ['Naltar Lakes', 'Ski Resort', 'Pine Forests', 'Wildlife Spotting', 'Naltar Pass', 'Blue Lake', 'Green Lake', 'Nomal Valley', 'Camping Grounds', 'Snow Covered Peaks']
       }
     ];
 

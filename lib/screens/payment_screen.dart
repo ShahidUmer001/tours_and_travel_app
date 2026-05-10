@@ -35,6 +35,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
   final TextEditingController _easypaisaPinController = TextEditingController();
 
   final TextEditingController _cashInstructionsController = TextEditingController();
+  final TextEditingController _bankAccountController = TextEditingController();
+  final TextEditingController _bankNameController = TextEditingController();
+  final TextEditingController _bankRefController = TextEditingController();
 
   // Get booking details based on booking type
   String _getBookingTitle() {
@@ -45,6 +48,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
         return widget.bookingData['carName'] ?? 'Car Booking';
       case 'hotel':
         return widget.bookingData['hotelName'] ?? 'Hotel Booking';
+      case 'itinerary':
+        return widget.bookingData['destinationName'] ?? 'Itinerary Booking';
       default:
         return 'Booking';
     }
@@ -61,6 +66,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
         return (widget.bookingData['totalAmount'] ?? 0).toDouble();
       case 'hotel':
         return (widget.bookingData['totalAmount'] ?? 0).toDouble();
+      case 'itinerary':
+        return (widget.bookingData['totalAmount'] ?? 0).toDouble();
       default:
         return 0.0;
     }
@@ -76,6 +83,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
         return from.isNotEmpty && to.isNotEmpty ? '$from → $to' : 'Car Rental';
       case 'hotel':
         return widget.bookingData['location'] ?? 'Hotel Stay';
+      case 'itinerary':
+        return widget.bookingData['location'] ?? 'Itinerary Trip';
       default:
         return 'Confirmed booking';
     }
@@ -89,6 +98,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
         return widget.bookingData['carImageUrl'];
       case 'hotel':
         return widget.bookingData['hotelImageUrl'] ?? widget.bookingData['imageUrl'];
+      case 'itinerary':
+        return widget.bookingData['destinationImage'];
       default:
         return null;
     }
@@ -131,6 +142,19 @@ class _PaymentScreenState extends State<PaymentScreen> {
           _buildSummaryRow('Rooms:', widget.bookingData['rooms']?.toString() ?? '1'),
           _buildSummaryRow('Total Nights:', widget.bookingData['totalNights']?.toString() ?? '1'),
           _buildSummaryRow('Price per Night:', 'Rs. ${widget.bookingData['pricePerNight']?.toStringAsFixed(0) ?? '0'}'),
+        ];
+
+      case 'itinerary':
+        return [
+          _buildSummaryRow('Destination:', widget.bookingData['destinationName'] ?? 'N/A'),
+          _buildSummaryRow('Location:', widget.bookingData['location'] ?? 'N/A'),
+          _buildSummaryRow('Start Date:', widget.bookingData['startDate'] ?? 'N/A'),
+          _buildSummaryRow('End Date:', widget.bookingData['endDate'] ?? 'N/A'),
+          _buildSummaryRow('Total Days:', '${widget.bookingData['totalDays'] ?? 0} days'),
+          if ((widget.bookingData['hotels'] ?? '').toString().isNotEmpty)
+            _buildSummaryRow('Hotels:', widget.bookingData['hotels']),
+          if ((widget.bookingData['transport'] ?? '').toString().isNotEmpty)
+            _buildSummaryRow('Transport:', widget.bookingData['transport']),
         ];
 
       default:
@@ -182,6 +206,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 _buildPaymentMethodTile('Credit/Debit Card', 'card', Icons.credit_card),
                 _buildPaymentMethodTile('JazzCash', 'jazzcash', Icons.phone_android),
                 _buildPaymentMethodTile('EasyPaisa', 'easypaisa', Icons.phone_iphone),
+                _buildPaymentMethodTile('Bank Transfer', 'bank', Icons.account_balance),
                 _buildPaymentMethodTile('Cash on Delivery', 'cash', Icons.money),
               ],
             ),
@@ -264,11 +289,74 @@ class _PaymentScreenState extends State<PaymentScreen> {
         return _buildJazzCashForm();
       case 'easypaisa':
         return _buildEasyPaisaForm();
+      case 'bank':
+        return _buildBankTransferForm();
       case 'cash':
         return _buildCashPaymentForm();
       default:
         return SizedBox();
     }
+  }
+
+  Widget _buildBankTransferForm() {
+    return Card(
+      elevation: 2,
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Bank Transfer Details', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            SizedBox(height: 12),
+            TextField(
+              controller: _bankNameController,
+              decoration: InputDecoration(
+                labelText: 'Bank Name',
+                hintText: 'e.g. HBL, UBL, Meezan Bank',
+                prefixIcon: Icon(Icons.account_balance),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              controller: _bankAccountController,
+              decoration: InputDecoration(
+                labelText: 'Account Number / IBAN',
+                hintText: 'Enter your account number',
+                prefixIcon: Icon(Icons.numbers),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+              keyboardType: TextInputType.text,
+            ),
+            SizedBox(height: 10),
+            TextField(
+              controller: _bankRefController,
+              decoration: InputDecoration(
+                labelText: 'Transaction Reference (optional)',
+                hintText: 'Enter reference number if already transferred',
+                prefixIcon: Icon(Icons.receipt_long),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+            ),
+            SizedBox(height: 12),
+            Container(
+              padding: EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.blue[50],
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.info_outline, color: Colors.blue[700], size: 20),
+                  SizedBox(width: 8),
+                  Expanded(child: Text('Transfer the total amount to our bank account. Your booking will be confirmed after verification.', style: TextStyle(fontSize: 12, color: Colors.blue[700]))),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _buildCardPaymentForm() {
@@ -502,6 +590,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
         return 'PAY WITH JAZZCASH';
       case 'easypaisa':
         return 'PAY WITH EASYPAISA';
+      case 'bank':
+        return 'CONFIRM BANK TRANSFER';
       case 'cash':
         return 'CONFIRM CASH BOOKING';
       default:
@@ -522,6 +612,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
       case 'easypaisa':
         return _easypaisaNumberController.text.length == 10 &&
             _easypaisaPinController.text.length == 5;
+      case 'bank':
+        return _bankNameController.text.isNotEmpty &&
+            _bankAccountController.text.isNotEmpty;
       case 'cash':
         return true;
       default:
@@ -597,6 +690,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
     _easypaisaNumberController.dispose();
     _easypaisaPinController.dispose();
     _cashInstructionsController.dispose();
+    _bankAccountController.dispose();
+    _bankNameController.dispose();
+    _bankRefController.dispose();
     super.dispose();
   }
 }
@@ -623,6 +719,8 @@ class BookingSuccessScreen extends StatelessWidget {
         return 'JazzCash';
       case 'easypaisa':
         return 'EasyPaisa';
+      case 'bank':
+        return 'Bank Transfer';
       case 'cash':
         return 'Cash on Delivery';
       default:
@@ -638,6 +736,8 @@ class BookingSuccessScreen extends StatelessWidget {
         return 'Your hotel has been successfully booked!';
       case 'tour':
         return 'Your tour has been successfully booked!';
+      case 'itinerary':
+        return 'Your itinerary has been successfully booked!';
       default:
         return 'Booking confirmed!';
     }

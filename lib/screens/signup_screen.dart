@@ -101,6 +101,7 @@ class _SignupScreenState extends State<SignupScreen>
       email: _emailController.text.trim(),
       password: _passwordController.text.trim(),
       fullName: _fullNameController.text.trim(),
+      phone: _phoneController.text.trim(),
     );
 
     if (!mounted) return;

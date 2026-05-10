@@ -75,6 +75,7 @@ class LocalAuthService extends ChangeNotifier {
     required String email,
     required String password,
     required String fullName,
+    String phone = '',
   }) async {
     if (email.isEmpty || password.isEmpty || fullName.isEmpty) {
       return 'Please fill all fields';
@@ -100,6 +101,7 @@ class LocalAuthService extends ChangeNotifier {
             'uid': credential.user!.uid,
             'email': email.trim(),
             'fullName': fullName.trim(),
+            'phone': phone.trim(),
             'createdAt': FieldValue.serverTimestamp(),
           });
         }
@@ -155,6 +157,22 @@ class LocalAuthService extends ChangeNotifier {
         );
         _currentEmail = credential.user?.email;
         _currentFullName = credential.user?.displayName;
+
+        // If displayName is missing in Firebase Auth, sync from Firestore
+        if (credential.user != null && (credential.user!.displayName == null || credential.user!.displayName!.isEmpty)) {
+          try {
+            final doc = await FirebaseFirestore.instance
+                .collection('users')
+                .doc(credential.user!.uid)
+                .get();
+            final firestoreName = (doc.data() as Map<String, dynamic>?)?['fullName'] as String?;
+            if (firestoreName != null && firestoreName.isNotEmpty) {
+              await credential.user!.updateDisplayName(firestoreName);
+              _currentFullName = firestoreName;
+            }
+          } catch (_) {}
+        }
+
         notifyListeners();
         return null;
       } on FirebaseAuthException catch (e) {

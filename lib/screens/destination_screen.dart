@@ -3,7 +3,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../models/destination_model.dart';
 import '../utils/animations.dart';
 import '../utils/constants.dart';
+import '../utils/highlight_images.dart';
 import 'hotel_selection_screen.dart';
+import 'itinerary_planning_screen.dart';
 
 class DestinationScreen extends StatefulWidget {
   final Destination destination;
@@ -205,34 +207,73 @@ class _DestinationScreenState extends State<DestinationScreen>
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Wrap(
-                    spacing: 12,
-                    runSpacing: 12,
-                    children: widget.destination.highlights.map((highlight) {
-                      return Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[50],
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.blue[100]!),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      childAspectRatio: 1.3,
+                    ),
+                    itemCount: widget.destination.highlights.length,
+                    itemBuilder: (context, index) {
+                      final highlight = widget.destination.highlights[index];
+                      final imagePath = highlightImages[highlight];
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Stack(
+                          fit: StackFit.expand,
                           children: [
-                            Icon(Icons.check_circle, color: Colors.blue[700], size: 16),
-                            const SizedBox(width: 6),
-                            Text(
-                              highlight,
-                              style: TextStyle(
-                                color: Colors.blue[800],
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                            if (imagePath != null)
+                              Image.asset(
+                                imagePath,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) => Container(
+                                  color: Colors.blue[50],
+                                  child: Icon(Icons.landscape, color: Colors.blue[300], size: 40),
+                                ),
+                              )
+                            else
+                              Container(
+                                color: Colors.blue[50],
+                                child: Icon(Icons.landscape, color: Colors.blue[300], size: 40),
+                              ),
+                            Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Colors.transparent,
+                                    Colors.black.withValues(alpha: 0.7),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 10,
+                              left: 10,
+                              right: 10,
+                              child: Text(
+                                highlight,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                  shadows: [
+                                    Shadow(
+                                      blurRadius: 4,
+                                      color: Colors.black54,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
                         ),
                       );
-                    }).toList(),
+                    },
                   ),
 
                   const SizedBox(height: 25),
@@ -288,6 +329,52 @@ class _DestinationScreenState extends State<DestinationScreen>
                                 ),
                               ],
                             ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  // Plan Itinerary Button
+                  StaggeredListItem(
+                    index: 7,
+                    animation: _contentController,
+                    child: Container(
+                      width: double.infinity,
+                      height: 54,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.blue[700]!, width: 2),
+                      ),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(18),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              PageTransitions.fadeSlide(
+                                ItineraryPlanningScreen(destination: widget.destination),
+                              ),
+                            );
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.map_outlined, color: Colors.blue[700]),
+                              const SizedBox(width: 10),
+                              Text(
+                                'Plan Itinerary',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue[700],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
